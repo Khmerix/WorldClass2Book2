@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Class 2B - Units 7-12 (Direct Access)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a252f 0%, #2c3e50 100%);
+            min-block-size: 100vh;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            color: white;
+        }
+        
+        .header h1 {
+            font-size: 48px;
+            margin-block-end: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 20px;
+            opacity: 0.9;
+            color: #d4af37;
+        }
+        
+        .units-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-inline-size: 1200px;
+            margin: 0 auto 40px;
+        }
+        
+        .unit-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .unit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        
+        .unit-header-card {
+            padding: 30px;
+            color: white;
+            position: relative;
+        }
+        
+        .unit-number-card {
+            font-size: 72px;
+            font-weight: bold;
+            opacity: 0.3;
+            position: absolute;
+            inset-block-start: 10px;
+            inset-inline-end: 20px;
+        }
+        
+        .unit-title-card {
+            font-size: 24px;
+            font-weight: bold;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .unit-theme-card {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-block-start: 5px;
+        }
+        
+        .unit-7 { background: linear-gradient(135deg, #722f37 0%, #8b3a3a 100%); }
+        .unit-8 { background: linear-gradient(135deg, #2c7873 0%, #3d8b84 100%); }
+        .unit-9 { background: linear-gradient(135deg, #5d4e6d 0%, #7a6a8a 100%); }
+        .unit-10 { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); }
+        .unit-11 { background: linear-gradient(135deg, #c94b4b 0%, #4b134f 100%); }
+        .unit-12 { background: linear-gradient(135deg, #f7971e 0%, #ffd200 100%); color: #333; }
+        .unit-12 .unit-header-card { color: #333; }
+        
+        .unit-content {
+            padding: 20px;
+        }
+        
+        .unit-content h4 {
+            color: #666;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-block-end: 10px;
+        }
+        
+        .topics-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .topics-list li {
+            padding: 8px 0;
+            border-block-end: 1px solid #eee;
+            font-size: 14px;
+            color: #555;
+        }
+        
+        .topics-list li:last-child {
+            border-block-end: none;
+        }
+        
+        .topics-list li::before {
+            content: "✓ ";
+            color: #4caf50;
+            font-weight: bold;
+        }
+        
+        .video-badge {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-block-start: 15px;
+        }
+        
+        .homework-section {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-block-start: 15px;
+        }
+        
+        .homework-section h4 {
+            color: #722f37;
+            margin-block-end: 10px;
+        }
+        
+        .homework-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .hw-link {
+            background: #d4af37;
+            color: #722f37;
+            padding: 6px 12px;
+            border-radius: 15px;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .hw-link:hover {
+            background: #722f37;
+            color: white;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 40px;
+            color: white;
+            opacity: 0.8;
+        }
+        
+        .note {
+            background: rgba(212, 175, 55, 0.2);
+            border: 1px solid #d4af37;
+            padding: 20px;
+            border-radius: 10px;
+            max-inline-size: 800px;
+            margin: 0 auto 30px;
+            color: white;
+            text-align: center;
+        }
+        
+        .reference-card {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+        }
+        
+        .reference-card .unit-content h4 {
+            color: #d4af37;
+        }
+        
+        @media (max-inline-size: 768px) {
+            .header h1 {
+                font-size: 32px;
+            }
+            
+            .units-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>World Class 2B</h1>
+        <p>Units 7-12: Direct Access Version</p>
+    </div>
+    
+    <div class="note">
+        <strong>📹 Videos should work properly in this version.</strong><br>
+        Click on any unit card below to open it directly.
+    </div>
+    
+    <div class="units-grid">
+        <!-- Unit 7 -->
+        <a href="files seperate/unit7.html" class="unit-card">
+            <div class="unit-header-card unit-7">
+                <div class="unit-number-card">7</div>
+                <div class="unit-title-card">Live and Learn</div>
+                <div class="unit-theme-card">Learning and Education</div>
+            </div>
+            <div class="unit-content">
+                <h4>Topics Covered</h4>
+                <ul class="topics-list">
+                    <li>Noun clauses with wh- words</li>
+                    <li>Noun clauses with if/whether</li>
+                    <li>Learning expressions with "know"</li>
+                    <li>Essay writing with thesis</li>
+                </ul>
+                <span class="video-badge">🎬 Video Included</span>
+                <div class="homework-section">
+                    <h4>📝 Homework</h4>
+                    <div class="homework-links">
+                        <a href="homework/unit7_vocab.html" class="hw-link" onclick="event.stopPropagation();">Vocabulary</a>
+                        <a href="homework/unit7_grammar.html" class="hw-link" onclick="event.stopPropagation();">Grammar</a>
+                        <a href="homework/unit7_writing.html" class="hw-link" onclick="event.stopPropagation();">Writing</a>
+                    </div>
+                </div>
+            </div>
+        </a>
+        
+        <!-- Unit 8 -->
+        <a href="files seperate/unit8.html" class="unit-card">
+            <div class="unit-header-card unit-8">
+                <div class="unit-number-card">8</div>
+                <div class="unit-title-card">Fame and Fortune</div>
+                <div class="unit-theme-card">Fame and Public Life</div>
+            </div>
+            <div class="unit-content">
+                <h4>Topics Covered</h4>
+                <ul class="topics-list">
+                    <li>Reported speech statements</li>
+                    <li>Reported speech questions</li>
+                    <li>Indirect speech patterns</li>
+                    <li>Biography writing</li>
+                </ul>
+                <span class="video-badge">🎬 Video Included</span>
+                <div class="homework-section">
+                    <h4>📝 Homework</h4>
+                    <div class="homework-links">
+                        <a href="homework/unit8_vocab.html" class="hw-link" onclick="event.stopPropagation();">Vocabulary</a>
+                        <a href="homework/unit8_grammar.html" class="hw-link" onclick="event.stopPropagation();">Grammar</a>
+                        <a href="homework/unit8_writing.html" class="hw-link" onclick="event.stopPropagation();">Writing</a>
+                    </div>
+                </div>
+            </div>
+        </a>
+        
+        <!-- Unit 9 -->
+        <a href="files seperate/unit9.html" class="unit-card">
+            <div class="unit-header-card unit-9">
+                <div class="unit-number-card">9</div>
+                <div class="unit-title-card">Body and Mind</div>
+                <div class="unit-theme-card">Health Habits</div>
+            </div>
+            <div class="unit-content">
+                <h4>Topics Covered</h4>
+                <ul class="topics-list">
+                    <li>Conditionals review</li>
+                    <li>Wish and hope clauses</li>
+                    <li>Health vocabulary</li>
+                    <li>Problem-solution essay</li>
+                </ul>
+                <span class="video-badge">🎬 Video Included</span>
+                <div class="homework-section">
+                    <h4>📝 Homework</h4>
+                    <div class="homework-links">
+                        <a href="homework/unit9_vocab.html" class="hw-link" onclick="event.stopPropagation();">Vocabulary</a>
+                        <a href="homework/unit9_grammar.html" class="hw-link" onclick="event.stopPropagation();">Grammar</a>
+                        <a href="homework/unit9_writing.html" class="hw-link" onclick="event.stopPropagation();">Writing</a>
+                    </div>
+                </div>
+            </div>
+        </a>
+        
+        <!-- Unit 10 -->
+        <a href="files seperate/unit10.html" class="unit-card">
+            <div class="unit-header-card unit-10">
+                <div class="unit-number-card">10</div>
+                <div class="unit-title-card">Resources</div>
+                <div class="unit-theme-card">Water & Environment</div>
+            </div>
+            <div class="unit-content">
+                <h4>Topics Covered</h4>
+                <ul class="topics-list">
+                    <li>Passive voice review</li>
+                    <li>Causative get/have</li>
+                    <li>Environmental issues</li>
+                    <li>Persuasive writing</li>
+                </ul>
+                <span class="video-badge">🎬 Video Included</span>
+                <div class="homework-section">
+                    <h4>📝 Homework</h4>
+                    <div class="homework-links">
+                        <a href="homework/unit10_vocab.html" class="hw-link" onclick="event.stopPropagation();">Vocabulary</a>
+                        <a href="homework/unit10_grammar.html" class="hw-link" onclick="event.stopPropagation();">Grammar</a>
+                        <a href="homework/unit10_writing.html" class="hw-link" onclick="event.stopPropagation();">Writing</a>
+                    </div>
+                </div>
+            </div>
+        </a>
+        
+        <!-- Unit 11 -->
+        <a href="files seperate/unit11.html" class="unit-card">
+            <div class="unit-header-card unit-11">
+                <div class="unit-number-card">11</div>
+                <div class="unit-title-card">Express Yourself</div>
+                <div class="unit-theme-card">Art & Creativity</div>
+            </div>
+            <div class="unit-content">
+                <h4>Topics Covered</h4>
+                <ul class="topics-list">
+                    <li>Used to / Would</li>
+                    <li>Be used to / Get used to</li>
+                    <li>Art and music vocabulary</li>
+                    <li>Descriptive writing</li>
+                </ul>
+                <span class="video-badge">🎬 Video Included</span>
+                <div class="homework-section">
+                    <h4>📝 Homework</h4>
+                    <div class="homework-links">
+                        <a href="homework/unit11_vocab.html" class="hw-link" onclick="event.stopPropagation();">Vocabulary</a>
+                        <a href="homework/unit11_grammar.html" class="hw-link" onclick="event.stopPropagation();">Grammar</a>
+                        <a href="homework/unit11_writing.html" class="hw-link" onclick="event.stopPropagation();">Writing</a>
+                    </div>
+                </div>
+            </div>
+        </a>
+        
+        <!-- Unit 12 -->
+        <a href="files seperate/unit12.html" class="unit-card">
+            <div class="unit-header-card unit-12">
+                <div class="unit-number-card">12</div>
+                <div class="unit-title-card">Good Times, Bad Times</div>
+                <div class="unit-theme-card">Humor & Comedy</div>
+            </div>
+            <div class="unit-content">
+                <h4>Topics Covered</h4>
+                <ul class="topics-list">
+                    <li>Tag questions</li>
+                    <li>Review of all tenses</li>
+                    <li>Comedy and humor</li>
+                    <li>Narrative writing</li>
+                </ul>
+                <span class="video-badge">🎬 Video Included</span>
+                <div class="homework-section">
+                    <h4>📝 Homework</h4>
+                    <div class="homework-links">
+                        <a href="homework/unit12_vocab.html" class="hw-link" onclick="event.stopPropagation();">Vocabulary</a>
+                        <a href="homework/unit12_grammar.html" class="hw-link" onclick="event.stopPropagation();">Grammar</a>
+                        <a href="homework/unit12_writing.html" class="hw-link" onclick="event.stopPropagation();">Writing</a>
+                    </div>
+                </div>
+            </div>
+        </a>
+        
+        <!-- Reference -->
+        <a href="files seperate/book2b_reference.html" class="unit-card reference-card">
+            <div class="unit-header-card" style="background: transparent;">
+                <div class="unit-number-card">📚</div>
+                <div class="unit-title-card">Grammar Reference</div>
+                <div class="unit-theme-card">Complete Grammar Guide</div>
+            </div>
+            <div class="unit-content">
+                <h4>Contents</h4>
+                <ul class="topics-list">
+                    <li>All grammar points from Units 7-12</li>
+                    <li>Verb patterns and structures</li>
+                    <li>Clause types explained</li>
+                    <li>Quick reference charts</li>
+                </ul>
+            </div>
+        </a>
+    </div>
+    
+    <div class="footer">
+        <p>World Class 2B - Book 2 Units 7-12</p>
+        <p style="margin-block-start: 10px; font-size: 14px;">Open <strong>index_direct.html</strong> to use this direct access version</p>
+    </div>
+</body>
+</html>
