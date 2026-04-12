@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Test - World Class 2B</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #1a1a1a;
+            color: white;
+        }
+        
+        h1 {
+            color: #d4af37;
+            text-align: center;
+        }
+        
+        .video-container {
+            background: #2d2d2d;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border: 3px solid #d4af37;
+        }
+        
+        video {
+            width: 100%;
+            border-radius: 8px;
+        }
+        
+        .status {
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        
+        .success {
+            background: #4caf50;
+            color: white;
+        }
+        
+        .error {
+            background: #f44336;
+            color: white;
+        }
+        
+        .info {
+            background: #2196f3;
+            color: white;
+        }
+        
+        .back-link {
+            display: inline-block;
+            background: #d4af37;
+            color: #722f37;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        
+        .back-link:hover {
+            background: #e5c76b;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎬 Video Test Page</h1>
+    
+    <div class="status info">
+        <strong>Testing Video Path:</strong> WCL2-U07.mp4 (same folder as this file)
+    </div>
+    
+    <div class="video-container">
+        <video controls id="testVideo">
+            <source src="WCL2-U07.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    
+    <div id="status"></div>
+    
+    <h2>How to Fix Video Issues:</h2>
+    <ol>
+        <li><strong>Option 1 (Recommended):</strong> Use <code>index_direct.html</code> instead of <code>book2b_complete.html</code></li>
+        <li><strong>Option 2:</strong> Open unit files directly from the "files seperate" folder</li>
+        <li><strong>Option 3:</strong> Use a local web server (see instructions below)</li>
+    </ol>
+    
+    <h3>Using a Local Web Server:</h3>
+    <p>If you have Python installed, open a command prompt in the Book2Complete folder and run:</p>
+    <code style="background: #333; padding: 10px; display: block; margin: 10px 0;">
+        python -m http.server 8000
+    </code>
+    <p>Then open: <code>http://localhost:8000</code></p>
+    
+    <a href="index_direct.html" class="back-link">← Go to Direct Access Version</a>
+    
+    <script>
+        const video = document.getElementById('testVideo');
+        const status = document.getElementById('status');
+        
+        video.addEventListener('loadeddata', function() {
+            status.innerHTML = '<div class="status success">✅ Video loaded successfully! The video file is accessible.</div>';
+        });
+        
+        video.addEventListener('error', function() {
+            status.innerHTML = '<div class="status error">❌ Error loading video. The file may not be in the expected location.</div>';
+        });
+    </script>
+</body>
+</html>
