@@ -1,0 +1,3107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Class Level 2 - Unit 9: To Your Health!</title>
+    <!-- Authentication Check -->
+    <script>
+        // Check if user is logged in
+        if (!sessionStorage.getItem('teacherLoggedIn')) {
+            window.location.href = '../login.html';
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        /* Unit Selector */
+        .unit-selector {
+            background: #1a252f;
+            padding: 15px 40px;
+            text-align: center;
+            border-bottom: 2px solid #d4af37;
+        }
+
+        .unit-selector h3 {
+            color: white;
+            margin-bottom: 10px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .unit-links {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .unit-btn {
+            background: #34495e;
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .unit-btn:hover {
+            background: #1565c0;
+            transform: translateY(-2px);
+        }
+
+        .unit-btn.active {
+            background: #1565c0;
+            border-color: white;
+            pointer-events: none;
+        }
+
+        /* Unit Header - Green Theme for Unit 9 */
+        .unit-header {
+            background: linear-gradient(135deg, #722f37 0%, #8b3a3a 100%);
+            color: white;
+            padding: 60px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .unit-number {
+            font-size: 120px;
+            font-weight: bold;
+            opacity: 0.3;
+            position: absolute;
+            top: 20px;
+            left: 40px;
+            line-height: 1;
+        }
+
+        .unit-title {
+            font-size: 48px;
+            font-weight: bold;
+            margin-left: 100px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .unit-theme {
+            font-size: 24px;
+            margin-left: 100px;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+
+        /* Navigation */
+        .nav-bar {
+            background: #2c3e50;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #d4af37;
+        }
+
+        /* View Toggle Buttons */
+        .view-toggle {
+            display: flex;
+            gap: 10px;
+        }
+
+        .toggle-btn {
+            background: #34495e;
+            color: white;
+            border: 2px solid transparent;
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .toggle-btn.active {
+            background: #1565c0;
+            border-color: white;
+        }
+
+        .toggle-btn:hover:not(.active) {
+            background: #44596e;
+        }
+        
+        /* Print Button */
+        .print-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            margin-right: 10px;
+        }
+        
+        .print-btn:hover {
+            background: #2980b9;
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        /* Main Content */
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+            scroll-margin-top: 80px;
+        }
+
+        .section-header {
+            background: #34495e;
+            color: white;
+            padding: 20px 30px;
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            border-left: 8px solid #722f37;
+        }
+
+        /* Unit Outcomes Box - Orange theme */
+        .outcomes-box {
+            background: linear-gradient(135deg, #722f37 0%, #8b3a3a 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .outcomes-box h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid white;
+            padding-bottom: 10px;
+        }
+
+        .outcomes-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .outcomes-box li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .outcomes-box li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* Warm-up Questions */
+        .warmup-box {
+            background: #e3f2fd;
+            border-left: 5px solid #d4af37;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .warmup-box ol {
+            margin-left: 25px;
+            color: #555;
+        }
+
+        .warmup-box li {
+            margin-bottom: 10px;
+        }
+
+        /* Vocabulary Grid */
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .vocab-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-left: 4px solid #d4af37;
+            border-radius: 5px;
+        }
+
+        .vocab-word {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .vocab-pronounce {
+            color: #7f8c8d;
+            font-style: italic;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .vocab-def {
+            color: #555;
+            font-size: 15px;
+            margin-bottom: 5px;
+        }
+
+        .vocab-example {
+            color: #1565c0;
+            font-size: 13px;
+            font-style: italic;
+            margin-top: 5px;
+        }
+
+        /* Expressions boxes */
+        .expressions-box {
+            background: #fff8e1;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .expressions-title {
+            font-weight: bold;
+            color: #f57c00;
+            margin-bottom: 10px;
+        }
+
+        /* Exercise Boxes */
+        .exercise {
+            background: #fff;
+            border: 2px solid #ecf0f1;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .exercise-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .exercise-icon {
+            background: #722f37;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* Yellow Strategy Box */
+        .strategy-box {
+            background: #fff9c4;
+            border: 2px solid #f9a825;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .strategy-box::before {
+            content: "💡 LISTENING STRATEGY";
+            background: #f9a825;
+            color: white;
+            padding: 4px 12px;
+            font-size: 12px;
+            font-weight: bold;
+            position: absolute;
+            top: -12px;
+            left: 20px;
+        }
+
+        .strategy-title {
+            font-weight: bold;
+            color: #e65100;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            background: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .audio-label {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        audio {
+            width: 100%;
+            max-width: 500px;
+            margin: 10px 0;
+        }
+
+        /* Grammar Chart */
+        .grammar-chart {
+            background: #f8f9fa;
+            border: 2px solid #34495e;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .chart-header {
+            background: #34495e;
+            color: white;
+            padding: 15px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .chart-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .chart-row:last-child {
+            border-bottom: none;
+        }
+
+        .chart-cell {
+            padding: 15px;
+            border-right: 1px solid #ddd;
+        }
+
+        .chart-cell:last-child {
+            border-right: none;
+        }
+
+        .chart-cell.header {
+            background: #ecf0f1;
+            font-weight: bold;
+        }
+
+        .condition-word {
+            font-weight: bold;
+            color: #e74c3c;
+        }
+
+        /* Reading Passage */
+        .reading-passage {
+            background: #fff;
+            border-left: 5px solid #d4af37;
+            padding: 30px;
+            margin: 20px 0;
+            font-size: 16px;
+            line-height: 1.8;
+            text-align: justify;
+            background-color: #f8f9fa;
+        }
+
+        .passage-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #c2185b;
+            margin-bottom: 20px;
+            text-align: left;
+            font-style: italic;
+        }
+
+        .passage-image-caption {
+            font-size: 13px;
+            color: #666;
+            font-style: italic;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        /* Teacher's Answers */
+        .teacher-answer {
+            display: block;
+            background: #e8f5e9;
+            border: 2px solid #4caf50;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 10px;
+            color: #2e7d32;
+            font-weight: 600;
+        }
+
+        .teacher-answer::before {
+            content: "✓ TEACHER ANSWER: ";
+            font-weight: 800;
+            color: #1b5e20;
+        }
+
+        .teaching-note {
+            display: none;
+            background: #fff3e0;
+            border-left: 4px solid #d4af37;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            color: #e65100;
+        }
+
+        .teaching-note::before {
+            content: "🍎 TEACHING NOTE: ";
+            font-weight: 800;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* Visible states for teacher mode */
+        .teacher-mode .teacher-answer,
+        .teacher-mode .teaching-note {
+            display: block;
+        }
+
+        /* Question containers */
+        .question-item {
+            background: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin-bottom: 15px;
+        }
+
+        .question-text {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+
+        /* Writing Strategy */
+        .writing-strategy {
+            background: #fff3e0;
+            border-left: 5px solid #d4af37;
+            padding: 25px;
+            margin: 20px 0;
+        }
+
+        .writing-strategy h3 {
+            color: #e65100;
+            margin-bottom: 15px;
+        }
+
+        /* Cause/Effect Boxes */
+        .cause-effect-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .cause-box, .effect-box {
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .cause-box {
+            background: #e8f5e9;
+            border: 2px solid #4caf50;
+        }
+
+        .effect-box {
+            background: #ffebee;
+            border: 2px solid #f44336;
+        }
+
+        /* Discussion Box */
+        .discussion-box {
+            background: #e3f2fd;
+            border-left: 5px solid #d4af37;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* Pronunciation Box */
+        .pronunciation-box {
+            background: #f3e5f5;
+            border: 2px solid #9c27b0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .pronunciation-title {
+            color: #7b1fa2;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Video Box */
+        .video-box {
+            background: #fce4ec;
+            border: 2px solid #e91e63;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .video-title {
+            color: #c2185b;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Critical Thinking Box */
+        .critical-box {
+            background: #e8eaf6;
+            border-left: 5px solid #d4af37;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* Self Assessment */
+        .assessment-box {
+            background: #e0f2f1;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #009688;
+        }
+
+        /* Homework Box */
+        .homework-box {
+            background: #fff8e1;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #ffc107;
+        }
+
+        /* Scenario Boxes (Connections) */
+        .scenario-box {
+            background: #fff;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scenario-title {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 18px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .scenario-text {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .scenario-text strong {
+            color: #e74c3c;
+        }
+
+        /* Speech bubbles */
+        .speech-bubble {
+            background: #e0f7fa;
+            border: 2px solid #00bcd4;
+            border-radius: 15px;
+            padding: 15px;
+            margin: 10px 0;
+            position: relative;
+            max-width: 80%;
+        }
+
+        .speech-bubble.right {
+            margin-left: auto;
+            background: #f3e5f5;
+            border-color: #9c27b0;
+        }
+
+        /* Listening Outline */
+        .listening-outline {
+            background: #f5f5f5;
+            border: 2px solid #34495e;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+
+        .outline-section {
+            margin-bottom: 20px;
+        }
+
+        .outline-header {
+            background: #34495e;
+            color: white;
+            padding: 8px 15px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .outline-content {
+            margin-left: 20px;
+        }
+
+        .blank-line {
+            border-bottom: 1px solid #333;
+            display: inline-block;
+            min-width: 150px;
+            margin: 0 5px;
+        }
+
+        /* Two column layout for matching */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 20px 0;
+        }
+
+        .column-box {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        /* Footer Navigation */
+        .unit-nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 30px 40px;
+            background: #ecf0f1;
+            border-top: 3px solid #34495e;
+        }
+
+        .nav-btn {
+            background: #34495e;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: #722f37;
+        }
+
+        /* Print Styles */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+
+            .unit-selector, .nav-bar, .unit-nav {
+                display: none !important;
+            }
+
+            body {
+                background: white;
+            }
+
+            .container {
+                box-shadow: none;
+            }
+
+            .section {
+                page-break-inside: avoid;
+            }
+
+            /* In student mode (default for print), hide answers */
+            .teacher-answer, .teaching-note {
+                display: none !important;
+            }
+
+            /* When teacher mode is explicitly on, show answers */
+            .teacher-mode .teacher-answer,
+            .teacher-mode .teaching-note {
+                display: block !important;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .vocab-grid, .cause-effect-grid, .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .chart-row {
+                grid-template-columns: 1fr;
+            }
+
+            .unit-title {
+                font-size: 32px;
+                margin-left: 0;
+            }
+
+            .unit-number {
+                font-size: 80px;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .view-toggle {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .content {
+                padding: 20px;
+            }
+        }
+
+        /* View Mode Indicator */
+        .view-indicator { display: none !important;
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            z-index: 1000;
+            display: none;
+        }
+
+        .view-indicator.show {
+            display: block;
+        }
+
+        /* Definition box for listening */
+        .definition-box {
+            background: #f1f8e9;
+            border-left: 4px solid #d4af37;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .definition-word {
+            font-weight: bold;
+            color: #558b2f;
+        }
+
+        /* Did you know box */
+        .did-you-know {
+            background: #e1f5fe;
+            border: 2px solid #03a9f4;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .did-you-know-icon {
+            font-size: 24px;
+        }
+
+        .did-you-know-content {
+            flex: 1;
+        }
+
+        .did-you-know-title {
+            font-weight: bold;
+            color: #0277bd;
+            margin-bottom: 5px;
+        }
+
+        /* Side by side layout */
+        .side-by-side {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Role play box */
+        .roleplay-box {
+            background: #f3e5f5;
+            border: 2px solid #9c27b0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .roleplay-title {
+            color: #7b1fa2;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+    
+/* Dark Mode */
+body.dark-mode {
+    background: #1a1a1a;
+    color: #e0e0e0;
+}
+
+body.dark-mode .container {
+    background: #2d2d2d;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+body.dark-mode .content {
+    background: #2d2d2d;
+}
+
+body.dark-mode .section-header {
+    background: #3d3d3d;
+    color: #fff;
+}
+
+body.dark-mode .exercise {
+    background: #363636;
+    border-color: #444;
+}
+
+body.dark-mode .question-item {
+    background: #363636;
+    border-color: #444;
+}
+
+body.dark-mode .vocab-item {
+    background: #363636;
+}
+
+body.dark-mode .strategy-box,
+body.dark-mode .warmup-box,
+body.dark-mode .discussion-box,
+body.dark-mode .pronunciation-box,
+body.dark-mode .critical-box,
+body.dark-mode .assessment-box,
+body.dark-mode .homework-box {
+    filter: brightness(0.85);
+}
+
+body.dark-mode .reading-passage {
+    background-color: #363636;
+    color: #e0e0e0;
+}
+
+body.dark-mode .unit-nav {
+    background: #2d2d2d;
+    border-color: #444;
+}
+
+/* Dark Mode Toggle Button */
+.dark-mode-toggle {
+    background: #2c3e50;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+    margin-right: 10px;
+}
+
+.dark-mode-toggle:hover {
+    background: #34495e;
+    transform: scale(1.05);
+}
+
+        /* ===== 3D DYNAMIC BUTTONS ===== */
+        
+        /* Base 3D Button Style */
+        .btn-3d {
+            display: inline-block;
+            padding: 12px 28px;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #fff;
+            background: linear-gradient(145deg, #8b3a3a 0%, #722f37 50%, #5c1a1a 100%);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                0 4px 6px rgba(114, 47, 55, 0.3),
+                0 10px 20px rgba(114, 47, 55, 0.2),
+                inset 0 1px 0 rgba(255,255,255,0.2),
+                inset 0 -2px 0 rgba(0,0,0,0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(0);
+        }
+        
+        .btn-3d::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .btn-3d:hover::before {
+            left: 100%;
+        }
+        
+        .btn-3d:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 
+                0 8px 15px rgba(114, 47, 55, 0.4),
+                0 15px 30px rgba(114, 47, 55, 0.25),
+                inset 0 1px 0 rgba(255,255,255,0.3),
+                inset 0 -2px 0 rgba(0,0,0,0.2);
+            background: linear-gradient(145deg, #722f37 0%, #8b3a3a 50%, #722f37 100%);
+        }
+        
+        .btn-3d:active {
+            transform: translateY(-1px) scale(0.98);
+            box-shadow: 
+                0 2px 4px rgba(114, 47, 55, 0.3),
+                0 5px 10px rgba(114, 47, 55, 0.2),
+                inset 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        /* Gold Accent Button */
+        .btn-gold {
+            background: linear-gradient(145deg, #e5c76b 0%, #d4af37 50%, #b8960c 100%);
+            color: #722f37;
+            box-shadow: 
+                0 4px 6px rgba(212, 175, 55, 0.4),
+                0 10px 20px rgba(212, 175, 55, 0.25),
+                inset 0 1px 0 rgba(255,255,255,0.4),
+                inset 0 -2px 0 rgba(0,0,0,0.1);
+            font-weight: 800;
+        }
+        
+        .btn-gold:hover {
+            background: linear-gradient(145deg, #d4af37 0%, #e5c76b 50%, #d4af37 100%);
+            color: #5c1a1a;
+            box-shadow: 
+                0 8px 15px rgba(212, 175, 55, 0.5),
+                0 15px 30px rgba(212, 175, 55, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.5),
+                inset 0 -2px 0 rgba(0,0,0,0.1);
+        }
+        
+        .btn-gold:active {
+            box-shadow: 
+                0 2px 4px rgba(212, 175, 55, 0.4),
+                0 5px 10px rgba(212, 175, 55, 0.2),
+                inset 0 2px 4px rgba(0,0,0,0.15);
+        }
+        
+        /* Outline 3D Button */
+        .btn-outline {
+            background: transparent;
+            color: #722f37;
+            border: 2px solid #722f37;
+            box-shadow: 
+                0 4px 6px rgba(114, 47, 55, 0.1),
+                0 0 0 4px rgba(114, 47, 55, 0.05);
+        }
+        
+        .btn-outline:hover {
+            background: #722f37;
+            color: #fff;
+            box-shadow: 
+                0 8px 15px rgba(114, 47, 55, 0.3),
+                0 0 0 6px rgba(114, 47, 55, 0.1);
+        }
+        
+        /* Small Button Variant */
+        .btn-sm {
+            padding: 8px 18px;
+            font-size: 12px;
+        }
+        
+        /* Large Button Variant */
+        .btn-lg {
+            padding: 16px 36px;
+            font-size: 16px;
+        }
+        
+        /* Icon Button */
+        .btn-icon {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-icon svg,
+        .btn-icon i,
+        .btn-icon span.icon {
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+        }
+        
+        .btn-icon:hover svg,
+        .btn-icon:hover i,
+        .btn-icon:hover span.icon {
+            transform: translateX(3px);
+        }
+        
+        /* Rounded Square Buttons (for nav) */
+        .btn-square {
+            border-radius: 12px;
+            padding: 10px 20px;
+        }
+        
+        /* Pill Button */
+        .btn-pill {
+            border-radius: 50px;
+        }
+        
+        /* Floating Action Button Style */
+        .btn-float {
+            box-shadow: 
+                0 6px 12px rgba(114, 47, 55, 0.25),
+                0 0 0 1px rgba(114, 47, 55, 0.1),
+                inset 0 1px 0 rgba(255,255,255,0.2);
+        }
+        
+        .btn-float:hover {
+            transform: translateY(-4px);
+            box-shadow: 
+                0 12px 24px rgba(114, 47, 55, 0.35),
+                0 0 0 1px rgba(114, 47, 55, 0.15),
+                inset 0 1px 0 rgba(255,255,255,0.25);
+        }
+        
+        /* Gradient Shine Effect */
+        .btn-shine {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-shine::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to right,
+                transparent 0%,
+                rgba(255,255,255,0.1) 50%,
+                transparent 100%
+            );
+            transform: rotate(30deg) translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+        
+        .btn-shine:hover::after {
+            transform: rotate(30deg) translateX(100%);
+        }
+        
+        /* Ripple Effect on Click */
+        .btn-ripple {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-ripple span.ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.4);
+            transform: scale(0);
+            animation: ripple-animation 0.6s linear;
+            pointer-events: none;
+        }
+        
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+        
+        /* Glow Effect */
+        .btn-glow {
+            animation: glow-pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes glow-pulse {
+            0%, 100% {
+                box-shadow: 
+                    0 4px 6px rgba(114, 47, 55, 0.3),
+                    0 0 20px rgba(212, 175, 55, 0.2);
+            }
+            50% {
+                box-shadow: 
+                    0 4px 6px rgba(114, 47, 55, 0.3),
+                    0 0 30px rgba(212, 175, 55, 0.4);
+            }
+        }
+        
+        /* Button Group */
+        .btn-group {
+            display: inline-flex;
+            gap: 0;
+        }
+        
+        .btn-group .btn-3d {
+            border-radius: 0;
+        }
+        
+        .btn-group .btn-3d:first-child {
+            border-radius: 50px 0 0 50px;
+        }
+        
+        .btn-group .btn-3d:last-child {
+            border-radius: 0 50px 50px 0;
+        }
+        
+        /* Dark Mode Button Styles */
+        body.dark-mode .btn-3d {
+            background: linear-gradient(145deg, #8b3a3a 0%, #5c1a1a 50%, #3d1515 100%);
+            box-shadow: 
+                0 4px 6px rgba(0, 0, 0, 0.4),
+                0 10px 20px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.1),
+                inset 0 -2px 0 rgba(0,0,0,0.3);
+        }
+        
+        body.dark-mode .btn-3d:hover {
+            background: linear-gradient(145deg, #722f37 0%, #8b3a3a 50%, #722f37 100%);
+            box-shadow: 
+                0 8px 15px rgba(0, 0, 0, 0.5),
+                0 15px 30px rgba(0, 0, 0, 0.35),
+                0 0 20px rgba(212, 175, 55, 0.2),
+                inset 0 1px 0 rgba(255,255,255,0.15),
+                inset 0 -2px 0 rgba(0,0,0,0.3);
+        }
+        
+        body.dark-mode .btn-gold {
+            background: linear-gradient(145deg, #e5c76b 0%, #d4af37 50%, #b8960c 100%);
+            color: #3d1515;
+            box-shadow: 
+                0 4px 6px rgba(212, 175, 55, 0.3),
+                0 10px 20px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.3);
+        }
+        
+        body.dark-mode .btn-outline {
+            border-color: #d4af37;
+            color: #d4af37;
+            box-shadow: 
+                0 4px 6px rgba(0, 0, 0, 0.2),
+                0 0 0 4px rgba(212, 175, 55, 0.05);
+        }
+        
+        body.dark-mode .btn-outline:hover {
+            background: #d4af37;
+            color: #3d1515;
+            box-shadow: 
+                0 8px 15px rgba(212, 175, 55, 0.3),
+                0 0 0 6px rgba(212, 175, 55, 0.1);
+        }
+        
+        /* Section Navigation Buttons Enhancement */
+        .nav-bar button {
+            background: linear-gradient(145deg, #faf8f5 0%, #f0ebe3 100%);
+            color: #722f37;
+            border: 2px solid transparent;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 
+                0 2px 4px rgba(114, 47, 55, 0.1),
+                inset 0 1px 0 rgba(255,255,255,0.8);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-bar button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(212, 175, 55, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.4s ease, height 0.4s ease;
+        }
+        
+        .nav-bar button:hover::before {
+            width: 200%;
+            height: 200%;
+        }
+        
+        .nav-bar button:hover {
+            background: linear-gradient(145deg, #722f37 0%, #8b3a3a 100%);
+            color: #fff;
+            border-color: #d4af37;
+            transform: translateY(-2px);
+            box-shadow: 
+                0 6px 12px rgba(114, 47, 55, 0.25),
+                0 0 0 3px rgba(212, 175, 55, 0.2),
+                inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+        
+        .nav-bar button.active {
+            background: linear-gradient(145deg, #722f37 0%, #5c1a1a 100%);
+            color: #d4af37;
+            border-color: #d4af37;
+            box-shadow: 
+                0 4px 8px rgba(114, 47, 55, 0.3),
+                0 0 0 3px rgba(212, 175, 55, 0.3),
+                inset 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        body.dark-mode .nav-bar button {
+            background: linear-gradient(145deg, #3d3d3d 0%, #2d2d2d 100%);
+            color: #e0e0e0;
+            box-shadow: 
+                0 2px 4px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.05);
+        }
+        
+        body.dark-mode .nav-bar button:hover {
+            background: linear-gradient(145deg, #722f37 0%, #5c1a1a 100%);
+            color: #fff;
+            border-color: #d4af37;
+        }
+        
+                /* Homework Menu Styles */
+        .homework-menu a:hover {
+            background: #f9f5f0;
+            padding-left: 25px;
+        }
+        
+        body.dark-mode .homework-menu {
+            background: #2d2d2d !important;
+            border: 1px solid #444;
+        }
+        
+        body.dark-mode .homework-menu a {
+            color: #d4af37 !important;
+            border-bottom-color: #444 !important;
+        }
+        
+        body.dark-mode .homework-menu a:hover {
+            background: #3d3d3d !important;
+        }
+                body.dark-mode .nav-bar button.active {
+            background: linear-gradient(145deg, #5c1a1a 0%, #722f37 100%);
+            color: #d4af37;
+            border-color: #d4af37;
+            box-shadow: 
+                0 4px 8px rgba(0, 0, 0, 0.4),
+                0 0 0 3px rgba(212, 175, 55, 0.2),
+                inset 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        /* Audio/Play Buttons */
+        .audio-btn, .play-btn {
+            background: linear-gradient(145deg, #722f37 0%, #5c1a1a 100%);
+            color: #d4af37;
+            border: 2px solid #d4af37;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 
+                0 4px 8px rgba(114, 47, 55, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+        
+        .audio-btn:hover, .play-btn:hover {
+            transform: scale(1.1) translateY(-2px);
+            box-shadow: 
+                0 8px 16px rgba(114, 47, 55, 0.4),
+                0 0 20px rgba(212, 175, 55, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.2);
+        }
+        
+        .audio-btn:active, .play-btn:active {
+            transform: scale(0.95);
+            box-shadow: 
+                0 2px 4px rgba(114, 47, 55, 0.3),
+                inset 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        body.dark-mode .audio-btn,
+        body.dark-mode .play-btn {
+            background: linear-gradient(145deg, #5c1a1a 0%, #3d1515 100%);
+            box-shadow: 
+                0 4px 8px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255,255,255,0.05);
+        }
+
+        
+        /* Local Video Player Styles */
+        .local-video-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            background: #1a1a1a;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 3px solid #d4af37;
+        }
+        
+        .local-video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .video-fallback {
+            padding: 40px;
+            text-align: center;
+            background: #2d2d2d;
+            color: #d4af37;
+        }
+        
+        .video-fallback-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+        
+        .video-offline-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(145deg, #722f37 0%, #5c1a1a 100%);
+            color: #d4af37;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            z-index: 10;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            pointer-events: none;
+        }
+        
+        .video-info {
+            background: linear-gradient(145deg, #722f37 0%, #5c1a1a 100%);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .video-info-title {
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .video-info-format {
+            background: #d4af37;
+            color: #722f37;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+        
+        /* Dark mode support */
+        body.dark-mode .local-video-container {
+            border-color: #d4af37;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        
+        /* Enhanced Video Player Controls */
+        .local-video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Custom control hints */
+        .video-controls-hint {
+            background: linear-gradient(145deg, #3d3d3d 0%, #2d2d2d 100%);
+            color: #d4af37;
+            padding: 10px 15px;
+            font-size: 12px;
+            text-align: center;
+            border-bottom: 2px solid #d4af37;
+        }
+        
+        .video-controls-hint span {
+            font-weight: 700;
+            margin-right: 8px;
+        }
+        
+        /* Captions/Subtitles styling */
+        .local-video::cue {
+            background: rgba(114, 47, 55, 0.9);
+            color: #d4af37;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        
+        /* Vocabulary Audio Pronunciation */
+        .vocab-item {
+            position: relative;
+        }
+        
+        .vocab-audio-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(145deg, #d4af37 0%, #e5c76b 100%);
+            color: #722f37;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 5;
+        }
+        
+        .vocab-audio-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        
+        .vocab-audio-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .vocab-audio-btn.playing {
+            animation: pulse-audio 1s infinite;
+        }
+        
+        @keyframes pulse-audio {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+            50% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
+        }
+        
+        /* Alternative: Google TTS link */
+        .vocab-tts-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 8px;
+            padding: 5px 10px;
+            background: #f0f0f0;
+            border-radius: 15px;
+            font-size: 12px;
+            color: #722f37;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .vocab-tts-link:hover {
+            background: #d4af37;
+            color: white;
+        }
+        
+        .vocab-pronunciation {
+            font-size: 13px;
+            color: #666;
+            font-style: italic;
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .vocab-pronunciation .ipa {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: #f9f5f0;
+            padding: 2px 8px;
+            border-radius: 4px;
+            border: 1px solid #d4af37;
+        }
+        
+        body.dark-mode .vocab-audio-btn {
+            background: linear-gradient(145deg, #e5c76b 0%, #d4af37 100%);
+            color: #3d1515;
+        }
+        
+        body.dark-mode .vocab-pronunciation {
+            color: #aaa;
+        }
+        
+        body.dark-mode .vocab-pronunciation .ipa {
+            background: #3d3d3d;
+            border-color: #d4af37;
+            color: #d4af37;
+        }
+
+        </style>
+    <base target="_blank">
+</head>
+<body>
+    <div class="container">
+        <!-- Unit Selector -->
+        <!-- Unit Header -->
+        <header class="unit-header">
+            <div class="unit-number">9</div>
+            <h1 class="unit-title">To Your Health!</h1>
+            <p class="unit-theme">Health Habits and Well-being</p>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav-bar no-print">
+            <div class="nav-links">
+                <a href="#vocabulary">Vocabulary</a>
+                <a href="#grammar">Grammar</a>
+                <a href="#listening">Listening</a>
+                <a href="#reading">Reading</a>
+                <a href="#writing">Writing</a>
+                <a href="#speaking">Speaking</a>
+                <a href="#video">Video</a>
+                <a href="#resources">Resources</a>
+                <a href="book2b_reference.html">Reference</a>
+            </div>
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <div class="homework-dropdown" style="position: relative;">
+                    <button class="btn-3d btn-sm" onclick="toggleHomeworkMenu('hw-menu-9')" style="background: linear-gradient(145deg, #d4af37 0%, #e5c76b 100%); color: #722f37;">📝 Homework ▼</button>
+                    <div id="hw-menu-9" class="homework-menu" style="display: none; position: absolute; top: 100%; right: 0; margin-top: 10px; background: white; border-radius: 8px; box-shadow: 0 8px 20px rgba(0,0,0,0.2); min-width: 150px; z-index: 1000; overflow: hidden;">
+                        <a href="homework/unit9_vocab.html" target="_blank" style="display: block; padding: 12px 20px; color: #722f37; text-decoration: none; font-weight: 600; border-bottom: 1px solid #eee; transition: all 0.3s;">📚 Vocabulary</a>
+                        <a href="homework/unit9_grammar.html" target="_blank" style="display: block; padding: 12px 20px; color: #722f37; text-decoration: none; font-weight: 600; border-bottom: 1px solid #eee; transition: all 0.3s;">📝 Grammar</a>
+                        <a href="homework/unit9_writing.html" target="_blank" style="display: block; padding: 12px 20px; color: #722f37; text-decoration: none; font-weight: 600; transition: all 0.3s;">✍️ Writing</a>
+                    </div>
+                </div>
+                <button class="print-btn" onclick="window.print()" title="Print this unit">🖨️ Print</button>
+            </div>
+        </nav>
+
+        <div class="content">
+            <!-- Unit Outcomes -->
+            <div class="outcomes-box">
+                <h2>Unit Outcomes</h2>
+                <p style="margin-bottom: 15px; font-size: 18px;">In this unit, you will learn to:</p>
+                <ul>
+                    <li>describe health habits</li>
+                    <li>express conditions with words other than <em>if</em></li>
+                    <li>explain how technology affects one's well-being</li>
+                    <li>analyze the cause/effect relationship between events</li>
+                </ul>
+            </div>
+
+            <!-- Warm-up Questions -->
+            <div class="warmup-box">
+                <h3 style="margin-bottom: 15px; color: #1565c0;">Before You Begin</h3>
+                <ol>
+                    <li>What is happening in the photo? What are the health benefits of doing this activity?</li>
+                    <li>What are some of the things you do to stay healthy, both mentally and physically?</li>
+                    <li>What is one of the most important health issues for people where you live?</li>
+                </ol>
+            </div>
+
+            <!-- VOCABULARY SECTION -->
+            <section id="vocabulary" class="section">
+                <div class="section-header">Vocabulary</div>
+
+                <div class="vocab-grid">
+                    <div class="vocab-item">
+                        <div class="vocab-word">addicted</div>
+                        <div class="vocab-pronounce">/əˈdɪktɪd/</div>
+                        <div class="vocab-def">unable to stop doing something or using a chemical substance</div>
+                    </div>
+
+                    <div class="vocab-item">
+                        <div class="vocab-word">automatic</div>
+                        <div class="vocab-pronounce">/ˌɔːtəˈmætɪk/</div>
+                        <div class="vocab-def">doing something without having to think about it</div>
+                    </div>
+
+                    <div class="vocab-item">
+                        <div class="vocab-word">boost</div>
+                        <div class="vocab-pronounce">/buːst/</div>
+                        <div class="vocab-def">to increase</div>
+                    </div>
+
+                    <div class="vocab-item">
+                        <div class="vocab-word">cranky</div>
+                        <div class="vocab-pronounce">/ˈkræŋki/</div>
+                        <div class="vocab-def">irritable, in a bad mood</div>
+                    </div>
+
+                    <div class="vocab-item">
+                        <div class="vocab-word">distracted</div>
+                        <div class="vocab-pronounce">/dɪˈstræktɪd/</div>
+                        <div class="vocab-def">not focused because you are thinking about other things</div>
+                    </div>
+
+                    <div class="vocab-item">
+                        <div class="vocab-word">habit</div>
+                        <div class="vocab-pronounce">/ˈhæbɪt/</div>
+                        <div class="vocab-def">something that you do regularly or often without thinking about it</div>
+                        <div class="vocab-example">Expressions: break/kick a ~, get into the ~</div>
+                    </div>
+
+                    <div class="vocab-item">
+                        <div class="vocab-word">incentive</div>
+                        <div class="vocab-pronounce">/ɪnˈsentɪv/</div>
+                        <div class="vocab-def">something that encourages you to act a certain way</div>
+                    </div>
+
+                    <div class="vocab-item">
+                        <div class="vocab-word">reinforce</div>
+                        <div class="vocab-pronounce">/ˌriːɪnˈfɔːrs/</div>
+                        <div class="vocab-def">to support or make something stronger</div>
+                    </div>
+
+                    <div class="vocab-item">
+                        <div class="vocab-word">revert</div>
+                        <div class="vocab-pronounce">/rɪˈvɜːrt/</div>
+                        <div class="vocab-def">to go back to an old habit or way of doing something</div>
+                    </div>
+
+                    <div class="vocab-item">
+                        <div class="vocab-word">routine</div>
+                        <div class="vocab-pronounce">/ruːˈtiːn/</div>
+                        <div class="vocab-def">a habit; something you do regularly at the same time</div>
+                        <div class="vocab-example">Expressions: break the ~, get into a ~, get out of a ~, stick to a ~</div>
+                    </div>
+
+                    <div class="vocab-item">
+                        <div class="vocab-word">substitute</div>
+                        <div class="vocab-pronounce">/ˈsʌbstɪtuːt/</div>
+                        <div class="vocab-def">to replace one thing for another thing</div>
+                    </div>
+
+                    <div class="vocab-item">
+                        <div class="vocab-word">willpower</div>
+                        <div class="vocab-pronounce">/ˈwɪlpaʊər/</div>
+                        <div class="vocab-def">self-discipline; strong determination to do something</div>
+                    </div>
+                </div>
+
+                <!-- Vocabulary Exercise A -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">A</span>
+                        <span>Read sentences 1–3. These people are trying to develop or break a habit. Which solution(s) can help each person's problem? Discuss your ideas with a partner.</span>
+                    </div>
+                    
+                    <div class="teaching-note">
+                        Ask students to identify the bad habit or problem first, then match with the best solution strategy. Encourage discussion of why each solution fits.
+                    </div>
+
+                    <div class="two-column" style="margin-top: 20px;">
+                        <div class="column-box">
+                            <h4 style="color: #2c3e50; margin-bottom: 15px;">Problems</h4>
+                            <div class="question-item">
+                                <div class="question-text">1. Jill:</div>
+                                <p style="color: #666; font-style: italic;">"I'm trying to get in shape, but I don't have the willpower to exercise alone."</p>
+                            </div>
+                            <div class="question-item">
+                                <div class="question-text">2. Sam:</div>
+                                <p style="color: #666; font-style: italic;">"I get easily distracted and have a hard time studying, which is creating a lot of stress for me."</p>
+                            </div>
+                            <div class="question-item">
+                                <div class="question-text">3. Yeny:</div>
+                                <p style="color: #666; font-style: italic;">"The reality is that I'm addicted to caffeine. I've tried to stop drinking coffee, but then I'm tired and cranky all the time."</p>
+                            </div>
+                        </div>
+                        <div class="column-box">
+                            <h4 style="color: #2c3e50; margin-bottom: 15px;">Solutions</h4>
+                            <p style="margin-bottom: 10px; font-size: 14px;"><strong>a.</strong> Substitute something new (e.g., sugar-free gum) for the thing you've given up (e.g., cigarettes or soda) so you don't revert to the old behavior.</p>
+                            <p style="margin-bottom: 10px; font-size: 14px;"><strong>b.</strong> Ask a friend to join you. It'll boost your motivation and help you reach your goal.</p>
+                            <p style="margin-bottom: 10px; font-size: 14px;"><strong>c.</strong> Give yourself an incentive ("If I do x, then I can have y."). When you achieve that goal, reward yourself.</p>
+                            <p style="font-size: 14px;"><strong>d.</strong> Develop a routine and then stick to it for two weeks. This will reinforce the behavior so that it becomes automatic.</p>
+                        </div>
+                    </div>
+
+                    <div class="teacher-answer" style="margin-top: 20px;">
+                        <strong>1.</strong> Solution b (Ask a friend)<br>
+                        <strong>2.</strong> Solution c or d (Incentive or Routine)<br>
+                        <strong>3.</strong> Solution a (Substitute)
+                    </div>
+
+                    <div class="speech-bubble" style="margin-top: 20px;">
+                        <strong>Sample:</strong> Sam needs to give himself an incentive to study. He should try working for an hour and then reward himself by taking a ten-minute break.
+                    </div>
+                </div>
+
+                <!-- Vocabulary Exercise B -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">B</span>
+                        <span>What's a habit that you'd like to break or get into? Tell your partner. He or she will suggest a strategy that you could use and explain how this might be beneficial.</span>
+                    </div>
+
+                    <div class="side-by-side" style="margin-top: 20px;">
+                        <div class="speech-bubble">
+                            I'd like to find time to exercise for thirty minutes every day.
+                        </div>
+                        <div class="speech-bubble right">
+                            I'd like to quit smoking.
+                        </div>
+                    </div>
+
+                    <div class="teaching-note" style="margin-top: 20px;">
+                        Encourage students to use target vocabulary in their responses: "You should develop a routine and stick to it" or "Try substituting gum for cigarettes."
+                    </div>
+                </div>
+            </section>
+
+            <!-- GRAMMAR SECTION -->
+            <section id="grammar" class="section">
+                <div class="section-header">Grammar: Stating Conditions — Other Ways of Expressing <em>If</em></div>
+
+                <div class="grammar-chart">
+                    <div class="chart-header">Condition Words and Expressions</div>
+                    <div class="chart-row">
+                        <div class="chart-cell header">Conditions</div>
+                        <div class="chart-cell header">Example</div>
+                        <div class="chart-cell header">Meaning</div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-cell"><span class="condition-word">only after / only if / provided that / as long as</span></div>
+                        <div class="chart-cell">I can take a break (but) <strong>only after/only if</strong> I study for an hour.<br>I can take a break <strong>provided that/as long as</strong> I study for an hour.</div>
+                        <div class="chart-cell">I can take a break if (and only if) I study for an hour.<br><em>Note: "only" expressions can be preceded by "but"</em></div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-cell"><span class="condition-word">unless</span></div>
+                        <div class="chart-cell">I'll be sleepy <strong>unless</strong> I have a cup of coffee first.</div>
+                        <div class="chart-cell">I'll be sleepy if I don't have coffee first.<br><em>Introduces a condition that prevents a possible outcome</em></div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-cell"><span class="condition-word">otherwise</span></div>
+                        <div class="chart-cell">You should set your alarm. <strong>Otherwise</strong>, you won't wake up on time in the morning.</div>
+                        <div class="chart-cell">If you don't (set your alarm), you won't wake up on time.<br><em>Shows result if person doesn't follow suggestion</em></div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-cell"><span class="condition-word">even if</span></div>
+                        <div class="chart-cell">I wouldn't join that gym, <strong>even if</strong> you gave me a free membership.</div>
+                        <div class="chart-cell">Nothing can make me join that gym.<br><em>Result stays the same whether or not something else happens</em></div>
+                    </div>
+                </div>
+
+                <!-- Grammar Exercise A -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">A</span>
+                        <span>Choose the correct word or phrase to complete each opinion or situation.</span>
+                    </div>
+
+                    <div class="teaching-note">
+                        Have students identify which pairs (a/b) have similar meanings vs. opposite meanings. Discuss the logical differences between "even if" (despite/concession) vs. "unless" (negative condition).
+                    </div>
+
+                    <div style="margin-top: 20px;">
+                        <div class="question-item">
+                            <div class="question-text">1. a. It's hard to quit smoking <strong>unless / only if</strong> you take some medicine to help you.</div>
+                            <div class="teacher-answer">unless</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">1. b. You can quit smoking on your own, <strong>as long as / even if</strong> you've got enough willpower.</div>
+                            <div class="teacher-answer">as long as</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">2. a. <strong>Even if / Only if</strong> you're a vegetarian, it's still possible to get enough protein.</div>
+                            <div class="teacher-answer">Even if</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">2. b. <strong>Only if / Unless</strong> you eat meat, it's impossible to get enough protein in your diet.</div>
+                            <div class="teacher-answer">Unless</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">3. a. <strong>Only if / Unless</strong> I get eight hours of sleep, I don't do well in class.</div>
+                            <div class="teacher-answer">Unless</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">3. b. I'd better get eight hours of sleep tonight, <strong>otherwise / as long as</strong> I won't do well in class.</div>
+                            <div class="teacher-answer">otherwise</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">4. a. I'm not distracted by texts from friends <strong>provided that / unless</strong> I turn off my phone.</div>
+                            <div class="teacher-answer">provided that</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">4. b. I need to turn off my phone. <strong>Even if / Otherwise</strong> I'm distracted by texts from friends.</div>
+                            <div class="teacher-answer">Otherwise</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grammar Exercise B -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">B</span>
+                        <span>Now check your answers to Exercise A with a partner and answer these two questions.</span>
+                    </div>
+
+                    <div class="question-item">
+                        <div class="question-text">1. Which sentence pairs (a and b) are similar in meaning? Which aren't? Explain.</div>
+                        <div class="teacher-answer">
+                            Similar: 1, 3, 4 (both express necessary conditions or negative results)<br>
+                            Different: 2 (2a says vegetarianism is compatible with protein; 2b says meat is necessary)<br>
+                            <em>Key distinction: "Even if" expresses concession (despite X, Y is true), while "Unless" expresses negative condition (without X, Y happens).</em>
+                        </div>
+                    </div>
+
+                    <div class="question-item">
+                        <div class="question-text">2. Which statements do you agree with? Which do you disagree with? Why?</div>
+                        <div class="teaching-note">
+                            Encourage debate. For example, many nutritionists would disagree with 2b (you can get protein from beans/nuts). Medical evidence suggests 1a is overstated (medicine helps but isn't always necessary).
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grammar Exercise C -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">C</span>
+                        <span>Complete the sentences and then share your ideas with a partner.</span>
+                    </div>
+
+                    <div style="margin-top: 20px;">
+                        <div class="question-item">
+                            <div class="question-text">1. I get distracted when I'm trying to study or work unless <span class="blank-line"></span>.</div>
+                            <div class="teacher-answer">Sample: I turn off my phone / I go to the library</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">2. <span class="blank-line"></span> if you have a lot of willpower, it can still be hard to <span class="blank-line"></span>.</div>
+                            <div class="teacher-answer">Sample: Even if you have a lot of willpower, it can still be hard to break a bad habit.</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">3. Students in this class are allowed to <span class="blank-line"></span> provided that <span class="blank-line"></span>.</div>
+                            <div class="teacher-answer">Sample: Students are allowed to use their phones provided that they only use them for educational purposes.</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">4. It's important to <span class="blank-line"></span>. Otherwise <span class="blank-line"></span>.</div>
+                            <div class="teacher-answer">Sample: It's important to get enough sleep. Otherwise you'll feel cranky and distracted.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- LISTENING SECTION -->
+            <section id="listening" class="section">
+                <div class="section-header">Listening: The Importance of Sleep</div>
+
+                <div class="definition-box">
+                    <span class="definition-word">disrupt:</span> to prevent something from functioning in its normal way<br>
+                    <span class="definition-word">REM (rapid eye movement):</span> deep, dreaming sleep<br>
+                    <span class="definition-word">sleep deprivation:</span> a serious lack of sleep
+                </div>
+
+                <!-- Strategy Box -->
+                <div class="strategy-box">
+                    <div class="strategy-title">Using Visual Aids</div>
+                    <p>Study any visual aids provided (e.g., an outline, charts, diagrams, maps) before you listen to see if you can predict what the speaker might say. This can help you follow and understand more of what you hear when you listen.</p>
+                </div>
+
+                <div class="teaching-note">
+                    Play audio twice: first for gist (main idea), second for specific details. Remind students to use the outline provided while listening.
+                </div>
+
+                <!-- Audio Player -->
+                <div class="audio-player no-print">
+                    <div class="audio-label">Audio: Unit 9 Listening - The Importance of Sleep</div>
+                    <audio controls>
+                        <source src="https://audio.jukehost.co.uk/kMq1IgGVtBD1n2hNvwLxtRP551aTq1V3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <p style="font-size: 12px; color: #666; margin-top: 10px;">
+                        <a href="https://audio.jukehost.co.uk/kMq1IgGVtBD1n2hNvwLxtRP551aTq1V3" target="_blank">Download Audio</a> | 
+                        If audio doesn't play, right-click and save the link.
+                    </p>
+                </div>
+
+                <!-- Listening Outline -->
+                <div class="listening-outline">
+                    <h3 style="margin-bottom: 20px; color: #2c3e50;">The Importance of Sleep</h3>
+                    
+                    <div class="did-you-know" style="margin-bottom: 20px;">
+                        <div class="did-you-know-icon">❓</div>
+                        <div class="did-you-know-content">
+                            <div class="did-you-know-title">Did you know?</div>
+                            <p>The longest a person has ever gone without sleep under supervised conditions is eleven days!</p>
+                        </div>
+                    </div>
+
+                    <div class="outline-section">
+                        <div class="outline-header">A Hours needed</div>
+                        <div class="outline-content">
+                            • Adults (1) <span class="blank-line"></span> hours<br>
+                            • Teenagers (2) <span class="blank-line"></span> hours
+                        </div>
+                    </div>
+
+                    <div class="outline-section">
+                        <div class="outline-header">B Risks of sleep deprivation</div>
+                        <div class="outline-content">
+                            • (3) <span class="blank-line"></span><br>
+                            • (4) <span class="blank-line"></span><br>
+                            • (5) <span class="blank-line"></span>
+                        </div>
+                    </div>
+
+                    <div class="outline-section">
+                        <div class="outline-header">C Role of sleep in memory and learning</div>
+                        <div class="outline-content">
+                            • Sleep (6) <span class="blank-line"></span> things we've learned and transfers that information to (7) <span class="blank-line"></span> memory.
+                        </div>
+                    </div>
+
+                    <div class="outline-section">
+                        <div class="outline-header">D Things that disrupt our sleep</div>
+                        <div class="outline-content">
+                            • Causes: (8) <span class="blank-line"></span>, (9) <span class="blank-line"></span>, (10) <span class="blank-line"></span>, (11) <span class="blank-line"></span><br>
+                            • The main cause: (12) <span class="blank-line"></span>
+                        </div>
+                    </div>
+
+                    <div class="teacher-answer" style="margin-top: 20px;">
+                        <strong>Answers:</strong><br>
+                        1. 7-9 | 2. 8-10 | 3. Difficulty concentrating | 4. Memory problems | 5. Weakened immune system | 6. consolidates | 7. long-term | 8. Stress | 9. Caffeine | 10. Noise | 11. Light | 12. Technology/phones
+                    </div>
+                </div>
+
+                <!-- Exercise B -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">B</span>
+                        <span>Listen to the interview and complete the outline above.</span>
+                    </div>
+                </div>
+
+                <!-- Exercise C -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">C</span>
+                        <span>Read the questions below. Then listen again and answer the questions on a separate piece of paper. When you're done, check answers with a partner.</span>
+                    </div>
+
+                    <div style="margin-top: 20px;">
+                        <div class="question-item">
+                            <div class="question-text">1. Who tends to get sleepy later at night? What's the result?</div>
+                            <div class="teacher-answer">Teenagers tend to get sleepy later. Result: They have trouble waking up early for school.</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">2. Explain what these statistics mean:</div>
+                            <p style="margin-left: 20px; color: #666; margin-top: 5px;">
+                                a. four hours sleep/a 70% chance<br>
+                                b. one in five adults<br>
+                                c. 100,000 accidents
+                            </p>
+                            <div class="teacher-answer">
+                                a. With only 4 hours sleep, you have a 70% chance of having an accident while driving.<br>
+                                b. One in five adults experiences sleep deprivation.<br>
+                                c. Sleep deprivation causes 100,000 car accidents per year.
+                            </div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">3. The speaker compares the brain and the sleep process to an e-mail in-box. How are they similar?</div>
+                            <div class="teacher-answer">During the day, information accumulates (like emails). During sleep, the brain processes and files this information (like organizing emails), transferring important information to long-term memory.</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">4. Where shouldn't you watch TV or movies in the evenings? Why?</div>
+                            <div class="teacher-answer">Not in bed. The bed should only be associated with sleep, not wakeful activities. Also, the light from screens disrupts melatonin production.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Exercise D -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">D</span>
+                        <span>Discuss the questions with a partner.</span>
+                    </div>
+
+                    <div style="margin-top: 20px;">
+                        <div class="question-item">
+                            <div class="question-text">1. Do you think you have healthy sleep habits? Explain using your answers from Exercises B and C.</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">2. In addition to the items listed in the outline, what other things can disrupt our sleep? How many of these have you experienced? Which is the hardest to deal with?</div>
+                            <div class="teacher-answer">Possible answers: Room temperature too hot/cold, uncomfortable mattress, pets, noise from neighbors, anxiety/worrying, eating late at night.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONNECTIONS SECTION -->
+            <section id="connections" class="section">
+                <div class="section-header">Connections</div>
+
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">A</span>
+                        <span>Read the three scenarios. Then get together with a partner, and answer the questions below on a separate piece of paper.</span>
+                    </div>
+
+                    <div class="scenario-box" style="border-left: 5px solid #d4af37;">
+                        <div class="scenario-title">Samir's Problem</div>
+                        <div class="scenario-text">
+                            Samir is studying English in the UK and is sharing a dorm room with another student. Samir tends to be a <strong>morning person</strong>; he usually <strong>turns in</strong> around 11:00 p.m. and gets up by 7:30 a.m. to make his first class. His roommate, on the other hand, is a <strong>night owl</strong>: He likes staying up late watching movies and talking on the phone. Samir doesn't mind this routine as long as his roommate is quiet by midnight. Unfortunately, he's been staying up until 2:00 or 3:00 a.m. recently, and Samir can't sleep. <strong>Unless things change</strong>, Samir feels like he's going to go crazy.
+                        </div>
+                    </div>
+
+                    <div class="scenario-box" style="border-left: 5px solid #d4af37;">
+                        <div class="scenario-title">Emiko's Problem</div>
+                        <div class="scenario-text">
+                            While in college, Emiko got into the habit of staying up late. She recently graduated and has gotten her first job; the problem is that she needs to be at work by 7:30 a.m. She's tried going to bed earlier, but she can't fall asleep. She <strong>tosses and turns</strong> for hours, and in the morning she <strong>sleeps through</strong> her alarm. She's been late for work three times this month, and once there she tends to be distracted and cranky for the first hour. Her boss told her that things need to change, <strong>otherwise</strong> she needs to find another job.
+                        </div>
+                    </div>
+
+                    <div class="scenario-box" style="border-left: 5px solid #d4af37;">
+                        <div class="scenario-title">Pedro's Problem</div>
+                        <div class="scenario-text">
+                            Pedro has a high-pressure sales job and works long hours. To help him stay energized, he started consuming several energy drinks every day. Though they initially gave him a boost, within an hour or two, he would <strong>crash</strong> and need to drink another. Worried about becoming addicted to the drinks and gaining weight from the sugar, Pedro decided to <strong>substitute</strong> with tea, but the drop in caffeine has left him feeling <strong>drowsy</strong>, especially in the afternoon. <strong>Unless he reverts</strong> to his old habit, Pedro doesn't know how he's going to be able to do his job.
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 30px;">
+                        <div class="question-item">
+                            <div class="question-text">1. What do you think the expressions in bold mean? Use your dictionary to help you.</div>
+                            <div class="teacher-answer">
+                                <strong>morning person:</strong> someone who prefers to wake up early<br>
+                                <strong>turns in:</strong> goes to bed<br>
+                                <strong>night owl:</strong> someone who prefers to stay up late<br>
+                                <strong>Unless things change:</strong> If things don't change<br>
+                                <strong>tosses and turns:</strong> moves around restlessly in bed, unable to sleep<br>
+                                <strong>sleeps through:</strong> doesn't hear/wake up to<br>
+                                <strong>otherwise:</strong> if not (consequence)<br>
+                                <strong>crash:</strong> suddenly lose energy<br>
+                                <strong>drowsy:</strong> sleepy/tired<br>
+                                <strong>reverts:</strong> goes back to
+                            </div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">2. What is each person's problem? What can each person do to solve his/her sleep problem?</div>
+                            <div class="teacher-answer">
+                                <strong>Samir:</strong> Problem: Roommate stays up late making noise. Solution: Talk to roommate, request quiet hours, consider earplugs, or ask to change rooms.<br>
+                                <strong>Emiko:</strong> Problem: Can't adjust sleep schedule for new job. Solution: Gradually shift bedtime earlier, create bedtime routine, avoid screens before bed, set multiple alarms.<br>
+                                <strong>Pedro:</strong> Problem: Energy drink addiction causing crashes. Solution: Gradually reduce caffeine rather than sudden substitution, get natural energy through exercise/sleep.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">B</span>
+                        <span>Choose one of the scenarios and create a short role-play in which you do the following:</span>
+                    </div>
+                    
+                    <div class="roleplay-box">
+                        <div class="roleplay-title">Instructions:</div>
+                        <p><strong>Student A:</strong> Take the role of Samir, Emiko, or Pedro; in your own words, explain what your problem is.</p>
+                        <p><strong>Student B:</strong> Listen, ask questions, and offer your friend some advice.</p>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">C</span>
+                        <span>Perform your role-play for another pair. What do you think of the other pair's solution? Will it work? Why or why not?</span>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">D</span>
+                        <span>Switch roles and repeat Exercises B and C.</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- READING SECTION -->
+            <section id="reading" class="section">
+                <div class="section-header">Reading: Nature's Prescription</div>
+
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">A</span>
+                        <span>Read the questions below and discuss them with your partner. Use your dictionary to help you understand the boldfaced words.</span>
+                    </div>
+
+                    <div class="question-item">
+                        <div class="question-text">• If you were sick with a throat infection, would you be more likely to take <strong>prescription</strong> medicine or to drink a tea made of <strong>herbs</strong> to help cure it?</div>
+                    </div>
+
+                    <div class="question-item">
+                        <div class="question-text">• Why might people prefer one <strong>remedy</strong> over the other?</div>
+                    </div>
+
+                    <div class="teaching-note">
+                        Elicit differences between prescription (doctor-ordered, pharmaceutical) vs. herbal (natural, traditional). Discuss when each might be appropriate.
+                    </div>
+                </div>
+
+                <!-- Reading Passage -->
+                <div class="reading-passage">
+                    <div class="passage-title">Nature's Prescription</div>
+                    
+                    <div class="passage-image-caption">Leukemia survivor Audra Shapiro and her mother.</div>
+
+                    <p style="margin-bottom: 15px;">In Washington, DC, twenty children are attending a birthday party at a neighborhood park. The guest of honor, nine-year-old Audra Shapiro (pictured), is smiling as she opens presents and her mother takes photos. She and her parents have a lot to celebrate. Two years ago, Audra was diagnosed with <strong>leukemia</strong>¹; today, though, she is cancer-free. She recovered from this disease thanks in part to a plant that originated halfway around the world.</p>
+
+                    <p style="margin-bottom: 15px;">Until very recently, Audra's disease would have meant certain death. Now the long-term survival rate for childhood leukemia is above 90%, thanks to a drug made from a plant called rosy periwinkle, native to the African nation of Madagascar. In the last few decades, plants have contributed to the development of 25%–50% of all prescription drugs used in the United States alone. Some of these plant-<strong>derived</strong> medicines, like rosy periwinkle, are used to treat life-threatening illnesses like cancer. Others, like willow tree <strong>bark</strong>², were originally used to make a very common pain reliever: aspirin.</p>
+
+                    <p style="margin-bottom: 15px;">Today, almost two-thirds of the people on our planet rely on the healing power of plants, and even in industrialized countries, the demand for nonprescription <strong>botanical</strong>³ drugs is on the rise. In spite of this, there is still widespread debate about the effectiveness of using plants to treat illness. While many plants, like rosy periwinkle, have been the subject of extensive study and their effects are well documented, data on others are unclear. Scientists are often unable to determine which chemical or combination of chemicals within a plant is responsible for <strong>alleviating</strong> pain, improving blood flow, or boosting one's mood. In addition, no one knows to what extent the placebo effect causes these changes: Sometimes people expect natural remedies to make them feel better, and, as a result, they do, whether or not the substance actually was responsible for this.</p>
+
+                    <p style="margin-bottom: 15px;">Despite the debate, it is generally agreed that plants contain important chemicals, many with beneficial effects. Jim Duke, a scientist who has spent years studying medicinal plants, is working to gather data to help overcome the opposition to plant remedies. "We can <strong>merge</strong> science with herbalism," Duke says. "This will give us better drugs than if we only rely on ones we create ourselves. We can use science to test plants, to find what works best. The issue is not nature versus science; rather it is how to use science to get the best medicine, be it natural or synthetic."</p>
+
+                    <div style="background: #fce4ec; padding: 15px; border-left: 4px solid #d4af37; margin: 20px 0;">
+                        <strong>Rosy periwinkle</strong>, the plant so important in Audra's leukemia treatments, is one of more than ten thousand known plant species—many of them with medicinal properties—in Madagascar. Originally, this was the only place in the world where you could find many of these species. Many of them are for sale every morning at the outdoor marketplace in Madagascar's capital. Here, vendors selling different medicinal plants function not only as salespeople, but also as doctors and pharmacists. Their knowledge comes from experience with plant remedies passed down from generation to generation. Many of the plants they use can be found all over the island, but this is changing. Now, forested land is being destroyed by population pressures, and a significant number of Madagascar's plant species are in danger of extinction.
+                    </div>
+
+                    <div style="font-size: 14px; color: #666; margin-top: 20px;">
+                        <strong>Footnotes:</strong><br>
+                        ¹ <strong>leukemia</strong> – a cancer of the blood<br>
+                        ² <strong>bark</strong> – the material on the outside of the tree<br>
+                        ³ <strong>botanical</strong> – related to plants
+                    </div>
+                </div>
+
+                <!-- Exercise B -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">B</span>
+                        <span>Read the article. Then mark each sentence below as <em>True</em> or <em>False</em>. Rewrite the false statements on a separate piece of paper. Check your answers with a partner.</span>
+                    </div>
+
+                    <div class="teaching-note" style="margin-bottom: 20px;">
+                        Remind students that if a statement is false, they must correct it to make it true based on the article.
+                    </div>
+
+                    <div style="margin-top: 20px;">
+                        <div class="question-item">
+                            <div class="question-text">1. Audra Shapiro almost died from eating a poisonous plant.</div>
+                            <div class="teacher-answer"><strong>False.</strong> Audra almost died from leukemia, but was cured thanks to a plant (rosy periwinkle) used in her medicine.</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">2. Up to half of all prescription drugs have been made from or inspired by plants.</div>
+                            <div class="teacher-answer"><strong>True.</strong> (25-50% according to the text)</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">3. The number of people using medicinal plants has declined in recent years.</div>
+                            <div class="teacher-answer"><strong>False.</strong> The demand for nonprescription botanical drugs is on the rise/increasing.</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">4. Sometimes people take herbal medicines that make them sick. Scientists call this "the placebo effect."</div>
+                            <div class="teacher-answer"><strong>False.</strong> The placebo effect is when people expect a remedy to work and therefore feel better, not when medicine makes them sick.</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">5. Scientist Jim Duke opposes using plants to treat illness.</div>
+                            <div class="teacher-answer"><strong>False.</strong> Jim Duke supports using plants and wants to merge science with herbalism.</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">6. The people selling medicinal plants in Madagascar's marketplace know a lot about using them to treat illness.</div>
+                            <div class="teacher-answer"><strong>True.</strong> They function as doctors and pharmacists with knowledge passed down through generations.</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">7. Unless things change, many of Madagascar's medicinal plants may be lost.</div>
+                            <div class="teacher-answer"><strong>True.</strong> Forests are being destroyed and species are in danger of extinction.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Exercise C -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">C</span>
+                        <span>Match a word in bold in the article with a definition below.</span>
+                    </div>
+
+                    <div style="margin-top: 20px;">
+                        <div class="question-item">
+                            <div class="question-text">1. curing <span class="blank-line"></span></div>
+                            <div class="teacher-answer">healing</div>
+                        </div>
+                        <div class="question-item">
+                            <div class="question-text">2. join <span class="blank-line"></span></div>
+                            <div class="teacher-answer">merge</div>
+                        </div>
+                        <div class="question-item">
+                            <div class="question-text">3. originated <span class="blank-line"></span></div>
+                            <div class="teacher-answer">derived (from)</div>
+                        </div>
+                        <div class="question-item">
+                            <div class="question-text">4. man-made <span class="blank-line"></span></div>
+                            <div class="teacher-answer">synthetic</div>
+                        </div>
+                        <div class="question-item">
+                            <div class="question-text">5. got better <span class="blank-line"></span></div>
+                            <div class="teacher-answer">recovered</div>
+                        </div>
+                        <div class="question-item">
+                            <div class="question-text">6. reducing <span class="blank-line"></span></div>
+                            <div class="teacher-answer">alleviating</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Exercise D -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">D</span>
+                        <span>Discuss these questions with a partner.</span>
+                    </div>
+
+                    <div style="margin-top: 20px;">
+                        <div class="question-item">
+                            <div class="question-text">1. The article says, "the demand for nonprescription botanical drugs is on the rise." Why do you think this is?</div>
+                            <div class="teacher-answer">Possible reasons: People want "natural" products, fear of chemical side effects, cost of prescription drugs, interest in traditional medicine, access to information online.</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">2. You read about the placebo effect in the article. Do you think the mind and the "power of positive thinking" help people get better when they are sick? Explain.</div>
+                            <div class="teacher-answer">Open discussion. Evidence suggests mental state affects physical health (psychosomatic effects), but stress that serious illnesses still require medical treatment.</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">3. A lot of health foods and products are advertised as "natural," "organic," or "doctor recommended." Discuss the meaning of these terms with your partner. Then give some examples of products for which these claims are true.</div>
+                            <div class="teacher-answer">
+                                <strong>Natural:</strong> From nature, minimally processed<br>
+                                <strong>Organic:</strong> Grown without synthetic pesticides/fertilizers<br>
+                                <strong>Doctor recommended:</strong> Medical professionals endorse it<br>
+                                Examples: Organic fruits, natural honey, certain probiotics.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="critical-box" style="margin-top: 20px;">
+                        <div style="font-weight: bold; color: #3f51b5; margin-bottom: 10px;">🧠 Critical Thinking:</div>
+                        <p>Lemurs are one of the many species of flora and fauna that can only be found in Madagascar. How many natural remedies are hidden in this unique habitat?</p>
+                        <div class="teacher-answer" style="margin-top: 10px;">
+                            This is speculative, but with 10,000+ plant species in Madagascar and many undiscovered/unstudied, potentially hundreds of remedies remain hidden. This highlights the importance of conservation.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VIDEO SECTION -->
+            <section id="video" class="section">
+                <div class="section-header">Video</div>
+
+                <div class="video-box">
+                    <div class="video-title">🎬 Watch the Video</div>
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: 15px 0;">
+                        <div class="local-video-container">
+            <div class="video-offline-badge">📱 OFFLINE VIDEO</div>
+            <video class="local-video" controls controlsList="nodownload" preload="metadata" poster="">
+                <source src="WCL2-U09.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-controls-hint">
+                <span>🎥 Video Controls:</span> Play ▶️ | Pause ⏸️ | Rewind ⏪ | Forward ⏩ | Captions CC | Fullscreen 🔲
+            </div>
+            <div class="video-info">
+                <span class="video-info-title">Unit 9: Health Habits</span>
+                <span class="video-info-format">HD</span>
+            </div>
+        </div>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <span class="definition-word">burnout:</span> physical or emotional exhaustion caused by prolonged stress<br>
+                    <span class="definition-word">chronic:</span> constant; nonstop<br>
+                    <span class="definition-word">neurons:</span> brain cells<br>
+                    <span class="definition-word">power through:</span> (informal) to use all your energy and will to accomplish something, often quickly, despite difficulties<br>
+                    <span class="definition-word">prone:</span> having a tendency to be affected by something, usually in a negative way<br>
+                    <span class="definition-word">resilience:</span> the strength and ability to recover quickly from something bad
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">A</span>
+                        <span>Look at the two photos on this page. In both, the people are experiencing "stress." What's the difference? Discuss with a partner.</span>
+                    </div>
+                    <div class="teacher-answer">
+                        One likely shows positive stress (exercise/runner - challenging but healthy) vs. negative stress (exhaustion/burnout - overwhelming, harmful). Or acute vs. chronic stress.
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">B</span>
+                        <span>Watch segment 1 of the video and then discuss the questions with a partner.</span>
+                    </div>
+
+                    <div style="margin-top: 20px;">
+                        <div class="question-item">
+                            <div class="question-text">1. Why is the woman's life, shown at the beginning of the video, so stressful?</div>
+                            <div class="teacher-answer">She is connected 24/7 via phone, text, and email. She has a three o'clock call (international time difference), feels pressure to be constantly available.</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">2. How does she say she handles it? Do you think this is a good idea? Why or why not?</div>
+                            <div class="teacher-answer">She says she "powers through" or uses caffeine/energy drinks to stay awake. This is not a good long-term solution as it leads to burnout and health problems.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">C</span>
+                        <span>Read the outline below, and try to predict some of the answers with a partner. Then watch segment 2 and complete each blank with one word.</span>
+                    </div>
+
+                    <div class="listening-outline" style="margin-top: 20px;">
+                        <div class="outline-section">
+                            <div style="font-weight: bold; margin-bottom: 10px;">Stress hormones can . . .</div>
+                            <div class="outline-content">
+                                • give us (1) <span class="blank-line"></span><br>
+                                • strengthen the <strong>immune system</strong>,<br>
+                                • improve (2) <span class="blank-line"></span>, and<br>
+                                • help (3) <span class="blank-line"></span>
+                            </div>
+                        </div>
+
+                        <div class="outline-section">
+                            <div style="font-weight: bold; margin-bottom: 10px;">Negative stress causes neurons to (4) <span class="blank-line"></span> and change shape.</div>
+                        </div>
+
+                        <div class="outline-section">
+                            <div style="font-weight: bold; margin-bottom: 10px;">The results include . . .</div>
+                            <div class="outline-content">
+                                • (5) <span class="blank-line"></span> loss,<br>
+                                • greater (6) <span class="blank-line"></span> and aggressiveness,<br>
+                                • signs of (7) <span class="blank-line"></span>,<br>
+                                • speeds up (8) <span class="blank-line"></span>, and<br>
+                                • more prone to (9) <span class="blank-line"></span>
+                            </div>
+                        </div>
+
+                        <div class="outline-section">
+                            <div style="font-weight: bold; margin-bottom: 10px;">If we're unable to manage stress, the result can be (10) <span class="blank-line"></span>.</div>
+                        </div>
+
+                        <div class="teacher-answer" style="margin-top: 20px;">
+                            <strong>Answers:</strong><br>
+                            1. energy | 2. memory | 3. focus/concentration | 4. shrink | 5. memory | 6. anxiety | 7. depression | 8. aging | 9. illness/disease | 10. burnout
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pronunciation-box">
+                    <div class="pronunciation-title">🔊 Pronunciation</div>
+                    <p>Notice how Teresa Pahl says, "I have a three o'clock call." at the beginning of the video. She pronounces <em>have a</em> as /hæv ə/. For more on reducing high-frequency function words to schwa, see p. 148.</p>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">D</span>
+                        <span>Watch segment 2 again and check your answers in Exercise C. When you're done, summarize the information in the outline. Then answer these questions with a partner: According to the report, how can we alleviate stress? When we do this, how does it affect our brains?</span>
+                    </div>
+                    <div class="teacher-answer" style="margin-top: 15px;">
+                        <strong>Alleviate stress by:</strong> Exercise, meditation, spending time in nature, disconnecting from technology.<br>
+                        <strong>Effect on brain:</strong> Creates new neurons, neural pathways grow stronger, increases resilience.
+                    </div>
+                </div>
+
+                <div class="discussion-box">
+                    <div style="background: white; padding: 15px; border-radius: 8px;">
+                        <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+                            <strong style="color: #2196f3;">Ask</strong>
+                            <strong>Answer</strong>
+                        </div>
+                        <p>Do you know anyone who's been under a lot of stress recently? Have they been affected in any of the ways mentioned in the video? Explain. Can you think of other things a person can do to alleviate stress?</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SPEAKING SECTION -->
+            <section id="speaking" class="section">
+                <div class="section-header">Speaking: Factors That Affect Well-being</div>
+
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">A</span>
+                        <span>Read the text below. Then discuss the question with a partner. Use the prompts and explain your answer.</span>
+                    </div>
+
+                    <div style="background: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                        <p style="margin-bottom: 15px;">The news segment in the video talked about technology creating new sources of stress for some people. The reporter suggested that being connected to others 24/7 via phone, text, and e-mail can be unhealthy. What do you think?</p>
+                        
+                        <ul style="margin-left: 30px; color: #555; list-style: none;">
+                            <li style="margin-bottom: 8px;">• I don't think it's a problem at all.</li>
+                            <li style="margin-bottom: 8px;">• It's not a problem unless / as long as <span class="blank-line" style="min-width: 200px;"></span></li>
+                            <li style="margin-bottom: 8px;">• It might be a problem, but only if <span class="blank-line" style="min-width: 200px;"></span></li>
+                            <li style="margin-bottom: 8px;">• I think it's a problem. You can't <span class="blank-line" style="min-width: 150px;"></span>, otherwise <span class="blank-line" style="min-width: 150px;"></span></li>
+                        </ul>
+                    </div>
+
+                    <div class="teaching-note">
+                        Encourage use of target conditionals: "It's not a problem unless it affects your sleep" / "You can't disconnect completely, otherwise you'll miss important news."
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">B</span>
+                        <span>Look at some examples of other ways that technology has the potential to impact our physical and mental well-being. Use one of the prompts from Exercise A to discuss your opinion of each situation with a partner. If you do think it's a problem, explain what you would do about it.</span>
+                    </div>
+
+                    <div style="margin-top: 20px;">
+                        <div class="question-item">
+                            <div class="question-text">1. You see a man walking down a crowded street and texting at the same time. He's about to reach the end of the sidewalk.</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">2. You see a father with a baby carriage talking on the phone. He seems distracted by the call and does not seem to be paying attention to the baby.</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">3. Recently, two of your friends "unfriended" you on a social networking site.</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">4. Every time you go into your brother's or sister's room, he/she is playing video games. He/She often sleeps with a laptop next to the bed.</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">5. You're working on a paper for one of your classes and are researching some of the information on the Web. So far, your search has returned 250 relevant articles.</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">6. At your job, you have to sit for eight to nine hours a day in front of a computer.</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">7. your idea: <span class="blank-line" style="min-width: 300px;"></span></div>
+                        </div>
+                    </div>
+
+                    <div class="side-by-side" style="margin-top: 20px;">
+                        <div class="speech-bubble">
+                            It's a problem only if he lets go of the carriage.
+                        </div>
+                        <div class="speech-bubble right">
+                            Even if he doesn't let go, his attention should still be on the baby.
+                        </div>
+                    </div>
+
+                    <div class="teacher-answer" style="margin-top: 20px;">
+                        <strong>Possible responses:</strong><br>
+                        1. It's a problem unless he looks up while walking.<br>
+                        2. It's a problem as long as he's distracted. He can't talk on the phone, otherwise he might not notice the baby needs something.<br>
+                        3. It might be a problem, but only if you let it affect your self-esteem.<br>
+                        4. I think it's a problem. He can't sleep well otherwise, and he'll be cranky.<br>
+                        5. It's not a problem as long as you manage your time well.<br>
+                        6. It's a problem unless you take breaks and exercise.
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">C</span>
+                        <span>Discuss the questions with a partner.</span>
+                    </div>
+
+                    <div style="margin-top: 20px;">
+                        <div class="question-item">
+                            <div class="question-text">1. Have any of the situations in Exercise B ever happened to you?</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">2. Do you think it's possible to become addicted to technology? Why or why not?</div>
+                            <div class="teacher-answer">
+                                Yes, possible. Signs: inability to disconnect, anxiety when away from devices, sleep disruption, neglecting real-world relationships, dopamine hits from notifications/likes.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- WRITING SECTION -->
+            <section id="writing" class="section">
+                <div class="section-header">Writing: Describe Cause and Effect</div>
+
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">A</span>
+                        <span>Read about Lydia's problems and answer the questions with a partner.</span>
+                    </div>
+
+                    <div style="background: #e0f2f1; padding: 20px; border-radius: 8px; border-left: 4px solid #d4af37; margin: 20px 0;">
+                        <p style="color: #555; line-height: 1.6;">I am stressed <strong>because of</strong> school and all of the homework I have to do. I'm taking five classes and there's a lot of reading for each one. <strong>On top of this</strong>, I have two papers due at the end of this month. I'm behind, and <strong>because of this</strong>, I have to stay up late almost every night, <strong>otherwise</strong> I can't get all of my reading and research done. <strong>Consequently</strong>, I'm getting five hours sleep at best, <strong>so</strong> I'm tired and having a hard time focusing. What can I do?</p>
+                    </div>
+
+                    <div style="margin-top: 20px;">
+                        <div class="question-item">
+                            <div class="question-text">1. Why is Lydia feeling stressed?</div>
+                            <div class="teacher-answer">Heavy course load (5 classes), lots of reading, two papers due, behind on work.</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">2. What kind of advice would you give to help her deal with this situation?</div>
+                            <div class="teacher-answer">Time management, prioritization, breaking tasks into smaller chunks, speaking to professors, reducing sleep debt.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">B</span>
+                        <span>Now read Vanessa's advice to Lydia. Do you think it is helpful? Discuss with a partner.</span>
+                    </div>
+
+                    <div style="background: #f3e5f5; padding: 20px; border-radius: 8px; border-left: 4px solid #d4af37; margin: 20px 0;">
+                        <p style="color: #555; line-height: 1.6;">I think that there are steps you can take to minimize the stress you're feeling. One thing I'd recommend doing is to create a work schedule for the rest of the month. For each day, list all of your "must-do" tasks first (eat meals, attend class, sleep, etc.). By listing the "must-do" tasks first, you'll get a sense of how much time you have available each day to devote to your homework, <strong>therefore</strong> you'll be able to plan your time better. Once you have listed all of your "must-do" tasks for each day, schedule the homework you have to do. <strong>Since</strong> you will probably need more time to research and write your two papers, try to schedule longer blocks of time (perhaps on weekends). Also, remember to schedule short breaks after you've worked for an hour or two. Knowing that you can take a break will give you an incentive to keep working. Creating this kind of schedule will help you stay focused and use your time more effectively. <strong>As a result</strong>, you will feel calmer and hopefully accomplish all you need to do this month. Good luck!</p>
+                    </div>
+
+                    <div class="teacher-answer">
+                        Yes, helpful advice includes: prioritization, scheduling, time blocking, taking breaks, realistic planning.
+                    </div>
+                </div>
+
+                <div class="writing-strategy">
+                    <h3>Writing Strategy: Showing Cause and Effect</h3>
+                    <p style="margin-bottom: 10px;">When providing support for your opinions and ideas, explaining cause and effect can make your arguments stronger.</p>
+
+                    <p style="margin-bottom: 8px;"><strong>To show the result or effect of something, use:</strong> as a result, consequently, therefore, and so.</p>
+                    <div style="background: white; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                        <em>I have a lot of homework. <strong>As a result</strong>, I stay up late.</em>
+                    </div>
+
+                    <p style="margin-bottom: 8px;"><strong>To show that one thing causes another, use:</strong> because/since, because of/on account of.</p>
+                    <div style="background: white; padding: 10px; border-radius: 5px;">
+                        <em><strong>Because/Since</strong> I have a lot of homework, I have to stay up late.</em>
+                    </div>
+
+                    <div class="teaching-note" style="margin-top: 15px;">
+                        Review cause/effect connectors before students write. Emphasize that "because" (cause before effect) and "so/therefore" (effect before cause) cannot be used in the same sentence (comma splice error).
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">C</span>
+                        <span>Read the Writing Strategy and then answer this question: What's been challenging or stressful for you recently? (School, work, friends, something else?) Explain in a short (six- to eight-sentence) paragraph what specifically is stressful about your life at the moment, using cause/effect words and phrases.</span>
+                    </div>
+
+                    <div style="background: #f5f5f5; padding: 20px; border-radius: 8px; border-left: 4px solid #d4af37; margin: 20px 0;">
+                        <div style="font-weight: bold; color: #1976d2; margin-bottom: 10px;">Model Paragraph:</div>
+                        <p style="color: #555; font-style: italic; line-height: 1.6;">"College students face many stress factors that affect their health. First, poor time management causes anxiety because assignments pile up quickly. Unless students create a study schedule, they will feel overwhelmed. Additionally, lack of sleep leads to difficulty concentrating in class. Even if they drink coffee, they cannot substitute sleep for real rest. Finally, technology creates stress because constant notifications distract from important tasks. As a result, students should establish routines that prioritize sleep and limit screen time."</p>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">D</span>
+                        <span>Exchange papers with a partner. Read your partner's paragraph and then write a paragraph of practical suggestions. Use the paragraph in Exercise B as a model. Be sure to state your suggestion(s) clearly and explain in detail what to do and why you think it will work using cause/effect words and phrases.</span>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">E</span>
+                        <span>Exchange papers again with your partner. Does your partner's paper state the suggestion clearly and describe in detail what to do? Does it use cause/effect words to explain why the solution will work?</span>
+                    </div>
+                    
+                    <div class="teacher-answer">
+                        Checklist: Clear thesis/suggestion? Specific steps? Cause/effect words (because, therefore, as a result, consequently, so)? Explanation of why solution works?
+                    </div>
+                </div>
+            </section>
+
+            <!-- RESOURCES SECTION -->
+            <section id="resources" class="section">
+                <div class="section-header">Resources</div>
+
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">📚</span>
+                        <span>Additional Learning Materials</span>
+                    </div>
+                    <p style="margin-bottom: 15px;">Explore these resources to enhance your learning experience:</p>
+                    
+                    <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                        <h4 style="color: #2c3e50; margin-bottom: 10px;">Audio Tracks</h4>
+                        <ul style="margin-left: 25px; color: #555; line-height: 2;">
+                            <li><a href="track_14.mp3" target="_blank">▶️ Track 14 - Vocabulary Introduction</a></li>
+                            <li><a href="track_15.mp3" target="_blank">▶️ Track 15 - Listening Exercise A</a></li>
+                            <li><a href="track_16.mp3" target="_blank">▶️ Track 16 - Listening Exercise B</a></li>
+                            <li><a href="track_17.mp3" target="_blank">▶️ Track 17 - Listening Exercise C</a></li>
+                            <li><a href="track_18.mp3" target="_blank">▶️ Track 18 - Pronunciation Practice</a></li>
+                            <li><a href="track_19.mp3" target="_blank">▶️ Track 19 - Grammar Examples</a></li>
+                            <li><a href="track_20.mp3" target="_blank">▶️ Track 20 - Speaking Practice</a></li>
+                            <li><a href="track_21.mp3" target="_blank">▶️ Track 21 - Additional Listening</a></li>
+                            <li><a href="track_22.mp3" target="_blank">▶️ Track 22 - Additional Listening</a></li>
+                            <li><a href="track_23.mp3" target="_blank">▶️ Track 23 - Additional Listening</a></li>
+                            <li><a href="track_24.mp3" target="_blank">▶️ Track 24 - Additional Listening</a></li>
+                            <li><a href="track_25.mp3" target="_blank">▶️ Track 25 - Additional Listening</a></li>
+                            <li><a href="track_26.mp3" target="_blank">▶️ Track 26 - Additional Listening</a></li>
+                        </ul>
+                    </div>
+
+                    <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                        <h4 style="color: #2c3e50; margin-bottom: 10px;">Online Resources</h4>
+                        <ul style="margin-left: 25px; color: #555; line-height: 2;">
+                            <li><a href="https://eltngl.com" target="_blank">🌐 World Class Official Website</a> - National Geographic Learning ELT</li>
+                            <li><a href="https://www.youtube.com/results?search_query=ted+ed+health+stress" target="_blank">🎥 TED-Ed Videos on Health and Stress</a> - Educational video collection</li>
+                            <li><a href="https://www.merriam-webster.com/" target="_blank">📖 Merriam-Webster Dictionary</a> - With audio pronunciation</li>
+                            <li><a href="https://www.britishcouncil.org/english" target="_blank">🇬🇧 British Council Learn English</a> - Free grammar and vocabulary exercises</li>
+                            <li><a href="https://quizlet.com/subject/english-vocabulary/" target="_blank">🧠 Quizlet English Vocabulary</a> - Interactive flashcards and games</li>
+                        </ul>
+                    </div>
+
+                    <div class="teacher-note" style="background: #fff3e0; border-left: 4px solid #d4af37; padding: 15px; margin: 15px 0; color: #e65100;">
+                        <strong>🍎 Teaching Tip:</strong> Use the audio tracks for classroom listening activities or assign them as homework for extra practice.
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">📝</span>
+                        <span>Worksheets &amp; Handouts</span>
+                    </div>
+                    <p style="margin-bottom: 15px;">Suggested printable materials for classroom use:</p>
+                    <ul style="margin-left: 25px; color: #555; line-height: 2;">
+                        <li><a href="https://www.vocabulary.co.il/flashcard-maker/" target="_blank">🎴 Vocabulary Flashcard Maker</a> - Create custom flashcards online</li>
+                        <li><a href="https://www.canva.com/graphic-templates/worksheets/" target="_blank">📄 Grammar Worksheet Templates</a> - Design your own worksheets</li>
+                        <li><a href="https://www.edrawsoft.com/cause-and-effect-graphic-organizer.html" target="_blank">📊 Cause and Effect Graphic Organizers</a> - Printable templates</li>
+                        <li><a href="https://www.cambrilearn.com/blog/self-assessment-rubric/" target="_blank">✓ Self-Assessment Rubric Examples</a> - For student self-evaluation</li>
+                    </ul>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">🎥</span>
+                        <span>Video Resources</span>
+                    </div>
+                    <div class="video-box">
+                        <div class="video-title">🎬 How stress affects your brain - TED-Ed</div>
+                        <p style="margin-bottom: 15px;">A fascinating look at how chronic stress impacts brain structure and function, and what you can do about it.</p>
+                        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: 15px 0;">
+                            <div class="local-video-container">
+            <div class="video-offline-badge">📱 OFFLINE VIDEO</div>
+            <video class="local-video" controls controlsList="nodownload" preload="metadata" poster="">
+                <source src="WCL2-U09.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-controls-hint">
+                <span>🎥 Video Controls:</span> Play ▶️ | Pause ⏸️ | Rewind ⏪ | Forward ⏩ | Captions CC | Fullscreen 🔲
+            </div>
+            <div class="video-info">
+                <span class="video-info-title">Unit 9: Health Habits</span>
+                <span class="video-info-format">HD</span>
+            </div>
+        </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- EXPANDING YOUR FLUENCY -->
+            <section id="fluency" class="section">
+                <div class="section-header">Expanding Your Fluency</div>
+
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">A</span>
+                        <span>Work with a partner. Are you familiar with the medical technology pictured? If you could invent a medical product or technology, what would it be and why? Together, choose an idea from the list below or come up with your own.</span>
+                    </div>
+
+                    <div style="background: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                        <p style="margin-bottom: 15px; font-weight: bold;">Our product will cure, correct, or control . . .</p>
+                        <div style="display: flex; gap: 30px; flex-wrap: wrap; justify-content: space-around;">
+                            <span>aging</span>
+                            <span>memory problems</span>
+                            <span>shyness</span>
+                            <span>stress</span>
+                            <span>other: _________</span>
+                        </div>
+                    </div>
+
+                    <p style="margin-bottom: 15px;">Put together a short presentation explaining your ideas. Make sure you also address these questions:</p>
+                    <ul style="margin-left: 30px; margin-bottom: 20px; color: #555;">
+                        <li>How would this technology benefit people? What would the results be?</li>
+                        <li>How would it work? (i.e., Would it be a machine, a pill, a brain implant, something else?) How often would people have to use it (only once, several times, every day)?</li>
+                        <li>What would you call it?</li>
+                    </ul>
+
+                    <div class="teaching-note">
+                        This is a creative fluency activity. Encourage imaginative but plausible ideas. Students should use conditionals: "Unless you use it daily, it won't work."
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">B</span>
+                        <span>Present your idea to another pair. As you listen, take notes on the other pair's presentation and then answer these questions: Can you think of any possible drawbacks to the technology? Would you support its development? Why or why not?</span>
+                    </div>
+                </div>
+
+                <div style="background: #fff3e0; padding: 25px; border-radius: 8px; border: 2px solid #ff9800; margin: 30px 0;">
+                    <h3 style="color: #e65100; margin-bottom: 15px; text-align: center; font-size: 28px;">Check What You Know</h3>
+                    <p style="margin-bottom: 15px; text-align: center;">Rank how well you can perform these outcomes on a scale of 1–5 (5 being the best).</p>
+                    
+                    <div style="background: white; padding: 20px; border-radius: 5px;">
+                        <div style="margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center;">
+                            <span>describe health habits</span>
+                            <span style="border-bottom: 1px solid #333; min-width: 100px; display: inline-block;"></span>
+                        </div>
+                        <div style="margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center;">
+                            <span>express conditions with words other than <em>if</em></span>
+                            <span style="border-bottom: 1px solid #333; min-width: 100px; display: inline-block;"></span>
+                        </div>
+                        <div style="margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center;">
+                            <span>explain how technology affects one's well-being</span>
+                            <span style="border-bottom: 1px solid #333; min-width: 100px; display: inline-block;"></span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span>analyze the cause/effect relationship between events</span>
+                            <span style="border-bottom: 1px solid #333; min-width: 100px; display: inline-block;"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="critical-box">
+                    <p><strong>Did you know?</strong> Bionic limbs and other body parts will eventually enable the blind to see, the deaf to hear, and people to use damaged arms and legs again.</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer Navigation -->
+        <div class="unit-nav no-print">
+            <a href="unit8.html" class="nav-btn">← Unit 8</a>
+            <span style="align-self: center; font-weight: bold; color: #7f8c8d;">Book 2B - Unit 9 of 12</span>
+            <a href="unit10.html" class="nav-btn">Unit 10 →</a>
+        </div>
+    </div>
+
+    <!-- View Mode Indicator -->
+    <div id="viewIndicator" class="view-indicator">
+        <i class="fas fa-chalkboard-teacher"></i> Teacher View Active
+    </div>
+
+    <script>
+        // View switching functionality
+        function switchView(mode) {
+            const body = document.body;
+            const studentBtn = document.getElementById('studentBtn');
+            const teacherBtn = document.getElementById('teacherBtn');
+            const indicator = document.getElementById('viewIndicator');
+
+            if (mode === 'student') {
+                body.classList.remove('teacher-mode');
+                studentBtn.classList.add('active');
+                teacherBtn.classList.remove('active');
+                indicator.innerHTML = '<i class="fas fa-user-graduate"></i> Student View Active';
+                indicator.style.display = 'block';
+
+                // Save preference
+                localStorage.setItem('unit9_viewMode', 'student');
+            } else {
+                body.classList.add('teacher-mode');
+                teacherBtn.classList.add('active');
+                studentBtn.classList.remove('active');
+                indicator.innerHTML = '<i class="fas fa-chalkboard-teacher"></i> Teacher View Active';
+                indicator.style.display = 'block';
+
+                // Save preference
+                localStorage.setItem('unit9_viewMode', 'teacher');
+            }
+
+            // Hide indicator after 2 seconds
+            setTimeout(() => {
+                indicator.style.display = 'none';
+            }, 2000);
+        }
+
+        // Load saved preference
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedMode = localStorage.getItem('unit9_viewMode');
+            if (savedMode === 'student') {
+                switchView('student');
+            } else {
+                // Default to teacher mode
+                document.body.classList.add('teacher-mode');
+            }
+
+            // Audio player enhancement
+            document.querySelectorAll('audio').forEach(player => {
+                player.addEventListener('play', function() {
+                    document.querySelectorAll('audio').forEach(other => {
+                        if (other !== player) other.pause();
+                    });
+                });
+            });
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Keyboard shortcut for view toggle (T for teacher, S for student)
+        document.addEventListener('keydown', function(e) {
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+            if (e.key === 't' || e.key === 'T') {
+                switchView('teacher');
+            } else if (e.key === 's' || e.key === 'S') {
+                switchView('student');
+            }
+        });
+    
+
+// Dark Mode Toggle
+function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+    const isDark = document.body.classList.contains('dark-mode');
+    localStorage.setItem('darkMode', isDark);
+    updateDarkModeButton();
+}
+
+function updateDarkModeButton() {
+    const btn = document.querySelector('.dark-mode-toggle');
+    if (document.body.classList.contains('dark-mode')) {
+        btn.innerHTML = '☀️ Light';
+    } else {
+        btn.innerHTML = '🌙 Dark';
+    }
+}
+
+// Load dark mode preference on page load
+document.addEventListener('DOMContentLoaded', function() {
+    if (localStorage.getItem('darkMode') === 'true') {
+        document.body.classList.add('dark-mode');
+    }
+    updateDarkModeButton();
+});
+</script>
+    
+    <!-- Credit -->
+    <div style="text-align: center; color: #7f8c8d; font-size: 13px; padding: 15px; font-style: italic;">
+        Re-Created by ESL Teacher Ry
+    </div>
+
+    <!-- 3D Button Interactions -->
+    <script>
+        // Ripple effect for buttons
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('.btn-ripple, .btn-3d, .nav-bar button');
+            if (!btn) return;
+            
+            const ripple = document.createElement('span');
+            ripple.className = 'ripple';
+            
+            const rect = btn.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            
+            btn.appendChild(ripple);
+            
+            setTimeout(() => ripple.remove(), 600);
+        });
+        
+                // Homework menu toggle
+        function toggleHomeworkMenu(menuId) {
+            const menu = document.getElementById(menuId);
+            if (menu.style.display === 'none') {
+                menu.style.display = 'block';
+            } else {
+                menu.style.display = 'none';
+            }
+        }
+        
+        // Close homework menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.homework-dropdown')) {
+                document.querySelectorAll('.homework-menu').forEach(menu => {
+                    menu.style.display = 'none';
+                });
+            }
+        });
+        // Magnetic button effect
+        document.querySelectorAll('.btn-3d, .audio-btn, .play-btn').forEach(btn => {
+            btn.addEventListener('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                this.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
+            });
+            
+            btn.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+            });
+        });
+    </script>
+
+
+    <!-- Vocabulary Audio Pronunciation -->
+    <script>
+        // Text-to-Speech for vocabulary pronunciation
+        function speakWord(word) {
+            if ('speechSynthesis' in window) {
+                // Cancel any ongoing speech
+                window.speechSynthesis.cancel();
+                
+                const utterance = new SpeechSynthesisUtterance(word);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.8;
+                utterance.pitch = 1;
+                
+                // Find the button and add playing animation
+                const buttons = document.querySelectorAll('.vocab-audio-btn');
+                buttons.forEach(btn => {
+                    if (btn.getAttribute('data-word') === word) {
+                        btn.classList.add('playing');
+                        btn.innerHTML = '🔊';
+                    }
+                });
+                
+                utterance.onend = function() {
+                    buttons.forEach(btn => {
+                        if (btn.getAttribute('data-word') === word) {
+                            btn.classList.remove('playing');
+                            btn.innerHTML = '🔈';
+                        }
+                    });
+                };
+                
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert('Text-to-speech is not supported in your browser.');
+            }
+        }
+        
+        // Add audio buttons to vocabulary items
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.vocab-item').forEach(item => {
+                const wordEl = item.querySelector('.vocab-word');
+                if (wordEl) {
+                    const word = wordEl.textContent.trim();
+                    const audioBtn = document.createElement('button');
+                    audioBtn.className = 'vocab-audio-btn';
+                    audioBtn.setAttribute('data-word', word);
+                    audioBtn.innerHTML = '🔈';
+                    audioBtn.title = 'Click to hear pronunciation';
+                    audioBtn.onclick = function(e) {
+                        e.stopPropagation();
+                        speakWord(word);
+                    };
+                    item.appendChild(audioBtn);
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

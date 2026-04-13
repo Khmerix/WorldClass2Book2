@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 11: Inspired Minds - Writing Homework</title>
+    <!-- Authentication Check -->
+    <script>
+        // Check if user is logged in
+        if (!sessionStorage.getItem('teacherLoggedIn')) {
+            window.location.href = '../../login.html';
+        }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #3d3d3d;
+            background: #faf8f5;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(114, 47, 55, 0.1);
+        }
+        .header {
+            background: linear-gradient(135deg, #722f37 0%, #8b3a3a 100%);
+            color: white;
+            padding: 30px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 12px 12px 0 0;
+            text-align: center;
+        }
+        .header h1 { font-size: 28px; margin-bottom: 10px; }
+        .header p { font-size: 16px; opacity: 0.9; }
+        .writing-focus {
+            background: #fff9e6;
+            border: 2px solid #d4af37;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .writing-focus h2 { color: #722f37; font-size: 20px; margin-bottom: 10px; }
+        .writing-focus p { color: #666; font-size: 14px; }
+        .student-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f9f5f0;
+            border-radius: 8px;
+            border-left: 4px solid #d4af37;
+        }
+        .info-field { display: flex; flex-direction: column; }
+        .info-field label {
+            font-weight: 600; color: #722f37; margin-bottom: 5px;
+            font-size: 13px; text-transform: uppercase;
+        }
+        .info-field input {
+            padding: 10px; border: 2px solid #e0d5c8;
+            border-radius: 6px; font-size: 14px; background: white;
+        }
+        .section { margin-bottom: 30px; }
+        .section-title {
+            color: #722f37; font-size: 20px; font-weight: 700;
+            margin-bottom: 15px; padding-bottom: 8px;
+            border-bottom: 2px solid #d4af37;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .section-number {
+            background: #722f37; color: #d4af37;
+            width: 32px; height: 32px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: bold;
+        }
+        .prompt-box {
+            background: #f9f5f0;
+            border: 2px solid #722f37;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .prompt-box h3 { color: #722f37; margin-bottom: 10px; }
+        .prompt-box p { font-size: 15px; line-height: 1.8; }
+        .word-count {
+            display: inline-block;
+            background: #d4af37;
+            color: #722f37;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .rubric {
+            background: #fff;
+            border: 2px solid #d4af37;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .rubric h4 { color: #722f37; margin-bottom: 15px; font-size: 16px; }
+        .rubric-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .rubric-item:last-child { border-bottom: none; }
+        .rubric-points {
+            background: #722f37;
+            color: #d4af37;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+        .writing-lines {
+            background: repeating-linear-gradient(
+                transparent,
+                transparent 29px,
+                #d4af37 29px,
+                #d4af37 30px
+            );
+            min-height: 300px;
+            margin: 20px 0;
+            padding: 10px;
+            line-height: 30px;
+            font-family: 'Courier New', monospace;
+        }
+        .planning-section {
+            background: #f0f7ff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .planning-section h4 { color: #2980b9; margin-bottom: 15px; }
+        .planning-box {
+            background: white;
+            border: 2px solid #d4af37;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+            min-height: 80px;
+        }
+        .planning-label {
+            font-weight: 600;
+            color: #722f37;
+            margin-bottom: 5px;
+            font-size: 13px;
+        }
+        .vocab-reminder {
+            background: #fff9e6;
+            border-left: 4px solid #d4af37;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 0 8px 8px 0;
+            font-size: 14px;
+        }
+        .vocab-reminder strong { color: #722f37; }
+        .checklist {
+            background: #f9f5f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .checklist h4 { color: #722f37; margin-bottom: 10px; }
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+        .checkbox {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #722f37;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #e0d5c8;
+            text-align: center;
+            color: #888;
+            font-size: 12px;
+        }
+        @media print {
+            body { background: white; padding: 0; }
+            .container { box-shadow: none; max-width: 100%; }
+            .writing-lines { page-break-inside: avoid; }
+        }
+    
+        /* Interactive Form Styles */
+        input[type="text"], textarea, select {
+            width: 100%;
+            padding: 8px 12px;
+            border: 2px solid #e0d5c8;
+            border-radius: 6px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            background: white;
+        }
+        
+        input[type="text"]:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #722f37;
+            box-shadow: 0 0 0 3px rgba(114, 47, 55, 0.1);
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+        .answer-input-field, .answer-textarea {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background: transparent;
+            font-size: 14px;
+            font-family: inherit;
+        }
+        
+        .answer-textarea {
+            resize: vertical;
+            min-height: 60px;
+        }
+        
+        /* Submit bar */
+        .submit-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 15px 20px;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            gap: 15px;
+        }
+        
+        .submit-bar .left-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #666;
+        }
+        
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #4CAF50;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .timer {
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            color: #722f37;
+            font-size: 14px;
+        }
+        
+        .btn-submit {
+            background: linear-gradient(145deg, #722f37 0%, #5c1a1a 100%);
+            color: #d4af37;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(114, 47, 55, 0.3);
+        }
+        
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+            border: 2px solid #ddd;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+        
+        .autosave-toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            display: none;
+            align-items: center;
+            gap: 10px;
+            z-index: 200;
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        .submit-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 300;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .submit-modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        
+        .submit-modal-content h2 {
+            color: #722f37;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .submit-options {
+            display: grid;
+            gap: 15px;
+        }
+        
+        .submit-option {
+            padding: 20px;
+            border: 2px solid #e0d5c8;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        
+        .submit-option:hover {
+            border-color: #722f37;
+            background: #f9f5f0;
+        }
+        
+        .submit-option-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        
+        .submit-option-title {
+            font-weight: 700;
+            color: #722f37;
+            margin-bottom: 5px;
+        }
+        
+            font-size: 13px;
+            color: #666;
+        }
+        
+        body {
+            padding-bottom: 80px;
+        }
+        
+        @media print {
+            .submit-bar, .autosave-toast, .submit-modal { display: none !important; }
+            body { padding-bottom: 0; }
+            .container { box-shadow: none; }
+            input, textarea { border: 1px solid #ccc !important; }
+        }
+        
+        @media (max-width: 600px) {
+            .submit-bar {
+                flex-direction: column;
+                padding: 10px;
+            }
+            .submit-bar .left-group {
+                width: 100%;
+                justify-content: center;
+            }
+            .btn-submit {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        
+        /* Input field styles for student answers */
+        .answer-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #d4af37;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: inherit;
+            background: white;
+            margin-top: 8px;
+            transition: all 0.3s;
+            box-sizing: border-box;
+        }
+        
+        .answer-input:focus {
+            outline: none;
+            border-color: #722f37;
+            box-shadow: 0 0 0 4px rgba(114, 47, 55, 0.1);
+        }
+        
+        .answer-input::placeholder {
+            color: #999;
+            font-style: italic;
+        }
+        
+        .answer-textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 12px 15px;
+            border: 2px solid #d4af37;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: inherit;
+            background: white;
+            margin-top: 8px;
+            resize: vertical;
+            transition: all 0.3s;
+            box-sizing: border-box;
+        }
+        
+        .answer-textarea:focus {
+            outline: none;
+            border-color: #722f37;
+            box-shadow: 0 0 0 4px rgba(114, 47, 55, 0.1);
+        }
+        
+        .answer-textarea::placeholder {
+            color: #999;
+            font-style: italic;
+        }
+        
+        .sentence-input {
+            border: none;
+            border-bottom: 2px solid #722f37;
+            background: #f9f5f0;
+            font-size: 14px;
+            padding: 8px 12px;
+            min-width: 200px;
+            font-family: inherit;
+            border-radius: 4px;
+        }
+        
+        .sentence-input:focus {
+            outline: none;
+            border-bottom-color: #d4af37;
+            background: #fff9e6;
+        }
+        
+        .match-input {
+            width: 50px;
+            text-align: center;
+            border: 2px solid #722f37;
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 8px;
+            text-transform: uppercase;
+            background: white;
+        }
+        
+        .match-input:focus {
+            outline: none;
+            border-color: #d4af37;
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.3);
+        }
+
+        </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>✍️ Writing Homework</h1>
+            <p>Unit 11: Inspired Minds | Theme: Art, Creativity, and Design</p>
+        </div>
+
+        <div class="writing-focus">
+            <h2>Writing Focus: Art Review</h2>
+            <p>Write about an artwork or creative work using <strong>adjective clauses</strong> and <strong>vocabulary</strong> from Unit 11</p>
+        </div>
+
+        <div class="student-info">
+            <div class="info-field"><label>Student Name</label><input type="text" placeholder="Enter your name"></div>
+            <div class="info-field"><label>Date</label><input type="text" placeholder="DD/MM/YYYY"></div>
+            <div class="info-field"><label>Class</label><input type="text" placeholder="Enter your class"></div>
+            <div class="info-field"><label>Score</label><input type="text" placeholder="/25" readonly></div>
+        </div>
+
+        <!-- Writing Prompt -->
+        <div class="section">
+            <div class="section-title">
+                <span class="section-number">1</span>
+                <span>Writing Prompt</span>
+            </div>
+            
+            <div class="prompt-box">
+                <h3>🎯 Task: Write an Art Review</h3>
+                <p>Choose a painting, sculpture, building, photograph, or other creative work that you find inspiring. Write a <strong>150-200 word review</strong> describing the work and explaining why it inspires you. Include:</p>
+                <ul style="margin: 10px 0 10px 30px;">
+                    <li>The name of the artwork and the artist/creator</li>
+                    <li>A description of what it looks like (colors, shapes, style)</li>
+                    <li>Your personal reaction to the work</li>
+                    <li>Why you think this work is innovative or important</li>
+                </ul>
+                <span class="word-count">Target: 150-200 words</span>
+            </div>
+
+            <div class="vocab-reminder">
+                <strong>💡 Remember to use:</strong> At least 4 vocabulary words from Unit 11 (innovative, aesthetic, composition, perspective, inspiration, masterpiece, visual, creative process) and at least 3 adjective clauses with relative pronouns (who, whom, which, that).
+            </div>
+        </div>
+
+        <!-- Planning Section -->
+        <div class="section">
+            <div class="section-title">
+                <span class="section-number">2</span>
+                <span>Pre-Writing: Plan Your Review</span>
+            </div>
+            
+            <div class="planning-section">
+                <h4>📝 Artwork Information</h4>
+                <div class="planning-box">
+                    <div class="planning-label">Name of artwork:</div>
+                </div>
+                <div class="planning-box">
+                    <div class="planning-label">Artist/Creator name:</div>
+                </div>
+                <div class="planning-box">
+                    <div class="planning-label">Type of art (painting, sculpture, etc.):</div>
+                </div>
+            </div>
+
+            <div class="planning-section">
+                <h4>🗂️ Description Notes</h4>
+                <div class="planning-box">
+                    <div class="planning-label">Main colors and shapes:</div>
+                </div>
+                <div class="planning-box">
+                    <div class="planning-label">How it makes you feel:</div>
+                </div>
+            </div>
+
+            <div class="planning-section">
+                <h4>🎯 Vocabulary & Grammar to Include</h4>
+                <div class="planning-box">
+                    <div class="planning-label">4 Vocabulary words:</div>
+                    1. <input type="text" class="sentence-input" placeholder="answer"> 2. <input type="text" class="sentence-input" placeholder="answer"> 3. <input type="text" class="sentence-input" placeholder="answer"> 4. <input type="text" class="sentence-input" placeholder="answer">
+                </div>
+                <div class="planning-box">
+                    <div class="planning-label">3 Adjective clauses (example: The painting, which shows..., The artist who created...)</div>
+                    1. <input type="text" class="sentence-input" placeholder="answer"><br>
+                    2. <input type="text" class="sentence-input" placeholder="answer"><br>
+                    3. <input type="text" class="sentence-input" placeholder="answer">
+                </div>
+            </div>
+        </div>
+
+        <!-- Writing Space -->
+        <div class="section">
+            <div class="section-title">
+                <span class="section-number">3</span>
+                <span>Your Art Review</span>
+            </div>
+            
+            <div style="text-align: center; margin-bottom: 10px; color: #666; font-size: 13px;">
+                Title: <input type="text" class="sentence-input" placeholder="answer">
+            </div>
+            
+            <div class="writing-lines">&nbsp;</div>
+            
+            <div style="background: #f9f5f0; padding: 15px; border-radius: 8px; margin-top: 15px;">
+                <strong style="color: #722f37;">Word Count:</strong> <input type="text" class="sentence-input" placeholder="answer"> words (Target: 150-200)
+            </div>
+        </div>
+
+        <!-- Rubric -->
+        <div class="section">
+            <div class="section-title">
+                <span class="section-number">4</span>
+                <span>Grading Rubric</span>
+            </div>
+            
+            <div class="rubric">
+                <h4>📊 How You Will Be Graded:</h4>
+                <div class="rubric-item">
+                    <span>Content (clear description of artwork and personal response)</span>
+                    <span class="rubric-points">5 pts</span>
+                </div>
+                <div class="rubric-item">
+                    <span>Organization (clear structure with introduction, description, conclusion)</span>
+                    <span class="rubric-points">5 pts</span>
+                </div>
+                <div class="rubric-item">
+                    <span>Vocabulary Use (4+ unit words used correctly)</span>
+                    <span class="rubric-points">5 pts</span>
+                </div>
+                <div class="rubric-item">
+                    <span>Grammar (3+ adjective clauses with relative pronouns)</span>
+                    <span class="rubric-points">5 pts</span>
+                </div>
+                <div class="rubric-item">
+                    <span>Word Count & Spelling (150-200 words)</span>
+                    <span class="rubric-points">5 pts</span>
+                </div>
+            </div>
+
+            <div class="checklist">
+                <h4>✓ Self-Checklist (Before you submit!)</h4>
+                <div class="checklist-item"><div class="checkbox"></div><span>I named the artwork and artist</span></div>
+                <div class="checklist-item"><div class="checkbox"></div><span>I included at least 4 vocabulary words from Unit 11</span></div>
+                <div class="checklist-item"><div class="checkbox"></div><span>I used adjective clauses (who, which, that)</span></div>
+                <div class="checklist-item"><div class="checkbox"></div><span>I wrote 150-200 words</span></div>
+                <div class="checklist-item"><div class="checkbox"></div><span>I checked my spelling and grammar</span></div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>World Class Level 2 - Book 2B | Unit 11: Inspired Minds</p>
+            <p style="margin-top: 5px;">Writing Homework: Art Review</p>
+        </div>
+    </div>
+
+<!-- Submit Bar -->
+<div class="submit-bar">
+    <div class="left-group">
+        <div class="status-indicator">
+            <div class="status-dot"></div>
+            <span>Auto-saving...</span>
+        </div>
+        <div class="timer" id="timer">00:00</div>
+    </div>
+    <div style="display: flex; gap: 10px;">
+        <button class="btn-secondary" onclick="saveProgress()">💾 Save</button>
+        <button class="btn-submit" onclick="showSubmitOptions()">📤 Submit</button>
+    </div>
+</div>
+
+<!-- Auto-save toast -->
+<div class="autosave-toast" id="autosaveToast">
+    <span>✓</span>
+    <span>Progress saved!</span>
+</div>
+
+<!-- Submit modal -->
+<div class="submit-modal" id="submitModal" onclick="closeSubmitModal(event)">
+    <div class="submit-modal-content">
+        <h2>📤 Submit Your Homework</h2>
+        <div class="submit-options">
+            <div class="submit-option" onclick="submitByEmail()">
+                <div class="submit-option-icon">📧</div>
+                <div class="submit-option-title">Send by Email</div>
+                <div class="submit-option-desc">Opens your email with homework attached</div>
+            </div>
+            <div class="submit-option" onclick="downloadPDF()">
+                <div class="submit-option-icon">📄</div>
+                <div class="submit-option-title">Download PDF</div>
+                <div class="submit-option-desc">Save as PDF to submit later</div>
+            </div>
+            <div class="submit-option" onclick="printHomework()">
+                <div class="submit-option-icon">🖨️</div>
+                <div class="submit-option-title">Print</div>
+                <div class="submit-option-desc">Print and hand in physically</div>
+            </div>
+        </div>
+        <button class="btn-secondary" onclick="closeSubmitModalDirect()" style="width: 100%; margin-top: 20px;">Cancel</button>
+    </div>
+</div>
+
+<script>
+// ===== AUTO-SAVE FUNCTIONALITY =====
+const STORAGE_KEY = 'homework_' + window.location.pathname.replace(/\/g, '_');
+let startTime = Date.now();
+let timerInterval;
+
+document.addEventListener('DOMContentLoaded', function() {
+    loadProgress();
+    startTimer();
+    setupAutoSave();
+    
+});
+
+function setupAutoSave() {
+    setInterval(() => { saveProgress(); }, 30000);
+}
+
+);
+    
+    // Convert long answer spaces to textareas
+    document.querySelectorAll('.answer-space').forEach((el, index) => {
+        const textarea = document.createElement('textarea');
+        textarea.className = 'answer-textarea';
+        textarea.placeholder = 'Type your answer here...';
+        textarea.dataset.fieldId = 'space_' + index;
+        textarea.style.cssText = 'width: 100%; min-height: 60px; padding: 8px; border: none; background: transparent; font-size: 14px; resize: vertical;';
+        el.innerHTML = '';
+        el.appendChild(textarea);
+    });
+}
+
+function saveProgress() {
+    const data = {};
+    
+    // Save text inputs
+    document.querySelectorAll('.answer-input, .sentence-input, .match-input').forEach((input, index) => {
+        data['field_' + index] = input.value;
+    });
+    
+    // Save textareas
+    document.querySelectorAll('.answer-textarea').forEach((textarea, index) => {
+        data['textarea_' + index] = textarea.value;
+    });
+    
+    // Save student info
+    document.querySelectorAll('.student-info input').forEach((input, index) => {
+        data['student_' + index] = input.value;
+    });
+    
+    data.timestamp = new Date().toISOString();
+    data.timeSpent = Date.now() - startTime;
+    
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    showToast();
+}
+
+function loadProgress() {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+        const data = JSON.parse(saved);
+        
+        // Load text inputs
+        document.querySelectorAll('.answer-input, .sentence-input, .match-input').forEach((input, index) => {
+            if (data['field_' + index]) {
+                input.value = data['field_' + index];
+            }
+        });
+        
+        // Load textareas
+        document.querySelectorAll('.answer-textarea').forEach((textarea, index) => {
+            if (data['textarea_' + index]) {
+                textarea.value = data['textarea_' + index];
+            }
+        });
+        
+        // Load student info
+        document.querySelectorAll('.student-info input').forEach((input, index) => {
+            if (data['student_' + index]) {
+                input.value = data['student_' + index];
+            }
+        });
+        
+        if (data.timeSpent) {
+            startTime = Date.now() - data.timeSpent;
+        }
+    }
+}
+
+function showToast() {
+    const toast = document.getElementById('autosaveToast');
+    toast.style.display = 'flex';
+    setTimeout(() => { toast.style.display = 'none'; }, 2000);
+}
+
+function startTimer() {
+    timerInterval = setInterval(() => {
+        const elapsed = Math.floor((Date.now() - startTime) / 1000);
+        const minutes = Math.floor(elapsed / 60).toString().padStart(2, '0');
+        const seconds = (elapsed % 60).toString().padStart(2, '0');
+        document.getElementById('timer').textContent = minutes + ':' + seconds;
+    }, 1000);
+}
+
+function showSubmitOptions() {
+    saveProgress();
+    document.getElementById('submitModal').style.display = 'flex';
+}
+
+function closeSubmitModal(event) {
+    if (event.target === document.getElementById('submitModal')) {
+        document.getElementById('submitModal').style.display = 'none';
+    }
+}
+
+function closeSubmitModalDirect() {
+    document.getElementById('submitModal').style.display = 'none';
+}
+
+function submitByEmail() {
+    saveProgress();
+    const subject = 'Homework Submission - ' + document.title;
+    const studentName = document.querySelector('.student-info input')?.value || '[Not filled]';
+    const body = 'Student Name: ' + studentName + '\n\nCompleted homework is ready for submission.\n\nTime spent: ' + document.getElementById('timer').textContent + '\n\n[Please print to PDF and attach to this email]';
+    window.location.href = 'mailto:teacher@school.edu?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    setTimeout(() => { window.print(); }, 500);
+}
+
+function downloadPDF() {
+    saveProgress();
+    window.print();
+}
+
+function printHomework() {
+    saveProgress();
+    window.print();
+}
+
+window.addEventListener('beforeunload', function(e) {
+    saveProgress();
+});
+</script>
+
+</body>
+</html>

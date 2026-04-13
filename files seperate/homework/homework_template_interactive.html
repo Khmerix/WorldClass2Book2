@@ -1,0 +1,436 @@
+<!-- 
+  INTERACTIVE HOMEWORK TEMPLATE
+  This template adds form submission capability to homework worksheets
+  
+  FEATURES:
+  - Auto-save to localStorage (students won't lose work)
+  - Submit via email or download as PDF
+  - Mobile-friendly input fields
+  - Timer for tracking work time
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INTERACTIVE TEMPLATE - Use this to update existing homework files</title>
+    <!-- Authentication Check -->
+    <script>
+        // Check if user is logged in
+        if (!sessionStorage.getItem('teacherLoggedIn')) {
+            window.location.href = '../../login.html';
+        }
+    </script>
+    <style>
+        /* Add these styles to existing homework files */
+        
+        /* Form Input Styles */
+        input[type="text"], textarea, select {
+            width: 100%;
+            padding: 8px 12px;
+            border: 2px solid #e0d5c8;
+            border-radius: 6px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            background: white;
+        }
+        
+        input[type="text"]:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #722f37;
+            box-shadow: 0 0 0 3px rgba(114, 47, 55, 0.1);
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+        /* Interactive answer spaces */
+        .answer-input {
+            border: 2px solid #d4af37;
+            border-radius: 6px;
+            padding: 10px;
+            margin-top: 8px;
+            background: white;
+            min-height: 40px;
+        }
+        
+        .answer-input:focus-within {
+            border-color: #722f37;
+            box-shadow: 0 0 0 3px rgba(114, 47, 55, 0.1);
+        }
+        
+        /* Submit bar */
+        .submit-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 15px 20px;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            gap: 15px;
+        }
+        
+        .submit-bar .left-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #666;
+        }
+        
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #4CAF50;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .timer {
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            color: #722f37;
+            font-size: 14px;
+        }
+        
+        .btn-submit {
+            background: linear-gradient(145deg, #722f37 0%, #5c1a1a 100%);
+            color: #d4af37;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(114, 47, 55, 0.3);
+        }
+        
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+            border: 2px solid #ddd;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+        
+        /* Auto-save notification */
+        .autosave-toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            display: none;
+            align-items: center;
+            gap: 10px;
+            z-index: 200;
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        /* Modal styles */
+        .submit-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 300;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .submit-modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        
+        .submit-modal-content h2 {
+            color: #722f37;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .submit-options {
+            display: grid;
+            gap: 15px;
+        }
+        
+        .submit-option {
+            padding: 20px;
+            border: 2px solid #e0d5c8;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        
+        .submit-option:hover {
+            border-color: #722f37;
+            background: #f9f5f0;
+        }
+        
+        .submit-option-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        
+        .submit-option-title {
+            font-weight: 700;
+            color: #722f37;
+            margin-bottom: 5px;
+        }
+        
+        .submit-option-desc {
+            font-size: 13px;
+            color: #666;
+        }
+        
+        /* Print button hidden in print view */
+        @media print {
+            .submit-bar, .autosave-toast { display: none !important; }
+            body { padding-bottom: 0; }
+            .container { box-shadow: none; }
+        }
+        
+        /* Mobile adjustments */
+        @media (max-width: 600px) {
+            .submit-bar {
+                flex-direction: column;
+                padding: 10px;
+            }
+            .submit-bar .left-group {
+                width: 100%;
+                justify-content: center;
+            }
+            .btn-submit {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Add this submit bar before </body> in each homework file -->
+<div class="submit-bar">
+    <div class="left-group">
+        <div class="status-indicator">
+            <div class="status-dot"></div>
+            <span>Auto-saving...</span>
+        </div>
+        <div class="timer" id="timer">00:00</div>
+    </div>
+    <div style="display: flex; gap: 10px;">
+        <button class="btn-secondary" onclick="saveProgress()">💾 Save</button>
+        <button class="btn-submit" onclick="showSubmitOptions()">📤 Submit</button>
+    </div>
+</div>
+
+<!-- Auto-save toast notification -->
+<div class="autosave-toast" id="autosaveToast">
+    <span>✓</span>
+    <span>Progress saved!</span>
+</div>
+
+<!-- Submit options modal -->
+<div class="submit-modal" id="submitModal" onclick="closeSubmitModal(event)">
+    <div class="submit-modal-content">
+        <h2>📤 Submit Your Homework</h2>
+        <div class="submit-options">
+            <div class="submit-option" onclick="submitByEmail()">
+                <div class="submit-option-icon">📧</div>
+                <div class="submit-option-title">Send by Email</div>
+                <div class="submit-option-desc">Opens your email with homework attached</div>
+            </div>
+            <div class="submit-option" onclick="downloadPDF()">
+                <div class="submit-option-icon">📄</div>
+                <div class="submit-option-title">Download PDF</div>
+                <div class="submit-option-desc">Save as PDF to submit later</div>
+            </div>
+            <div class="submit-option" onclick="printHomework()">
+                <div class="submit-option-icon">🖨️</div>
+                <div class="submit-option-title">Print</div>
+                <div class="submit-option-desc">Print and hand in physically</div>
+            </div>
+        </div>
+        <button class="btn-secondary" onclick="closeSubmitModalDirect()" style="width: 100%; margin-top: 20px;">Cancel</button>
+    </div>
+</div>
+
+<script>
+// ===== AUTO-SAVE FUNCTIONALITY =====
+const STORAGE_KEY = 'homework_' + window.location.pathname;
+let startTime = Date.now();
+let timerInterval;
+
+// Load saved data on page load
+document.addEventListener('DOMContentLoaded', function() {
+    loadProgress();
+    startTimer();
+    setupAutoSave();
+});
+
+// Auto-save every 30 seconds
+function setupAutoSave() {
+    setInterval(() => {
+        saveProgress();
+    }, 30000);
+}
+
+// Save all input values to localStorage
+function saveProgress() {
+    const inputs = document.querySelectorAll('input[type="text"], textarea, select');
+    const data = {};
+    
+    inputs.forEach((input, index) => {
+        data['field_' + index] = input.value;
+    });
+    
+    data.timestamp = new Date().toISOString();
+    data.timeSpent = Date.now() - startTime;
+    
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    
+    // Show toast
+    showToast();
+}
+
+// Load saved data
+function loadProgress() {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+        const data = JSON.parse(saved);
+        const inputs = document.querySelectorAll('input[type="text"], textarea, select');
+        
+        inputs.forEach((input, index) => {
+            if (data['field_' + index]) {
+                input.value = data['field_' + index];
+            }
+        });
+        
+        if (data.timeSpent) {
+            startTime = Date.now() - data.timeSpent;
+        }
+    }
+}
+
+// Show auto-save toast
+function showToast() {
+    const toast = document.getElementById('autosaveToast');
+    toast.style.display = 'flex';
+    setTimeout(() => {
+        toast.style.display = 'none';
+    }, 2000);
+}
+
+// ===== TIMER =====
+function startTimer() {
+    timerInterval = setInterval(() => {
+        const elapsed = Math.floor((Date.now() - startTime) / 1000);
+        const minutes = Math.floor(elapsed / 60).toString().padStart(2, '0');
+        const seconds = (elapsed % 60).toString().padStart(2, '0');
+        document.getElementById('timer').textContent = `${minutes}:${seconds}`;
+    }, 1000);
+}
+
+// ===== SUBMIT OPTIONS =====
+function showSubmitOptions() {
+    saveProgress();
+    document.getElementById('submitModal').style.display = 'flex';
+}
+
+function closeSubmitModal(event) {
+    if (event.target === document.getElementById('submitModal')) {
+        document.getElementById('submitModal').style.display = 'none';
+    }
+}
+
+function closeSubmitModalDirect() {
+    document.getElementById('submitModal').style.display = 'none';
+}
+
+// Submit by email
+function submitByEmail() {
+    saveProgress();
+    const subject = 'Homework Submission - ' + document.title;
+    const body = 'Student Name: [Please fill in]\n\nCompleted homework is attached as PDF.\n\nTime spent: ' + document.getElementById('timer').textContent;
+    
+    // Create mailto link
+    window.location.href = `mailto:teacher@school.edu?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    
+    // Also trigger print to PDF
+    setTimeout(() => {
+        window.print();
+    }, 500);
+}
+
+// Download as PDF (uses print to PDF)
+function downloadPDF() {
+    saveProgress();
+    window.print();
+}
+
+// Print homework
+function printHomework() {
+    saveProgress();
+    window.print();
+}
+
+// Warn before leaving with unsaved changes
+window.addEventListener('beforeunload', function(e) {
+    saveProgress();
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,2326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Class Level 2 - Unit 7: Live and Learn</title>
+    <!-- Authentication Check -->
+    <script>
+        // Check if user is logged in
+        if (!sessionStorage.getItem('teacherLoggedIn')) {
+            window.location.href = '../login.html';
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        /* Unit Selector */
+        .unit-selector {
+            background: #1a252f;
+            padding: 15px 40px;
+            text-align: center;
+            border-bottom: 2px solid #d4af37;
+        }
+
+        .unit-selector h3 {
+            color: white;
+            margin-bottom: 10px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .unit-links {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .unit-btn {
+            background: #34495e;
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .unit-btn:hover {
+            background: #e67e22;
+            transform: translateY(-2px);
+        }
+
+        .unit-btn.active {
+            background: #e67e22;
+            border-color: white;
+            pointer-events: none;
+        }
+
+        /* Unit Header - Keep Unit 7 Colors */
+        .unit-header {
+            background: linear-gradient(135deg, #722f37 0%, #8b3a3a 100%);
+            color: white;
+            padding: 60px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .unit-number {
+            font-size: 120px;
+            font-weight: bold;
+            opacity: 0.3;
+            position: absolute;
+            top: 20px;
+            left: 40px;
+            line-height: 1;
+        }
+
+        .unit-title {
+            font-size: 48px;
+            font-weight: bold;
+            margin-left: 100px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .unit-theme {
+            font-size: 24px;
+            margin-left: 100px;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+
+        /* Navigation */
+        .nav-bar {
+            background: #2c3e50;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #d4af37;
+        }
+
+        .teacher-toggle {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .teacher-toggle:hover {
+            transform: scale(1.05);
+        }
+
+        /* Main Content */
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+            scroll-margin-top: 80px;
+        }
+
+        .section-header {
+            background: #34495e;
+            color: white;
+            padding: 20px 30px;
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            border-left: 8px solid #722f37;
+        }
+
+        /* Unit Outcomes Box - Unit 7 Orange */
+        .outcomes-box {
+            background: linear-gradient(135deg, #722f37 0%, #8b3a3a 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .outcomes-box h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid white;
+            padding-bottom: 10px;
+        }
+
+        .outcomes-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .outcomes-box li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .outcomes-box li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* Quick Links Bar */
+        .quick-links-bar {
+            background: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 5px solid #d4af37;
+        }
+
+        .quick-links-bar h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .link-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .link-chip {
+            background: white;
+            border: 2px solid #e67e22;
+            color: #e67e22;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .link-chip:hover {
+            background: #722f37;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(230,126,34,0.3);
+        }
+
+        .link-chip.external::after {
+            content: "↗";
+            font-size: 12px;
+        }
+
+        /* Vocabulary Section */
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .vocab-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-left: 4px solid #d4af37;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .vocab-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .vocab-word {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .vocab-def {
+            color: #555;
+            font-size: 15px;
+        }
+
+        /* Exercise Boxes */
+        .exercise {
+            background: #fff;
+            border: 2px solid #ecf0f1;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+            transition: all 0.3s;
+        }
+
+        .exercise:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .exercise-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .exercise-icon {
+            background: #722f37;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* Yellow Strategy Box */
+        .strategy-box {
+            background: #fff9c4;
+            border: 2px solid #f9a825;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .strategy-box::before {
+            content: "STRATEGY";
+            background: #f9a825;
+            color: white;
+            padding: 4px 12px;
+            font-size: 12px;
+            font-weight: bold;
+            position: absolute;
+            top: -12px;
+            left: 20px;
+        }
+
+        .strategy-title {
+            font-weight: bold;
+            color: #e65100;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        /* Listening Section Audio Player */
+        .audio-player {
+            background: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+            border-left: 4px solid #d4af37;
+        }
+
+        .audio-label {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        audio {
+            width: 100%;
+            max-width: 500px;
+            margin: 10px 0;
+        }
+
+        /* Grammar Chart */
+        .grammar-chart {
+            background: #f8f9fa;
+            border: 2px solid #34495e;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .chart-header {
+            background: #34495e;
+            color: white;
+            padding: 15px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .chart-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .chart-row:last-child {
+            border-bottom: none;
+        }
+
+        .chart-cell {
+            padding: 15px;
+            border-right: 1px solid #ddd;
+        }
+
+        .chart-cell:last-child {
+            border-right: none;
+        }
+
+        .chart-cell.header {
+            background: #ecf0f1;
+            font-weight: bold;
+        }
+
+        /* Reading Passage */
+        .reading-passage {
+            background: #fff;
+            border-left: 5px solid #d4af37;
+            padding: 30px;
+            margin: 20px 0;
+            font-size: 16px;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .passage-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        /* Teacher's Notes */
+        .teacher-notes {
+            display: block;
+            background: #e8f5e9;
+            border: 2px solid #4caf50;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .teacher-notes.visible {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; max-height: 0; }
+            to { opacity: 1; max-height: 1000px; }
+        }
+
+        .teacher-label {
+            background: #4caf50;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 3px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        /* Discussion Box */
+        .discussion-box {
+            background: #e3f2fd;
+            border-left: 5px solid #d4af37;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .discussion-questions {
+            list-style: none;
+            counter-reset: question;
+        }
+
+        .discussion-questions li {
+            margin-bottom: 15px;
+            padding-left: 35px;
+            position: relative;
+        }
+
+        .discussion-questions li::before {
+            counter-increment: question;
+            content: counter(question);
+            position: absolute;
+            left: 0;
+            background: #2196f3;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        /* Activity Box */
+        .activity-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+            box-shadow: 0 4px 15px rgba(102,126,234,0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .activity-box::before {
+            content: "🎯";
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 60px;
+            opacity: 0.2;
+        }
+
+        .activity-box h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+            padding-bottom: 10px;
+        }
+
+        .activity-box.teacher-only {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            display: none;
+        }
+
+        .teacher-view .activity-box.teacher-only {
+            display: block;
+        }
+
+        .activity-btn {
+            background: white;
+            color: #667eea;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: all 0.3s;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .activity-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        /* Video Section */
+        .video-box {
+            background: #2c3e50;
+            color: white;
+            padding: 40px;
+            text-align: center;
+            border-radius: 12px;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-box::before {
+            content: "▶";
+            font-size: 80px;
+            opacity: 0.2;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .video-embed {
+            width: 100%;
+            max-width: 800px;
+            height: 450px;
+            border: none;
+            border-radius: 8px;
+            margin: 20px auto;
+            display: block;
+        }
+
+        /* Resources Section */
+        .resources-box {
+            background: #fff8f0;
+            border: 2px solid #d4af37;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+
+        .resources-title {
+            color: #722f37;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 20px;
+        }
+
+        .resources-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .resources-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .resources-list li::before {
+            content: "🔗";
+            position: absolute;
+            left: 0;
+        }
+
+        .resources-list a {
+            color: #722f37;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .resources-list a:hover {
+            border-bottom-color: #d35400;
+        }
+
+        .resource-desc {
+            color: #666;
+            font-size: 14px;
+            margin-left: 5px;
+        }
+
+        /* Footer Navigation */
+        .unit-nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 30px 40px;
+            background: #ecf0f1;
+            border-top: 3px solid #34495e;
+        }
+
+        .nav-btn {
+            background: #34495e;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: #722f37;
+        }
+
+        .nav-btn.disabled {
+            background: #95a5a6;
+            cursor: not-allowed;
+        }
+
+        /* Game Link */
+        .game-link {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 20px 0;
+            text-decoration: none;
+            display: block;
+            font-weight: bold;
+            font-size: 18px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-link::before {
+            content: "🎮";
+            font-size: 40px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .game-link:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(245,87,108,0.4);
+        }
+
+        /* Print Button */
+        .print-btn {
+            background: #95a5a6;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-right: 10px;
+            transition: all 0.3s;
+        }
+
+        .print-btn:hover {
+            background: #7f8c8d;
+            transform: scale(1.05);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .vocab-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .unit-title {
+                font-size: 32px;
+                margin-left: 0;
+            }
+
+            .unit-number {
+                font-size: 80px;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .video-embed {
+                height: 250px;
+            }
+
+            .unit-links {
+                gap: 5px;
+            }
+
+            .unit-btn {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+        }
+
+        /* True/False Grid */
+        .tf-grid {
+            display: grid;
+            grid-template-columns: 3fr 1fr 1fr;
+            gap: 10px;
+            max-width: 600px;
+            margin-top: 15px;
+        }
+
+        .tf-header {
+            font-weight: bold;
+            border-bottom: 2px solid #d4af37;
+            padding-bottom: 5px;
+        }
+
+        .tf-row {
+            padding: 8px 0;
+            border-bottom: 1px solid #ddd;
+        }
+    
+/* Dark Mode Styles */
+body.dark-mode {
+    background: #1a1a1a;
+    color: #e0e0e0;
+}
+
+body.dark-mode .container {
+    background: #2d2d2d;
+}
+
+body.dark-mode .content {
+    background: #2d2d2d;
+}
+
+body.dark-mode .section-header {
+    background: #3d3d3d;
+    color: #fff;
+}
+
+body.dark-mode .exercise {
+    background: #363636;
+    border-color: #444;
+}
+
+body.dark-mode .vocab-item {
+    background: #363636;
+    color: #e0e0e0;
+}
+
+body.dark-mode .vocab-word {
+    color: #fff;
+}
+
+body.dark-mode .vocab-def {
+    color: #ccc;
+}
+
+body.dark-mode .grammar-chart {
+    background: #363636;
+    border-color: #444;
+}
+
+body.dark-mode .chart-cell {
+    border-color: #722f37;
+            color: #722f37;
+}
+
+body.dark-mode .chart-cell.header {
+    background: #3d3d3d;
+    color: #fff;
+}
+
+body.dark-mode .reading-passage {
+    background: #363636;
+    color: #e0e0e0;
+}
+
+body.dark-mode .strategy-box {
+    background: #4a4a2a;
+    border-color: #f9a825;
+}
+
+body.dark-mode .quick-links-bar {
+    background: #363636;
+}
+
+body.dark-mode .link-chip {
+    background: #2d2d2d;
+}
+
+body.dark-mode .resources-box {
+    background: #363636;
+}
+
+body.dark-mode .unit-nav {
+    background: #2d2d2d;
+    border-color: #444;
+}
+
+body.dark-mode .discussion-box {
+    background: #2d3d4d;
+}
+
+body.dark-mode .audio-player {
+    background: #363636;
+}
+
+body.dark-mode .audio-label {
+    color: #fff;
+}
+    
+        /* ===== 3D DYNAMIC BUTTONS ===== */
+        
+        /* Base 3D Button Style */
+        .btn-3d {
+            display: inline-block;
+            padding: 12px 28px;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #fff;
+            background: linear-gradient(145deg, #8b3a3a 0%, #722f37 50%, #5c1a1a 100%);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                0 4px 6px rgba(114, 47, 55, 0.3),
+                0 10px 20px rgba(114, 47, 55, 0.2),
+                inset 0 1px 0 rgba(255,255,255,0.2),
+                inset 0 -2px 0 rgba(0,0,0,0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(0);
+        }
+        
+        .btn-3d::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .btn-3d:hover::before {
+            left: 100%;
+        }
+        
+        .btn-3d:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 
+                0 8px 15px rgba(114, 47, 55, 0.4),
+                0 15px 30px rgba(114, 47, 55, 0.25),
+                inset 0 1px 0 rgba(255,255,255,0.3),
+                inset 0 -2px 0 rgba(0,0,0,0.2);
+            background: linear-gradient(145deg, #722f37 0%, #8b3a3a 50%, #722f37 100%);
+        }
+        
+        .btn-3d:active {
+            transform: translateY(-1px) scale(0.98);
+            box-shadow: 
+                0 2px 4px rgba(114, 47, 55, 0.3),
+                0 5px 10px rgba(114, 47, 55, 0.2),
+                inset 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        /* Gold Accent Button */
+        .btn-gold {
+            background: linear-gradient(145deg, #e5c76b 0%, #d4af37 50%, #b8960c 100%);
+            color: #722f37;
+            box-shadow: 
+                0 4px 6px rgba(212, 175, 55, 0.4),
+                0 10px 20px rgba(212, 175, 55, 0.25),
+                inset 0 1px 0 rgba(255,255,255,0.4),
+                inset 0 -2px 0 rgba(0,0,0,0.1);
+            font-weight: 800;
+        }
+        
+        .btn-gold:hover {
+            background: linear-gradient(145deg, #d4af37 0%, #e5c76b 50%, #d4af37 100%);
+            color: #5c1a1a;
+            box-shadow: 
+                0 8px 15px rgba(212, 175, 55, 0.5),
+                0 15px 30px rgba(212, 175, 55, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.5),
+                inset 0 -2px 0 rgba(0,0,0,0.1);
+        }
+        
+        .btn-gold:active {
+            box-shadow: 
+                0 2px 4px rgba(212, 175, 55, 0.4),
+                0 5px 10px rgba(212, 175, 55, 0.2),
+                inset 0 2px 4px rgba(0,0,0,0.15);
+        }
+        
+        /* Outline 3D Button */
+        .btn-outline {
+            background: transparent;
+            color: #722f37;
+            border: 2px solid #722f37;
+            box-shadow: 
+                0 4px 6px rgba(114, 47, 55, 0.1),
+                0 0 0 4px rgba(114, 47, 55, 0.05);
+        }
+        
+        .btn-outline:hover {
+            background: #722f37;
+            color: #fff;
+            box-shadow: 
+                0 8px 15px rgba(114, 47, 55, 0.3),
+                0 0 0 6px rgba(114, 47, 55, 0.1);
+        }
+        
+        /* Small Button Variant */
+        .btn-sm {
+            padding: 8px 18px;
+            font-size: 12px;
+        }
+        
+        /* Large Button Variant */
+        .btn-lg {
+            padding: 16px 36px;
+            font-size: 16px;
+        }
+        
+        /* Icon Button */
+        .btn-icon {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-icon svg,
+        .btn-icon i,
+        .btn-icon span.icon {
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+        }
+        
+        .btn-icon:hover svg,
+        .btn-icon:hover i,
+        .btn-icon:hover span.icon {
+            transform: translateX(3px);
+        }
+        
+        /* Rounded Square Buttons (for nav) */
+        .btn-square {
+            border-radius: 12px;
+            padding: 10px 20px;
+        }
+        
+        /* Pill Button */
+        .btn-pill {
+            border-radius: 50px;
+        }
+        
+        /* Floating Action Button Style */
+        .btn-float {
+            box-shadow: 
+                0 6px 12px rgba(114, 47, 55, 0.25),
+                0 0 0 1px rgba(114, 47, 55, 0.1),
+                inset 0 1px 0 rgba(255,255,255,0.2);
+        }
+        
+        .btn-float:hover {
+            transform: translateY(-4px);
+            box-shadow: 
+                0 12px 24px rgba(114, 47, 55, 0.35),
+                0 0 0 1px rgba(114, 47, 55, 0.15),
+                inset 0 1px 0 rgba(255,255,255,0.25);
+        }
+        
+        /* Gradient Shine Effect */
+        .btn-shine {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-shine::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to right,
+                transparent 0%,
+                rgba(255,255,255,0.1) 50%,
+                transparent 100%
+            );
+            transform: rotate(30deg) translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+        
+        .btn-shine:hover::after {
+            transform: rotate(30deg) translateX(100%);
+        }
+        
+        /* Ripple Effect on Click */
+        .btn-ripple {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-ripple span.ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.4);
+            transform: scale(0);
+            animation: ripple-animation 0.6s linear;
+            pointer-events: none;
+        }
+        
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+        
+        /* Glow Effect */
+        .btn-glow {
+            animation: glow-pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes glow-pulse {
+            0%, 100% {
+                box-shadow: 
+                    0 4px 6px rgba(114, 47, 55, 0.3),
+                    0 0 20px rgba(212, 175, 55, 0.2);
+            }
+            50% {
+                box-shadow: 
+                    0 4px 6px rgba(114, 47, 55, 0.3),
+                    0 0 30px rgba(212, 175, 55, 0.4);
+            }
+        }
+        
+        /* Button Group */
+        .btn-group {
+            display: inline-flex;
+            gap: 0;
+        }
+        
+        .btn-group .btn-3d {
+            border-radius: 0;
+        }
+        
+        .btn-group .btn-3d:first-child {
+            border-radius: 50px 0 0 50px;
+        }
+        
+        .btn-group .btn-3d:last-child {
+            border-radius: 0 50px 50px 0;
+        }
+        
+        /* Dark Mode Button Styles */
+        body.dark-mode .btn-3d {
+            background: linear-gradient(145deg, #8b3a3a 0%, #5c1a1a 50%, #3d1515 100%);
+            box-shadow: 
+                0 4px 6px rgba(0, 0, 0, 0.4),
+                0 10px 20px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.1),
+                inset 0 -2px 0 rgba(0,0,0,0.3);
+        }
+        
+        body.dark-mode .btn-3d:hover {
+            background: linear-gradient(145deg, #722f37 0%, #8b3a3a 50%, #722f37 100%);
+            box-shadow: 
+                0 8px 15px rgba(0, 0, 0, 0.5),
+                0 15px 30px rgba(0, 0, 0, 0.35),
+                0 0 20px rgba(212, 175, 55, 0.2),
+                inset 0 1px 0 rgba(255,255,255,0.15),
+                inset 0 -2px 0 rgba(0,0,0,0.3);
+        }
+        
+        body.dark-mode .btn-gold {
+            background: linear-gradient(145deg, #e5c76b 0%, #d4af37 50%, #b8960c 100%);
+            color: #3d1515;
+            box-shadow: 
+                0 4px 6px rgba(212, 175, 55, 0.3),
+                0 10px 20px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.3);
+        }
+        
+        body.dark-mode .btn-outline {
+            border-color: #d4af37;
+            color: #d4af37;
+            box-shadow: 
+                0 4px 6px rgba(0, 0, 0, 0.2),
+                0 0 0 4px rgba(212, 175, 55, 0.05);
+        }
+        
+        body.dark-mode .btn-outline:hover {
+            background: #d4af37;
+            color: #3d1515;
+            box-shadow: 
+                0 8px 15px rgba(212, 175, 55, 0.3),
+                0 0 0 6px rgba(212, 175, 55, 0.1);
+        }
+        
+        /* Section Navigation Buttons Enhancement */
+        .nav-bar button {
+            background: linear-gradient(145deg, #faf8f5 0%, #f0ebe3 100%);
+            color: #722f37;
+            border: 2px solid transparent;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 
+                0 2px 4px rgba(114, 47, 55, 0.1),
+                inset 0 1px 0 rgba(255,255,255,0.8);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-bar button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(212, 175, 55, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.4s ease, height 0.4s ease;
+        }
+        
+        .nav-bar button:hover::before {
+            width: 200%;
+            height: 200%;
+        }
+        
+        .nav-bar button:hover {
+            background: linear-gradient(145deg, #722f37 0%, #8b3a3a 100%);
+            color: #fff;
+            border-color: #d4af37;
+            transform: translateY(-2px);
+            box-shadow: 
+                0 6px 12px rgba(114, 47, 55, 0.25),
+                0 0 0 3px rgba(212, 175, 55, 0.2),
+                inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+        
+        .nav-bar button.active {
+            background: linear-gradient(145deg, #722f37 0%, #5c1a1a 100%);
+            color: #d4af37;
+            border-color: #d4af37;
+            box-shadow: 
+                0 4px 8px rgba(114, 47, 55, 0.3),
+                0 0 0 3px rgba(212, 175, 55, 0.3),
+                inset 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        body.dark-mode .nav-bar button {
+            background: linear-gradient(145deg, #3d3d3d 0%, #2d2d2d 100%);
+            color: #e0e0e0;
+            box-shadow: 
+                0 2px 4px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.05);
+        }
+        
+        body.dark-mode .nav-bar button:hover {
+            background: linear-gradient(145deg, #722f37 0%, #5c1a1a 100%);
+            color: #fff;
+            border-color: #d4af37;
+        }
+        
+        /* Homework Menu Styles */
+        .homework-menu a:hover {
+            background: #f9f5f0;
+            padding-left: 25px;
+        }
+        
+        body.dark-mode .homework-menu {
+            background: #2d2d2d !important;
+            border: 1px solid #444;
+        }
+        
+        body.dark-mode .homework-menu a {
+            color: #d4af37 !important;
+            border-bottom-color: #444 !important;
+        }
+        
+        body.dark-mode .homework-menu a:hover {
+            background: #3d3d3d !important;
+        }
+        
+        body.dark-mode .nav-bar button.active {
+            background: linear-gradient(145deg, #5c1a1a 0%, #722f37 100%);
+            color: #d4af37;
+            border-color: #d4af37;
+            box-shadow: 
+                0 4px 8px rgba(0, 0, 0, 0.4),
+                0 0 0 3px rgba(212, 175, 55, 0.2),
+                inset 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        /* Audio/Play Buttons */
+        .audio-btn, .play-btn {
+            background: linear-gradient(145deg, #722f37 0%, #5c1a1a 100%);
+            color: #d4af37;
+            border: 2px solid #d4af37;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 
+                0 4px 8px rgba(114, 47, 55, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+        
+        .audio-btn:hover, .play-btn:hover {
+            transform: scale(1.1) translateY(-2px);
+            box-shadow: 
+                0 8px 16px rgba(114, 47, 55, 0.4),
+                0 0 20px rgba(212, 175, 55, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.2);
+        }
+        
+        .audio-btn:active, .play-btn:active {
+            transform: scale(0.95);
+            box-shadow: 
+                0 2px 4px rgba(114, 47, 55, 0.3),
+                inset 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        body.dark-mode .audio-btn,
+        body.dark-mode .play-btn {
+            background: linear-gradient(145deg, #5c1a1a 0%, #3d1515 100%);
+            box-shadow: 
+                0 4px 8px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255,255,255,0.05);
+        }
+
+        
+        /* Local Video Player Styles */
+        .local-video-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            background: #1a1a1a;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 3px solid #d4af37;
+        }
+        
+        .local-video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .video-fallback {
+            padding: 40px;
+            text-align: center;
+            background: #2d2d2d;
+            color: #d4af37;
+        }
+        
+        .video-fallback-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+        
+        .video-offline-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(145deg, #722f37 0%, #5c1a1a 100%);
+            color: #d4af37;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            z-index: 10;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            pointer-events: none;
+        }
+        
+        .video-info {
+            background: linear-gradient(145deg, #722f37 0%, #5c1a1a 100%);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .video-info-title {
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .video-info-format {
+            background: #d4af37;
+            color: #722f37;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+        
+        /* Dark mode support */
+        body.dark-mode .local-video-container {
+            border-color: #d4af37;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        
+        /* Enhanced Video Player Controls */
+        .local-video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Custom control hints */
+        .video-controls-hint {
+            background: linear-gradient(145deg, #3d3d3d 0%, #2d2d2d 100%);
+            color: #d4af37;
+            padding: 10px 15px;
+            font-size: 12px;
+            text-align: center;
+            border-bottom: 2px solid #d4af37;
+        }
+        
+        .video-controls-hint span {
+            font-weight: 700;
+            margin-right: 8px;
+        }
+        
+        /* Captions/Subtitles styling */
+        .local-video::cue {
+            background: rgba(114, 47, 55, 0.9);
+            color: #d4af37;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        
+        /* Vocabulary Audio Pronunciation */
+        .vocab-item {
+            position: relative;
+        }
+        
+        .vocab-audio-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(145deg, #d4af37 0%, #e5c76b 100%);
+            color: #722f37;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 5;
+        }
+        
+        .vocab-audio-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        
+        .vocab-audio-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .vocab-audio-btn.playing {
+            animation: pulse-audio 1s infinite;
+        }
+        
+        @keyframes pulse-audio {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+            50% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
+        }
+        
+        /* Alternative: Google TTS link */
+        .vocab-tts-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 8px;
+            padding: 5px 10px;
+            background: #f0f0f0;
+            border-radius: 15px;
+            font-size: 12px;
+            color: #722f37;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .vocab-tts-link:hover {
+            background: #d4af37;
+            color: white;
+        }
+        
+        .vocab-pronunciation {
+            font-size: 13px;
+            color: #666;
+            font-style: italic;
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .vocab-pronunciation .ipa {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: #f9f5f0;
+            padding: 2px 8px;
+            border-radius: 4px;
+            border: 1px solid #d4af37;
+        }
+        
+        body.dark-mode .vocab-audio-btn {
+            background: linear-gradient(145deg, #e5c76b 0%, #d4af37 100%);
+            color: #3d1515;
+        }
+        
+        body.dark-mode .vocab-pronunciation {
+            color: #aaa;
+        }
+        
+        body.dark-mode .vocab-pronunciation .ipa {
+            background: #3d3d3d;
+            border-color: #d4af37;
+            color: #d4af37;
+        }
+
+        </style>
+    <base target="_blank">
+</head>
+<body>
+    <div class="container" id="mainContainer">
+        <!-- Unit Header -->
+        <header class="unit-header">
+            <div class="unit-number">7</div>
+            <h1 class="unit-title">Live and Learn</h1>
+            <p class="unit-theme">Learning and Education</p>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav-bar">
+            <div class="nav-links">
+                <a href="#vocabulary">Vocabulary</a>
+                <a href="#grammar">Grammar</a>
+                <a href="#listening">Listening</a>
+                <a href="#reading">Reading</a>
+                <a href="#writing">Writing</a>
+                <a href="#speaking">Speaking</a>
+                <a href="#video">Video</a>
+                <a href="#resources">Resources</a>
+                <a href="book2b_reference.html">Reference</a>
+            </div>
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <div class="homework-dropdown" style="position: relative;">
+                    <button class="btn-3d btn-sm" onclick="toggleHomeworkMenu('hw-menu-7')" style="background: linear-gradient(145deg, #d4af37 0%, #e5c76b 100%); color: #722f37;">📝 Homework ▼</button>
+                    <div id="hw-menu-7" class="homework-menu" style="display: none; position: absolute; top: 100%; right: 0; margin-top: 10px; background: white; border-radius: 8px; box-shadow: 0 8px 20px rgba(0,0,0,0.2); min-width: 150px; z-index: 1000; overflow: hidden;">
+                        <a href="homework/unit7_vocab.html" target="_blank" style="display: block; padding: 12px 20px; color: #722f37; text-decoration: none; font-weight: 600; border-bottom: 1px solid #eee; transition: all 0.3s;">📚 Vocabulary</a>
+                        <a href="homework/unit7_grammar.html" target="_blank" style="display: block; padding: 12px 20px; color: #722f37; text-decoration: none; font-weight: 600; border-bottom: 1px solid #eee; transition: all 0.3s;">📝 Grammar</a>
+                        <a href="homework/unit7_writing.html" target="_blank" style="display: block; padding: 12px 20px; color: #722f37; text-decoration: none; font-weight: 600; transition: all 0.3s;">✍️ Writing</a>
+                    </div>
+                </div>
+                <button class="print-btn" onclick="window.print()">🖨️ Print</button>
+            </div>
+        </nav>
+
+        <div class="content">
+            <!-- Unit Outcomes -->
+            <div class="outcomes-box">
+                <h2>Unit Outcomes</h2>
+                <p style="margin-bottom: 15px; font-size: 18px;">In this unit, you will learn to:</p>
+                <ul>
+                    <li>use noun clauses with wh- words and if/whether</li>
+                    <li>recognize the meaning of know used in different expressions</li>
+                    <li>describe different learning experiences and how you feel about them</li>
+                    <li>develop a short essay with a clear thesis statement and conclusion</li>
+                </ul>
+            </div>
+
+            <!-- Discussion Questions -->
+            <div class="discussion-box">
+                <h3 style="margin-bottom: 15px; color: #1565c0;">Think About It</h3>
+                <ul class="discussion-questions">
+                    <li>What is happening in the opening photo? What do you think the students are learning?</li>
+                    <li>What is the difference between <em>learning</em> and <em>education</em>? Which is more important to you?</li>
+                    <li>Who or what has taught you the most? What are some important lessons you have learned?</li>
+                </ul>
+            </div>
+
+            <!-- VOCABULARY SECTION -->
+            <section id="vocabulary" class="section">
+                <div class="section-header">Vocabulary</div>
+
+                <!-- Quick Links -->
+                <div class="quick-links-bar">
+                    <h3>🔗 Quick Learning Resources</h3>
+                    <div class="link-chips">
+                        <a href="https://www.dictionary.com/browse/accomplish" class="link-chip external">Dictionary: Accomplish</a>
+                        <a href="https://www.chess.com/learn" class="link-chip external">Learn Chess (Kasparov)</a>
+                        <a href="https://www.16personalities.com/free-personality-test" class="link-chip external">Learning Style Quiz</a>
+                        <a href="https://www.youtube.com/watch?v=Unzc731iCUY" class="link-chip external">How to Learn Anything</a>
+                    </div>
+                </div>
+
+                <p style="margin-bottom: 20px; font-size: 18px; color: #666;">Video: Learning and Intelligence</p>
+
+                <div class="vocab-grid">
+                    <div class="vocab-item">
+                        <div class="vocab-word">accomplish</div>
+                        <div class="vocab-def">to achieve something or succeed at doing something</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">aptitude</div>
+                        <div class="vocab-def">ability to learn a type of work or activity quickly and do it well</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">common sense</div>
+                        <div class="vocab-def">a person's natural ability to make good judgments and behave sensibly</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">excel</div>
+                        <div class="vocab-def">to be very good at doing something</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">instinct</div>
+                        <div class="vocab-def">the natural tendency of a person to behave or react a certain way</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">intellectual</div>
+                        <div class="vocab-def">someone who studies a lot and thinks about complicated ideas</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">master</div>
+                        <div class="vocab-def">someone who is extremely skilled at a particular activity</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">outcome</div>
+                        <div class="vocab-def">a result or effect of an action or situation</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">strategy</div>
+                        <div class="vocab-def">planning the best way to gain advantage or achieve success</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">street smarts</div>
+                        <div class="vocab-def">the quick-thinking ability to handle difficult or dangerous situations, especially in big cities</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">work out</div>
+                        <div class="vocab-def">to find a solution to a problem</div>
+                    </div>
+                </div>
+
+                <!-- Exercise A -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">A</span>
+                        <span>Word Bank Discussion</span>
+                    </div>
+                    <p>Look at the nouns in the word bank. Which ones describe an intelligence that you are born with? Which describe an intelligence that is learned? Discuss with a partner.</p>
+
+                    <div class="teacher-notes">
+                        <span class="teacher-label">Teacher's Notes</span>
+                        <p><strong>Born with:</strong> instinct, aptitude, common sense<br>
+                        <strong>Learned:</strong> strategy, street smarts, intellectual, master<br>
+                        <strong>Both:</strong> accomplish, excel, work out</p>
+                    </div>
+                </div>
+
+                <!-- Exercise B -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">B</span>
+                        <span>Garry Kasparov Profile</span>
+                    </div>
+                    <p>Complete this profile of Garry Kasparov with the correct words. When you're done, tell a partner who he is and what makes him such an exceptional chess player.</p>
+                    <br>
+                    <p style="background: #f5f5f5; padding: 20px; border-radius: 5px; line-height: 2;">
+                        Scientists, computer experts, and other (1) <strong>intellectuals/masters</strong> have often wondered: Who is smarter, man or machine? Garry Kasparov, a Russian chess (2) <strong>intellectual/master</strong> who has a natural (3) <strong>instinct/strategy</strong> for the game, attempted to answer that question...
+                    </p>
+
+                    <div class="teacher-notes">
+                        <span class="teacher-label">Answers</span>
+                        <p>1. intellectuals | 2. master | 3. instinct | 4. strategy | 5. excel | 6. accomplished | 7. outcome | 8. work out</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- GRAMMAR SECTION -->
+            <section id="grammar" class="section">
+                <div class="section-header">Grammar</div>
+
+                <!-- Quick Links -->
+                <div class="quick-links-bar">
+                    <h3>🔗 Grammar Practice Links</h3>
+                    <div class="link-chips">
+                        <a href="https://www.englisch-hilfen.de/en/grammar/noun_clauses.htm" class="link-chip external">Englisch-Hilfen: Noun Clauses</a>
+                        <a href="https://www.englishclub.com/grammar/noun-clauses.htm" class="link-chip external">English Club: Noun Clauses</a>
+                        <a href="https://www.grammarly.com/blog/parts-of-speech/noun-clause/" class="link-chip external">Grammarly Guide</a>
+                    </div>
+                </div>
+
+                <p style="margin-bottom: 20px; font-size: 18px; color: #666;">Noun Clauses with Wh- Words and If/Whether</p>
+
+                <div class="grammar-chart">
+                    <div class="chart-header">Noun Clauses with Wh- Words and If/Whether</div>
+                    <div class="chart-row">
+                        <div class="chart-cell header">wh- clauses</div>
+                        <div class="chart-cell">
+                            Combine a wh- question and a statement. Change the question to statement word order.<br><br>
+                            <em>She taught sixty students in one class. How does she do it?</em> → <strong>I don't know how she teaches sixty students in one class.</strong>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-cell header">if/whether clauses</div>
+                        <div class="chart-cell">
+                            Combine a yes/no question and a statement.<br><br>
+                            <em>Did he pass the exam? I wonder.</em> → <strong>I wonder if/whether he passed the exam (or not).</strong><br><br>
+                            <strong>Note:</strong> Use <em>if</em> when the noun clause outlines one condition. Use <em>whether (or not)</em> when the noun clause states alternative possibilities.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Exercise A -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">A</span>
+                        <span>Combine the Sentences</span>
+                    </div>
+                    <p>On a separate piece of paper, combine these sentences with the words in parentheses to make noun clauses.</p>
+                    <ol style="margin-top: 15px; margin-left: 30px; line-height: 2;">
+                        <li>Is our class meeting today? I have no idea. <strong>(whether)</strong></li>
+                        <li>Is Mr. Jones teaching chemistry? I'm not sure. <strong>(if)</strong></li>
+                        <li>Should I graduate early? I'll consider it. <strong>(whether)</strong></li>
+                        <li>Did they like the class? I don't know. <strong>(if)</strong></li>
+                    </ol>
+
+                    <div class="teacher-notes">
+                        <span class="teacher-label">Answers</span>
+                        <ol>
+                            <li>I have no idea whether our class is meeting today.</li>
+                            <li>I'm not sure if Mr. Jones is teaching chemistry.</li>
+                            <li>I'll consider whether I should graduate early.</li>
+                            <li>I don't know if they liked the class.</li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+
+            <!-- LISTENING SECTION -->
+            <section id="listening" class="section">
+                <div class="section-header">Listening</div>
+
+                <!-- Quick Links -->
+                <div class="quick-links-bar">
+                    <h3>🔗 Listening Practice Resources</h3>
+                    <div class="link-chips">
+                        <a href="https://www.bbc.co.uk/learningenglish/english/features/6-minute-english" class="link-chip external">BBC 6-Minute English</a>
+                        <a href="https://www.ted.com/talks" class="link-chip external">TED Talks</a>
+                        <a href="https://www.elllo.org/english/level2-beginners-true.htm" class="link-chip external">ELLLO Level 2</a>
+                        <a href="https://www.breakingnewsenglish.com/" class="link-chip external">Breaking News English</a>
+                    </div>
+                </div>
+
+                <p style="margin-bottom: 20px; font-size: 18px; color: #666;">Learning different learning styles / Understanding the meaning of <em>know</em></p>
+
+                <!-- Yellow Strategy Box -->
+                <div class="strategy-box">
+                    <div class="strategy-title">Listening Strategy: Understanding the Meaning of Know</div>
+                    <p>The word <strong>know</strong> is used in a number of common expressions in English to show agreement, to express certainty or uncertainty, to check for understanding, and to talk about possibility. Learning these expressions will help you follow cues that indicate the speaker's attitude towards the topic.</p>
+                </div>
+
+                <!-- Audio Player Track 14 -->
+                <div class="audio-player">
+                    <div class="audio-label">Audio: Track 14 - Conversation between Ravi and Sophie</div>
+                    <audio controls>
+                        <source src="https://audio.jukehost.co.uk/bhOa0zIaLICEgjW0DyH8K8h6B5Tvz8zO" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+
+                <!-- Exercise B -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">B</span>
+                        <span>Comprehension Check</span>
+                    </div>
+                    <p>Listen to a conversation between Ravi and Sophie. Choose the best answer(s) for each question.</p>
+                    <ol style="margin-top: 15px; margin-left: 30px; line-height: 2;">
+                        <li>Which places does Ravi want to go to? 
+                            <br><input type="checkbox"> London 
+                            <br><input type="checkbox"> Uruguay 
+                            <br><input type="checkbox"> India
+                        </li>
+                        <li>What has Ravi thought about?
+                            <br><input type="checkbox"> the cost
+                            <br><input type="checkbox"> the dates
+                            <br><input type="checkbox"> his first destination
+                        </li>
+                        <li>Where will he stay?
+                            <br><input type="checkbox"> with his parents
+                            <br><input type="checkbox"> in a hotel
+                            <br><input type="checkbox"> with relatives
+                        </li>
+                    </ol>
+                </div>
+
+                <!-- Exercise D -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">D</span>
+                        <span>Listening Strategy Practice</span>
+                    </div>
+                    <p>Read the Listening Strategy. Then listen and match each expression with <em>know</em> to its meaning.</p>
+                    <div style="margin-top: 15px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; max-width: 600px;">
+                        <div><strong>1. I know, I know.</strong></div>
+                        <div>a. Do you understand what I mean?</div>
+
+                        <div><strong>2. As far as I know...</strong></div>
+                        <div>b. I'm not sure; I don't know.</div>
+
+                        <div><strong>3. You know what I'm saying?</strong></div>
+                        <div>c. I agree with you.</div>
+
+                        <div><strong>4. ...who knows?</strong></div>
+                        <div>d. Anything is possible.</div>
+
+                        <div><strong>5. ...you never know.</strong></div>
+                        <div>e. I don't have all the information, but I think (a situation) is true.</div>
+                    </div>
+
+                    <div class="teacher-notes">
+                        <span class="teacher-label">Answers</span>
+                        <p>1-c, 2-e, 3-a, 4-b, 5-d</p>
+                    </div>
+                </div>
+
+                <!-- Audio Player Track 15 -->
+                <div class="audio-player">
+                    <div class="audio-label">Audio: Track 15 - Listening Strategy Practice</div>
+                    <audio controls>
+                        <source src="https://audio.jukehost.co.uk/qqF5RozUImwbHZD6Nuhsi7gyTXztgLFD" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+            </section>
+
+            <!-- VIDEO SECTION -->
+            <section id="video" class="section">
+                <div class="section-header">Video</div>
+
+                <p style="margin-bottom: 20px; font-size: 18px; color: #666;">Video: Learning and Intelligence</p>
+
+                <div class="activity-box">
+                    <h3>🎥 Unit 7 Video</h3>
+                    <p>Watch the video about learning, intelligence, and the different ways people acquire knowledge and skills. This video explores various types of intelligence and learning strategies.</p>
+                </div>
+
+                <div class="video-box">
+                    <h3 style="font-size: 24px; margin-bottom: 15px;">🎬 World Class 2B - Unit 7 Video</h3>
+                    <p style="margin-bottom: 20px; opacity: 0.9;">Learning and Education</p>
+
+                    <div class="local-video-container">
+            <div class="video-offline-badge">📱 OFFLINE VIDEO</div>
+            <video class="local-video" controls controlsList="nodownload" preload="metadata" poster="">
+                <source src="WCL2-U07.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-controls-hint">
+                <span>🎥 Video Controls:</span> Play ▶️ | Pause ⏸️ | Rewind ⏪ | Forward ⏩ | Captions CC | Fullscreen 🔲
+            </div>
+            <div class="video-info">
+                <span class="video-info-title">Unit 7: Learning and Education</span>
+                <span class="video-info-format">HD</span>
+            </div>
+        </div>
+
+                    <p style="margin-top: 20px; font-size: 14px; opacity: 0.8;">
+                        <a href="https://www.youtube.com/watch?v=gDe-uHsEMn8" style="color: #f39c12; text-decoration: none;">Open in YouTube ↗</a>
+                    </p>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">A</span>
+                        <span>Before You Watch</span>
+                    </div>
+                    <ol style="margin-left: 30px; line-height: 2;">
+                        <li>What do you know about chess? Is it a game of strategy or luck?</li>
+                        <li>Can computers think, or do they just calculate?</li>
+                        <li>What does it mean to be a "master" at something?</li>
+                    </ol>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">B</span>
+                        <span>While You Watch</span>
+                    </div>
+                    <ol style="margin-left: 30px; line-height: 2;">
+                        <li>Who is Garry Kasparov? What makes him a chess master?</li>
+                        <li>What is Deep Blue? Who created it?</li>
+                        <li>What strategy did Kasparov use to try to beat the computer?</li>
+                        <li>How did Kasparov feel about the outcome of the match?</li>
+                    </ol>
+                </div>
+
+                <div class="teacher-notes">
+                    <span class="teacher-label">Teacher Video Guide</span>
+                    <p><strong>Documentary Activities:</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li><strong>Pre-watch:</strong> Activate schema about chess, AI, and human vs. machine intelligence</li>
+                        <li><strong>During watch:</strong> First viewing for gist, second for specific vocabulary</li>
+                        <li><strong>Post-watch:</strong> Connect to unit theme "Live and Learn"</li>
+                        <li><strong>Extension:</strong> Compare this 1997 match to modern AI (ChatGPT, etc.)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- READING SECTION -->
+            <section id="reading" class="section">
+                <div class="section-header">Reading</div>
+
+                <!-- Quick Links -->
+                <div class="quick-links-bar">
+                    <h3>🔗 Reading Resources & Travel Content</h3>
+                    <div class="link-chips">
+                        <a href="https://www.travelchannel.com/" class="link-chip external">Travel Channel</a>
+                        <a href="https://www.nationalgeographic.com/travel/" class="link-chip external">Nat Geo Travel</a>
+                        <a href="https://www.michaelpalin.com/" class="link-chip external">Michael Palin Official</a>
+                        <a href="https://www.newsela.com/" class="link-chip external">Newsela</a>
+                    </div>
+                </div>
+
+                <p style="margin-bottom: 20px; font-size: 18px; color: #666;">The World Is Our Classroom: Traveler Profile - Michael Palin</p>
+
+                <!-- Yellow Strategy Box -->
+                <div class="strategy-box">
+                    <div class="strategy-title">Reading Strategy: Recognizing Synonyms</div>
+                    <p>Writers will often use synonyms for common words in their writing. For example, instead of repeating the expression "the <strong>story</strong> of his life," the writer may substitute the word story with alternatives such as <em>tale</em>, <em>record</em>, <em>diary</em>, or <em>account</em>.</p>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">A</span>
+                        <span>Pre-Reading</span>
+                    </div>
+                    <p>Read the quotations in the box with the article. Then read items 1-4 below, which are paraphrases of the quotations, and match them to their source.</p>
+                    <ol style="margin-top: 15px; margin-left: 30px;">
+                        <li>Traveling teaches you to appreciate home. <span style="color: #666;">(a. St. Augustine / b. Moorish proverb / c. Lin Yutang / d. Mark Twain)</span></li>
+                        <li>You can learn something new from each place you travel to.</li>
+                        <li>Travel helps people from different backgrounds to know one another.</li>
+                        <li>Travel helps you gain a greater appreciation for humanity.</li>
+                    </ol>
+                </div>
+
+                <div class="reading-passage">
+                    <div class="passage-title">The World Is Our Classroom</div>
+                    <p style="font-style: italic; margin-bottom: 20px; color: #666;">Traveler profile: Michael Palin</p>
+
+                    <p>Everyone has to start somewhere. And for Michael Palin, travel writer and documentarian, his first big trip began in 1988 when he was asked by a British television channel to go around the world in eighty days, all expenses paid, and make six fifty-minute documentaries of his travels.</p>
+
+                    <p style="margin-top: 15px;">A well-known TV personality and a journalist had both turned down the offer, so the opportunity came to Palin. Incredibly, Palin completed his voyage within the scheduled eighty days, describing the trip as an "eye-opening" delight, one filled with many adventures, including his first visit to China. The documentary of his trip was wildly popular with viewing audiences.</p>
+
+                    <p style="margin-top: 15px;">His first long journey had been satisfying, so when Palin was asked to go on another, he readily agreed. During his first trip, Palin had traveled around the world horizontally. Now the plan was for him to do it vertically by going from the North Pole to the South Pole. For the "Pole to Pole" trek, Palin began near the Arctic Circle. From there he traveled south through Europe, across the Mediterranean, through Africa, ultimately reaching his final destination of Antarctica five months later.</p>
+
+                    <p style="margin-top: 15px;">The journey was so challenging that, by the end of it, he vowed never to do another travel documentary again. But after seeing so many amazing people and places, he couldn't stop. His next expedition, called "Full Circle," documented his trip around the countries surrounding the Pacific Ocean. It was the longest, most ambitious, and most exhausting of all his travels.</p>
+                </div>
+
+                <div class="teacher-notes">
+                    <span class="teacher-label">Answers</span>
+                    <p><strong>Exercise A:</strong><br>
+                    1. c (Lin Yutang)<br>
+                    2. d (Mark Twain)<br>
+                    3. a (St. Augustine)<br>
+                    4. b (Moorish proverb)</p>
+                </div>
+            </section>
+
+            <!-- WRITING SECTION -->
+            <section id="writing" class="section">
+                <div class="section-header">Writing</div>
+
+                <!-- Quick Links -->
+                <div class="quick-links-bar">
+                    <h3>🔗 Writing Tools & Resources</h3>
+                    <div class="link-chips">
+                        <a href="https://www.grammarly.com/" class="link-chip external">Grammarly</a>
+                        <a href="https://www.thesaurus.com/" class="link-chip external">Thesaurus</a>
+                        <a href="https://owl.purdue.edu/" class="link-chip external">Purdue Writing Lab</a>
+                    </div>
+                </div>
+
+                <p style="margin-bottom: 20px; font-size: 18px; color: #666;">Describe a life lesson / Writing a thesis statement and a conclusion</p>
+
+                <div class="strategy-box">
+                    <div class="strategy-title">Writing Strategy: Writing a Thesis Statement and a Conclusion</div>
+                    <p>A <strong>thesis statement</strong> tells readers what the essay is generally going to be about. It typically comes at the end of the first paragraph of an essay.</p>
+                    <p style="margin-top: 10px;">A <strong>concluding sentence</strong> brings the piece of writing to a close. One of the most common ways of writing a concluding sentence is to restate the thesis statement. Write this sentence in a different way—try not to repeat the exact same words as the thesis statement.</p>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">A</span>
+                        <span>Model Essay Analysis</span>
+                    </div>
+                    <p>Read the personal essay below. What happened to the writer? Was it a positive or negative experience? What did she learn from it?</p>
+
+                    <div style="background: #fff9c4; padding: 20px; margin-top: 15px; border-radius: 5px; border-left: 4px solid #d4af37;">
+                        <p style="margin-bottom: 15px;"><strong>Thesis Statement:</strong> <em>Though the experience was difficult, it taught me some valuable life lessons that have really helped me.</em></p>
+
+                        <p>One of the most important lessons I ever learned didn't come from a textbook or take place in a classroom. When I was fourteen, I was diagnosed with diabetes. Though the experience was difficult, it taught me some valuable life lessons that have really helped me.</p>
+
+                        <p style="margin-top: 15px;">People often say that teenagers are able to have fun and not take life too seriously, but that's not always true. In my case, because of my illness, I always had to be very responsible...</p>
+
+                        <p style="margin-top: 15px; border-top: 2px dashed #f9a825; padding-top: 15px;"><strong>Concluding Sentence:</strong> <em>Living with diabetes hasn't been easy, but the experience has taught me some important life lessons—ones that I continue to benefit from every day.</em></p>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">B</span>
+                        <span>Writing Assignment</span>
+                    </div>
+                    <p>Think about a positive or negative experience that taught you an important life lesson. Outline your ideas:</p>
+                    <ul style="margin-top: 15px; margin-left: 30px; line-height: 2;">
+                        <li><strong>Paragraph 1:</strong> Briefly introduce the experience and include a thesis statement.</li>
+                        <li><strong>Paragraph 2:</strong> Describe the experience in detail.</li>
+                        <li><strong>Paragraph 3:</strong> Explain what you learned and close with a concluding sentence.</li>
+                    </ul>
+
+                    <div class="teacher-notes">
+                        <span class="teacher-label">Scoring Rubric (20 points)</span>
+                        <ul>
+                            <li>Thesis Statement (5 pts): Clear, specific, positioned correctly</li>
+                            <li>Details (5 pts): Vivid, relevant, well-organized</li>
+                            <li>Lesson Learned (5 pts): Insightful, clearly explained</li>
+                            <li>Conclusion (5 pts): Restates thesis, provides closure</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SPEAKING SECTION -->
+            <section id="speaking" class="section">
+                <div class="section-header">Speaking</div>
+
+                <!-- Quick Links -->
+                <div class="quick-links-bar">
+                    <h3>🔗 Speaking Practice Resources</h3>
+                    <div class="link-chips">
+                        <a href="https://www.eslconversationquestions.com/" class="link-chip external">Conversation Questions DB</a>
+                        <a href="https://www.italki.com/" class="link-chip external">Find Speaking Partners</a>
+                        <a href="https://www.toastmasters.org/" class="link-chip external">Toastmasters International</a>
+                        <a href="https://www.loom.com/" class="link-chip external">Loom Video Recording</a>
+                    </div>
+                </div>
+
+                <div class="activity-box">
+                    <h3>🗣️ Speaking Challenge: 30-Second Speech</h3>
+                    <p>Record yourself answering: "What is the most important thing you've learned outside of school?" Use Loom to record and share with your class!</p>
+                    <a href="https://www.loom.com/" class="activity-btn">Open Loom ↗</a>
+                </div>
+
+                <p style="margin-bottom: 20px; font-size: 18px; color: #666;">Sources of learning</p>
+
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">A</span>
+                        <span>Discussion</span>
+                    </div>
+                    <p>With a partner, discuss the questions below.</p>
+                    <ol style="margin-top: 15px; margin-left: 30px;">
+                        <li>Do you think academic success is necessary to be successful in life?</li>
+                        <li>British Prime Minister Winston Churchill once said, <em>"My education was only interrupted by my schooling."</em> What do you think he meant by that?</li>
+                    </ol>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">B</span>
+                        <span>Sources of Learning</span>
+                    </div>
+                    <p>The list below names different sources of learning. Read the list and give an example of what you can learn or have learned from each.</p>
+                    <table style="width: 100%; margin-top: 15px; border-collapse: collapse;">
+                        <tr style="background: #ecf0f1;">
+                            <th style="padding: 12px; text-align: left; border: 1px solid #bdc3c7;">Source</th>
+                            <th style="padding: 12px; text-align: left; border: 1px solid #bdc3c7;">Learning potential</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid #bdc3c7;">good teacher</td>
+                            <td style="padding: 12px; border: 1px solid #bdc3c7;"></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid #bdc3c7;">parent</td>
+                            <td style="padding: 12px; border: 1px solid #bdc3c7;"></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid #bdc3c7;">travel</td>
+                            <td style="padding: 12px; border: 1px solid #bdc3c7;"></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid #bdc3c7;">job</td>
+                            <td style="padding: 12px; border: 1px solid #bdc3c7;">You can learn the importance of being on time from a job.</td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+
+            <!-- RESOURCES SECTION -->
+            <section id="resources" class="section">
+                <div class="section-header">Additional Resources</div>
+
+                <a href="https://quizizz.com/join" class="game-link">
+                    🎮 Join Quizizz for Unit 7 Practice
+                    <span style="display: block; font-size: 14px; font-weight: normal; margin-top: 5px;">Compete with classmates on vocabulary, grammar, and comprehension!</span>
+                </a>
+
+                <div class="resources-box">
+                    <div class="resources-title">🔗 Unit 7 Supporting Links</div>
+                    <ul class="resources-list">
+                        <li>
+                            <a href="https://www.dictionary.com/browse/accomplish">Dictionary: Accomplish</a>
+                            <span class="resource-desc">- Definitions and examples for Unit 7 vocabulary</span>
+                        </li>
+                        <li>
+                            <a href="https://www.chess.com/learn">Learn Chess</a>
+                            <span class="resource-desc">- Interactive chess lessons related to Kasparov topic</span>
+                        </li>
+                        <li>
+                            <a href="https://www.16personalities.com/free-personality-test">Learning Style Quiz</a>
+                            <span class="resource-desc">- Discover your personal learning style</span>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com/watch?v=gDe-uHsEMn8">Deep Blue Documentary</a>
+                            <span class="resource-desc">- Full documentary on the historic chess match</span>
+                        </li>
+                        <li>
+                            <a href="https://www.englisch-hilfen.de/en/grammar/noun_clauses.htm">Noun Clauses Guide</a>
+                            <span class="resource-desc">- Extra grammar practice with exercises</span>
+                        </li>
+                        <li>
+                            <a href="https://www.michaelpalin.com/">Michael Palin Official</a>
+                            <span class="resource-desc">- Travel documentaries and educational content</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="activity-box" style="background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);">
+                    <h3>🌟 Unit 7 Project: Learning Portfolio</h3>
+                    <p><strong>Final Project Idea:</strong> Create a digital portfolio documenting three things you learned this week (one from class, one from life, one from a mistake). Include photos, reflections, and "street smarts" tips for peers.</p>
+                </div>
+
+                <div class="activity-box teacher-only" style="background: linear-gradient(135deg, #134E5E 0%, #71B280 100%);">
+                    <h3>📋 Teacher's Activity Dashboard</h3>
+                    <p><strong>Printable Resources:</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li><a href="#" onclick="alert('Print the vocabulary charades cards')" style="color: white;">Vocabulary Charades Cards</a></li>
+                        <li><a href="#" onclick="alert('Print sentence auction worksheets')" style="color: white;">Grammar Auction Worksheets</a></li>
+                        <li><a href="#" onclick="alert('Print travel brochure templates')" style="color: white;">Travel Brochure Templates</a></li>
+                        <li><a href="#" onclick="alert('Print peer review checklists')" style="color: white;">Writing Peer Review Checklists</a></li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer Navigation -->
+        <div class="unit-nav">
+            <a href="index.html" class="nav-btn">← Home</a>
+            <span style="align-self: center; font-weight: bold; color: #7f8c8d;">Book 2B - Unit 7 of 12</span>
+            <a href="unit8.html" class="nav-btn">Unit 8 →</a>
+        </div>
+    </div>
+
+    <script>
+        // Teacher Mode Toggle
+        function toggleTeacherMode() {
+            const container = document.getElementById('mainContainer');
+            const btn = document.querySelector('.teacher-toggle');
+
+            container.classList.toggle('teacher-view');
+
+            if (btn.textContent === "Teacher's Edition") {
+                btn.textContent = "Hide Answers";
+                btn.style.background = "#27ae60";
+            } else {
+                btn.textContent = "Teacher's Edition";
+                btn.style.background = "#e74c3c";
+            }
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+
+    <!-- Dark Mode Check -->
+    <script>
+        (function() {
+            if (localStorage.getItem('darkMode') === 'true') {
+                document.body.classList.add('dark-mode');
+            }
+        })();
+    </script>
+
+    <!-- Credit -->
+    <div style="text-align: center; color: #7f8c8d; font-size: 13px; padding: 15px; font-style: italic;">
+        Re-Created by ESL Teacher Ry
+    </div>
+
+    <!-- 3D Button Interactions -->
+    <script>
+        // Ripple effect for buttons
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('.btn-ripple, .btn-3d, .nav-bar button');
+            if (!btn) return;
+            
+            const ripple = document.createElement('span');
+            ripple.className = 'ripple';
+            
+            const rect = btn.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            
+            btn.appendChild(ripple);
+            
+            setTimeout(() => ripple.remove(), 600);
+        });
+        
+        // Magnetic button effect
+        document.querySelectorAll('.btn-3d, .audio-btn, .play-btn').forEach(btn => {
+            btn.addEventListener('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                this.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
+            });
+            
+            btn.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+            });
+        });
+        
+        // Homework menu toggle
+        function toggleHomeworkMenu(menuId) {
+            const menu = document.getElementById(menuId);
+            if (menu.style.display === 'none') {
+                menu.style.display = 'block';
+            } else {
+                menu.style.display = 'none';
+            }
+        }
+        
+        // Close homework menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.homework-dropdown')) {
+                document.querySelectorAll('.homework-menu').forEach(menu => {
+                    menu.style.display = 'none';
+                });
+            }
+        });
+    </script>
+
+
+    <!-- Vocabulary Audio Pronunciation -->
+    <script>
+        // Text-to-Speech for vocabulary pronunciation
+        function speakWord(word) {
+            if ('speechSynthesis' in window) {
+                // Cancel any ongoing speech
+                window.speechSynthesis.cancel();
+                
+                const utterance = new SpeechSynthesisUtterance(word);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.8;
+                utterance.pitch = 1;
+                
+                // Find the button and add playing animation
+                const buttons = document.querySelectorAll('.vocab-audio-btn');
+                buttons.forEach(btn => {
+                    if (btn.getAttribute('data-word') === word) {
+                        btn.classList.add('playing');
+                        btn.innerHTML = '🔊';
+                    }
+                });
+                
+                utterance.onend = function() {
+                    buttons.forEach(btn => {
+                        if (btn.getAttribute('data-word') === word) {
+                            btn.classList.remove('playing');
+                            btn.innerHTML = '🔈';
+                        }
+                    });
+                };
+                
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert('Text-to-speech is not supported in your browser.');
+            }
+        }
+        
+        // Add audio buttons to vocabulary items
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.vocab-item').forEach(item => {
+                const wordEl = item.querySelector('.vocab-word');
+                if (wordEl) {
+                    const word = wordEl.textContent.trim();
+                    const audioBtn = document.createElement('button');
+                    audioBtn.className = 'vocab-audio-btn';
+                    audioBtn.setAttribute('data-word', word);
+                    audioBtn.innerHTML = '🔈';
+                    audioBtn.title = 'Click to hear pronunciation';
+                    audioBtn.onclick = function(e) {
+                        e.stopPropagation();
+                        speakWord(word);
+                    };
+                    item.appendChild(audioBtn);
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

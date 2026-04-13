@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Class Level 2 - Book 2B | Units 7-12 & Reference</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f0f2f5;
+        }
+
+        /* Unit Selector - Consistent with Reference page */
+        .unit-selector {
+            background: #1a252f;
+            padding: 15px 40px;
+            text-align: center;
+            border-bottom: 3px solid #7c4dff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .unit-selector h3 {
+            color: #7c4dff;
+            margin-bottom: 12px;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 700;
+        }
+
+        .unit-links {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .unit-btn {
+            background: #34495e;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            min-width: 60px;
+        }
+
+        .unit-btn:hover {
+            background: #7c4dff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(124, 77, 255, 0.4);
+        }
+
+        .unit-btn.active {
+            background: #673ab7;
+            border-color: white;
+            pointer-events: none;
+            box-shadow: 0 0 15px rgba(103, 58, 183, 0.6);
+        }
+
+        /* Hero Header */
+        .hero-header {
+            background: linear-gradient(135deg, #1a252f 0%, #2c3e50 50%, #673ab7 100%);
+            color: white;
+            padding: 80px 40px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></svg>');
+            opacity: 0.5;
+        }
+
+        .book-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            border: 2px solid rgba(255,255,255,0.3);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-title {
+            font-size: 56px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-subtitle {
+            font-size: 24px;
+            opacity: 0.9;
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-desc {
+            font-size: 16px;
+            opacity: 0.8;
+            margin-top: 15px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* View Toggle */
+        .view-toggle-container {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .toggle-btn {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .toggle-btn.active {
+            background: rgba(103, 58, 183, 0.9);
+            border-color: white;
+        }
+
+        .toggle-btn:hover:not(.active) {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: -30px auto 50px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .units-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        /* Unit Cards */
+        .unit-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.07), 0 10px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            border: 1px solid #e1e8ed;
+        }
+
+        .unit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+        }
+
+        .unit-card-header {
+            padding: 25px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .unit-card-header::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 150px;
+            height: 150px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+        /* Unit-specific colors matching book themes */
+        .unit-7 .unit-card-header { background: linear-gradient(135deg, #e67e22 0%, #d35400 100%); }
+        .unit-8 .unit-card-header { background: linear-gradient(135deg, #8e44ad 0%, #6c3483 100%); }
+        .unit-9 .unit-card-header { background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%); }
+        .unit-10 .unit-card-header { background: linear-gradient(135deg, #2980b9 0%, #1a5276 100%); }
+        .unit-11 .unit-card-header { background: linear-gradient(135deg, #f39c12 0%, #b9770e 100%); }
+        .unit-12 .unit-card-header { background: linear-gradient(135deg, #c0392b 0%, #922b21 100%); }
+        .unit-ref .unit-card-header { background: linear-gradient(135deg, #311b92 0%, #673ab7 100%); }
+
+        .unit-card-number {
+            font-size: 48px;
+            font-weight: 800;
+            opacity: 0.3;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            line-height: 1;
+        }
+
+        .unit-card-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .unit-card-theme {
+            font-size: 14px;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+            font-weight: 500;
+        }
+
+        .unit-card-body {
+            padding: 20px 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .skill-tag {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 14px;
+            color: #555;
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .skill-tag:last-child {
+            border-bottom: none;
+        }
+
+        .skill-icon {
+            font-weight: bold;
+            color: white;
+            background: #7f8c8d;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            flex-shrink: 0;
+        }
+
+        .unit-7 .skill-icon { background: #e67e22; }
+        .unit-8 .skill-icon { background: #8e44ad; }
+        .unit-9 .skill-icon { background: #27ae60; }
+        .unit-10 .skill-icon { background: #2980b9; }
+        .unit-11 .skill-icon { background: #f39c12; }
+        .unit-12 .skill-icon { background: #c0392b; }
+        .unit-ref .skill-icon { background: #673ab7; }
+
+        .skill-label {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-right: 5px;
+        }
+
+        .unit-card-footer {
+            padding: 15px 25px;
+            background: #f8f9fa;
+            border-top: 1px solid #e1e8ed;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            color: #7f8c8d;
+        }
+
+        .page-number {
+            font-weight: bold;
+            color: #34495e;
+        }
+
+        .enter-btn {
+            background: #34495e;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 15px;
+            font-weight: 600;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+
+        .unit-card:hover .enter-btn {
+            background: #7c4dff;
+        }
+
+        /* Reference card special styling */
+        .ref-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        .ref-item {
+            background: #f3e5f5;
+            padding: 4px 8px;
+            border-radius: 4px;
+            color: #311b92;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* Print Button */
+        .action-bar {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .print-btn {
+            background: #1a252f;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .print-btn:hover {
+            background: #673ab7;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            color: #7f8c8d;
+            font-size: 14px;
+            border-top: 1px solid #ddd;
+            margin-top: 60px;
+        }
+
+        .footer strong {
+            color: #2c3e50;
+        }
+
+        /* Teacher Mode Styles */
+        .teacher-mode .teacher-note {
+            display: block;
+        }
+
+        .teacher-note {
+            display: none;
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 14px;
+            color: #856404;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 36px;
+            }
+            
+            .hero-subtitle {
+                font-size: 18px;
+            }
+            
+            .units-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .view-toggle-container {
+                position: static;
+                margin-top: 20px;
+                justify-content: center;
+            }
+            
+            .unit-selector {
+                padding: 15px;
+            }
+            
+            .unit-links {
+                gap: 8px;
+            }
+            
+            .unit-btn {
+                padding: 8px 15px;
+                font-size: 13px;
+                min-width: 50px;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .unit-selector, .view-toggle-container, .action-bar, .enter-btn {
+                display: none !important;
+            }
+            
+            .hero-header {
+                background: #1a252f !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            
+            .unit-card {
+                break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+            
+            .unit-card-header {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        /* Loading animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .unit-card {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        
+        .unit-card:nth-child(1) { animation-delay: 0.1s; }
+        .unit-card:nth-child(2) { animation-delay: 0.2s; }
+        .unit-card:nth-child(3) { animation-delay: 0.3s; }
+        .unit-card:nth-child(4) { animation-delay: 0.4s; }
+        .unit-card:nth-child(5) { animation-delay: 0.5s; }
+        .unit-card:nth-child(6) { animation-delay: 0.6s; }
+        .unit-card:nth-child(7) { animation-delay: 0.7s; }
+    
+        /* ===== 3D DYNAMIC BUTTONS ===== */
+        
+        /* Base 3D Button Style */
+        .btn-3d {
+            display: inline-block;
+            padding: 12px 28px;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #fff;
+            background: linear-gradient(145deg, #8b3a3a 0%, #722f37 50%, #5c1a1a 100%);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                0 4px 6px rgba(114, 47, 55, 0.3),
+                0 10px 20px rgba(114, 47, 55, 0.2),
+                inset 0 1px 0 rgba(255,255,255,0.2),
+                inset 0 -2px 0 rgba(0,0,0,0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(0);
+        }
+        
+        .btn-3d::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .btn-3d:hover::before {
+            left: 100%;
+        }
+        
+        .btn-3d:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 
+                0 8px 15px rgba(114, 47, 55, 0.4),
+                0 15px 30px rgba(114, 47, 55, 0.25),
+                inset 0 1px 0 rgba(255,255,255,0.3),
+                inset 0 -2px 0 rgba(0,0,0,0.2);
+            background: linear-gradient(145deg, #722f37 0%, #8b3a3a 50%, #722f37 100%);
+        }
+        
+        .btn-3d:active {
+            transform: translateY(-1px) scale(0.98);
+            box-shadow: 
+                0 2px 4px rgba(114, 47, 55, 0.3),
+                0 5px 10px rgba(114, 47, 55, 0.2),
+                inset 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        /* Gold Accent Button */
+        .btn-gold {
+            background: linear-gradient(145deg, #e5c76b 0%, #d4af37 50%, #b8960c 100%);
+            color: #722f37;
+            box-shadow: 
+                0 4px 6px rgba(212, 175, 55, 0.4),
+                0 10px 20px rgba(212, 175, 55, 0.25),
+                inset 0 1px 0 rgba(255,255,255,0.4),
+                inset 0 -2px 0 rgba(0,0,0,0.1);
+            font-weight: 800;
+        }
+        
+        .btn-gold:hover {
+            background: linear-gradient(145deg, #d4af37 0%, #e5c76b 50%, #d4af37 100%);
+            color: #5c1a1a;
+            box-shadow: 
+                0 8px 15px rgba(212, 175, 55, 0.5),
+                0 15px 30px rgba(212, 175, 55, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.5),
+                inset 0 -2px 0 rgba(0,0,0,0.1);
+        }
+        
+        .btn-gold:active {
+            box-shadow: 
+                0 2px 4px rgba(212, 175, 55, 0.4),
+                0 5px 10px rgba(212, 175, 55, 0.2),
+                inset 0 2px 4px rgba(0,0,0,0.15);
+        }
+        
+        /* Outline 3D Button */
+        .btn-outline {
+            background: transparent;
+            color: #722f37;
+            border: 2px solid #722f37;
+            box-shadow: 
+                0 4px 6px rgba(114, 47, 55, 0.1),
+                0 0 0 4px rgba(114, 47, 55, 0.05);
+        }
+        
+        .btn-outline:hover {
+            background: #722f37;
+            color: #fff;
+            box-shadow: 
+                0 8px 15px rgba(114, 47, 55, 0.3),
+                0 0 0 6px rgba(114, 47, 55, 0.1);
+        }
+        
+        /* Small Button Variant */
+        .btn-sm {
+            padding: 8px 18px;
+            font-size: 12px;
+        }
+        
+        /* Large Button Variant */
+        .btn-lg {
+            padding: 16px 36px;
+            font-size: 16px;
+        }
+        
+        /* Icon Button */
+        .btn-icon {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-icon svg,
+        .btn-icon i,
+        .btn-icon span.icon {
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+        }
+        
+        .btn-icon:hover svg,
+        .btn-icon:hover i,
+        .btn-icon:hover span.icon {
+            transform: translateX(3px);
+        }
+        
+        /* Rounded Square Buttons (for nav) */
+        .btn-square {
+            border-radius: 12px;
+            padding: 10px 20px;
+        }
+        
+        /* Pill Button */
+        .btn-pill {
+            border-radius: 50px;
+        }
+        
+        /* Floating Action Button Style */
+        .btn-float {
+            box-shadow: 
+                0 6px 12px rgba(114, 47, 55, 0.25),
+                0 0 0 1px rgba(114, 47, 55, 0.1),
+                inset 0 1px 0 rgba(255,255,255,0.2);
+        }
+        
+        .btn-float:hover {
+            transform: translateY(-4px);
+            box-shadow: 
+                0 12px 24px rgba(114, 47, 55, 0.35),
+                0 0 0 1px rgba(114, 47, 55, 0.15),
+                inset 0 1px 0 rgba(255,255,255,0.25);
+        }
+        
+        /* Gradient Shine Effect */
+        .btn-shine {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-shine::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to right,
+                transparent 0%,
+                rgba(255,255,255,0.1) 50%,
+                transparent 100%
+            );
+            transform: rotate(30deg) translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+        
+        .btn-shine:hover::after {
+            transform: rotate(30deg) translateX(100%);
+        }
+        
+        /* Ripple Effect on Click */
+        .btn-ripple {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-ripple span.ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.4);
+            transform: scale(0);
+            animation: ripple-animation 0.6s linear;
+            pointer-events: none;
+        }
+        
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+        
+        /* Glow Effect */
+        .btn-glow {
+            animation: glow-pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes glow-pulse {
+            0%, 100% {
+                box-shadow: 
+                    0 4px 6px rgba(114, 47, 55, 0.3),
+                    0 0 20px rgba(212, 175, 55, 0.2);
+            }
+            50% {
+                box-shadow: 
+                    0 4px 6px rgba(114, 47, 55, 0.3),
+                    0 0 30px rgba(212, 175, 55, 0.4);
+            }
+        }
+        
+        /* Button Group */
+        .btn-group {
+            display: inline-flex;
+            gap: 0;
+        }
+        
+        .btn-group .btn-3d {
+            border-radius: 0;
+        }
+        
+        .btn-group .btn-3d:first-child {
+            border-radius: 50px 0 0 50px;
+        }
+        
+        .btn-group .btn-3d:last-child {
+            border-radius: 0 50px 50px 0;
+        }
+        
+        /* Dark Mode Button Styles */
+        body.dark-mode .btn-3d {
+            background: linear-gradient(145deg, #8b3a3a 0%, #5c1a1a 50%, #3d1515 100%);
+            box-shadow: 
+                0 4px 6px rgba(0, 0, 0, 0.4),
+                0 10px 20px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.1),
+                inset 0 -2px 0 rgba(0,0,0,0.3);
+        }
+        
+        body.dark-mode .btn-3d:hover {
+            background: linear-gradient(145deg, #722f37 0%, #8b3a3a 50%, #722f37 100%);
+            box-shadow: 
+                0 8px 15px rgba(0, 0, 0, 0.5),
+                0 15px 30px rgba(0, 0, 0, 0.35),
+                0 0 20px rgba(212, 175, 55, 0.2),
+                inset 0 1px 0 rgba(255,255,255,0.15),
+                inset 0 -2px 0 rgba(0,0,0,0.3);
+        }
+        
+        body.dark-mode .btn-gold {
+            background: linear-gradient(145deg, #e5c76b 0%, #d4af37 50%, #b8960c 100%);
+            color: #3d1515;
+            box-shadow: 
+                0 4px 6px rgba(212, 175, 55, 0.3),
+                0 10px 20px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.3);
+        }
+        
+        body.dark-mode .btn-outline {
+            border-color: #d4af37;
+            color: #d4af37;
+            box-shadow: 
+                0 4px 6px rgba(0, 0, 0, 0.2),
+                0 0 0 4px rgba(212, 175, 55, 0.05);
+        }
+        
+        body.dark-mode .btn-outline:hover {
+            background: #d4af37;
+            color: #3d1515;
+            box-shadow: 
+                0 8px 15px rgba(212, 175, 55, 0.3),
+                0 0 0 6px rgba(212, 175, 55, 0.1);
+        }
+        
+        /* Section Navigation Buttons Enhancement */
+        .nav-bar button {
+            background: linear-gradient(145deg, #faf8f5 0%, #f0ebe3 100%);
+            color: #722f37;
+            border: 2px solid transparent;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 
+                0 2px 4px rgba(114, 47, 55, 0.1),
+                inset 0 1px 0 rgba(255,255,255,0.8);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-bar button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(212, 175, 55, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.4s ease, height 0.4s ease;
+        }
+        
+        .nav-bar button:hover::before {
+            width: 200%;
+            height: 200%;
+        }
+        
+        .nav-bar button:hover {
+            background: linear-gradient(145deg, #722f37 0%, #8b3a3a 100%);
+            color: #fff;
+            border-color: #d4af37;
+            transform: translateY(-2px);
+            box-shadow: 
+                0 6px 12px rgba(114, 47, 55, 0.25),
+                0 0 0 3px rgba(212, 175, 55, 0.2),
+                inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+        
+        .nav-bar button.active {
+            background: linear-gradient(145deg, #722f37 0%, #5c1a1a 100%);
+            color: #d4af37;
+            border-color: #d4af37;
+            box-shadow: 
+                0 4px 8px rgba(114, 47, 55, 0.3),
+                0 0 0 3px rgba(212, 175, 55, 0.3),
+                inset 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        body.dark-mode .nav-bar button {
+            background: linear-gradient(145deg, #3d3d3d 0%, #2d2d2d 100%);
+            color: #e0e0e0;
+            box-shadow: 
+                0 2px 4px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.05);
+        }
+        
+        body.dark-mode .nav-bar button:hover {
+            background: linear-gradient(145deg, #722f37 0%, #5c1a1a 100%);
+            color: #fff;
+            border-color: #d4af37;
+        }
+        
+        body.dark-mode .nav-bar button.active {
+            background: linear-gradient(145deg, #5c1a1a 0%, #722f37 100%);
+            color: #d4af37;
+            border-color: #d4af37;
+            box-shadow: 
+                0 4px 8px rgba(0, 0, 0, 0.4),
+                0 0 0 3px rgba(212, 175, 55, 0.2),
+                inset 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        /* Audio/Play Buttons */
+        .audio-btn, .play-btn {
+            background: linear-gradient(145deg, #722f37 0%, #5c1a1a 100%);
+            color: #d4af37;
+            border: 2px solid #d4af37;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 
+                0 4px 8px rgba(114, 47, 55, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+        
+        .audio-btn:hover, .play-btn:hover {
+            transform: scale(1.1) translateY(-2px);
+            box-shadow: 
+                0 8px 16px rgba(114, 47, 55, 0.4),
+                0 0 20px rgba(212, 175, 55, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.2);
+        }
+        
+        .audio-btn:active, .play-btn:active {
+            transform: scale(0.95);
+            box-shadow: 
+                0 2px 4px rgba(114, 47, 55, 0.3),
+                inset 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        body.dark-mode .audio-btn,
+        body.dark-mode .play-btn {
+            background: linear-gradient(145deg, #5c1a1a 0%, #3d1515 100%);
+            box-shadow: 
+                0 4px 8px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255,255,255,0.05);
+        }
+
+        </style>
+<base target="_blank">
+</head>
+<body>
+    <!-- Unit Selector -->
+    <div class="unit-selector">
+        <h3>World Class Level 2 - Book 2B Navigation</h3>
+        <div class="unit-links">
+            <a href="#" class="unit-btn active">Home</a>
+            <a href="unit7.html" class="unit-btn">7</a>
+            <a href="unit8.html" class="unit-btn">8</a>
+            <a href="unit9.html" class="unit-btn">9</a>
+            <a href="unit10.html" class="unit-btn">10</a>
+            <a href="unit11.html" class="unit-btn">11</a>
+            <a href="unit12.html" class="unit-btn">12</a>
+            <a href="book2b_reference.html" class="unit-btn">Ref</a>
+        </div>
+    </div>
+
+    <!-- Hero Header -->
+    <header class="hero-header">
+        <div class="view-toggle-container no-print">
+            <button class="toggle-btn" id="studentBtn" onclick="switchView('student')">Student</button>
+            <button class="toggle-btn active" id="teacherBtn" onclick="switchView('teacher')">Teacher</button>
+        </div>
+        
+        <div class="book-badge">Book 2B • Units 7-12</div>
+        <h1 class="hero-title">World Class</h1>
+        <div class="hero-subtitle">Expanding English Fluency</div>
+        <div class="hero-desc">
+            Interactive Digital Textbook with Audio, Video, and Teacher Resources
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="teacher-note" id="teacherWelcome">
+            <strong>👨‍🏫 Teacher Mode Active:</strong> You have access to all answers, teaching notes, and supplementary materials. Use the number keys (1-7) to quickly navigate to units.
+        </div>
+
+        <div class="units-grid">
+            <!-- Unit 7 -->
+            <a href="unit7.html" class="unit-card unit-7">
+                <div class="unit-card-header">
+                    <div class="unit-card-number">7</div>
+                    <div class="unit-card-title">Live and Learn</div>
+                    <div class="unit-card-theme">Personality and Success</div>
+                </div>
+                <div class="unit-card-body">
+                    <div class="skill-tag">
+                        <span class="skill-icon">V</span>
+                        <div><span class="skill-label">Vocabulary:</span> Kasparov versus the computer</div>
+                    </div>
+                    <div class="skill-tag">
+                        <span class="skill-icon">G</span>
+                        <div><span class="skill-label">Grammar:</span> Noun Clauses with Wh- words and If/Whether</div>
+                    </div>
+                    <div class="skill-tag">
+                        <span class="skill-icon">L</span>
+                        <div><span class="skill-label">Listening:</span> Learning different learning styles</div>
+                    </div>
+                    <div class="skill-tag">
+                        <span class="skill-icon">S</span>
+                        <div><span class="skill-label">Strategy:</span> Understanding the meaning of know</div>
+                    </div>
+                </div>
+                <div class="unit-card-footer">
+                    <span class="page-number">Page 72</span>
+                    <span class="enter-btn">Enter Unit →</span>
+                </div>
+            </a>
+
+            <!-- Unit 8 -->
+            <a href="unit8.html" class="unit-card unit-8">
+                <div class="unit-card-header">
+                    <div class="unit-card-number">8</div>
+                    <div class="unit-card-title">The Cult of Celebrity</div>
+                    <div class="unit-card-theme">Fame and Media</div>
+                </div>
+                <div class="unit-card-body">
+                    <div class="skill-tag">
+                        <span class="skill-icon">V</span>
+                        <div><span class="skill-label">Vocabulary:</span> Three famous people</div>
+                    </div>
+                    <div class="skill-tag">
+                        <span class="skill-icon">G</span>
+                        <div><span class="skill-label">Grammar:</span> Reported Questions</div>
+                    </div>
+                    <div class="skill-tag">
+                        <span class="skill-icon">L</span>
+                        <div><span class="skill-label">Listening:</span> The most famous actress in the world</div>
+                    </div>
+                    <div class="skill-tag">
+                        <span class="skill-icon">P</span>
+                        <div><span class="skill-label">Pronunciation:</span> Intonation to show sarcasm and irony</div>
+                    </div>
+                </div>
+                <div class="unit-card-footer">
+                    <span class="page-number">Page 84</span>
+                    <span class="enter-btn">Enter Unit →</span>
+                </div>
+            </a>
+
+            <!-- Unit 9 -->
+            <a href="unit9.html" class="unit-card unit-9">
+                <div class="unit-card-header">
+                    <div class="unit-card-number">9</div>
+                    <div class="unit-card-title">To Your Health!</div>
+                    <div class="unit-card-theme">Sleep and Well-being</div>
+                </div>
+                <div class="unit-card-body">
+                    <div class="skill-tag">
+                        <span class="skill-icon">V</span>
+                        <div><span class="skill-label">Vocabulary:</span> Bad habits, healthy solutions</div>
+                    </div>
+                    <div class="skill-tag">
+                        <span class="skill-icon">G</span>
+                        <div><span class="skill-label">Grammar:</span> Stating Conditions - Other Ways of Expressing If</div>
+                    </div>
+                    <div class="skill-tag">
+                        <span class="skill-icon">L</span>
+                        <div><span class="skill-label">Listening:</span> The importance of sleep</div>
+                    </div>
+                    <div class="skill-tag">
+                        <span class="skill-icon">S</span>
+                        <div><span class="skill-label">Strategy:</span> Using visual aids</div>
+                    </div>
+                </div>
+                <div class="unit-card-footer">
+                    <span class="page-number">Page 96</span>
+                    <span class="enter-btn">Enter Unit →</span>
+                </div>
+            </a>
+
+            <!-- Unit 10 -->
+            <a href="unit10.html" class="unit-card unit-10">
+                <div class="unit-card-header">
+                    <div class="unit-card-number">10</div>
+                    <div class="unit-card-title">Our Most Precious Resource</div>
+                    <div class="unit-card-theme">Water Resources</div>
+                </div>
+                <div class="unit-card-body">
+                    <div class="skill-tag">
+                        <span class="skill-icon">V</span>
+                        <div><span class="skill-label">Vocabulary:</span> Did you know?</div>
+                    </div>
+                    <div class="skill-tag">
+                        <span class="skill-icon">G</span>
+                        <div><span class="skill-label">Grammar:</span> Articles - a/an, the, and No Article (Ø)</div>
+                    </div>
+                    <div class="skill-tag">
+                        <span class="skill-icon">L</span>
+                        <div><span class="skill-label">Listening:</span> Water issues in everyday life</div>
+                    </div>
+                    <div class="skill-tag">
+                        <span class="skill-icon">S</span>
+                        <div><span class="skill-label">Strategy:</span> Listening for the speaker's purpose</div>
+                    </div>
+                </div>
+                <div class="unit-card-footer">
+                    <span class="page-number">Page 108</span>
+                    <span class="enter-btn">Enter Unit →</span>
+                </div>
+            </a>
+
+            <!-- Unit 11 -->
+            <a href="unit11.html" class="unit-card unit-11">
+                <div class="unit-card-header">
+                    <div class="unit-card-number">11</div>
+                    <div class="unit-card-title">Inspired Minds</div>
+                    <div class="unit-card-theme">Art and Creativity</div>
+                </div>
+                <div class="unit-card-body">
+                    <div class="skill-tag">
+                        <span class="skill-icon">V</span>
+                        <div><span class="skill-label">Vocabulary:</span> How we solve problems creatively</div>
+                    </div>
+                    <div class="skill-tag">
+                        <span class="skill-icon">G</span>
+                        <div><span class="skill-label">Grammar:</span> Adjective Clauses with Object Relative Pronouns</div>
+                    </div>
+                    <div class="skill-tag">
+                        <span class="skill-icon">L</span>
+                        <div><span class="skill-label">Listening:</span> A creative use of color</div>
+                    </div>
+                    <div class="skill-tag">
+                        <span class="skill-icon">P</span>
+                        <div><span class="skill-label">Pronunciation:</span> The prominence of stress</div>
+                    </div>
+                </div>
+                <div class="unit-card-footer">
+                    <span class="page-number">Page 120</span>
+                    <span class="enter-btn">Enter Unit →</span>
+                </div>
+            </a>
+
+            <!-- Unit 12 -->
+            <a href="unit12.html" class="unit-card unit-12">
+                <div class="unit-card-header">
+                    <div class="unit-card-number">12</div>
+                    <div class="unit-card-title">What's So Funny?</div>
+                    <div class="unit-card-theme">Humor and Comedy</div>
+                </div>
+                <div class="unit-card-body">
+                    <div class="skill-tag">
+                        <span class="skill-icon">V</span>
+                        <div><span class="skill-label">Vocabulary:</span> The comedy of Jerry Seinfeld</div>
+                    </div>
+                    <div class="skill-tag">
+                        <span class="skill-icon">G</span>
+                        <div><span class="skill-label">Grammar:</span> Tag Questions</div>
+                    </div>
+                    <div class="skill-tag">
+                        <span class="skill-icon">L</span>
+                        <div><span class="skill-label">Listening:</span> What makes comedians funny</div>
+                    </div>
+                    <div class="skill-tag">
+                        <span class="skill-icon">P</span>
+                        <div><span class="skill-label">Pronunciation:</span> Intonation in tag questions</div>
+                    </div>
+                </div>
+                <div class="unit-card-footer">
+                    <span class="page-number">Page 132</span>
+                    <span class="enter-btn">Enter Unit →</span>
+                </div>
+            </a>
+
+            <!-- Reference Section -->
+            <a href="book2b_reference.html" class="unit-card" style="background: linear-gradient(135deg, #311b92 0%, #673ab7 100%); text-decoration: none; color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 40px 25px; text-align: center; position: relative; overflow: hidden;">
+                <div style="font-size: 48px; font-weight: 800; opacity: 0.3; position: absolute; top: 10px; right: 20px; line-height: 1;">Ref</div>
+                <div style="font-size: 28px; font-weight: 700; margin-bottom: 10px; position: relative; z-index: 1;">Reference</div>
+                <div style="font-size: 0.9em; opacity: 0.9; position: relative; z-index: 1;">Pronunciation & Grammar</div>
+            </a>
+        </div>
+
+        <!-- Action Bar -->
+        <div class="action-bar no-print">
+            <button class="print-btn" onclick="window.print()">
+                <span>🖨️</span>
+                <span>Print Syllabus / Course Map</span>
+            </button>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p><strong>World Class Level 2 - Book 2B</strong> | Expanding English Fluency</p>
+            <p style="margin-top: 10px; font-size: 13px;">
+                National Geographic Learning | Cengage Learning<br>
+                <em>Re-Created by ESL Teacher Ry</em>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // View Toggle Functionality
+        function switchView(mode) {
+            const body = document.body;
+            const studentBtn = document.getElementById('studentBtn');
+            const teacherBtn = document.getElementById('teacherBtn');
+            const teacherNote = document.getElementById('teacherWelcome');
+
+            if (mode === 'student') {
+                body.classList.remove('teacher-mode');
+                studentBtn.classList.add('active');
+                teacherBtn.classList.remove('active');
+                if (teacherNote) teacherNote.style.display = 'none';
+                localStorage.setItem('book2b_viewMode', 'student');
+            } else {
+                body.classList.add('teacher-mode');
+                teacherBtn.classList.add('active');
+                studentBtn.classList.remove('active');
+                if (teacherNote) teacherNote.style.display = 'block';
+                localStorage.setItem('book2b_viewMode', 'teacher');
+            }
+        }
+
+        // Load saved preference
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedMode = localStorage.getItem('book2b_viewMode');
+            const teacherNote = document.getElementById('teacherWelcome');
+            
+            if (savedMode === 'student') {
+                switchView('student');
+            } else {
+                // Default to teacher mode but check if element exists
+                if (teacherNote) teacherNote.style.display = 'block';
+                document.body.classList.add('teacher-mode');
+            }
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+            switch(e.key) {
+                case '1': window.location.href = 'unit7.html'; break;
+                case '2': window.location.href = 'unit8.html'; break;
+                case '3': window.location.href = 'unit9.html'; break;
+                case '4': window.location.href = 'unit10.html'; break;
+                case '5': window.location.href = 'unit11.html'; break;
+                case '6': window.location.href = 'unit12.html'; break;
+                case '7': window.location.href = 'book2b_reference.html'; break;
+                case 't': switchView('teacher'); break;
+                case 's': switchView('student'); break;
+                case 'p': window.print(); break;
+            }
+        });
+    </script>
+
+    <!-- 3D Button Interactions -->
+    <script>
+        // Ripple effect for buttons
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('.btn-ripple, .btn-3d, .nav-bar button');
+            if (!btn) return;
+            
+            const ripple = document.createElement('span');
+            ripple.className = 'ripple';
+            
+            const rect = btn.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            
+            btn.appendChild(ripple);
+            
+            setTimeout(() => ripple.remove(), 600);
+        });
+        
+        // Magnetic button effect
+        document.querySelectorAll('.btn-3d, .audio-btn, .play-btn').forEach(btn => {
+            btn.addEventListener('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                this.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
+            });
+            
+            btn.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+            });
+        });
+    </script>
+
+</body>
+</html>

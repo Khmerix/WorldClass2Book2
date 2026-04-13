@@ -1,0 +1,2788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Class Level 2 - Unit 11: Inspired Minds</title>
+    <!-- Authentication Check -->
+    <script>
+        // Check if user is logged in
+        if (!sessionStorage.getItem('teacherLoggedIn')) {
+            window.location.href = '../login.html';
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        /* Unit Selector */
+        .unit-selector {
+            background: #1a252f;
+            padding: 15px 40px;
+            text-align: center;
+            border-bottom: 2px solid #d4af37;
+        }
+
+        .unit-selector h3 {
+            color: white;
+            margin-bottom: 10px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .unit-links {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .unit-btn {
+            background: #34495e;
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .unit-btn:hover {
+            background: #ff8f00;
+            transform: translateY(-2px);
+        }
+
+        .unit-btn.active {
+            background: #7c4dff;
+            border-color: white;
+            pointer-events: none;
+        }
+
+        /* Unit Header - Purple Theme for Unit 11 */
+        .unit-header {
+            background: linear-gradient(135deg, #722f37 0%, #8b3a3a 100%);
+            color: white;
+            padding: 60px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .unit-number {
+            font-size: 120px;
+            font-weight: bold;
+            opacity: 0.3;
+            position: absolute;
+            top: 20px;
+            left: 40px;
+            line-height: 1;
+        }
+
+        .unit-title {
+            font-size: 48px;
+            font-weight: bold;
+            margin-left: 100px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .unit-theme {
+            font-size: 24px;
+            margin-left: 100px;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+
+        /* Navigation */
+        .nav-bar {
+            background: #2c3e50;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #d4af37;
+        }
+
+        /* View Toggle Buttons */
+        .view-toggle {
+            display: flex;
+            gap: 10px;
+        }
+
+        .toggle-btn {
+            background: #34495e;
+            color: white;
+            border: 2px solid transparent;
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .toggle-btn.active {
+            background: #ff8f00;
+            border-color: white;
+        }
+
+        .toggle-btn:hover:not(.active) {
+            background: #44596e;
+        }
+        
+        /* Print Button */
+        .print-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            margin-right: 10px;
+        }
+        
+        .print-btn:hover {
+            background: #2980b9;
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        /* Main Content */
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+            scroll-margin-top: 80px;
+        }
+
+        .section-header {
+            background: #34495e;
+            color: white;
+            padding: 20px 30px;
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            border-left: 8px solid #722f37;
+        }
+
+        /* Unit Outcomes Box - Purple theme */
+        .outcomes-box {
+            background: linear-gradient(135deg, #722f37 0%, #8b3a3a 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .outcomes-box h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid white;
+            padding-bottom: 10px;
+        }
+
+        .outcomes-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .outcomes-box li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .outcomes-box li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* Vocabulary Grid */
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .vocab-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-left: 4px solid #d4af37;
+            border-radius: 5px;
+        }
+
+        .vocab-word {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .vocab-pronounce {
+            color: #7f8c8d;
+            font-style: italic;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .vocab-def {
+            color: #555;
+            font-size: 15px;
+            margin-bottom: 5px;
+        }
+
+        .vocab-example {
+            color: #7c4dff;
+            font-size: 13px;
+            font-style: italic;
+            margin-top: 5px;
+        }
+
+        /* Exercise Boxes */
+        .exercise {
+            background: #fff;
+            border: 2px solid #ecf0f1;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .exercise-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .exercise-icon {
+            background: #722f37;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* Yellow Strategy Box - Consistent educational feature */
+        .strategy-box {
+            background: #fff9c4;
+            border: 2px solid #f9a825;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .strategy-box::before {
+            content: "💡 LISTENING STRATEGY";
+            background: #f9a825;
+            color: white;
+            padding: 4px 12px;
+            font-size: 12px;
+            font-weight: bold;
+            position: absolute;
+            top: -12px;
+            left: 20px;
+        }
+
+        .strategy-title {
+            font-weight: bold;
+            color: #e65100;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        /* Reading Strategy Box */
+        .reading-strategy-box {
+            background: #fff9c4;
+            border: 2px solid #f9a825;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .reading-strategy-box::before {
+            content: "📖 READING STRATEGY";
+            background: #f9a825;
+            color: white;
+            padding: 4px 12px;
+            font-size: 12px;
+            font-weight: bold;
+            position: absolute;
+            top: -12px;
+            left: 20px;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            background: #ede7f6;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+            border: 2px solid #7c4dff;
+        }
+
+        .audio-label {
+            font-weight: bold;
+            color: #4a148c;
+            margin-bottom: 10px;
+        }
+
+        audio {
+            width: 100%;
+            max-width: 500px;
+            margin: 10px 0;
+        }
+
+        /* Grammar Chart */
+        .grammar-chart {
+            background: #f8f9fa;
+            border: 2px solid #34495e;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .chart-header {
+            background: #34495e;
+            color: white;
+            padding: 15px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .chart-row {
+            display: grid;
+            grid-template-columns: 1fr 2fr 2fr;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .chart-row:last-child {
+            border-bottom: none;
+        }
+
+        .chart-cell {
+            padding: 15px;
+            border-right: 1px solid #ddd;
+        }
+
+        .chart-cell:last-child {
+            border-right: none;
+        }
+
+        .chart-cell.header {
+            background: #ede7f6;
+            font-weight: bold;
+            color: #4a148c;
+        }
+
+        .grammar-type {
+            font-weight: bold;
+            color: #ff8f00;
+        }
+
+        /* Reading Passage */
+        .reading-passage {
+            background: #fff;
+            border-left: 5px solid #d4af37;
+            padding: 30px;
+            margin: 20px 0;
+            font-size: 16px;
+            line-height: 1.8;
+            text-align: justify;
+            background-color: #f8f9fa;
+        }
+
+        .passage-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #d1c4e9 0%, #d1c4e9 100%);
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+
+        /* Teacher's Answers */
+        .teacher-answer {
+            display: block;
+            background: #ede7f6;
+            border: 2px solid #7c4dff;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 10px;
+            color: #4a148c;
+            font-weight: 600;
+        }
+
+        .teacher-answer::before {
+            content: "✓ TEACHER ANSWER: ";
+            font-weight: 800;
+            color: #4a148c;
+        }
+
+        .teaching-note {
+            display: none;
+            background: #fff3e0;
+            border-left: 4px solid #d4af37;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            color: #e65100;
+        }
+
+        .teaching-note::before {
+            content: "🍎 TEACHING NOTE: ";
+            font-weight: 800;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* Visible states for teacher mode */
+        .teacher-mode .teacher-answer,
+        .teacher-mode .teaching-note {
+            display: block;
+        }
+
+        /* Question containers */
+        .question-item {
+            background: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin-bottom: 15px;
+        }
+
+        .question-text {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+
+        /* Writing Strategy */
+        .writing-strategy {
+            background: #fff3e0;
+            border-left: 5px solid #d4af37;
+            padding: 25px;
+            margin: 20px 0;
+        }
+
+        .writing-strategy h3 {
+            color: #e65100;
+            margin-bottom: 15px;
+        }
+
+        /* Speaking Strategy */
+        .speaking-strategy {
+            background: #e8f5e9;
+            border-left: 5px solid #d4af37;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .speaking-strategy h3 {
+            color: #2e7d32;
+            margin-bottom: 15px;
+        }
+
+        /* Discussion Box */
+        .discussion-box {
+            background: #ede7f6;
+            border-left: 5px solid #d4af37;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* Role Play Boxes */
+        .role-box {
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .role-futurist {
+            background: #e3f2fd;
+            border-left: 4px solid #d4af37;
+        }
+
+        .role-skeptic {
+            background: #ffebee;
+            border-left: 4px solid #d4af37;
+        }
+
+        .role-scientist {
+            background: #e8f5e9;
+            border-left: 4px solid #d4af37;
+        }
+
+        .role-ethicist {
+            background: #fff3e0;
+            border-left: 4px solid #d4af37;
+        }
+
+        /* Self Assessment */
+        .assessment-box {
+            background: #ede7f6;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #7c4dff;
+        }
+
+        /* Check Section */
+        .check-section {
+            background: linear-gradient(135deg, #ede7f6 0%, #d1c4e9 100%);
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 40px;
+            border: 2px solid #7c4dff;
+        }
+
+        .check-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 15px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .check-number {
+            background: #7c4dff;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        /* Footer Navigation */
+        .unit-nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 30px 40px;
+            background: #ecf0f1;
+            border-top: 3px solid #34495e;
+        }
+
+        .nav-btn {
+            background: #34495e;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: #722f37;
+        }
+
+        /* Print Styles */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+
+            .unit-selector, .nav-bar, .unit-nav {
+                display: none !important;
+            }
+
+            body {
+                background: white;
+            }
+
+            .container {
+                box-shadow: none;
+            }
+
+            .section {
+                page-break-inside: avoid;
+            }
+
+            .teacher-answer, .teaching-note {
+                display: none !important;
+            }
+
+            .teacher-mode .teacher-answer,
+            .teacher-mode .teaching-note {
+                display: block !important;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .vocab-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chart-row {
+                grid-template-columns: 1fr;
+            }
+
+            .unit-title {
+                font-size: 32px;
+                margin-left: 0;
+            }
+
+            .unit-number {
+                font-size: 80px;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .view-toggle {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .content {
+                padding: 20px;
+            }
+        }
+
+        /* View Mode Indicator */
+        .view-indicator { display: none !important;
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            z-index: 1000;
+            display: none;
+        }
+
+        .view-indicator.show {
+            display: block;
+        }
+
+        /* Image placeholder styles */
+        .image-placeholder {
+            background: #e0e0e0;
+            border: 2px dashed #7c4dff;
+            padding: 40px;
+            text-align: center;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* Word Partnership Box */
+        .word-partnership {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        .word-partnership strong {
+            color: #4a148c;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* Ask/Answer Box */
+        .ask-answer-box {
+            background: #e0f2f1;
+            border-left: 5px solid #d4af37;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .ask-answer-box strong {
+            color: #00695c;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* Pronunciation Box */
+        .pronunciation-box {
+            background: #f3e5f5;
+            border-left: 5px solid #d4af37;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .pronunciation-box strong {
+            color: #4a148c;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* Two column layout for matching */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 768px) {
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Floor plan placeholder */
+        .floor-plan {
+            border: 2px solid #333;
+            padding: 20px;
+            margin: 20px 0;
+            background: #fff;
+            text-align: center;
+        }
+
+        .room-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .room-box {
+            border: 1px solid #666;
+            padding: 15px;
+            background: #f9f9f9;
+            font-size: 12px;
+        }
+
+        /* Inline answer blank */
+        .answer-blank {
+            display: inline-block;
+            min-width: 100px;
+            border-bottom: 2px solid #d4af37;
+            margin: 0 5px;
+        }
+    
+/* Dark Mode */
+body.dark-mode {
+    background: #1a1a1a;
+    color: #e0e0e0;
+}
+
+body.dark-mode .container {
+    background: #2d2d2d;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+body.dark-mode .content {
+    background: #2d2d2d;
+}
+
+body.dark-mode .section-header {
+    background: #3d3d3d;
+    color: #fff;
+}
+
+body.dark-mode .exercise {
+    background: #363636;
+    border-color: #444;
+}
+
+body.dark-mode .question-item {
+    background: #363636;
+    border-color: #444;
+}
+
+body.dark-mode .vocab-item {
+    background: #363636;
+}
+
+body.dark-mode .strategy-box,
+body.dark-mode .warmup-box,
+body.dark-mode .discussion-box,
+body.dark-mode .pronunciation-box,
+body.dark-mode .critical-box,
+body.dark-mode .assessment-box,
+body.dark-mode .homework-box {
+    filter: brightness(0.85);
+}
+
+body.dark-mode .reading-passage {
+    background-color: #363636;
+    color: #e0e0e0;
+}
+
+body.dark-mode .unit-nav {
+    background: #2d2d2d;
+    border-color: #444;
+}
+
+/* Dark Mode Toggle Button */
+.dark-mode-toggle {
+    background: #2c3e50;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+    margin-right: 10px;
+}
+
+.dark-mode-toggle:hover {
+    background: #34495e;
+    transform: scale(1.05);
+}
+
+        /* ===== 3D DYNAMIC BUTTONS ===== */
+        
+        /* Base 3D Button Style */
+        .btn-3d {
+            display: inline-block;
+            padding: 12px 28px;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #fff;
+            background: linear-gradient(145deg, #8b3a3a 0%, #722f37 50%, #5c1a1a 100%);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                0 4px 6px rgba(114, 47, 55, 0.3),
+                0 10px 20px rgba(114, 47, 55, 0.2),
+                inset 0 1px 0 rgba(255,255,255,0.2),
+                inset 0 -2px 0 rgba(0,0,0,0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(0);
+        }
+        
+        .btn-3d::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .btn-3d:hover::before {
+            left: 100%;
+        }
+        
+        .btn-3d:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 
+                0 8px 15px rgba(114, 47, 55, 0.4),
+                0 15px 30px rgba(114, 47, 55, 0.25),
+                inset 0 1px 0 rgba(255,255,255,0.3),
+                inset 0 -2px 0 rgba(0,0,0,0.2);
+            background: linear-gradient(145deg, #722f37 0%, #8b3a3a 50%, #722f37 100%);
+        }
+        
+        .btn-3d:active {
+            transform: translateY(-1px) scale(0.98);
+            box-shadow: 
+                0 2px 4px rgba(114, 47, 55, 0.3),
+                0 5px 10px rgba(114, 47, 55, 0.2),
+                inset 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        /* Gold Accent Button */
+        .btn-gold {
+            background: linear-gradient(145deg, #e5c76b 0%, #d4af37 50%, #b8960c 100%);
+            color: #722f37;
+            box-shadow: 
+                0 4px 6px rgba(212, 175, 55, 0.4),
+                0 10px 20px rgba(212, 175, 55, 0.25),
+                inset 0 1px 0 rgba(255,255,255,0.4),
+                inset 0 -2px 0 rgba(0,0,0,0.1);
+            font-weight: 800;
+        }
+        
+        .btn-gold:hover {
+            background: linear-gradient(145deg, #d4af37 0%, #e5c76b 50%, #d4af37 100%);
+            color: #5c1a1a;
+            box-shadow: 
+                0 8px 15px rgba(212, 175, 55, 0.5),
+                0 15px 30px rgba(212, 175, 55, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.5),
+                inset 0 -2px 0 rgba(0,0,0,0.1);
+        }
+        
+        .btn-gold:active {
+            box-shadow: 
+                0 2px 4px rgba(212, 175, 55, 0.4),
+                0 5px 10px rgba(212, 175, 55, 0.2),
+                inset 0 2px 4px rgba(0,0,0,0.15);
+        }
+        
+        /* Outline 3D Button */
+        .btn-outline {
+            background: transparent;
+            color: #722f37;
+            border: 2px solid #722f37;
+            box-shadow: 
+                0 4px 6px rgba(114, 47, 55, 0.1),
+                0 0 0 4px rgba(114, 47, 55, 0.05);
+        }
+        
+        .btn-outline:hover {
+            background: #722f37;
+            color: #fff;
+            box-shadow: 
+                0 8px 15px rgba(114, 47, 55, 0.3),
+                0 0 0 6px rgba(114, 47, 55, 0.1);
+        }
+        
+        /* Small Button Variant */
+        .btn-sm {
+            padding: 8px 18px;
+            font-size: 12px;
+        }
+        
+        /* Large Button Variant */
+        .btn-lg {
+            padding: 16px 36px;
+            font-size: 16px;
+        }
+        
+        /* Icon Button */
+        .btn-icon {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-icon svg,
+        .btn-icon i,
+        .btn-icon span.icon {
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+        }
+        
+        .btn-icon:hover svg,
+        .btn-icon:hover i,
+        .btn-icon:hover span.icon {
+            transform: translateX(3px);
+        }
+        
+        /* Rounded Square Buttons (for nav) */
+        .btn-square {
+            border-radius: 12px;
+            padding: 10px 20px;
+        }
+        
+        /* Pill Button */
+        .btn-pill {
+            border-radius: 50px;
+        }
+        
+        /* Floating Action Button Style */
+        .btn-float {
+            box-shadow: 
+                0 6px 12px rgba(114, 47, 55, 0.25),
+                0 0 0 1px rgba(114, 47, 55, 0.1),
+                inset 0 1px 0 rgba(255,255,255,0.2);
+        }
+        
+        .btn-float:hover {
+            transform: translateY(-4px);
+            box-shadow: 
+                0 12px 24px rgba(114, 47, 55, 0.35),
+                0 0 0 1px rgba(114, 47, 55, 0.15),
+                inset 0 1px 0 rgba(255,255,255,0.25);
+        }
+        
+        /* Gradient Shine Effect */
+        .btn-shine {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-shine::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to right,
+                transparent 0%,
+                rgba(255,255,255,0.1) 50%,
+                transparent 100%
+            );
+            transform: rotate(30deg) translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+        
+        .btn-shine:hover::after {
+            transform: rotate(30deg) translateX(100%);
+        }
+        
+        /* Ripple Effect on Click */
+        .btn-ripple {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-ripple span.ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.4);
+            transform: scale(0);
+            animation: ripple-animation 0.6s linear;
+            pointer-events: none;
+        }
+        
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+        
+        /* Glow Effect */
+        .btn-glow {
+            animation: glow-pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes glow-pulse {
+            0%, 100% {
+                box-shadow: 
+                    0 4px 6px rgba(114, 47, 55, 0.3),
+                    0 0 20px rgba(212, 175, 55, 0.2);
+            }
+            50% {
+                box-shadow: 
+                    0 4px 6px rgba(114, 47, 55, 0.3),
+                    0 0 30px rgba(212, 175, 55, 0.4);
+            }
+        }
+        
+        /* Button Group */
+        .btn-group {
+            display: inline-flex;
+            gap: 0;
+        }
+        
+        .btn-group .btn-3d {
+            border-radius: 0;
+        }
+        
+        .btn-group .btn-3d:first-child {
+            border-radius: 50px 0 0 50px;
+        }
+        
+        .btn-group .btn-3d:last-child {
+            border-radius: 0 50px 50px 0;
+        }
+        
+        /* Dark Mode Button Styles */
+        body.dark-mode .btn-3d {
+            background: linear-gradient(145deg, #8b3a3a 0%, #5c1a1a 50%, #3d1515 100%);
+            box-shadow: 
+                0 4px 6px rgba(0, 0, 0, 0.4),
+                0 10px 20px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.1),
+                inset 0 -2px 0 rgba(0,0,0,0.3);
+        }
+        
+        body.dark-mode .btn-3d:hover {
+            background: linear-gradient(145deg, #722f37 0%, #8b3a3a 50%, #722f37 100%);
+            box-shadow: 
+                0 8px 15px rgba(0, 0, 0, 0.5),
+                0 15px 30px rgba(0, 0, 0, 0.35),
+                0 0 20px rgba(212, 175, 55, 0.2),
+                inset 0 1px 0 rgba(255,255,255,0.15),
+                inset 0 -2px 0 rgba(0,0,0,0.3);
+        }
+        
+        body.dark-mode .btn-gold {
+            background: linear-gradient(145deg, #e5c76b 0%, #d4af37 50%, #b8960c 100%);
+            color: #3d1515;
+            box-shadow: 
+                0 4px 6px rgba(212, 175, 55, 0.3),
+                0 10px 20px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.3);
+        }
+        
+        body.dark-mode .btn-outline {
+            border-color: #d4af37;
+            color: #d4af37;
+            box-shadow: 
+                0 4px 6px rgba(0, 0, 0, 0.2),
+                0 0 0 4px rgba(212, 175, 55, 0.05);
+        }
+        
+        body.dark-mode .btn-outline:hover {
+            background: #d4af37;
+            color: #3d1515;
+            box-shadow: 
+                0 8px 15px rgba(212, 175, 55, 0.3),
+                0 0 0 6px rgba(212, 175, 55, 0.1);
+        }
+        
+        /* Section Navigation Buttons Enhancement */
+        .nav-bar button {
+            background: linear-gradient(145deg, #faf8f5 0%, #f0ebe3 100%);
+            color: #722f37;
+            border: 2px solid transparent;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 
+                0 2px 4px rgba(114, 47, 55, 0.1),
+                inset 0 1px 0 rgba(255,255,255,0.8);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-bar button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(212, 175, 55, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.4s ease, height 0.4s ease;
+        }
+        
+        .nav-bar button:hover::before {
+            width: 200%;
+            height: 200%;
+        }
+        
+        .nav-bar button:hover {
+            background: linear-gradient(145deg, #722f37 0%, #8b3a3a 100%);
+            color: #fff;
+            border-color: #d4af37;
+            transform: translateY(-2px);
+            box-shadow: 
+                0 6px 12px rgba(114, 47, 55, 0.25),
+                0 0 0 3px rgba(212, 175, 55, 0.2),
+                inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+        
+        .nav-bar button.active {
+            background: linear-gradient(145deg, #722f37 0%, #5c1a1a 100%);
+            color: #d4af37;
+            border-color: #d4af37;
+            box-shadow: 
+                0 4px 8px rgba(114, 47, 55, 0.3),
+                0 0 0 3px rgba(212, 175, 55, 0.3),
+                inset 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        body.dark-mode .nav-bar button {
+            background: linear-gradient(145deg, #3d3d3d 0%, #2d2d2d 100%);
+            color: #e0e0e0;
+            box-shadow: 
+                0 2px 4px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.05);
+        }
+        
+        body.dark-mode .nav-bar button:hover {
+            background: linear-gradient(145deg, #722f37 0%, #5c1a1a 100%);
+            color: #fff;
+            border-color: #d4af37;
+        }
+        
+                /* Homework Menu Styles */
+        .homework-menu a:hover {
+            background: #f9f5f0;
+            padding-left: 25px;
+        }
+        
+        body.dark-mode .homework-menu {
+            background: #2d2d2d !important;
+            border: 1px solid #444;
+        }
+        
+        body.dark-mode .homework-menu a {
+            color: #d4af37 !important;
+            border-bottom-color: #444 !important;
+        }
+        
+        body.dark-mode .homework-menu a:hover {
+            background: #3d3d3d !important;
+        }
+                body.dark-mode .nav-bar button.active {
+            background: linear-gradient(145deg, #5c1a1a 0%, #722f37 100%);
+            color: #d4af37;
+            border-color: #d4af37;
+            box-shadow: 
+                0 4px 8px rgba(0, 0, 0, 0.4),
+                0 0 0 3px rgba(212, 175, 55, 0.2),
+                inset 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        /* Audio/Play Buttons */
+        .audio-btn, .play-btn {
+            background: linear-gradient(145deg, #722f37 0%, #5c1a1a 100%);
+            color: #d4af37;
+            border: 2px solid #d4af37;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 
+                0 4px 8px rgba(114, 47, 55, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+        
+        .audio-btn:hover, .play-btn:hover {
+            transform: scale(1.1) translateY(-2px);
+            box-shadow: 
+                0 8px 16px rgba(114, 47, 55, 0.4),
+                0 0 20px rgba(212, 175, 55, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.2);
+        }
+        
+        .audio-btn:active, .play-btn:active {
+            transform: scale(0.95);
+            box-shadow: 
+                0 2px 4px rgba(114, 47, 55, 0.3),
+                inset 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        body.dark-mode .audio-btn,
+        body.dark-mode .play-btn {
+            background: linear-gradient(145deg, #5c1a1a 0%, #3d1515 100%);
+            box-shadow: 
+                0 4px 8px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255,255,255,0.05);
+        }
+
+        
+        /* Local Video Player Styles */
+        .local-video-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            background: #1a1a1a;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 3px solid #d4af37;
+        }
+        
+        .local-video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .video-fallback {
+            padding: 40px;
+            text-align: center;
+            background: #2d2d2d;
+            color: #d4af37;
+        }
+        
+        .video-fallback-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+        
+        .video-offline-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(145deg, #722f37 0%, #5c1a1a 100%);
+            color: #d4af37;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            z-index: 10;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            pointer-events: none;
+        }
+        
+        .video-info {
+            background: linear-gradient(145deg, #722f37 0%, #5c1a1a 100%);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .video-info-title {
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .video-info-format {
+            background: #d4af37;
+            color: #722f37;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+        
+        /* Dark mode support */
+        body.dark-mode .local-video-container {
+            border-color: #d4af37;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        
+        /* Enhanced Video Player Controls */
+        .local-video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Custom control hints */
+        .video-controls-hint {
+            background: linear-gradient(145deg, #3d3d3d 0%, #2d2d2d 100%);
+            color: #d4af37;
+            padding: 10px 15px;
+            font-size: 12px;
+            text-align: center;
+            border-bottom: 2px solid #d4af37;
+        }
+        
+        .video-controls-hint span {
+            font-weight: 700;
+            margin-right: 8px;
+        }
+        
+        /* Captions/Subtitles styling */
+        .local-video::cue {
+            background: rgba(114, 47, 55, 0.9);
+            color: #d4af37;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        
+        /* Vocabulary Audio Pronunciation */
+        .vocab-item {
+            position: relative;
+        }
+        
+        .vocab-audio-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(145deg, #d4af37 0%, #e5c76b 100%);
+            color: #722f37;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 5;
+        }
+        
+        .vocab-audio-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        
+        .vocab-audio-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .vocab-audio-btn.playing {
+            animation: pulse-audio 1s infinite;
+        }
+        
+        @keyframes pulse-audio {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+            50% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
+        }
+        
+        /* Alternative: Google TTS link */
+        .vocab-tts-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 8px;
+            padding: 5px 10px;
+            background: #f0f0f0;
+            border-radius: 15px;
+            font-size: 12px;
+            color: #722f37;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .vocab-tts-link:hover {
+            background: #d4af37;
+            color: white;
+        }
+        
+        .vocab-pronunciation {
+            font-size: 13px;
+            color: #666;
+            font-style: italic;
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .vocab-pronunciation .ipa {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: #f9f5f0;
+            padding: 2px 8px;
+            border-radius: 4px;
+            border: 1px solid #d4af37;
+        }
+        
+        body.dark-mode .vocab-audio-btn {
+            background: linear-gradient(145deg, #e5c76b 0%, #d4af37 100%);
+            color: #3d1515;
+        }
+        
+        body.dark-mode .vocab-pronunciation {
+            color: #aaa;
+        }
+        
+        body.dark-mode .vocab-pronunciation .ipa {
+            background: #3d3d3d;
+            border-color: #d4af37;
+            color: #d4af37;
+        }
+
+        </style>
+    <base target="_blank">
+</head>
+<body>
+    <div class="container">
+        <!-- Unit Selector -->
+        <!-- Unit Header -->
+        <header class="unit-header">
+            <div class="unit-number">11</div>
+            <h1 class="unit-title">Inspired Minds</h1>
+            <p class="unit-theme">Art, Creativity, and Design</p>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav-bar no-print">
+            <div class="nav-links">
+                <a href="#vocabulary">Vocabulary</a>
+                <a href="#grammar">Grammar</a>
+                <a href="#listening">Listening</a>
+                <a href="#reading">Reading</a>
+                <a href="#writing">Writing</a>
+                <a href="#speaking">Speaking</a>
+                <a href="#video">Video</a>
+                <a href="#resources">Resources</a>
+                <a href="book2b_reference.html">Reference</a>
+            </div>
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <div class="homework-dropdown" style="position: relative;">
+                    <button class="btn-3d btn-sm" onclick="toggleHomeworkMenu('hw-menu-11')" style="background: linear-gradient(145deg, #d4af37 0%, #e5c76b 100%); color: #722f37;">📝 Homework ▼</button>
+                    <div id="hw-menu-11" class="homework-menu" style="display: none; position: absolute; top: 100%; right: 0; margin-top: 10px; background: white; border-radius: 8px; box-shadow: 0 8px 20px rgba(0,0,0,0.2); min-width: 150px; z-index: 1000; overflow: hidden;">
+                        <a href="homework/unit11_vocab.html" target="_blank" style="display: block; padding: 12px 20px; color: #722f37; text-decoration: none; font-weight: 600; border-bottom: 1px solid #eee; transition: all 0.3s;">📚 Vocabulary</a>
+                        <a href="homework/unit11_grammar.html" target="_blank" style="display: block; padding: 12px 20px; color: #722f37; text-decoration: none; font-weight: 600; border-bottom: 1px solid #eee; transition: all 0.3s;">📝 Grammar</a>
+                        <a href="homework/unit11_writing.html" target="_blank" style="display: block; padding: 12px 20px; color: #722f37; text-decoration: none; font-weight: 600; transition: all 0.3s;">✍️ Writing</a>
+                    </div>
+                </div>
+                <button class="print-btn" onclick="window.print()" title="Print this unit">🖨️ Print</button>
+            </div>
+        </nav>
+
+        <div class="content">
+            <!-- Unit Outcomes -->
+            <div class="outcomes-box">
+                <h2>Unit Outcomes</h2>
+                <p style="margin-bottom: 15px; font-size: 18px;">In this unit, you will learn to:</p>
+                <ul>
+                    <li>use adjective clauses with object relative pronouns</li>
+                    <li>identify referents and their antecedents</li>
+                    <li>write a definition essay</li>
+                    <li>critique and define art</li>
+                </ul>
+                
+                <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.3);">
+                    <p style="font-size: 16px;"><strong>Discussion Questions:</strong></p>
+                    <ol style="margin-left: 20px; margin-top: 10px; font-size: 15px;">
+                        <li>This building is an art museum. What famous art museums do you know of?</li>
+                        <li>Most people say that artists are creative. Can a scientist or businessperson also be creative? Explain.</li>
+                        <li>Describe a time when you used your creativity. What did you do? How did you feel?</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- VOCABULARY SECTION -->
+            <section id="vocabulary" class="section">
+                <div class="section-header">Vocabulary</div>
+
+                <div class="vocab-grid">
+                    <div class="vocab-item">
+                        <div class="vocab-word">breakthrough</div>
+                        <div class="vocab-pronounce">/ˈbreɪkθruː/</div>
+                        <div class="vocab-def">an important development or achievement</div>
+                    </div>
+
+                    <div class="vocab-item">
+                        <div class="vocab-word">insight</div>
+                        <div class="vocab-pronounce">/ˈɪnsaɪt/</div>
+                        <div class="vocab-def">a clear, deep, and sometimes quick understanding of something complex</div>
+                    </div>
+
+                    <div class="vocab-item">
+                        <div class="vocab-word">faulty</div>
+                        <div class="vocab-pronounce">/ˈfɔːlti/</div>
+                        <div class="vocab-def">not made correctly or not working properly</div>
+                    </div>
+
+                    <div class="vocab-item">
+                        <div class="vocab-word">stage</div>
+                        <div class="vocab-pronounce">/steɪdʒ/</div>
+                        <div class="vocab-def">part of an activity, process, or period</div>
+                    </div>
+
+                    <div class="vocab-item">
+                        <div class="vocab-word">fixated</div>
+                        <div class="vocab-pronounce">/fɪkˈseɪtɪd/</div>
+                        <div class="vocab-def">thinking about something to an extreme and excessive degree</div>
+                    </div>
+
+                    <div class="vocab-item">
+                        <div class="vocab-word">wander</div>
+                        <div class="vocab-pronounce">/ˈwɒndər/</div>
+                        <div class="vocab-def">to stray in movement or in thought</div>
+                    </div>
+
+                    <div class="vocab-item">
+                        <div class="vocab-word">frustrated</div>
+                        <div class="vocab-pronounce">/frʌˈstreɪtɪd/</div>
+                        <div class="vocab-def">feeling upset or angry because you are unable to do anything about a problem</div>
+                    </div>
+
+                    <div class="vocab-item">
+                        <div class="vocab-word">in a flash</div>
+                        <div class="vocab-pronounce">/ɪn ə flæʃ/</div>
+                        <div class="vocab-def">(happening) suddenly and for a very short time</div>
+                    </div>
+
+                    <div class="vocab-item">
+                        <div class="vocab-word">impasse</div>
+                        <div class="vocab-pronounce">/ˈɪmpæs/</div>
+                        <div class="vocab-def">a difficult situation in which further progress is not possible</div>
+                    </div>
+                </div>
+
+                <div class="word-partnership">
+                    <strong>Word Partnership</strong>
+                    How many expressions can you find that use the words <em>mind</em> or <em>idea</em>? Underline them in Exercise B. What do they mean?
+                </div>
+
+                <!-- Exercise A -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">A</span>
+                        <span>The Insight Puzzle</span>
+                    </div>
+                    <p>Read the insight puzzle below. Work with a partner and try to solve it. Stop after three minutes. Were you able to solve the puzzle?</p>
+                    
+                    <div class="discussion-box" style="margin-top: 20px; font-style: italic; background: #fff; border: 1px solid #ddd;">
+                        <p>A man and his son are in a serious car accident. The father is killed, and the son is rushed to the hospital. The doctor looks at the child and says, "I can't operate. This child is my son!" How can this be?</p>
+                    </div>
+
+                    <div class="teacher-answer" style="margin-top: 15px;">
+                        The doctor is the boy's mother (or second father in modern contexts - the key is challenging the assumption that doctors are male).
+                    </div>
+                </div>
+
+                <!-- Exercise B -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">B</span>
+                        <span>Marta's Experience</span>
+                    </div>
+                    <p>Read about Marta's experience with the puzzle. Choose the correct option for each item. Did you have a similar experience? Discuss with a partner.</p>
+
+                    <div style="margin-top: 20px; line-height: 2; color: #555;">
+                        <p>After reading the puzzle, I quickly ran through a lot of ideas that didn't work. Soon I reached a(n) <span class="answer-blank">(1)</span> <strong>impasse / breakthrough</strong> and felt "stuck." I had run out of ideas. I then chose one of the ideas and tried to make it work. I <span class="answer-blank">(2)</span> <strong>frustrated / fixated</strong> on the idea and returned to it again and again, even though it clearly wasn't working. I couldn't come up with any new ideas and felt <span class="answer-blank">(3)</span> <strong>insight / frustrated</strong>. At this <span class="answer-blank">(4)</span> <strong>stage / breakthrough</strong>, I paused for a few moments and took a break. My mind was <span class="answer-blank">(5)</span> <strong>wandering / faulty</strong> a bit and even though I still had the puzzle in the back of my mind, I found myself easily distracted. It felt as if my mind was clearing itself of <span class="answer-blank">(6)</span> <strong>frustrated / faulty</strong> ideas. In a flash, everything changed. I experienced an "aha moment." I had a sudden <span class="answer-blank">(7)</span> <strong>breakthrough / impasse</strong> and the answer to the puzzle came to mind.</p>
+                    </div>
+
+                    <div class="teacher-answer" style="margin-top: 20px;">
+                        1. impasse<br>
+                        2. fixated<br>
+                        3. frustrated<br>
+                        4. stage<br>
+                        5. wandering<br>
+                        6. faulty<br>
+                        7. breakthrough
+                    </div>
+                </div>
+
+                <!-- Exercise C -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">C</span>
+                        <span>Discussion</span>
+                    </div>
+                    <p>Discuss these questions with a partner.</p>
+                    <ol style="margin-left: 30px; margin-top: 15px; color: #555;">
+                        <li>What did you think of the insight puzzle in Exercise A? Have you ever experienced a big "aha moment"?</li>
+                        <li>Think of a time when you were frustrated because you were at an impasse. What did you do?</li>
+                        <li>By letting her mind wander for a bit, Marta was eventually able to think better and find a solution to a problem. Do you ever do this?</li>
+                        <li>Creative thinkers often say that their breakthroughs come to them in a flash. Practical thinkers say they fixate on one idea and don't give up until they've made it work. Which kind of thinker are you? Give an example.</li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- GRAMMAR SECTION -->
+            <section id="grammar" class="section">
+                <div class="section-header">Grammar: Adjective Clauses with Object Relative Pronouns</div>
+
+                <!-- Exercise A -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">A</span>
+                        <span>Mark the Correct Sentences</span>
+                    </div>
+                    <p>Mark all the sentences that are correct.</p>
+
+                    <div style="margin-top: 20px; color: #555; display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div>a. I'll never forget the puzzle <strong>that</strong> I couldn't solve.</div>
+                        <div>d. One puzzle, <strong>that</strong> I couldn't solve, made me frustrated.</div>
+                        <div>b. I'll never forget the puzzle <strong>which</strong> I couldn't solve.</div>
+                        <div>e. One puzzle, <strong>which</strong> I couldn't solve, made me frustrated.</div>
+                        <div>c. I'll never forget the puzzle <strong>∅</strong> I couldn't solve.</div>
+                        <div>f. One puzzle, <strong>∅</strong> I couldn't solve, made me frustrated.</div>
+                    </div>
+
+                    <div class="teacher-answer" style="margin-top: 20px;">
+                        Correct sentences: a, b, c, e<br>
+                        d is incorrect because "that" cannot be used in nonrestrictive clauses (with commas)<br>
+                        f is incorrect because the relative pronoun cannot be omitted in nonrestrictive clauses
+                    </div>
+                </div>
+
+                <div class="grammar-chart">
+                    <div class="chart-header">Adjective Clauses with Object Relative Pronouns</div>
+                    <div class="chart-row">
+                        <div class="chart-cell header"></div>
+                        <div class="chart-cell header">Describing People</div>
+                        <div class="chart-cell header">Describing Things</div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-cell"><strong>1. Restrictive clauses</strong><br><small>These clauses give <strong>necessary information</strong> about the object. They complete the meaning of the sentence.</small></div>
+                        <div class="chart-cell">The most creative person <strong>who(m)/that/∅</strong> I know is my mother.</div>
+                        <div class="chart-cell">The computer <strong>which/that/∅</strong> I use was obviously designed by a creative thinker.</div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-cell"><strong>2. Nonrestrictive clauses</strong><br><small>These clauses give <strong>extra information</strong> about the object. You don't need them to complete the meaning. They are separated from the main clause by commas. You <strong>cannot</strong> omit the relative pronoun.</small></div>
+                        <div class="chart-cell">My best friend, <strong>who(m)</strong> I've known since childhood, is very creative.</div>
+                        <div class="chart-cell">This computer, <strong>which</strong> I bought last week, was obviously designed by a creative thinker.</div>
+                    </div>
+                </div>
+
+                <div class="teaching-note">
+                    <strong>Key Points:</strong><br>
+                    • In restrictive clauses you can also omit the relative pronoun: "The most creative person I know is my mother."<br>
+                    • The relative pronoun <strong>that</strong> is only used with restrictive clauses (no commas).<br>
+                    • In nonrestrictive clauses, you cannot omit the relative pronoun.
+                </div>
+
+                <!-- Exercise B -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">B</span>
+                        <span>Complete the Sentences</span>
+                    </div>
+                    <p>Complete the sentences with the correct relative pronoun. Some sentences may have more than one correct answer or no pronoun at all (∅). Then, discuss with a partner. Were you surprised at the results of the creativity study? Why do you think it turned out that way?</p>
+
+                    <div style="margin-top: 20px; line-height: 2.2; color: #555;">
+                        <p>1. The university <span class="answer-blank"></span> I attend was doing a two-part study on creativity.</p>
+                        <p>2. A professor <span class="answer-blank"></span> I knew from my psychology class asked me to join it.</p>
+                        <p>3. For the first part of the study, five friends, <span class="answer-blank"></span> I'd brought with me, were split into two groups.</p>
+                        <p>4. We then tried to solve some insight puzzles <span class="answer-blank"></span> the researchers gave to us. One group was placed in a red room, the other in a blue room.</p>
+                        <p>5. The group <span class="answer-blank"></span> the researchers placed in a red room didn't do so well.</p>
+                        <p>6. The other group, <span class="answer-blank"></span> was placed in a blue room, solved twice as many puzzles as the red group.</p>
+                        <p>7. For the second part of the study, a comedy performance, <span class="answer-blank"></span> I hadn't seen before, was shown to three of us. The other three didn't see it.</p>
+                        <p>8. My group, <span class="answer-blank"></span> the researchers asked to go first, did better than the other group.</p>
+                        <p>9. The researchers, <span class="answer-blank"></span> I respect a lot, were not surprised at the results.</p>
+                    </div>
+
+                    <div class="teacher-answer" style="margin-top: 20px;">
+                        1. that / which / ∅<br>
+                        2. who(m) / that / ∅<br>
+                        3. who(m)<br>
+                        4. that / which / ∅<br>
+                        5. that / which / ∅<br>
+                        6. which<br>
+                        7. which<br>
+                        8. which<br>
+                        9. who(m)
+                    </div>
+                </div>
+
+                <!-- Exercise C -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">C</span>
+                        <span>Combine Sentences</span>
+                    </div>
+                    <p>On a separate piece of paper, combine the two sentences into one by making an adjective clause. Do you agree with these statements? Discuss with a partner.</p>
+
+                    <div style="margin-top: 20px; color: #555;">
+                        <p style="margin-bottom: 15px;"><strong>1.</strong> Creativity is a special talent. You are born with it.</p>
+                        <p style="margin-bottom: 15px;"><strong>2.</strong> "Being practical is more important than being creative" is a statement. I agree with it.</p>
+                        <p style="margin-bottom: 15px;"><strong>3.</strong> Most of the people in this class are creative. I enjoy coming to this class.</p>
+                    </div>
+
+                    <div class="teacher-answer" style="margin-top: 20px;">
+                        1. Creativity is a special talent (that/which) you are born with.<br>
+                        2. "Being practical is more important than being creative" is a statement (that/which) I agree with.<br>
+                        3. Most of the people in this class are creative, and I enjoy coming to this class. (OR: I enjoy coming to this class, in which most of the people are creative.)
+                    </div>
+                </div>
+            </section>
+
+            <!-- LISTENING SECTION -->
+            <section id="listening" class="section">
+                <div class="section-header">Listening: Annie Cho, Decorator and Color Expert</div>
+
+                <div class="strategy-box">
+                    <strong>Before Listening:</strong> Look at the floor plan. Imagine you have to paint these rooms. What colors would you choose for each room? Discuss with a partner.
+                </div>
+
+                <div class="floor-plan">
+                    <h4 style="margin-bottom: 15px;">Floor Plan of a Home</h4>
+                    <div class="image-placeholder" style="margin: 0;">
+                        [Floor plan image showing: Living Room, Bedroom 1, Bedroom 2, Dining Room, Kitchen, Home Office, Bathroom 1, Bathroom 2]
+                    </div>
+                    <p style="margin-top: 15px; font-size: 14px; color: #666;">Look at this floor plan. Imagine you have to paint these rooms. Discuss with a partner.</p>
+                </div>
+
+                <!-- Vocabulary for Listening -->
+                <div class="vocab-grid" style="margin-top: 30px;">
+                    <div class="vocab-item">
+                        <div class="vocab-word">accent (color)</div>
+                        <div class="vocab-def">a secondary color used to emphasize</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">intense</div>
+                        <div class="vocab-def">very great or extreme in strength or degree</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">tranquility</div>
+                        <div class="vocab-def">a peaceful, calm state</div>
+                    </div>
+                </div>
+
+                <!-- Audio Player -->
+                <div class="audio-player no-print">
+                    <div class="audio-label">Track 21: Interview with Annie Cho</div>
+                    <audio controls>
+                        <source src="https://audio.jukehost.co.uk/5944cKzauHVpZDH2CpJihgepGtUqfauT" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+
+                <!-- Exercise A -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">A</span>
+                        <span>Pre-listening Discussion</span>
+                    </div>
+                    <p>Look at this floor plan of a home. Imagine you have to paint these rooms. Discuss with a partner.</p>
+                    <p style="margin-top: 10px; color: #666; font-style: italic;">Consider: What mood do you want each room to have? What activities happen in each room?</p>
+                </div>
+
+                <!-- Exercise B -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">B</span>
+                        <span>Listening for Specific Information</span>
+                    </div>
+                    <p>Now listen to an interview with Annie Cho, decorator and color expert. What color does she recommend for each room in Exercise A? Match the rooms (1-5) with the colors (a-e).</p>
+
+                    <div class="two-column" style="margin-top: 20px;">
+                        <div>
+                            <p style="margin-bottom: 10px;"><strong>Rooms:</strong></p>
+                            <p>1. bedroom</p>
+                            <p>2. home office</p>
+                            <p>3. kitchen</p>
+                            <p>4. dining room</p>
+                            <p>5. living room</p>
+                        </div>
+                        <div>
+                            <p style="margin-bottom: 10px;"><strong>Colors:</strong></p>
+                            <p>a. blue</p>
+                            <p>b. green</p>
+                            <p>c. lavender</p>
+                            <p>d. red</p>
+                            <p>e. yellow</p>
+                        </div>
+                    </div>
+
+                    <div class="teacher-answer" style="margin-top: 20px;">
+                        Answers will vary based on audio, but typically:<br>
+                        1. bedroom - c. lavender (tranquility)<br>
+                        2. home office - b. green (focus/concentration)<br>
+                        3. kitchen - e. yellow (energy/happiness)<br>
+                        4. dining room - d. red (stimulates appetite/conversation)<br>
+                        5. living room - a. blue (relaxation)
+                    </div>
+                </div>
+
+                <!-- Exercise C -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">C</span>
+                        <span>Listen Again - Complete the Tips</span>
+                    </div>
+                    <p>Listen again. Complete these tips from Annie.</p>
+
+                    <div style="margin-top: 20px; color: #555;">
+                        <h4 style="margin-bottom: 15px; color: #4a148c;">General advice</h4>
+                        <p style="margin-bottom: 10px;">1. Because painting your home can be <span class="answer-blank"></span>, start with <span class="answer-blank"></span> room.</p>
+                        <p style="margin-bottom: 10px;">2. Ask yourself: What kind of <span class="answer-blank"></span> do I want to create?</p>
+                        <p style="margin-bottom: 10px;">3. Don't get <span class="answer-blank"></span> on one particular color and <span class="answer-blank"></span> it.</p>
+
+                        <h4 style="margin: 20px 0 15px; color: #4a148c;">Specific advice</h4>
+                        <p style="margin-bottom: 10px;">4. People are more <span class="answer-blank"></span> in blue rooms.</p>
+                        <p style="margin-bottom: 10px;">5. Orange is a <span class="answer-blank"></span> color, but it can be kind of <span class="answer-blank"></span>.</p>
+                        <p style="margin-bottom: 10px;">6. Yellow is a nice choice because it gives you <span class="answer-blank"></span>.</p>
+                        <p style="margin-bottom: 10px;">7. Red encourages people to <span class="answer-blank"></span> more; that's why many <span class="answer-blank"></span> use it.</p>
+                        <p style="margin-bottom: 10px;">8. Don't use red in a room where you have to <span class="answer-blank"></span>.</p>
+                        <p style="margin-bottom: 10px;">9. Lavender <span class="answer-blank"></span> your nerves and encourages <span class="answer-blank"></span>.</p>
+                    </div>
+
+                    <div class="teacher-answer" style="margin-top: 20px;">
+                        General advice:<br>
+                        1. expensive / stressful | one<br>
+                        2. atmosphere / feeling<br>
+                        3. fixated | buy<br><br>
+                        
+                        Specific advice:<br>
+                        4. productive / relaxed<br>
+                        5. warm / energetic | intense<br>
+                        6. energy / happiness<br>
+                        7. eat | restaurants<br>
+                        8. relax / sleep / concentrate<br>
+                        9. calms | tranquility / relaxation
+                    </div>
+                </div>
+
+                <div class="ask-answer-box">
+                    <strong>Ask & Answer</strong>
+                    <p>Based on Annie's advice, what colors do you think Gary is going to paint his rooms? Why? Use your notes from Exercises B and C to explain. Would you follow Annie's advice? Why or why not?</p>
+                </div>
+            </section>
+
+            <!-- CONNECTIONS SECTION -->
+            <section id="connections" class="section">
+                <div class="section-header">Connections: The "I ❤️ NY" Logo</div>
+
+                <!-- Vocabulary -->
+                <div class="vocab-grid">
+                    <div class="vocab-item">
+                        <div class="vocab-word">design</div>
+                        <div class="vocab-def">to plan and draw an object so that it can be built or made</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">logo</div>
+                        <div class="vocab-def">special visual design or writing of a company's name that is used on products and advertising</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">slogan</div>
+                        <div class="vocab-def">short phrase that is easy to remember</div>
+                    </div>
+                </div>
+
+                <!-- Exercise A -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">A</span>
+                        <span>Reading: The Famous Logo</span>
+                    </div>
+                    
+                    <div class="image-placeholder" style="max-width: 200px; margin: 20px auto;">
+                        [I ❤️ NY Logo Image]
+                    </div>
+
+                    <p>Read about a famous logo and its designer. Then answer the questions with a partner.</p>
+
+                    <div class="reading-passage" style="margin-top: 20px;">
+                        <p style="margin-bottom: 15px;">In the 1970s, graphic designer Milton Glaser was given a job. He was asked to design a logo that the city of New York could use in an advertising campaign to attract tourists to the city. He went through several stages and in the end, he settled on a safe and clean design: the words "I love New York" on a white background. He submitted the design, which everyone seemed to like, but he wasn't satisfied with it.</p>
+                        
+                        <p style="margin-bottom: 15px;">Days later, while riding in a taxi and not thinking about anything in particular, he pulled out a piece of paper and started drawing. In a flash, he had a breakthrough. He saw the design clearly in his mind: I ❤️ NY. This logo is still one of the most recognized and imitated designs today.</p>
+                    </div>
+
+                    <div style="margin-top: 20px; color: #555;">
+                        <p style="margin-bottom: 10px;"><strong>1.</strong> Who designed the logo, and who was it for?</p>
+                        <p style="margin-bottom: 10px;"><strong>2.</strong> How did the designer get the idea?</p>
+                        <p style="margin-bottom: 10px;"><strong>3.</strong> Why do you think the design is one of the most imitated designs in the world?</p>
+                    </div>
+
+                    <div class="teacher-answer" style="margin-top: 20px;">
+                        1. Milton Glaser designed it for the city of New York (to attract tourists).<br>
+                        2. While riding in a taxi, not thinking about anything in particular, he pulled out paper and started drawing. He had a breakthrough/a flash of insight.<br>
+                        3. It's simple, memorable, uses a heart symbol instead of the word "love," and conveys a clear positive message about the city.
+                    </div>
+                </div>
+
+                <!-- Exercise B -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">B</span>
+                        <span>Design a Logo</span>
+                    </div>
+                    <p>Work with a partner. You are going to design a logo and slogan for a city's advertising campaign. If your logo does not include a slogan in it, as the example in Exercise A does, be sure to add one. Use a separate piece of paper.</p>
+                    
+                    <ol style="margin-left: 30px; margin-top: 15px; color: #555;">
+                        <li>Choose a city that you both know.</li>
+                        <li>Design the logo by doing the following:
+                            <ul style="margin-left: 20px; margin-top: 10px;">
+                                <li>Choose a primary (main) color and an accent color, as well as any other colors you want to use. (Remember what you learned about the use of colors.) Draw a logo.</li>
+                                <li>Think of a slogan: It should be a catchy phrase, short and memorable.</li>
+                                <li>Use letters and/or symbols in your slogan.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+
+                <!-- Exercise C -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">C</span>
+                        <span>Comment on Designs</span>
+                    </div>
+                    <p>Get together with two other pairs and explain your logo and slogan. Use the sentences below to comment on the other pairs' designs.</p>
+
+                    <div style="margin-top: 20px; color: #555; line-height: 2;">
+                        <p>1. Their design uses a logo that people will identify with <span class="answer-blank"></span> [name of city] immediately.</p>
+                        <p>2. The colors that they chose for this design are <span class="answer-blank"></span> because <span class="answer-blank"></span>.</p>
+                        <p>3. People will find the slogan, which is <span class="answer-blank"></span> and <span class="answer-blank"></span>, to be <span class="answer-blank"></span>.</p>
+                        <p>4. I think people who see this design will want to visit <span class="answer-blank"></span> [name of city] because <span class="answer-blank"></span>.</p>
+                    </div>
+                </div>
+
+                <!-- Exercise D -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">D</span>
+                        <span>Vote</span>
+                    </div>
+                    <p>Take a vote. Which design is your favorite?</p>
+                </div>
+            </section>
+
+            <!-- READING SECTION -->
+            <section id="reading" class="section">
+                <div class="section-header">Reading: Lost Leonardo</div>
+
+                <div class="reading-strategy-box">
+                    <strong>Reading Strategy: Identifying and Understanding Referents</strong><br>
+                    Writers use pronouns and other words to refer back to a previously mentioned word, phrase, or idea. They do this to avoid having to repeat the same words again and again.
+                </div>
+
+                <!-- Vocabulary -->
+                <div class="vocab-grid">
+                    <div class="vocab-item">
+                        <div class="vocab-word">masterpiece</div>
+                        <div class="vocab-def">an extremely good painting, novel, movie, or other work of art</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">mural</div>
+                        <div class="vocab-def">a large picture painted on a wall</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">priceless</div>
+                        <div class="vocab-def">worth so much money that the value cannot be estimated</div>
+                    </div>
+                </div>
+
+                <!-- Exercise A -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">A</span>
+                        <span>Pre-reading</span>
+                    </div>
+                    <p>Do you recognize this painting? What do you know about Leonardo da Vinci? Discuss with a partner.</p>
+                    
+                    <div class="image-placeholder" style="max-width: 300px; margin: 20px auto;">
+                        [The Mona Lisa Image]
+                    </div>
+                </div>
+
+                <!-- Exercise B -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">B</span>
+                        <span>Predict</span>
+                    </div>
+                    <p>Look at the title, image, and subtitle of the article. What do you think it is about? Discuss with a partner.</p>
+                    <p style="margin-top: 10px; color: #666; font-style: italic;">Title: "Lost Leonardo" | Subtitle: "The Palazzo Vecchio is one of Florence's most beautiful public spaces, but its most important masterpiece isn't even there anymore... or is it?"</p>
+                </div>
+
+                <!-- Reading Passage -->
+                <div class="reading-passage">
+                    <div class="passage-title">Lost Leonardo</div>
+                    <p style="margin-bottom: 15px; font-style: italic; color: #666;">The Palazzo Vecchio is one of Florence's most beautiful public spaces, but its most important masterpiece isn't even there anymore... or is it?</p>
+
+                    <p style="margin-bottom: 15px;"><span class="highlight">Maurizio Seracini is a man on a mission.</span> He is an expert in Italian art from the University of California, San Diego, and he has been working on a project in the Palazzo Vecchio in Florence for over thirty years. When he stands in the Hall of 500, he doesn't see the breathtaking, sixteenth-century mural by Giorgio Vasari; he sees the possible resting place of a lost work by Renaissance master Leonardo da Vinci.</p>
+
+                    <p style="margin-bottom: 15px;">Leonardo da Vinci was born in Italy in 1452. While he is known as a painter, geologist, inventor, scientist, and architect, da Vinci can perhaps be most accurately described as a creative genius. Although he made significant advances in many fields of study, he is most remembered for his contributions to the world of art. Today, visitors hoping to see his most famous masterpiece, the Mona Lisa, may wait in line at the Louvre art museum in Paris for hours to see it. The diversity and quality of da Vinci's talents, combined with his historical and cultural importance, make each and every one of his works priceless.</p>
+
+                    <p style="margin-bottom: 15px;">Ironically, in his own time, da Vinci's work was not always so well appreciated. In the 1550s, artist Giorgio Vasari was commissioned to remodel the Hall of 500 and paint over Leonardo's existing unfinished mural, The Battle of Anghiari. However, according to one rumor, Vasari himself was a fan of da Vinci and didn't want to destroy the original work. Now, almost five hundred years later, Seracini is finding clues that perhaps Vasari did not destroy Leonardo's masterpiece after all.</p>
+
+                    <p style="margin-bottom: 15px;">Seracini found his first clue in the 1970s, while examining a section of Vasari's mural, The Battle of Marciano. He found a strange inscription on the work, Cerca trova ("Look and you will find."). Did Vasari build a false wall in front of Leonardo's original mural to protect it? A radar scan did in fact detect a hollow space behind the mural, strengthening the possibility that a lost da Vinci is hidden in plain sight.</p>
+
+                    <p style="margin-bottom: 15px;">Further investigation, however, has become difficult. The possibility that another painting might be just out of view is not sufficient evidence to authorize a search that might considerably damage Vasari's work, which is itself a masterpiece. Additionally, even if there is another painting behind it, it is not certain that it would be a da Vinci. In 2011, however, Seracini was granted limited permission to drill into existing cracks in Vasari's mural. With only one week to complete the work, what they found was encouraging: definite evidence of a painting behind Vasari's original work and the possibility that some of the paint used in it is the same paint used in the Mona Lisa.</p>
+
+                    <p>Seracini's project is currently on hold as he waits for permission to investigate further. The risk of damaging Vasari's work is still a major concern that might prevent the project from moving forward. Still, the possibility of finding a lost da Vinci is worth the risk to many in the art world. According to art historian Martin Kemp, "If it's discovered, it would be one of the most famous discoveries of a century."</p>
+                </div>
+
+                <!-- Exercise C -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">C</span>
+                        <span>Chronological Order</span>
+                    </div>
+                    <p>Read the article. Then read this list of events and put them in chronological order.</p>
+
+                    <div style="margin-top: 20px; color: #555; line-height: 2;">
+                        <p><span class="answer-blank" style="width: 30px; display: inline-block;"></span> a. Maurizio Seracini finds the clue "Cerca trova" in Vasari's mural.</p>
+                        <p><span class="answer-blank" style="width: 30px; display: inline-block;"></span> b. Seracini finds evidence that there is another painting behind Vasari's mural.</p>
+                        <p><span class="answer-blank" style="width: 30px; display: inline-block;"></span> c. Leonardo da Vinci paints the mural The Battle of Anghiari.</p>
+                        <p><span class="answer-blank" style="width: 30px; display: inline-block;"></span> d. Seracini's team finds a hollow space behind Vasari's mural.</p>
+                        <p><span class="answer-blank" style="width: 30px; display: inline-block;"></span> e. The project is put on hold again, even though evidence suggests that the painting under Vasari's mural might be a da Vinci.</p>
+                        <p><span class="answer-blank" style="width: 30px; display: inline-block;"></span> f. Giorgio Vasari is commissioned to renovate the Hall of 500 and paints the mural The Battle of Marciano.</p>
+                        <p><span class="answer-blank" style="width: 30px; display: inline-block;"></span> g. Seracini's team is given permission to investigate the mural for one week.</p>
+                    </div>
+
+                    <div class="teacher-answer" style="margin-top: 20px;">
+                        Correct order: c, f, a, d, g, b, e<br>
+                        c (1500s - Leonardo paints)<br>
+                        f (1550s - Vasari commissioned)<br>
+                        a (1970s - finds clue)<br>
+                        d (later - radar scan finds hollow space)<br>
+                        g (2011 - one week permission)<br>
+                        b (during that week - finds evidence)<br>
+                        e (current - on hold again)
+                    </div>
+                </div>
+
+                <!-- Exercise D -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">D</span>
+                        <span>Identifying Referents</span>
+                    </div>
+                    <p>Read these excerpts from the article. Match the underlined referents (1-6) to one of the answers (a-d).</p>
+
+                    <div style="margin-top: 20px; color: #555;">
+                        <p style="margin-bottom: 15px;"><strong>a.</strong> da Vinci's works (in general)<br>
+                        <strong>b.</strong> the hidden mural<br>
+                        <strong>c.</strong> the Mona Lisa<br>
+                        <strong>d.</strong> Vasari's mural</p>
+
+                        <p style="margin-bottom: 10px;"><span class="answer-blank" style="width: 30px; display: inline-block;"></span> 1. (lines 16-17) ... may wait in line at the Louvre art museum in Paris for hours to see <u>it</u>.</p>
+                        
+                        <p style="margin-bottom: 10px;"><span class="answer-blank" style="width: 30px; display: inline-block;"></span> 2. (lines 18-20) ... combined with his historical and cultural importance, make <u>each and every one</u> of his works priceless.</p>
+                        
+                        <p style="margin-bottom: 10px;"><span class="answer-blank" style="width: 30px; display: inline-block;"></span> 3. (lines 40-42) Did Vasari build a false wall in front of Leonardo's original mural to protect <u>it</u>?</p>
+                        
+                        <p style="margin-bottom: 10px;"><span class="answer-blank" style="width: 30px; display: inline-block;"></span> 4. (lines 49-51) Additionally, even if there is another painting behind <u>it</u>, it is not certain that it would be a da Vinci.</p>
+                        
+                        <p style="margin-bottom: 10px;"><span class="answer-blank" style="width: 30px; display: inline-block;"></span> 5. (lines 55-57) ... and the possibility that some of the paint used in <u>it</u> is the same paint used in the Mona Lisa.</p>
+                        
+                        <p style="margin-bottom: 10px;"><span class="answer-blank" style="width: 30px; display: inline-block;"></span> 6. (line 64-65) "If <u>it's</u> discovered, it would be one of the most famous discoveries of a century."</p>
+                    </div>
+
+                    <div class="teacher-answer" style="margin-top: 20px;">
+                        1. c (the Mona Lisa)<br>
+                        2. a (da Vinci's works)<br>
+                        3. b (the hidden mural/Battle of Anghiari)<br>
+                        4. d (Vasari's mural)<br>
+                        5. b (the hidden mural/behind mural)<br>
+                        6. b (the hidden mural)
+                    </div>
+                </div>
+
+                <div class="ask-answer-box">
+                    <strong>Ask & Answer</strong>
+                    <p>A common expression in English is "the end justifies the means," which means even if the process isn't ideal, the result makes it worthwhile. What do you think about Seracini's project? Will the end justify the means? Why or why not? Discuss with a partner.</p>
+                </div>
+            </section>
+
+            <!-- VIDEO SECTION -->
+            <section id="video" class="section">
+                <div class="section-header">Video: Urban Art</div>
+
+                <div class="video-box">
+                    <div class="video-title">🎬 Watch the Video</div>
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: 15px 0;">
+                        <div class="local-video-container">
+            <div class="video-offline-badge">📱 OFFLINE VIDEO</div>
+            <video class="local-video" controls controlsList="nodownload" preload="metadata" poster="">
+                <source src="WCL2-U11.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-controls-hint">
+                <span>🎥 Video Controls:</span> Play ▶️ | Pause ⏸️ | Rewind ⏪ | Forward ⏩ | Captions CC | Fullscreen 🔲
+            </div>
+            <div class="video-info">
+                <span class="video-info-title">Unit 11: Art & Creativity</span>
+                <span class="video-info-format">HD</span>
+            </div>
+        </div>
+                    </div>
+                </div>
+
+                <!-- Vocabulary -->
+                <div class="vocab-grid">
+                    <div class="vocab-item">
+                        <div class="vocab-word">graffiti</div>
+                        <div class="vocab-def">words or pictures that are drawn in public places</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">vandalism</div>
+                        <div class="vocab-def">deliberate damaging of things, especially public property</div>
+                    </div>
+                </div>
+
+                <!-- Exercise A -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">A</span>
+                        <span>Art or Vandalism?</span>
+                    </div>
+                    <p>Look at the images on this page. What do you see, art or vandalism? Why? Discuss with a partner.</p>
+                    
+                    <div class="image-placeholder" style="margin: 20px 0;">
+                        [Graffiti/Street Art Images]
+                    </div>
+                </div>
+
+                <!-- Exercise B -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">B</span>
+                        <span>Synonyms</span>
+                    </div>
+                    <p>Choose the best synonym for the words in bold.</p>
+
+                    <div style="margin: 20px 0; padding: 15px; background: #f5f5f5; border-radius: 5px;">
+                        <p style="margin-bottom: 10px;"><strong>a.</strong> criticized &nbsp;&nbsp;&nbsp; <strong>b.</strong> dirty &nbsp;&nbsp;&nbsp; <strong>c.</strong> signature &nbsp;&nbsp;&nbsp; <strong>d.</strong> surface for painting</p>
+                    </div>
+
+                    <div style="margin-top: 20px; color: #555; line-height: 2;">
+                        <p><span class="answer-blank" style="width: 30px; display: inline-block;"></span> 1. A train tunnel in the nation's capital is a <strong>gritty</strong> gallery.</p>
+                        <p><span class="answer-blank" style="width: 30px; display: inline-block;"></span> 2. Nick Posada's work is here; "Tale" is his <strong>tag</strong>.</p>
+                        <p><span class="answer-blank" style="width: 30px; display: inline-block;"></span> 3. Even on such a public <strong>canvas</strong>, there are rules to be followed in the world of graffiti.</p>
+                        <p><span class="answer-blank" style="width: 30px; display: inline-block;"></span> 4. [Graffiti artists] are used to being <strong>vilified</strong>, and now they are being enjoyed.</p>
+                    </div>
+
+                    <div class="teacher-answer" style="margin-top: 20px;">
+                        1. b (dirty)<br>
+                        2. c (signature)<br>
+                        3. d (surface for painting)<br>
+                        4. a (criticized)
+                    </div>
+                </div>
+
+                <!-- Exercise C -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">C</span>
+                        <span>True or False</span>
+                    </div>
+                    <p>Watch the video on urban art and mark each statement True or False. Then, with a partner, correct the false statements on a separate piece of paper.</p>
+
+                    <div style="margin-top: 20px; color: #555; line-height: 2;">
+                        <p>1. The Wall of Fame is a train tunnel famous for graffiti art.</p>
+                        <p>2. Nick Posada thinks there is a difference between graffiti art and vandalism.</p>
+                        <p>3. Nick is surprised that one of his pieces is still on the Wall of Fame.</p>
+                        <p>4. The only place graffiti artists like Nick can show their work is in the streets.</p>
+                        <p>5. Chris Murray sees a lot of similarities between graffiti art and traditional public art, since both are commissioned.</p>
+                        <p>6. Graffiti art has sold well to collectors.</p>
+                    </div>
+
+                    <div class="teacher-answer" style="margin-top: 20px;">
+                        Answers depend on specific video content, but typically:<br>
+                        1. True<br>
+                        2. True<br>
+                        3. False (He's not surprised/It has been there a long time)<br>
+                        4. False (They can show in galleries too now)<br>
+                        5. True (or False depending on video - commissioned vs. uncommissioned)<br>
+                        6. True
+                    </div>
+                </div>
+
+                <!-- Exercise D -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">D</span>
+                        <span>Discussion: Rules of Graffiti</span>
+                    </div>
+                    <p>The narrator mentions that even in public spaces, there are rules to follow in the world of graffiti. What do you think the rules are? Discuss with a partner. Then get together with another pair and share your rules.</p>
+                </div>
+            </section>
+
+            <!-- SPEAKING SECTION -->
+            <section id="speaking" class="section">
+                <div class="section-header">Speaking: What is Art?</div>
+
+                <!-- Exercise A -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">A</span>
+                        <span>What is True Art?</span>
+                    </div>
+                    <p>What is art? Read this list of statements. Which ones do you agree with? Can you add to the list? Discuss with a partner.</p>
+                    <p style="margin-top: 10px; font-weight: bold;">True art <span class="answer-blank" style="width: 200px;"></span></p>
+
+                    <div style="margin-top: 15px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; color: #555;">
+                        <p>• makes you think deeply</p>
+                        <p>• costs a lot of money</p>
+                        <p>• should be seen in museums</p>
+                        <p>• is memorable</p>
+                        <p>• is beautiful</p>
+                        <p>• can't be made by just anyone</p>
+                        <p>• takes a long time to create</p>
+                        <p>• your idea(s): <span class="answer-blank"></span></p>
+                        <p>• is made for an audience</p>
+                    </div>
+                </div>
+
+                <div class="pronunciation-box">
+                    <strong>Pronunciation: Changing Stress</strong>
+                    <p>Changing the stress of a word(s) within a sentence can change the sentence's meaning. To stress a certain word you generally say it more slowly, clearly, and loudly. This gives emphasis to that word. Listen to the examples below.</p>
+                    <p style="margin-top: 10px; font-style: italic;"><strong>True</strong> art costs a lot of money. (as opposed to art that is ordinary)</p>
+                    <p style="font-style: italic;">True art costs a <strong>lot</strong> of money. (emphasizes amount of money)</p>
+                </div>
+
+                <!-- Exercise B -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">B</span>
+                        <span>Which Are Art?</span>
+                    </div>
+                    <p>Look at these pictures (including the graffiti). Which ones are art? Which aren't? Why do you think so? Discuss with a partner.</p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 20px;">
+                        <div class="image-placeholder" style="padding: 30px;">
+                            <strong>A</strong><br>[Painting: Woman writing]
+                        </div>
+                        <div class="image-placeholder" style="padding: 30px;">
+                            <strong>B</strong><br>[Ancient bell/artifact]
+                        </div>
+                        <div class="image-placeholder" style="padding: 30px;">
+                            <strong>C</strong><br>[Modern installation/Branches]
+                        </div>
+                        <div class="image-placeholder" style="padding: 30px;">
+                            <strong>D</strong><br>[Graffiti art]
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- WRITING SECTION -->
+            <section id="writing" class="section">
+                <div class="section-header">Writing: Write a Definition Essay</div>
+
+                <!-- Exercise A -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">A</span>
+                        <span>Read the Essay</span>
+                    </div>
+                    <p>Read the essay. Then discuss the questions with a partner.</p>
+
+                    <div class="reading-passage" style="margin-top: 20px;">
+                        <p style="margin-bottom: 15px;">What is art? According to the <em>Collins Cobuild Dictionary</em>, "art consists of paintings, sculpture, and other pictures or objects that are created for people to look at and admire or think deeply about," but I don't agree with this definition completely. First of all, I don't think that art is always "created for people to look at." Recently, I was in a museum where I saw a vase that was over five thousand years old. The vase was used to gather water from the river. When the people made it, they weren't thinking about "art." But today we can appreciate the vase as part of a display in an art museum. Second, I think this definition is incomplete because it doesn't mention anything about skill. Art isn't something that just anyone can do in a short period of time. There is one part of this definition that I do agree with though. I think that art should make you think deeply. When you look at art, something should catch your eye and make you stop and wonder.</p>
+                        
+                        <p style="margin-bottom: 15px;">Leonardo da Vinci was a talented artist who studied for many years to learn his skill. His <em>Mona Lisa</em> is a true work of art. In this painting, we see a woman posing for a portrait. It looks like an ordinary painting, but then something makes you stop and wonder. There is something about her facial expression; she seems to be smiling slightly. What could she be smiling about? It isn't clear and it makes you think.</p>
+                    </div>
+
+                    <div style="margin-top: 20px; color: #555;">
+                        <p style="margin-bottom: 10px;"><strong>1.</strong> Which part of the definition of <em>art</em> does the writer agree with? Disagree with?</p>
+                        <p style="margin-bottom: 10px;"><strong>2.</strong> What does the writer think about Leonardo da Vinci and his art?</p>
+                    </div>
+
+                    <div class="teacher-answer" style="margin-top: 20px;">
+                        1. Agrees: Art should make you think deeply.<br>
+                        Disagrees: That art is always created for people to look at; that it doesn't mention skill.<br>
+                        2. He was talented, studied many years, and the Mona Lisa makes you think/wonder.
+                    </div>
+                </div>
+
+                <div class="writing-strategy">
+                    <h3>Writing Strategy: Writing a Definition Essay</h3>
+                    <p style="margin-bottom: 10px;">A definition essay explains the meaning of a term. Abstract terms, such as <em>love</em> or <em>art</em>, often work well because their meaning depends more on the writer's perspective than it does with more concrete terms, such as <em>book</em> or <em>chair</em>.</p>
+                    
+                    <p style="margin-top: 15px; font-weight: bold; color: #e65100;">First paragraph</p>
+                    <ul style="margin-left: 20px; margin-bottom: 15px; color: #555;">
+                        <li>Introduce the dictionary definition at the beginning of your essay using one of these expressions:<br>
+                        <em>The dictionary defines creativity as... / According to the (name of dictionary) creativity is... / When you look up creativity in the dictionary it says...</em></li>
+                        <li>Write about the parts of the definition you agree or disagree with. Give examples to support your views.</li>
+                    </ul>
+
+                    <p style="font-weight: bold; color: #e65100;">Second paragraph</p>
+                    <ul style="margin-left: 20px; color: #555;">
+                        <li>Write about a specific piece of art you know. Describe the art briefly.</li>
+                        <li>Do you think it took a lot of creativity to create this art? Use your definition of the word <em>creativity</em> to support your opinion.</li>
+                    </ul>
+                </div>
+
+                <!-- Exercise B -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">B</span>
+                        <span>Writing Task</span>
+                    </div>
+                    <p>You are going to write about the word <strong>creativity</strong>. Look up the definition in a dictionary. Then read the Writing Strategy and outline your ideas in preparation for writing. Use the two-paragraph structure to write a definition essay.</p>
+                </div>
+
+                <!-- Exercise C -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">C</span>
+                        <span>Peer Review</span>
+                    </div>
+                    <p>Exchange papers with a partner and read his or her essay. Do the paragraphs follow the points outlined in the Writing Strategy? What do you think of your partner's argument in the second paragraph? Do you agree with it? Why or why not?</p>
+                </div>
+            </section>
+
+            <!-- EXPANDING FLUENCY SECTION -->
+            <section id="fluency" class="section">
+                <div class="section-header">Expanding Your Fluency</div>
+
+                <!-- Exercise A -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">A</span>
+                        <span>Art Beyond Museums</span>
+                    </div>
+                    <p>Art doesn't have to be something found in a museum or gallery. In pairs, discuss the six groups below. Do you think any creations from these groups can be considered art? Which ones?</p>
+
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 20px; color: #555;">
+                        <div style="background: #f5f5f5; padding: 15px; border-radius: 5px;">
+                            <strong>architecture</strong><br>
+                            <small>(exterior and interior of buildings or rooms)</small>
+                        </div>
+                        <div style="background: #f5f5f5; padding: 15px; border-radius: 5px;">
+                            <strong>cooking</strong><br>
+                            <small>(tasty or colorful foods)</small>
+                        </div>
+                        <div style="background: #f5f5f5; padding: 15px; border-radius: 5px;">
+                            <strong>fashion</strong><br>
+                            <small>(interesting clothing, hair, or makeup)</small>
+                        </div>
+                        <div style="background: #f5f5f5; padding: 15px; border-radius: 5px;">
+                            <strong>landscape</strong><br>
+                            <small>(picturesque places: gardens, public parks, etc.)</small>
+                        </div>
+                        <div style="background: #f5f5f5; padding: 15px; border-radius: 5px;">
+                            <strong>technology</strong><br>
+                            <small>(gadgets of any kind)</small>
+                        </div>
+                        <div style="background: #f5f5f5; padding: 15px; border-radius: 5px;">
+                            <strong>transportation</strong><br>
+                            <small>(fascinating bicycles and cars)</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Exercise B -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">B</span>
+                        <span>Examples of Art</span>
+                    </div>
+                    <p>Work in pairs and pick two groups from Exercise A. For each group, think of one example that could be considered a work of art. Make some notes on your examples so you can share with another pair. Use a separate piece of paper.</p>
+                </div>
+
+                <!-- Exercise C -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">C</span>
+                        <span>Describe Your Art</span>
+                    </div>
+                    <p>Now get together with another pair. Take turns describing your two works of art to them, and then listen to their descriptions. Do you agree that their examples are art? Why or why not?</p>
+                </div>
+
+                <div class="ask-answer-box">
+                    <strong>Ask & Answer</strong>
+                    <p>What are some of the ways that you express yourself creatively?</p>
+                    <p style="margin-top: 10px; font-size: 14px; color: #666; font-style: italic;">Example: Architecture can definitely be a work of art! Casa Milà, which was designed by Antoni Gaudí, is the perfect example because...</p>
+                </div>
+
+                <!-- Check What You Know -->
+                <div class="check-section">
+                    <h3 style="text-align: center; margin-bottom: 20px; color: #4a148c;">✓ Check What You Know</h3>
+                    <p style="text-align: center; margin-bottom: 20px; color: #555;">Rank how well you can perform these outcomes on a scale of 1-5 (5 being the best).</p>
+                    
+                    <div class="check-item">
+                        <div class="check-number">1</div>
+                        <div>
+                            <strong>use adjective clauses with object relative pronouns</strong>
+                            <div style="margin-top: 5px; color: #666;">Rating: _____ / 5</div>
+                        </div>
+                    </div>
+                    
+                    <div class="check-item">
+                        <div class="check-number">2</div>
+                        <div>
+                            <strong>identify referents and their antecedents</strong>
+                            <div style="margin-top: 5px; color: #666;">Rating: _____ / 5</div>
+                        </div>
+                    </div>
+                    
+                    <div class="check-item">
+                        <div class="check-number">3</div>
+                        <div>
+                            <strong>write a definition essay</strong>
+                            <div style="margin-top: 5px; color: #666;">Rating: _____ / 5</div>
+                        </div>
+                    </div>
+                    
+                    <div class="check-item">
+                        <div class="check-number">4</div>
+                        <div>
+                            <strong>critique and define art</strong>
+                            <div style="margin-top: 5px; color: #666;">Rating: _____ / 5</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer Navigation -->
+        <div class="unit-nav no-print">
+            <a href="unit10.html" class="nav-btn">← Unit 10</a>
+            <span style="align-self: center; font-weight: bold; color: #7f8c8d;">Book 2B - Unit 11 of 12</span>
+            <a href="unit12.html" class="nav-btn">Unit 12 →</a>
+        </div>
+    </div>
+
+    <!-- View Mode Indicator -->
+    <div id="viewIndicator" class="view-indicator">
+        Teacher View Active
+    </div>
+
+    <script>
+        // View switching functionality
+        function switchView(mode) {
+            const body = document.body;
+            const studentBtn = document.getElementById('studentBtn');
+            const teacherBtn = document.getElementById('teacherBtn');
+            const indicator = document.getElementById('viewIndicator');
+
+            if (mode === 'student') {
+                body.classList.remove('teacher-mode');
+                studentBtn.classList.add('active');
+                teacherBtn.classList.remove('active');
+                indicator.innerHTML = 'Student View Active';
+                indicator.style.display = 'block';
+                localStorage.setItem('unit11_viewMode', 'student');
+            } else {
+                body.classList.add('teacher-mode');
+                teacherBtn.classList.add('active');
+                studentBtn.classList.remove('active');
+                indicator.innerHTML = 'Teacher View Active';
+                indicator.style.display = 'block';
+                localStorage.setItem('unit11_viewMode', 'teacher');
+            }
+
+            setTimeout(() => {
+                indicator.style.display = 'none';
+            }, 2000);
+        }
+
+        // Load saved preference
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedMode = localStorage.getItem('unit11_viewMode');
+            if (savedMode === 'student') {
+                switchView('student');
+            } else {
+                document.body.classList.add('teacher-mode');
+            }
+
+            // Audio player enhancement
+            document.querySelectorAll('audio').forEach(player => {
+                player.addEventListener('play', function() {
+                    document.querySelectorAll('audio').forEach(other => {
+                        if (other !== player) other.pause();
+                    });
+                });
+            });
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Keyboard shortcut for view toggle (T for teacher, S for student)
+        document.addEventListener('keydown', function(e) {
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+            if (e.key === 't' || e.key === 'T') {
+                switchView('teacher');
+            } else if (e.key === 's' || e.key === 'S') {
+                switchView('student');
+            }
+        });
+    
+
+// Dark Mode Toggle
+function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+    const isDark = document.body.classList.contains('dark-mode');
+    localStorage.setItem('darkMode', isDark);
+    updateDarkModeButton();
+}
+
+function updateDarkModeButton() {
+    const btn = document.querySelector('.dark-mode-toggle');
+    if (document.body.classList.contains('dark-mode')) {
+        btn.innerHTML = '☀️ Light';
+    } else {
+        btn.innerHTML = '🌙 Dark';
+    }
+}
+
+// Load dark mode preference on page load
+document.addEventListener('DOMContentLoaded', function() {
+    if (localStorage.getItem('darkMode') === 'true') {
+        document.body.classList.add('dark-mode');
+    }
+    updateDarkModeButton();
+});
+</script>
+    
+    <!-- Credit -->
+    <div style="text-align: center; color: #7f8c8d; font-size: 13px; padding: 15px; font-style: italic;">
+        Re-Created by ESL Teacher Ry
+    </div>
+
+    <!-- 3D Button Interactions -->
+    <script>
+        // Ripple effect for buttons
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('.btn-ripple, .btn-3d, .nav-bar button');
+            if (!btn) return;
+            
+            const ripple = document.createElement('span');
+            ripple.className = 'ripple';
+            
+            const rect = btn.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            
+            btn.appendChild(ripple);
+            
+            setTimeout(() => ripple.remove(), 600);
+        });
+        
+                // Homework menu toggle
+        function toggleHomeworkMenu(menuId) {
+            const menu = document.getElementById(menuId);
+            if (menu.style.display === 'none') {
+                menu.style.display = 'block';
+            } else {
+                menu.style.display = 'none';
+            }
+        }
+        
+        // Close homework menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.homework-dropdown')) {
+                document.querySelectorAll('.homework-menu').forEach(menu => {
+                    menu.style.display = 'none';
+                });
+            }
+        });
+        // Magnetic button effect
+        document.querySelectorAll('.btn-3d, .audio-btn, .play-btn').forEach(btn => {
+            btn.addEventListener('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                this.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
+            });
+            
+            btn.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+            });
+        });
+    </script>
+
+
+    <!-- Vocabulary Audio Pronunciation -->
+    <script>
+        // Text-to-Speech for vocabulary pronunciation
+        function speakWord(word) {
+            if ('speechSynthesis' in window) {
+                // Cancel any ongoing speech
+                window.speechSynthesis.cancel();
+                
+                const utterance = new SpeechSynthesisUtterance(word);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.8;
+                utterance.pitch = 1;
+                
+                // Find the button and add playing animation
+                const buttons = document.querySelectorAll('.vocab-audio-btn');
+                buttons.forEach(btn => {
+                    if (btn.getAttribute('data-word') === word) {
+                        btn.classList.add('playing');
+                        btn.innerHTML = '🔊';
+                    }
+                });
+                
+                utterance.onend = function() {
+                    buttons.forEach(btn => {
+                        if (btn.getAttribute('data-word') === word) {
+                            btn.classList.remove('playing');
+                            btn.innerHTML = '🔈';
+                        }
+                    });
+                };
+                
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert('Text-to-speech is not supported in your browser.');
+            }
+        }
+        
+        // Add audio buttons to vocabulary items
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.vocab-item').forEach(item => {
+                const wordEl = item.querySelector('.vocab-word');
+                if (wordEl) {
+                    const word = wordEl.textContent.trim();
+                    const audioBtn = document.createElement('button');
+                    audioBtn.className = 'vocab-audio-btn';
+                    audioBtn.setAttribute('data-word', word);
+                    audioBtn.innerHTML = '🔈';
+                    audioBtn.title = 'Click to hear pronunciation';
+                    audioBtn.onclick = function(e) {
+                        e.stopPropagation();
+                        speakWord(word);
+                    };
+                    item.appendChild(audioBtn);
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

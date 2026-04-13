@@ -1,0 +1,2477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Class Level 2 - Book 2B Reference: Pronunciation, Language & Grammar Summary</title>
+    <!-- Authentication Check -->
+    <script>
+        // Check if user is logged in
+        if (!sessionStorage.getItem('teacherLoggedIn')) {
+            window.location.href = '../login.html';
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #faf8f5;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        /* Header - Burgundy & Gold Theme for Reference Section */
+        .unit-header {
+            background: linear-gradient(135deg, #722f37 0%, #8b3a3a 100%);
+            color: white;
+            padding: 60px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .unit-number {
+            font-size: 80px;
+            font-weight: bold;
+            opacity: 0.3;
+            position: absolute;
+            top: 20px;
+            left: 40px;
+            line-height: 1;
+        }
+
+        .unit-title {
+            font-size: 42px;
+            font-weight: bold;
+            margin-left: 100px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .unit-theme {
+            font-size: 22px;
+            margin-left: 100px;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+
+        /* Navigation */
+        .nav-bar {
+            background: #722f37;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: #722f37;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 10px 20px;
+            border-radius: 25px;
+            background: linear-gradient(145deg, #faf8f5 0%, #f0ebe3 100%);
+            border: 2px solid transparent;
+            box-shadow: 0 2px 4px rgba(114, 47, 55, 0.1), inset 0 1px 0 rgba(255,255,255,0.8);
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            background: linear-gradient(145deg, #722f37 0%, #8b3a3a 100%); color: #fff; border-color: #d4af37; transform: translateY(-2px); box-shadow: 0 6px 12px rgba(114, 47, 55, 0.25), 0 0 0 3px rgba(212, 175, 55, 0.2);
+        }
+
+        .nav-links a.active {
+            background: linear-gradient(145deg, #722f37 0%, #5c1a1a 100%);
+            border-color: #d4af37;
+            color: #d4af37; box-shadow: 0 4px 8px rgba(114, 47, 55, 0.3), 0 0 0 3px rgba(212, 175, 55, 0.3), inset 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        /* Main Content */
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            display: none;
+            margin-bottom: 50px;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .section-header {
+            background: linear-gradient(135deg, #722f37 0%, #8b3a3a 100%);
+            color: white;
+            padding: 20px 30px;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            border-left: 8px solid #d4af37; border-bottom: 3px solid #d4af37;
+        }
+
+        /* Subsection Headers */
+        .subsection-header {
+            background: #722f37;
+            color: white;
+            padding: 15px 25px;
+            font-size: 22px;
+            font-weight: bold;
+            margin: 30px 0 20px 0;
+            border-radius: 5px;
+        }
+
+        /* Exercise Boxes */
+        .exercise {
+            background: #fff;
+            border: 2px solid #ecf0f1;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .exercise-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #722f37;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .exercise-icon {
+            background: #722f37;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* Yellow Strategy Box */
+        .strategy-box {
+            background: #fff9c4;
+            border: 2px solid #f9a825;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .strategy-box::before {
+            content: "💡 STRATEGY";
+            background: #f9a825;
+            color: white;
+            padding: 4px 12px;
+            font-size: 12px;
+            font-weight: bold;
+            position: absolute;
+            top: -12px;
+            left: 20px;
+        }
+
+        .strategy-title {
+            font-weight: bold;
+            color: #e65100;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            background: #ede7f6;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+            border: 2px solid #722f37;
+        }
+
+        .audio-label {
+            font-weight: bold;
+            color: #5c1a1a;
+            margin-bottom: 10px;
+        }
+
+        audio {
+            width: 100%;
+            max-width: 500px;
+            margin: 10px 0;
+        }
+
+        /* Grammar Chart */
+        .grammar-chart {
+            background: #f8f9fa;
+            border: 2px solid #722f37;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .chart-header {
+            background: linear-gradient(135deg, #722f37 0%, #8b3a3a 100%);
+            color: white;
+            padding: 15px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .chart-row {
+            display: grid;
+            grid-template-columns: 1fr 2fr 2fr;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .chart-row:last-child {
+            border-bottom: none;
+        }
+
+        .chart-cell {
+            padding: 15px;
+            border-right: 1px solid #ddd;
+        }
+
+        .chart-cell:last-child {
+            border-right: none;
+        }
+
+        .chart-cell.header {
+            background: #ede7f6;
+            font-weight: bold;
+            color: #5c1a1a;
+        }
+
+        /* Teacher's Answers */
+        .teacher-answer {
+            display: none;
+            background: #ede7f6;
+            border: 2px solid #722f37;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 10px;
+            color: #5c1a1a;
+            font-weight: 600;
+        }
+
+        .teacher-answer::before {
+            content: "✓ TEACHER ANSWER: ";
+            font-weight: 800;
+            color: #5c1a1a;
+        }
+
+        .teaching-note {
+            display: none;
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            color: #e65100;
+        }
+
+        .teaching-note::before {
+            content: "🍎 TEACHING NOTE: ";
+            font-weight: 800;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* Visible states for teacher mode */
+        .teacher-mode .teacher-answer,
+        .teacher-mode .teaching-note {
+            display: block;
+        }
+
+        /* Pronunciation Table */
+        .pronunciation-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            font-size: 15px;
+        }
+
+        .pronunciation-table th {
+            background: linear-gradient(135deg, #722f37 0%, #8b3a3a 100%);
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .pronunciation-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            border-right: 1px solid #eee;
+        }
+
+        .pronunciation-table tr:nth-child(even) {
+            background: #f3e5f5;
+        }
+
+        .pronunciation-table tr:hover {
+            background: #ede7f6;
+        }
+
+        /* Vocabulary Grid */
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .vocab-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid #722f37;
+            border-radius: 5px;
+        }
+
+        .vocab-word {
+            font-weight: bold;
+            color: #5c1a1a;
+            font-size: 16px;
+            margin-bottom: 3px;
+        }
+
+        .vocab-def {
+            color: #555;
+            font-size: 14px;
+        }
+
+        /* Lists */
+        .reference-list {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .reference-list ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .reference-list li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            border-bottom: 1px solid #eee;
+        }
+
+        .reference-list li:before {
+            content: "•";
+            color: #722f37;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 20px;
+        }
+
+        /* Skills Index Table */
+        .skills-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        .skills-table th {
+            background: linear-gradient(135deg, #722f37 0%, #8b3a3a 100%);
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .skills-table td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            vertical-align: top;
+        }
+
+        .skills-table tr:nth-child(even) {
+            background: #f3e5f5;
+        }
+
+        /* Print Styles */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+
+            .nav-bar, .unit-nav {
+                display: none !important;
+            }
+
+            body {
+                background: white;
+            }
+
+            .container {
+                box-shadow: none;
+            }
+
+            .section {
+                display: block !important;
+                page-break-before: always;
+            }
+
+            .section:first-of-type {
+                page-break-before: avoid;
+            }
+
+            .teacher-answer, .teaching-note {
+                display: none !important;
+            }
+
+            .teacher-mode .teacher-answer,
+            .teacher-mode .teaching-note {
+                display: block !important;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .vocab-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chart-row {
+                grid-template-columns: 1fr;
+            }
+
+            .unit-title {
+                font-size: 28px;
+                margin-left: 0;
+            }
+
+            .unit-number {
+                font-size: 60px;
+            }
+
+            .nav-links {
+                gap: 8px;
+            }
+
+            .nav-links a {
+                padding: 6px 12px;
+                font-size: 14px;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .pronunciation-table {
+                font-size: 13px;
+            }
+
+            .pronunciation-table td {
+                padding: 8px;
+            }
+        }
+
+        /* View Mode Indicator */
+        .view-indicator {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            z-index: 1000;
+            display: none;
+        }
+
+        .view-indicator.show {
+            display: block;
+        }
+
+        /* Highlight box */
+        .highlight-box {
+            background: #ede7f6;
+            border-left: 4px solid #722f37;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* Example Box */
+        .example-box {
+            background: #e8f5e9;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border-left: 3px solid #4caf50;
+        }
+
+        /* Tip Box */
+        .tip-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 14px;
+        }
+
+        /* Footer Navigation */
+        .unit-nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 30px 40px;
+            background: #ecf0f1;
+            border-top: 3px solid #d4af37;
+        }
+
+        .nav-btn {
+            background: linear-gradient(145deg, #faf8f5 0%, #f0ebe3 100%);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: #722f37;
+        }
+    
+        /* ===== 3D DYNAMIC BUTTONS ===== */
+        
+        /* Base 3D Button Style */
+        .btn-3d {
+            display: inline-block;
+            padding: 12px 28px;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #fff;
+            background: linear-gradient(145deg, #8b3a3a 0%, #722f37 50%, #5c1a1a 100%);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                0 4px 6px rgba(114, 47, 55, 0.3),
+                0 10px 20px rgba(114, 47, 55, 0.2),
+                inset 0 1px 0 rgba(255,255,255,0.2),
+                inset 0 -2px 0 rgba(0,0,0,0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(0);
+        }
+        
+        .btn-3d::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .btn-3d:hover::before {
+            left: 100%;
+        }
+        
+        .btn-3d:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 
+                0 8px 15px rgba(114, 47, 55, 0.4),
+                0 15px 30px rgba(114, 47, 55, 0.25),
+                inset 0 1px 0 rgba(255,255,255,0.3),
+                inset 0 -2px 0 rgba(0,0,0,0.2);
+            background: linear-gradient(145deg, #722f37 0%, #8b3a3a 50%, #722f37 100%);
+        }
+        
+        .btn-3d:active {
+            transform: translateY(-1px) scale(0.98);
+            box-shadow: 
+                0 2px 4px rgba(114, 47, 55, 0.3),
+                0 5px 10px rgba(114, 47, 55, 0.2),
+                inset 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        /* Gold Accent Button */
+        .btn-gold {
+            background: linear-gradient(145deg, #e5c76b 0%, #d4af37 50%, #b8960c 100%);
+            color: #722f37;
+            box-shadow: 
+                0 4px 6px rgba(212, 175, 55, 0.4),
+                0 10px 20px rgba(212, 175, 55, 0.25),
+                inset 0 1px 0 rgba(255,255,255,0.4),
+                inset 0 -2px 0 rgba(0,0,0,0.1);
+            font-weight: 800;
+        }
+        
+        .btn-gold:hover {
+            background: linear-gradient(145deg, #d4af37 0%, #e5c76b 50%, #d4af37 100%);
+            color: #5c1a1a;
+            box-shadow: 
+                0 8px 15px rgba(212, 175, 55, 0.5),
+                0 15px 30px rgba(212, 175, 55, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.5),
+                inset 0 -2px 0 rgba(0,0,0,0.1);
+        }
+        
+        .btn-gold:active {
+            box-shadow: 
+                0 2px 4px rgba(212, 175, 55, 0.4),
+                0 5px 10px rgba(212, 175, 55, 0.2),
+                inset 0 2px 4px rgba(0,0,0,0.15);
+        }
+        
+        /* Outline 3D Button */
+        .btn-outline {
+            background: transparent;
+            color: #722f37;
+            border: 2px solid #722f37;
+            box-shadow: 
+                0 4px 6px rgba(114, 47, 55, 0.1),
+                0 0 0 4px rgba(114, 47, 55, 0.05);
+        }
+        
+        .btn-outline:hover {
+            background: #722f37;
+            color: #fff;
+            box-shadow: 
+                0 8px 15px rgba(114, 47, 55, 0.3),
+                0 0 0 6px rgba(114, 47, 55, 0.1);
+        }
+        
+        /* Small Button Variant */
+        .btn-sm {
+            padding: 8px 18px;
+            font-size: 12px;
+        }
+        
+        /* Large Button Variant */
+        .btn-lg {
+            padding: 16px 36px;
+            font-size: 16px;
+        }
+        
+        /* Icon Button */
+        .btn-icon {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-icon svg,
+        .btn-icon i,
+        .btn-icon span.icon {
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+        }
+        
+        .btn-icon:hover svg,
+        .btn-icon:hover i,
+        .btn-icon:hover span.icon {
+            transform: translateX(3px);
+        }
+        
+        /* Rounded Square Buttons (for nav) */
+        .btn-square {
+            border-radius: 12px;
+            padding: 10px 20px;
+        }
+        
+        /* Pill Button */
+        .btn-pill {
+            border-radius: 50px;
+        }
+        
+        /* Floating Action Button Style */
+        .btn-float {
+            box-shadow: 
+                0 6px 12px rgba(114, 47, 55, 0.25),
+                0 0 0 1px rgba(114, 47, 55, 0.1),
+                inset 0 1px 0 rgba(255,255,255,0.2);
+        }
+        
+        .btn-float:hover {
+            transform: translateY(-4px);
+            box-shadow: 
+                0 12px 24px rgba(114, 47, 55, 0.35),
+                0 0 0 1px rgba(114, 47, 55, 0.15),
+                inset 0 1px 0 rgba(255,255,255,0.25);
+        }
+        
+        /* Gradient Shine Effect */
+        .btn-shine {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-shine::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to right,
+                transparent 0%,
+                rgba(255,255,255,0.1) 50%,
+                transparent 100%
+            );
+            transform: rotate(30deg) translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+        
+        .btn-shine:hover::after {
+            transform: rotate(30deg) translateX(100%);
+        }
+        
+        /* Ripple Effect on Click */
+        .btn-ripple {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-ripple span.ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.4);
+            transform: scale(0);
+            animation: ripple-animation 0.6s linear;
+            pointer-events: none;
+        }
+        
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+        
+        /* Glow Effect */
+        .btn-glow {
+            animation: glow-pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes glow-pulse {
+            0%, 100% {
+                box-shadow: 
+                    0 4px 6px rgba(114, 47, 55, 0.3),
+                    0 0 20px rgba(212, 175, 55, 0.2);
+            }
+            50% {
+                box-shadow: 
+                    0 4px 6px rgba(114, 47, 55, 0.3),
+                    0 0 30px rgba(212, 175, 55, 0.4);
+            }
+        }
+        
+        /* Button Group */
+        .btn-group {
+            display: inline-flex;
+            gap: 0;
+        }
+        
+        .btn-group .btn-3d {
+            border-radius: 0;
+        }
+        
+        .btn-group .btn-3d:first-child {
+            border-radius: 50px 0 0 50px;
+        }
+        
+        .btn-group .btn-3d:last-child {
+            border-radius: 0 50px 50px 0;
+        }
+        
+        /* ===== DARK MODE BASE STYLES ===== */
+        body.dark-mode {
+            background: #1a1a1a;
+            color: #e0e0e0;
+        }
+        
+        body.dark-mode .container {
+            background: #2d2d2d;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+        
+        body.dark-mode .content {
+            background: #2d2d2d;
+        }
+        
+        body.dark-mode .section-header {
+            background: linear-gradient(135deg, #5c1a1a 0%, #722f37 100%);
+            color: #fff;
+            border-left-color: #d4af37;
+            border-bottom-color: #d4af37;
+        }
+        
+        body.dark-mode .subsection-header {
+            color: #d4af37;
+            border-bottom-color: #5c1a1a;
+        }
+        
+        body.dark-mode .exercise {
+            background: #363636;
+            border-color: #444;
+        }
+        
+        body.dark-mode .exercise-title {
+            color: #d4af37;
+        }
+        
+        body.dark-mode .strategy-box {
+            background: #3d3d3d;
+            border-color: #d4af37;
+        }
+        
+        body.dark-mode .strategy-title {
+            color: #d4af37;
+        }
+        
+        body.dark-mode .tip-box {
+            background: #3d3d3d;
+            border-color: #5c1a1a;
+        }
+        
+        body.dark-mode .tip-title {
+            color: #d4af37;
+        }
+        
+        body.dark-mode .audio-player {
+            background: #363636;
+        }
+        
+        body.dark-mode .audio-label {
+            color: #d4af37;
+        }
+        
+        body.dark-mode .word-list li {
+            border-bottom-color: #444;
+        }
+        
+        body.dark-mode .grammar-chart {
+            background: #363636;
+            border-color: #444;
+        }
+        
+        body.dark-mode .chart-cell {
+            border-color: #722f37;
+            color: #e0e0e0;
+        }
+        
+        body.dark-mode .chart-cell.header {
+            background: #5c1a1a;
+            color: #d4af37;
+        }
+        
+        body.dark-mode . ipa-symbol {
+            color: #d4af37;
+        }
+        
+        body.dark-mode .phoneme-box {
+            background: #363636;
+            border-color: #5c1a1a;
+        }
+        
+        body.dark-mode .example-box {
+            background: #3d3d3d;
+            border-color: #d4af37;
+        }
+        
+        body.dark-mode .rule-box {
+            background: #363636;
+            border-color: #722f37;
+        }
+        
+        body.dark-mode .table-container {
+            background: #363636;
+        }
+        
+        body.dark-mode th {
+            background: #5c1a1a;
+            color: #d4af37;
+        }
+        
+        body.dark-mode td {
+            border-color: #444;
+        }
+        
+        body.dark-mode tr:nth-child(even) {
+            background: #3d3d3d;
+        }
+        
+        body.dark-mode .highlight {
+            color: #d4af37;
+        }
+        
+        body.dark-mode .teacher-note {
+            background: #4a3d2a;
+            border-color: #d4af37;
+        }
+        
+        body.dark-mode .teacher-answer {
+            background: #3d3020;
+            border-color: #d4af37;
+            color: #e0e0e0;
+        }
+        
+        body.dark-mode .pronunciation-table-container {
+            background: #363636;
+        }
+        
+        body.dark-mode .pronunciation-table th {
+            background: #5c1a1a;
+            color: #d4af37;
+        }
+        
+        body.dark-mode .pronunciation-table td {
+            border-color: #444;
+            color: #e0e0e0;
+        }
+        
+        body.dark-mode .pronunciation-table tr:nth-child(even) {
+            background: #3d3d3d;
+        }
+        
+        body.dark-mode .reference-list {
+            background: #363636;
+        }
+        
+        body.dark-mode .reference-list li {
+            color: #e0e0e0;
+            border-bottom-color: #444;
+        }
+        
+        body.dark-mode .reference-list li:before {
+            color: #d4af37;
+        }
+        
+        body.dark-mode .highlight-box {
+            background: #3d3d3d;
+            border-color: #d4af37;
+        }
+        
+        body.dark-mode .exercise-icon {
+            background: linear-gradient(145deg, #5c1a1a 0%, #722f37 100%);
+            color: #d4af37;
+        }
+        
+        body.dark-mode .unit-header {
+            background: linear-gradient(135deg, #3d3d3d 0%, #5c1a1a 50%, #722f37 100%);
+        }
+        
+        body.dark-mode .unit-number {
+            color: rgba(212, 175, 55, 0.3);
+        }
+        
+        body.dark-mode .unit-theme {
+            color: #d4af37;
+        }
+        
+        body.dark-mode .nav-bar {
+            background: #5c1a1a;
+        }
+        
+        body.dark-mode .nav-links a {
+            background: linear-gradient(145deg, #3d3d3d 0%, #2d2d2d 100%);
+            color: #e0e0e0;
+            border-color: transparent;
+        }
+        
+        body.dark-mode .nav-links a:hover {
+            background: linear-gradient(145deg, #722f37 0%, #5c1a1a 100%);
+            color: #fff;
+            border-color: #d4af37;
+        }
+        
+        body.dark-mode .nav-links a.active {
+            background: linear-gradient(145deg, #5c1a1a 0%, #722f37 100%);
+            color: #d4af37;
+            border-color: #d4af37;
+        }
+        
+        /* Dark Mode Button Styles */
+        body.dark-mode .btn-3d {
+            background: linear-gradient(145deg, #8b3a3a 0%, #5c1a1a 50%, #3d1515 100%);
+            box-shadow: 
+                0 4px 6px rgba(0, 0, 0, 0.4),
+                0 10px 20px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.1),
+                inset 0 -2px 0 rgba(0,0,0,0.3);
+        }
+        
+        body.dark-mode .btn-3d:hover {
+            background: linear-gradient(145deg, #722f37 0%, #8b3a3a 50%, #722f37 100%);
+            box-shadow: 
+                0 8px 15px rgba(0, 0, 0, 0.5),
+                0 15px 30px rgba(0, 0, 0, 0.35),
+                0 0 20px rgba(212, 175, 55, 0.2),
+                inset 0 1px 0 rgba(255,255,255,0.15),
+                inset 0 -2px 0 rgba(0,0,0,0.3);
+        }
+        
+        body.dark-mode .btn-gold {
+            background: linear-gradient(145deg, #e5c76b 0%, #d4af37 50%, #b8960c 100%);
+            color: #3d1515;
+            box-shadow: 
+                0 4px 6px rgba(212, 175, 55, 0.3),
+                0 10px 20px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.3);
+        }
+        
+        body.dark-mode .btn-outline {
+            border-color: #d4af37;
+            color: #d4af37;
+            box-shadow: 
+                0 4px 6px rgba(0, 0, 0, 0.2),
+                0 0 0 4px rgba(212, 175, 55, 0.05);
+        }
+        
+        body.dark-mode .btn-outline:hover {
+            background: linear-gradient(145deg, #722f37 0%, #8b3a3a 100%); color: #fff; border-color: #d4af37; transform: translateY(-2px); box-shadow: 0 6px 12px rgba(114, 47, 55, 0.25), 0 0 0 3px rgba(212, 175, 55, 0.2);
+            color: #3d1515;
+            box-shadow: 
+                0 8px 15px rgba(212, 175, 55, 0.3),
+                0 0 0 6px rgba(212, 175, 55, 0.1);
+        }
+        
+        /* Section Navigation Buttons Enhancement */
+        .nav-bar button {
+            background: linear-gradient(145deg, #faf8f5 0%, #f0ebe3 100%);
+            color: #722f37;
+            border: 2px solid transparent;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 
+                0 2px 4px rgba(114, 47, 55, 0.1),
+                inset 0 1px 0 rgba(255,255,255,0.8);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-bar button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(212, 175, 55, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.4s ease, height 0.4s ease;
+        }
+        
+        .nav-bar button:hover::before {
+            width: 200%;
+            height: 200%;
+        }
+        
+        .nav-bar button:hover {
+            background: linear-gradient(145deg, #722f37 0%, #8b3a3a 100%);
+            color: #fff;
+            border-color: #d4af37;
+            transform: translateY(-2px);
+            box-shadow: 
+                0 6px 12px rgba(114, 47, 55, 0.25),
+                0 0 0 3px rgba(212, 175, 55, 0.2),
+                inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+        
+        .nav-bar button.active {
+            background: linear-gradient(145deg, #722f37 0%, #5c1a1a 100%);
+            color: #d4af37;
+            border-color: #d4af37;
+            box-shadow: 
+                0 4px 8px rgba(114, 47, 55, 0.3),
+                0 0 0 3px rgba(212, 175, 55, 0.3),
+                inset 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        body.dark-mode .nav-bar button {
+            background: linear-gradient(145deg, #3d3d3d 0%, #2d2d2d 100%);
+            color: #e0e0e0;
+            box-shadow: 
+                0 2px 4px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.05);
+        }
+        
+        body.dark-mode .nav-bar button:hover {
+            background: linear-gradient(145deg, #722f37 0%, #5c1a1a 100%);
+            color: #fff;
+            border-color: #d4af37;
+        }
+        
+        body.dark-mode .nav-bar button.active {
+            background: linear-gradient(145deg, #5c1a1a 0%, #722f37 100%);
+            color: #d4af37;
+            border-color: #d4af37;
+            box-shadow: 
+                0 4px 8px rgba(0, 0, 0, 0.4),
+                0 0 0 3px rgba(212, 175, 55, 0.2),
+                inset 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        /* Audio/Play Buttons */
+        .audio-btn, .play-btn {
+            background: linear-gradient(145deg, #722f37 0%, #5c1a1a 100%);
+            color: #d4af37;
+            border: 2px solid #d4af37;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 
+                0 4px 8px rgba(114, 47, 55, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+        
+        .audio-btn:hover, .play-btn:hover {
+            transform: scale(1.1) translateY(-2px);
+            box-shadow: 
+                0 8px 16px rgba(114, 47, 55, 0.4),
+                0 0 20px rgba(212, 175, 55, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.2);
+        }
+        
+        .audio-btn:active, .play-btn:active {
+            transform: scale(0.95);
+            box-shadow: 
+                0 2px 4px rgba(114, 47, 55, 0.3),
+                inset 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        body.dark-mode .audio-btn,
+        body.dark-mode .play-btn {
+            background: linear-gradient(145deg, #5c1a1a 0%, #3d1515 100%);
+            box-shadow: 
+                0 4px 8px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255,255,255,0.05);
+        }
+
+        </style>
+<base target="_blank">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="unit-header">
+            <div class="unit-number">2B</div>
+            <h1 class="unit-title">Reference Section</h1>
+            <p class="unit-theme">Pronunciation • Language Summary • Grammar Summary • Skills Index</p>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="nav-bar no-print">
+            <div class="nav-links">
+                <a onclick="showSection('pronunciation')" id="tab-pronunciation" class="active">Pronunciation</a>
+                <a onclick="showSection('language')" id="tab-language">Language Summary</a>
+                <a onclick="showSection('grammar')" id="tab-grammar">Grammar Summary</a>
+                <a onclick="showSection('skills')" id="tab-skills">Skills Index</a>
+            </div>
+            <!-- Teacher's Edition - All content visible -->
+        </nav>
+
+        <div class="content">
+            <!-- PRONUNCIATION SECTION -->
+            <section id="pronunciation" class="section active">
+                <div class="section-header">Pronunciation (Pages A1-A7)</div>
+
+                <!-- A1: Stress on Content Words -->
+                <div class="subsection-header">A1: Stress on Content Words versus Function Words</div>
+                
+                <div class="strategy-box">
+                    <div class="strategy-title">Content vs. Function Words</div>
+                    <p><strong>Content words</strong> carry meaning and are usually stressed (spoken more clearly and loudly): nouns, pronouns, main verbs, adjectives, adverbs.<br><br>
+                    <strong>Function words</strong> do not carry meaning and are usually unstressed (spoken more quickly): articles, auxiliary verbs, conjunctions, determiners, prepositions.</p>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">A</span>
+                        <span>Practice: Identifying Stress</span>
+                    </div>
+                    <p>Listen to the sentences. Mark the words that are stressed. How are they different than the unstressed words?</p>
+                    
+                    <!-- Audio Player 1 -->
+                    <div class="audio-player no-print" style="margin: 20px 0;">
+                        <div class="audio-label">🔊 Audio 1 - Stress on Content Words</div>
+                        <audio controls>
+                            <source src="https://audio.jukehost.co.uk/zfgOwgj7tb7SUVsVladoa9GGSNuYe9hD" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+
+                    <!-- Audio Player 2 -->
+                    <div class="audio-player no-print" style="margin: 20px 0;">
+                        <div class="audio-label">🔊 Audio 2 - Content and Function Words</div>
+                        <audio controls>
+                            <source src="https://audio.jukehost.co.uk/g8ucwgATDOpQyIov6pcpt3zZY3eRlH7X" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+
+                    <div class="reference-list">
+                        <ul>
+                            <li>1. The baby <strong>slept</strong> <strong>well</strong> and is <strong>very</strong> <strong>happy</strong> <strong>today</strong>.</li>
+                            <li>2. <strong>Cecilia</strong> <strong>enjoys</strong> <strong>surfing</strong> and <strong>rock</strong> <strong>climbing</strong>.</li>
+                            <li>3. The <strong>doctor</strong> <strong>said</strong> that I <strong>have</strong> the <strong>flu</strong>.</li>
+                        </ul>
+                    </div>
+                    <div class="teacher-answer">
+                        Content words (stressed): slept, well, very, happy, today, Cecilia, enjoys, surfing, rock, climbing, doctor, said, have, flu<br>
+                        Function words (unstressed): The, and, is, that, I, the
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">B</span>
+                        <span>Practice: Content and Function Words</span>
+                    </div>
+                    <p>Identify the content words and function words in each sentence. Say the sentences with stress on the content words.</p>
+                    <div class="reference-list">
+                        <ul>
+                            <li>1. The <strong>dogs</strong> are <strong>both</strong> <strong>wet</strong> from the <strong>rain</strong>.</li>
+                            <li>2. <strong>Who</strong> <strong>went</strong> with <strong>you</strong> to the <strong>movies</strong> <strong>last</strong> <strong>night</strong>?</li>
+                            <li>3. <strong>Natalie</strong> <strong>said</strong> that <strong>Ms</strong>. <strong>Norton</strong> is <strong>her</strong> <strong>favorite</strong> <strong>teacher</strong>.</li>
+                            <li>4. I <strong>need</strong> to <strong>write</strong> a <strong>few</strong> <strong>more</strong> <strong>sentences</strong> to <strong>finish</strong> <strong>my</strong> <strong>essay</strong>.</li>
+                            <li>5. That was the <strong>most</strong> <strong>beautiful</strong> <strong>sunset</strong> I've <strong>ever</strong> <strong>seen</strong>.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- A2: American vs British -->
+                <div class="subsection-header">A2: Differences between American and British English</div>
+                
+                <!-- Audio Player -->
+                <div class="audio-player no-print" style="margin: 20px 0;">
+                    <div class="audio-label">🔊 American vs British English - Audio</div>
+                    <audio controls>
+                        <source src="https://audio.jukehost.co.uk/8fr2QWKf8wpABDNwbbaOTosIuTqoZjHX" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+                
+                <div class="pronunciation-table-container">
+                    <table class="pronunciation-table">
+                        <thead>
+                            <tr>
+                                <th>Differences</th>
+                                <th>Examples</th>
+                                <th>American</th>
+                                <th>British</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>letter a</td>
+                                <td>ask, grass</td>
+                                <td>/æsk/, /græs/</td>
+                                <td>/ɑːsk/, /grɑːs/</td>
+                            </tr>
+                            <tr>
+                                <td>letter r</td>
+                                <td>forty, board</td>
+                                <td>/fɔrti/, /bɔrd/</td>
+                                <td>/fɔːti/, /bɔːd/</td>
+                            </tr>
+                            <tr>
+                                <td>intrusive /r/</td>
+                                <td>idea of, saw a</td>
+                                <td>/aɪˈdiə ɒv/, /sɔː ə/</td>
+                                <td>/aɪˈdɪər ɒv/, /sɔːr ə/</td>
+                            </tr>
+                            <tr>
+                                <td>-ery, -ary</td>
+                                <td>cemetery, ordinary</td>
+                                <td>/ˈseməteri/, /ˈɔrdəneri/</td>
+                                <td>/ˈsemətri/, /ˈɔːdnri/</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="highlight-box">
+                    <strong>Spelling Differences:</strong><br>
+                    <strong>-or (Am) vs. -our (Br):</strong> color/colour, flavor/flavour<br>
+                    <strong>-ize (Am) vs. -ise (Br):</strong> recognize/recognise, organization/organisation<br>
+                    <strong>-er (Am) vs. -re (Br):</strong> center/centre, meter/metre
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">A</span>
+                        <span>Practice: Am vs Br</span>
+                    </div>
+                    <p>Listen to the two pronunciations of the words below. For each one, choose Am if the pronunciation is American English or Br if the pronunciation is British English.</p>
+                    <div style="margin-top: 15px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div>1. a. staff <strong>Am</strong> / Br &nbsp;&nbsp;&nbsp; b. staff Am / <strong>Br</strong></div>
+                        <div>2. a. short <strong>Am</strong> / Br &nbsp;&nbsp;&nbsp; b. short Am / <strong>Br</strong></div>
+                        <div>3. a. military <strong>Am</strong> / Br &nbsp;&nbsp;&nbsp; b. military Am / <strong>Br</strong></div>
+                        <div>4. a. banana <strong>Am</strong> / Br &nbsp;&nbsp;&nbsp; b. banana Am / <strong>Br</strong></div>
+                        <div>5. a. record <strong>Am</strong> / Br &nbsp;&nbsp;&nbsp; b. record Am / <strong>Br</strong></div>
+                        <div>6. a. secretary <strong>Am</strong> / Br &nbsp;&nbsp;&nbsp; b. secretary Am / <strong>Br</strong></div>
+                    </div>
+                </div>
+
+                <!-- Audio Player -->
+                <div class="audio-player no-print" style="margin: 20px 0;">
+                    <div class="audio-label">🔊 American vs British English - Practice Audio</div>
+                    <audio controls>
+                        <source src="https://audio.jukehost.co.uk/qLAYB1ca4zoxGB0mFgtLCFgtayAgzg8p" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+
+                <!-- A3: Reducing to Schwa -->
+                <div class="subsection-header">A3: Reducing to Schwa: "to"</div>
+                
+                <!-- Audio Player -->
+                <div class="audio-player no-print" style="margin: 20px 0;">
+                    <div class="audio-label">🔊 Reducing to Schwa: "to" - Audio</div>
+                    <audio controls>
+                        <source src="https://audio.jukehost.co.uk/YlWEHtZCp1sm8WEFyKZJxIdI8ChKUHj2" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+                
+                <div class="strategy-box">
+                    <div class="strategy-title">Schwa Reduction</div>
+                    <p><strong>Reduction</strong> occurs in spoken language when sounds are shortened. In English, the vowel sound in the word "to" is often reduced from /tuː/ to schwa /tə/.</p>
+                    <p style="margin-top: 10px;"><strong>Examples:</strong><br>
+                    • Elias covered his head with a towel <strong>to</strong> /tə/ keep cool.<br>
+                    • My class ends at a quarter <strong>to</strong> /tə/ two.<br>
+                    • I need <strong>to</strong> /tə/ speak <strong>to</strong> him in the morning.</p>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">A</span>
+                        <span>Practice: Marking Reductions</span>
+                    </div>
+                    <p>Say each sentence aloud and then listen to the recording. Say the sentences again and then mark reductions of "to" in the sentences.</p>
+                    
+                    <!-- Audio Player -->
+                    <div class="audio-player no-print" style="margin: 20px 0;">
+                        <div class="audio-label">🔊 Marking Reductions - Audio</div>
+                        <audio controls>
+                            <source src="https://audio.jukehost.co.uk/vtjLPZ7QXYThi1h1kEEWSA9O45BlImoM" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+
+                    <div class="reference-list">
+                        <ul>
+                            <li>1. I was going <strong>to</strong> call Jim, but I forgot.</li>
+                            <li>2. Why did you give my MP3 player <strong>to</strong> her?</li>
+                            <li>3. Let's move <strong>to</strong> another table.</li>
+                            <li>4. Ava has <strong>to</strong> get good grades <strong>to</strong> go on the trip.</li>
+                            <li>5. That book is overdue, and I really need <strong>to</strong> return it.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- A4: Intonation for Sarcasm -->
+                <div class="subsection-header">A4: Intonation to Show Sarcasm and Irony</div>
+                
+                <!-- Audio Player -->
+                <div class="audio-player no-print" style="margin: 20px 0;">
+                    <div class="audio-label">🔊 Intonation for Sarcasm and Irony - Audio</div>
+                    <audio controls>
+                        <source src="https://audio.jukehost.co.uk/rqvtRDrYhQNrXncF435OUrN38MzM1vOX" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+                
+                <div class="highlight-box">
+                    <strong>Sarcasm</strong> is the use of irony, the opposite of what is actually meant, to be humorous or maybe even insulting. In spoken English, sarcasm is largely expressed by the way the words in a statement or question are said.
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">A</span>
+                        <span>Practice: Sincere vs. Sarcastic</span>
+                    </div>
+                    <p>Listen to the pairs of sentences. Choose <em>sincere</em> or <em>sarcastic</em> for each sentence based on the intonation.</p>
+                    
+                    <!-- Audio Player -->
+                    <div class="audio-player no-print" style="margin: 20px 0;">
+                        <div class="audio-label">🔊 Sincere vs. Sarcastic - Audio</div>
+                        <audio controls>
+                            <source src="https://audio.jukehost.co.uk/wWEKx26JdBuflF4lkxy9YXA4lLnSsvEt" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+
+                    <div style="margin-top: 15px;">
+                        <div style="background: #f8f9fa; padding: 15px; margin-bottom: 10px; border-radius: 5px;">
+                            <strong>Examples:</strong><br>
+                            • He did a <strong>great</strong> job fixing your bike, <strong>didn't he?</strong> (Sarcastic - overemphasis on "great" and "didn't he")<br>
+                            • That party was <strong>so</strong> much fun; I <strong>can't wait</strong> for the next one! (Sarcastic - overemphasis indicates opposite meaning)
+                        </div>
+                        <div class="reference-list">
+                            <ul>
+                                <li>1. This sure is great weather we're having! (sincere / <strong>sarcastic</strong>)</li>
+                                <li>2. Yeah, this is exactly like you said it'd be. (sincere / <strong>sarcastic</strong>)</li>
+                                <li>3. Do you think you could say that a little louder this time? (sincere / <strong>sarcastic</strong>)</li>
+                                <li>4. Take as much time as you like. (sincere / <strong>sarcastic</strong>)</li>
+                                <li>5. This line is moving really quickly. (sincere / <strong>sarcastic</strong>)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- A5: High-Frequency Function Words -->
+                <div class="subsection-header">A5: Reducing to Schwa: High-Frequency Function Words</div>
+                
+                <!-- Audio Player -->
+                <div class="audio-player no-print" style="margin: 20px 0;">
+                    <div class="audio-label">🔊 High-Frequency Function Words - Audio</div>
+                    <audio controls>
+                        <source src="https://audio.jukehost.co.uk/AttelJoguhB6JT24968qQIaaB7SF4rtH" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+                
+                <div class="highlight-box">
+                    <strong>Function words</strong> carry very little meaning but have a grammatical role. The vowel sounds in function words are frequently reduced to schwa /ə/ in English.<br><br>
+                    <strong>Examples:</strong><br>
+                    Moira <strong>can</strong> /kən/ help you with that.<br>
+                    The only model we have left is orange <strong>and</strong> /ənd/ green.<br>
+                    The dogs <strong>will</strong> /wəl/ run away if you leave the door open.
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">A</span>
+                        <span>Practice: Circling Reduced Words</span>
+                    </div>
+                    <p>Say each sentence and then listen to the recording. Circle the function words that have been reduced to schwa.</p>
+                    
+                    <!-- Audio Player -->
+                    <div class="audio-player no-print" style="margin: 20px 0;">
+                        <div class="audio-label">🔊 Circling Reduced Words - Audio</div>
+                        <audio controls>
+                            <source src="https://audio.jukehost.co.uk/2ky6cIhe8TskbJBz6jepJYzwDi1DE1yT" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+
+                    <div class="reference-list">
+                        <ul>
+                            <li>1. Be sure <strong>to</strong> pack a suit <strong>and</strong> tie <strong>for</strong> the trip.</li>
+                            <li>2. Colin doesn't know <strong>when</strong> we <strong>can</strong> leave.</li>
+                            <li>3. Hard times <strong>will</strong> have that effect <strong>on</strong> people.</li>
+                            <li>4. The chef forgot <strong>to</strong> put salt <strong>and</strong> pepper <strong>in</strong> the dish.</li>
+                            <li>5. How <strong>do</strong> I reach the manager?</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- A6: Prominence of Stress -->
+                <div class="subsection-header">A6: The Prominence of Stress</div>
+                
+                <!-- Audio Player -->
+                <div class="audio-player no-print" style="margin: 20px 0;">
+                    <div class="audio-label">🔊 The Prominence of Stress - Audio</div>
+                    <audio controls>
+                        <source src="https://audio.jukehost.co.uk/c6cnFfxCIA9Zja3mmq12nH38KkvcvCjX" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+                
+                <div class="strategy-box">
+                    <div class="strategy-title">Stress Changes Meaning</div>
+                    <p>In speech, you can stress different words to modify the meaning. The same sentence said in different ways can have slightly different meanings.</p>
+                    <p style="margin-top: 10px;"><strong>Example:</strong> Artists often make sacrifices for their work.<br>
+                    • <strong>Artists</strong> often make... (One type of person)<br>
+                    • Artists <strong>often</strong> make... (They do it all the time, not occasionally)<br>
+                    • Artists often make <strong>sacrifices</strong>... (Their commitment takes personal sacrifice)</p>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">A</span>
+                        <span>Practice: Identifying Emphasized Meaning</span>
+                    </div>
+                    <p>Listen to the sentences and circle the stressed word in each sentence. Then choose the emphasized meaning.</p>
+                    
+                    <!-- Audio Player -->
+                    <div class="audio-player no-print" style="margin: 20px 0;">
+                        <div class="audio-label">🔊 Identifying Emphasized Meaning - Audio</div>
+                        <audio controls>
+                            <source src="https://audio.jukehost.co.uk/6WMY1nZRHhPlCApaUNgtofeDHf1ttL4Z" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+
+                    <div style="margin-top: 15px; background: #f8f9fa; padding: 15px; border-radius: 5px;">
+                        <p><strong>1. Sherry took a picture of Ben and his dog.</strong></p>
+                        <p>a. Sherry's action was "took."<br>
+                        b. Sherry took the picture, and not someone else.<br>
+                        c. Sherry took a picture, and not something else.</p>
+                    </div>
+                </div>
+
+                <!-- A7: Intonation in Tag Questions -->
+                <div class="subsection-header">A7: Intonation in Tag Questions</div>
+                
+                <!-- Audio Player -->
+                <div class="audio-player no-print" style="margin: 20px 0;">
+                    <div class="audio-label">🔊 Intonation in Tag Questions - Audio</div>
+                    <audio controls>
+                        <source src="https://audio.jukehost.co.uk/nibTlS1HuRpv78waIJnpDjdNWvlihrVX" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+                
+                <div class="highlight-box">
+                    <strong>Rising Intonation:</strong> Indicates the speaker thinks the statement is true but isn't certain. The speaker is asking a real question.<br><br>
+                    <strong>Falling Intonation:</strong> Indicates stronger certainty. The speaker is not asking a true question so much as anticipating agreement.
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">A</span>
+                        <span>Practice: Question or Agreement?</span>
+                    </div>
+                    <p>Listen to the recording and then repeat the sentences. Then decide if the speaker is asking a true question or anticipating agreement.</p>
+                    
+                    <!-- Audio Player -->
+                    <div class="audio-player no-print" style="margin: 20px 0;">
+                        <div class="audio-label">🔊 Question or Agreement? - Audio</div>
+                        <audio controls>
+                            <source src="https://audio.jukehost.co.uk/Yfex9eZjNHAU34fXiJ7JZqtgZU6q0v1b" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+
+                    <div class="reference-list">
+                        <ul>
+                            <li>1. You're Adele's cousin, aren't you? (<strong>question</strong> / agreement)</li>
+                            <li>2. That's the same jacket as mine, isn't it? (question / <strong>agreement</strong>)</li>
+                            <li>3. There are over a dozen people in the group, aren't there? (question / <strong>agreement</strong>)</li>
+                            <li>4. You remembered to reschedule the meeting, didn't you? (<strong>question</strong> / agreement)</li>
+                            <li>5. He's got a unique sense of humor, doesn't he? (question / <strong>agreement</strong>)</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- LANGUAGE SUMMARY SECTION -->
+            <section id="language" class="section">
+                <div class="section-header">Language Summary (Pages A8-A10)</div>
+                <p style="margin-bottom: 20px; color: #666; font-style: italic;">Vocabulary from Units 7-12</p>
+
+                <!-- Unit 7 -->
+                <div class="subsection-header">Unit 7: Personality and Success</div>
+                <div class="vocab-grid">
+                    <div class="vocab-item">
+                        <div class="vocab-word">accomplish</div>
+                        <div class="vocab-def">to achieve something or succeed at doing something</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">aptitude</div>
+                        <div class="vocab-def">ability to learn a type of work or activity quickly and do it well</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">book smarts / street smarts</div>
+                        <div class="vocab-def">what you learn from books in school / the quick-thinking ability to handle difficult situations</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">common sense</div>
+                        <div class="vocab-def">a person's natural ability to make good judgments</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">excel</div>
+                        <div class="vocab-def">to be very good at doing something</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">have what it takes</div>
+                        <div class="vocab-def">to have the background or skills necessary to do something</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">instinct</div>
+                        <div class="vocab-def">the natural tendency of a person to behave or react a certain way</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">intellectual</div>
+                        <div class="vocab-def">someone who studies a lot and thinks about complicated ideas</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">master</div>
+                        <div class="vocab-def">someone who is extremely skilled at a particular activity</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">narrow down</div>
+                        <div class="vocab-def">to remove items from a list so that only the most important ones remain</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">outcome</div>
+                        <div class="vocab-def">a result or effect of an action or situation</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">stereotype</div>
+                        <div class="vocab-def">the general idea that one has about an entire group of people</div>
+                    </div>
+                </div>
+
+                <!-- Unit 8 -->
+                <div class="subsection-header">Unit 8: Celebrities</div>
+                <div class="vocab-grid">
+                    <div class="vocab-item">
+                        <div class="vocab-word">adore</div>
+                        <div class="vocab-def">to feel great love and admiration for someone</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">appealing</div>
+                        <div class="vocab-def">pleasing and attractive</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">background</div>
+                        <div class="vocab-def">the kind of work, life, and family experience you have</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">celebrated</div>
+                        <div class="vocab-def">famous and much admired</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">commemorative</div>
+                        <div class="vocab-def">officially remembering a famous person or major event</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">cultivate</div>
+                        <div class="vocab-def">to try hard to develop something or make it stronger</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">doable</div>
+                        <div class="vocab-def">possible to do</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">exorbitant</div>
+                        <div class="vocab-def">a price or fee that is higher than it should be</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">flock to</div>
+                        <div class="vocab-def">to go to a particular place or event because it's interesting, usually in large numbers</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">icon / iconic</div>
+                        <div class="vocab-def">an important symbol of something</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">invest</div>
+                        <div class="vocab-def">to put time or money into something because you think it will be beneficial</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">renowned</div>
+                        <div class="vocab-def">to be well known for something good</div>
+                    </div>
+                </div>
+
+                <!-- Unit 9 -->
+                <div class="subsection-header">Unit 9: Sleep and Well-being</div>
+                <div class="vocab-grid">
+                    <div class="vocab-item">
+                        <div class="vocab-word">addicted</div>
+                        <div class="vocab-def">unable to stop doing something or consuming a certain substance</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">alleviate</div>
+                        <div class="vocab-def">to make easier to put up with</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">automatic</div>
+                        <div class="vocab-def">doing something without having to think about it</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">boost</div>
+                        <div class="vocab-def">to increase</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">burnout</div>
+                        <div class="vocab-def">exhaustion at an early stage in life or career</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">chronic</div>
+                        <div class="vocab-def">constant; nonstop</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">drowsy</div>
+                        <div class="vocab-def">sleepy</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">habit</div>
+                        <div class="vocab-def">something that you do regularly, often without thinking about it</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">morning person / night owl</div>
+                        <div class="vocab-def">a person who likes to get up early / likes to stay up late</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">power through</div>
+                        <div class="vocab-def">(informal) to use all your energy and will to accomplish something</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">resilience</div>
+                        <div class="vocab-def">the strength and ability to recover quickly from something bad</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">sleep deprivation</div>
+                        <div class="vocab-def">a serious lack of sleep</div>
+                    </div>
+                </div>
+
+                <!-- Unit 10 -->
+                <div class="subsection-header">Unit 10: Water Resources</div>
+                <div class="vocab-grid">
+                    <div class="vocab-item">
+                        <div class="vocab-word">accumulate</div>
+                        <div class="vocab-def">to collect something together over time</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">adequate</div>
+                        <div class="vocab-def">enough</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">astonishing</div>
+                        <div class="vocab-def">very surprising</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">conserve</div>
+                        <div class="vocab-def">to use something carefully so it lasts a long time</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">contaminate</div>
+                        <div class="vocab-def">to make something dirty or harmful</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">evaporate</div>
+                        <div class="vocab-def">to cause a liquid to change to a gas</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">freshwater</div>
+                        <div class="vocab-def">water that is not salty</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">indigenous</div>
+                        <div class="vocab-def">belonging to the place or country where something is found; native</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">let off steam</div>
+                        <div class="vocab-def">to release one's repressed emotions</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">potable</div>
+                        <div class="vocab-def">suitable for drinking</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">purify</div>
+                        <div class="vocab-def">to make something clean</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">scarce</div>
+                        <div class="vocab-def">limited, in short supply</div>
+                    </div>
+                </div>
+
+                <!-- Unit 11 -->
+                <div class="subsection-header">Unit 11: Art and Creativity</div>
+                <div class="vocab-grid">
+                    <div class="vocab-item">
+                        <div class="vocab-word">accent (color)</div>
+                        <div class="vocab-def">a secondary color used to emphasize</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">breakthrough</div>
+                        <div class="vocab-def">an important development or achievement</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">commissioned</div>
+                        <div class="vocab-def">to be formally arranged to work for someone</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">design</div>
+                        <div class="vocab-def">to plan and draw an object so that it can be built or made</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">fixated</div>
+                        <div class="vocab-def">thinking about something to an extreme and excessive degree</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">frustrated</div>
+                        <div class="vocab-def">feeling upset or angry because you are unable to do anything about a problem</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">genius</div>
+                        <div class="vocab-def">a highly talented, creative, or intelligent person</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">graffiti</div>
+                        <div class="vocab-def">words or pictures that are drawn in public places</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">masterpiece</div>
+                        <div class="vocab-def">an extremely good painting, novel, movie or other work of art</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">mural</div>
+                        <div class="vocab-def">a large picture painted on a wall</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">priceless</div>
+                        <div class="vocab-def">worth a large amount of money</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">slogan</div>
+                        <div class="vocab-def">short phrase that is easy to remember</div>
+                    </div>
+                </div>
+
+                <!-- Unit 12 -->
+                <div class="subsection-header">Unit 12: Humor and Comedy</div>
+                <div class="vocab-grid">
+                    <div class="vocab-item">
+                        <div class="vocab-word">comedian</div>
+                        <div class="vocab-def">entertainer who tells jokes to make people laugh</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">contagious</div>
+                        <div class="vocab-def">spreads quickly among a group of people</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">coping mechanism</div>
+                        <div class="vocab-def">an action or effort intended to relieve stress</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">delivery</div>
+                        <div class="vocab-def">the way a joke or humorous story is told</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">exaggerate</div>
+                        <div class="vocab-def">to indicate that something is bigger, worse, or more important than it really is</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">expose</div>
+                        <div class="vocab-def">uncover, reveal</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">hilarious / hysterical</div>
+                        <div class="vocab-def">extremely funny</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">kid</div>
+                        <div class="vocab-def">to say something as a joke</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">off-color / offensive</div>
+                        <div class="vocab-def">rude or offensive</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">parody</div>
+                        <div class="vocab-def">a piece of work that makes fun of an original work</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">punch line</div>
+                        <div class="vocab-def">the words at the end of a joke that make it funny</div>
+                    </div>
+                    <div class="vocab-item">
+                        <div class="vocab-word">stereotype</div>
+                        <div class="vocab-def">to unfairly characterize all members of a certain group as being the same</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- GRAMMAR SUMMARY SECTION -->
+            <section id="grammar" class="section">
+                <div class="section-header">Grammar Summary (Pages A11-A14)</div>
+                <p style="margin-bottom: 20px; color: #666; font-style: italic;">Grammar Points from Units 7-12</p>
+
+                <!-- Unit 7: Noun Clauses -->
+                <div class="subsection-header">Unit 7: Noun Clauses with Wh- Words and If/Whether</div>
+                
+                <div class="grammar-chart">
+                    <div class="chart-header">Forming Noun Clauses</div>
+                    <div class="chart-row">
+                        <div class="chart-cell header">Type</div>
+                        <div class="chart-cell header">Rule</div>
+                        <div class="chart-cell header">Example</div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-cell"><strong>wh- clauses</strong></div>
+                        <div class="chart-cell">Combine a wh- question and a statement. Change the question to statement word order.</div>
+                        <div class="chart-cell">She taught sixty students. How does she do it?<br>→ <em>I don't know how she teaches sixty students.</em></div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-cell"><strong>if/whether clauses</strong></div>
+                        <div class="chart-cell">Combine a yes/no question and a statement.</div>
+                        <div class="chart-cell">Did he pass the exam? I wonder.<br>→ <em>I wonder if/whether he passed the exam (or not).</em></div>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong>Important Note:</strong> <em>If</em> and <em>whether</em> are often interchangeable, but they are not quite the same.<br>
+                    • Use <strong>if</strong> when the noun clause outlines one condition.<br>
+                    • Use <strong>whether</strong> (or not) when the noun clause states alternative possibilities.<br><br>
+                    <strong>Example:</strong><br>
+                    Let Anne know <strong>if</strong> Jack is coming. (Anne only needs to be contacted if Jack is coming.)<br>
+                    Let Anne know <strong>whether</strong> Jack is coming. (Anne needs to be contacted whether he comes or not.)
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">A</span>
+                        <span>Common Expressions</span>
+                    </div>
+                    <p>Many of these expressions are used in the negative when forming wh- or if/whether clauses:</p>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px;">
+                        <div class="example-box">not certain</div>
+                        <div class="example-box">don't see (= don't understand)</div>
+                        <div class="example-box">forget*</div>
+                        <div class="example-box">not sure</div>
+                        <div class="example-box">have no idea</div>
+                        <div class="example-box">can't tell (= can't figure it out)</div>
+                        <div class="example-box">don't know</div>
+                        <div class="example-box">don't understand</div>
+                        <div class="example-box">can't remember</div>
+                        <div class="example-box">wonder*</div>
+                    </div>
+                    <p style="margin-top: 10px; font-size: 14px; color: #666;">*Do not use the negative with these verbs.</p>
+                </div>
+
+                <!-- Unit 8: Reported Questions -->
+                <div class="subsection-header">Unit 8: Reported Questions</div>
+                
+                <div class="grammar-chart">
+                    <div class="chart-header">Quoted Speech vs. Reported Speech</div>
+                    <div class="chart-row">
+                        <div class="chart-cell header">Quoted Speech</div>
+                        <div class="chart-cell header">Reported Speech</div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-cell"><strong>Yes/no questions:</strong><br>Are you going to win an award?</div>
+                        <div class="chart-cell">They asked him <strong>if he was going to win an award</strong>.<br>They asked him <strong>whether (or not) he was going to win an award</strong>.</div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-cell"><strong>Wh- questions:</strong><br>Who are you here with?</div>
+                        <div class="chart-cell">He asked him <strong>who he was there with</strong>.<br>They wanted to know <strong>where he was going</strong>.</div>
+                    </div>
+                </div>
+
+                <div class="strategy-box">
+                    <div class="strategy-title">Key Changes in Reported Questions</div>
+                    <ul style="margin-left: 20px;">
+                        <li>Notice how the verb forms change (backshift) in reported questions.</li>
+                        <li>Notice the shift from <em>here</em> to <em>there</em>.</li>
+                        <li>You can use the expression <em>want to know</em> in place of <em>ask</em>.</li>
+                    </ul>
+                </div>
+
+                <!-- Unit 9: Stating Conditions -->
+                <div class="subsection-header">Unit 9: Stating Conditions - Other Ways of Expressing If</div>
+                
+                <div class="grammar-chart">
+                    <div class="chart-header">Alternative Conditional Expressions</div>
+                    <div class="chart-row">
+                        <div class="chart-cell header">Expression</div>
+                        <div class="chart-cell header">Example</div>
+                        <div class="chart-cell header">Meaning</div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-cell"><strong>only after / only if</strong></div>
+                        <div class="chart-cell">I can take a break (but) <strong>only after</strong> I study for an hour.</div>
+                        <div class="chart-cell">I can take a break if (and only if) I study for an hour.</div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-cell"><strong>provided that / as long as</strong></div>
+                        <div class="chart-cell">I can take a break <strong>provided that</strong> I study for an hour.</div>
+                        <div class="chart-cell">= If I study for an hour, I can take a break.</div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-cell"><strong>unless</strong></div>
+                        <div class="chart-cell">I'll be sleepy <strong>unless</strong> I have a cup of coffee first.</div>
+                        <div class="chart-cell">= I'll be sleepy if I don't have a cup of coffee first.</div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-cell"><strong>otherwise</strong></div>
+                        <div class="chart-cell">You should set your alarm. <strong>Otherwise</strong>, you won't wake up.</div>
+                        <div class="chart-cell">= If you don't (set your alarm), you won't wake up.</div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-cell"><strong>even if</strong></div>
+                        <div class="chart-cell">I wouldn't join that gym, <strong>even if</strong> you gave me a free membership.</div>
+                        <div class="chart-cell">Nothing can make me join that gym.</div>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong>Inversion with Only If:</strong><br>
+                    Only if I study for an hour <strong>can I</strong> take a break. (formal)<br>
+                    <strong>Only if</strong> we locate more medicinal plants <strong>can we</strong> cure the patients.
+                </div>
+
+                <!-- Unit 10: Articles -->
+                <div class="subsection-header">Unit 10: Articles - A/An, The, and No Article (Ø)</div>
+                
+                <div class="grammar-chart">
+                    <div class="chart-header">Article Usage Rules</div>
+                    <div class="chart-row">
+                        <div class="chart-cell header">Article</div>
+                        <div class="chart-cell header">Use</div>
+                        <div class="chart-cell header">Example</div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-cell"><strong>a/an</strong></div>
+                        <div class="chart-cell">For count nouns in general or when mentioning something for the first time</div>
+                        <div class="chart-cell">Do you have <strong>a</strong> pen I can borrow? (Any pen will do.)</div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-cell"><strong>the</strong></div>
+                        <div class="chart-cell">For specific nouns the speaker and listener already know about</div>
+                        <div class="chart-cell">Can you turn off <strong>the</strong> faucet? <strong>The</strong> water is running.</div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-cell"><strong>Ø (no article)</strong></div>
+                        <div class="chart-cell">To talk about people or things in general</div>
+                        <div class="chart-cell">In parts of Africa, <strong>Ø</strong> water is scarce.</div>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">B</span>
+                        <span>Expressions That Use (or Don't Use) Articles</span>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div>
+                            <h4 style="color: #5c1a1a; margin-bottom: 10px;">Expressions That Use THE</h4>
+                            <div class="reference-list" style="font-size: 14px;">
+                                <ul>
+                                    <li>Common experiences: taking the bus, reading the newspaper</li>
+                                    <li>Oceans, rivers: the Indian Ocean, the Nile</li>
+                                    <li>Mountain ranges: the Urals, the Seychelles</li>
+                                    <li>Ordinals: the second person, the longest river</li>
+                                    <li>Hotels, theaters: the Oriental Bangkok</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 style="color: #5c1a1a; margin-bottom: 10px;">Expressions That Don't Need Articles</h4>
+                            <div class="reference-list" style="font-size: 14px;">
+                                <ul>
+                                    <li>Certain places: in prison, at work, at home</li>
+                                    <li>Certain pairs: day after day, husband and wife</li>
+                                    <li>Fixed expressions: by car, on foot, at night</li>
+                                    <li>Continents, countries: Africa, Jamaica (exceptions: the Netherlands)</li>
+                                    <li>Languages: I speak Italian</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Unit 11: Adjective Clauses -->
+                <div class="subsection-header">Unit 11: Adjective Clauses with Object Relative Pronouns</div>
+                
+                <div class="grammar-chart">
+                    <div class="chart-header">Relative Pronouns</div>
+                    <div class="chart-row">
+                        <div class="chart-cell header">Clause Type</div>
+                        <div class="chart-cell header">Describing People</div>
+                        <div class="chart-cell header">Describing Things</div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-cell"><strong>Restrictive clauses</strong><br>(necessary information)</div>
+                        <div class="chart-cell">The most creative person <strong>who(m)/that/Ø</strong> I know is my mother.</div>
+                        <div class="chart-cell">The computer <strong>which/that/Ø</strong> I use was obviously designed by a creative thinker.</div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-cell"><strong>Nonrestrictive clauses</strong><br>(extra information)</div>
+                        <div class="chart-cell">My best friend, <strong>who(m)</strong> I've known since childhood, is very creative.</div>
+                        <div class="chart-cell">This computer, <strong>which</strong> I bought last week, was obviously designed by a creative thinker.</div>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong>Important Rules:</strong><br>
+                    • In restrictive clauses, you can omit the relative pronoun when it is the object.<br>
+                    • In nonrestrictive clauses, you cannot omit the relative pronoun.<br>
+                    • Nonrestrictive clauses are separated from the main clause by commas.<br>
+                    • <em>While whom is grammatically correct, in spoken English you will most often hear who in its place.</em>
+                </div>
+
+                <!-- Unit 12: Tag Questions -->
+                <div class="subsection-header">Unit 12: Tag Questions</div>
+                
+                <div class="grammar-chart">
+                    <div class="chart-header">Forming Tag Questions</div>
+                    <div class="chart-row">
+                        <div class="chart-cell header">Statement Type</div>
+                        <div class="chart-cell header">Tag Form</div>
+                        <div class="chart-cell header">Example</div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-cell"><strong>Positive</strong></div>
+                        <div class="chart-cell">Negative tag</div>
+                        <div class="chart-cell">You're a comedian, <strong>aren't you?</strong><br>She was funny, <strong>wasn't she?</strong></div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-cell"><strong>Negative</strong></div>
+                        <div class="chart-cell">Positive tag</div>
+                        <div class="chart-cell">You don't like that joke, <strong>do you?</strong><br>He hasn't performed, <strong>has he?</strong></div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-cell"><strong>Modal Verbs</strong></div>
+                        <div class="chart-cell">Use same modal</div>
+                        <div class="chart-cell">They can dance, <strong>can't they?</strong><br>He will come, <strong>won't he?</strong></div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-cell"><strong>Let's</strong></div>
+                        <div class="chart-cell">shall we</div>
+                        <div class="chart-cell">Let's go to the show, <strong>shall we?</strong></div>
+                    </div>
+                </div>
+
+                <div class="strategy-box">
+                    <div class="strategy-title">Intonation in Tag Questions</div>
+                    <p><strong>Falling Intonation (↘):</strong> Use when you are sure of the answer and expect agreement.<br>
+                    <em>Example: That's hilarious, ↘isn't it?</em> (I'm sure it is funny)<br><br>
+                    <strong>Rising Intonation (↗):</strong> Use when you are unsure and want to check information.<br>
+                    <em>Example: You're coming, ↗aren't you?</em> (I'm not sure - checking)</p>
+                </div>
+            </section>
+
+            <!-- SKILLS INDEX SECTION -->
+            <section id="skills" class="section">
+                <div class="section-header">Skills Index (Page A15)</div>
+                <p style="margin-bottom: 20px; color: #666; font-style: italic;">Quick reference for all skills covered in Book 2B (Units 7-12)</p>
+
+                <div class="subsection-header">Connections</div>
+                <div class="reference-list">
+                    <ul>
+                        <li>famous logo and designer, 125</li>
+                        <li>producing a new tv show, 137</li>
+                        <li>role-playing actors, 89</li>
+                        <li>skills and occupations, 77</li>
+                        <li>waking and sleeping strategies, 101</li>
+                        <li>water issues, 113</li>
+                    </ul>
+                </div>
+
+                <div class="subsection-header">Fluency, Expanding</div>
+                <div class="reference-list">
+                    <ul>
+                        <li>considerations of art, 131</li>
+                        <li>diehard fans, 95</li>
+                        <li>inventing medical technology, 107</li>
+                        <li>memorizing information, 83</li>
+                        <li>types of humor, 143</li>
+                        <li>water expressions, 119</li>
+                    </ul>
+                </div>
+
+                <div class="subsection-header">Grammar</div>
+                <div class="reference-list">
+                    <ul>
+                        <li>adjective clauses with object relative pronouns, 123, A14</li>
+                        <li>articles: a/an, the, and no article (Ø), 111, A13-A14</li>
+                        <li>reported questions, 87, A12</li>
+                        <li>stating conditions: other ways of expressing if, 99, A12</li>
+                        <li>tag questions, 135, A14</li>
+                        <li>wh- and if/whether noun clauses, 75, A11</li>
+                    </ul>
+                </div>
+
+                <div class="subsection-header">Listening</div>
+                <div class="reference-list">
+                    <ul>
+                        <li>creative use of color, 124</li>
+                        <li>different ways of learning, 76</li>
+                        <li>future of air travel, 64</li>
+                        <li>listening for the speaker's purpose, 112</li>
+                        <li>sleep and well-being, 100</li>
+                        <li>what makes comedians funny, 136</li>
+                        <li>world's most famous actress, 88</li>
+                    </ul>
+                </div>
+
+                <div class="subsection-header">Listening Strategies</div>
+                <div class="reference-list">
+                    <ul>
+                        <li>listening for speaker's purpose, 112</li>
+                        <li>understanding the meaning of know, 76</li>
+                        <li>using visual aids, 100</li>
+                    </ul>
+                </div>
+
+                <div class="subsection-header">Pronunciation</div>
+                <div class="reference-list">
+                    <ul>
+                        <li>differences between American English and British English, A2</li>
+                        <li>intonation in tag questions, 135, A7</li>
+                        <li>intonation to show sarcasm and irony, A4</li>
+                        <li>prominence of stress, 129, A6</li>
+                        <li>reducing to schwa: high frequency function words, 104, A5</li>
+                        <li>reducing to schwa: to, 76, A3</li>
+                        <li>stress on content words vs. function words, A1</li>
+                    </ul>
+                </div>
+
+                <div class="subsection-header">Readings</div>
+                <div class="reference-list">
+                    <ul>
+                        <li>Celebrity Endorsements, 91</li>
+                        <li>Comic Relief: The Role of Humor in Society, 141</li>
+                        <li>Lost Leonardo, 127</li>
+                        <li>Majestic Waters, 115</li>
+                        <li>Making Mars the New Earth, 67</li>
+                        <li>Nature's Prescription, 103</li>
+                        <li>The World is Our Classroom, 81</li>
+                    </ul>
+                </div>
+
+                <div class="subsection-header">Reading Strategies</div>
+                <div class="reference-list">
+                    <ul>
+                        <li>identifying and understanding referents, 126</li>
+                        <li>recognizing synonyms, 80</li>
+                        <li>summarizing the writer's ideas, 90</li>
+                    </ul>
+                </div>
+
+                <div class="subsection-header">Speaking</div>
+                <div class="reference-list">
+                    <ul>
+                        <li>choosing the perfect celebrity to endorse your product, 92</li>
+                        <li>discussing restoration of vacation spot, 117</li>
+                        <li>evaluating works of art, 129</li>
+                        <li>explaining mysterious places in the world, 54</li>
+                        <li>sources of learning, 79</li>
+                        <li>talking about factors affecting physical and mental well-being, 105</li>
+                        <li>telling a humorous story, 138</li>
+                    </ul>
+                </div>
+
+                <div class="subsection-header">Speaking Strategies</div>
+                <div class="reference-list">
+                    <ul>
+                        <li>using pauses and emphasis, 138</li>
+                    </ul>
+                </div>
+
+                <div class="subsection-header">Topics</div>
+                <div class="reference-list">
+                    <ul>
+                        <li>art and creativity, 120-131</li>
+                        <li>celebrity, 84-95</li>
+                        <li>health, 96-107</li>
+                        <li>humor, 132-144</li>
+                        <li>learning and education, 72-83</li>
+                        <li>water, 108-119</li>
+                    </ul>
+                </div>
+
+                <div class="subsection-header">Videos</div>
+                <div class="reference-list">
+                    <ul>
+                        <li>How Your Brain Handles Stress, 104</li>
+                        <li>The Immigrant, 139</li>
+                        <li>Jellyfish Lake, 116</li>
+                        <li>In the Spotlight: Kate Middleton, 93</li>
+                        <li>Student Voices on University Rankings, 78</li>
+                        <li>Urban Art: Graffiti, 128</li>
+                    </ul>
+                </div>
+
+                <div class="subsection-header">Vocabulary</div>
+                <div class="reference-list">
+                    <ul>
+                        <li>bad health, healthy solutions, 98, A10</li>
+                        <li>comedy of Jerry Seinfeld, 134</li>
+                        <li>creative problem solving, 122</li>
+                        <li>famous people, 86, A10</li>
+                        <li>intelligence, 74, A9-A10</li>
+                        <li>robot revolution, A9</li>
+                        <li>water, 110</li>
+                    </ul>
+                </div>
+
+                <div class="subsection-header">Writing</div>
+                <div class="reference-list">
+                    <ul>
+                        <li>definition essay, 130</li>
+                        <li>describing an important life lesson, 82-83</li>
+                        <li>describing cause and effect, 106</li>
+                        <li>e-mail for formal communication, 118-119</li>
+                        <li>opinion piece containing facts and opinions, 94-95</li>
+                        <li>persuasive essays, 142</li>
+                    </ul>
+                </div>
+
+                <div class="subsection-header">Writing Strategies</div>
+                <div class="reference-list">
+                    <ul>
+                        <li>balancing facts and opinions, 94</li>
+                        <li>definition essay, 130</li>
+                        <li>showing cause and effect, 106</li>
+                        <li>thesis statement and conclusion, 82</li>
+                        <li>using a graphic organizer to tell a story, 58</li>
+                        <li>using appropriate register, 118</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer Navigation -->
+        <div class="unit-nav no-print">
+            <a href="unit12.html" class="nav-btn">← Unit 12</a>
+            <span style="align-self: center; font-weight: bold; color: #7f8c8d;">End of Book 2B</span>
+            <span class="nav-btn" style="opacity: 0.5; cursor: not-allowed;">→</span>
+        </div>
+    </div>
+
+    <!-- View Mode Indicator -->
+    <div id="viewIndicator" class="view-indicator">Teacher View Active</div>
+
+    <script>
+        // Tab switching functionality
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.nav-links a').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Add active class to clicked tab
+            document.getElementById('tab-' + sectionId).classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Teacher's Edition - Always show all content
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.classList.add('teacher-mode');
+        });
+
+        // Keyboard shortcuts for tabs
+        document.addEventListener('keydown', function(e) {
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+            
+            if (e.key === '1') showSection('pronunciation');
+            if (e.key === '2') showSection('language');
+            if (e.key === '3') showSection('grammar');
+            if (e.key === '4') showSection('skills');
+        });
+    </script>
+    
+    <!-- Credit -->
+    <div style="text-align: center; color: #7f8c8d; font-size: 13px; padding: 15px; font-style: italic;">
+        Re-Created by ESL Teacher Ry
+    </div>
+
+    <!-- 3D Button Interactions -->
+    <script>
+        // Ripple effect for buttons
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('.btn-ripple, .btn-3d, .nav-bar button');
+            if (!btn) return;
+            
+            const ripple = document.createElement('span');
+            ripple.className = 'ripple';
+            
+            const rect = btn.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            
+            btn.appendChild(ripple);
+            
+            setTimeout(() => ripple.remove(), 600);
+        });
+        
+        // Magnetic button effect
+        document.querySelectorAll('.btn-3d, .audio-btn, .play-btn').forEach(btn => {
+            btn.addEventListener('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                this.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
+            });
+            
+            btn.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+            });
+        });
+    </script>
+
+    <!-- Dark Mode Check -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (localStorage.getItem('darkMode') === 'true') {
+                document.body.classList.add('dark-mode');
+            }
+        });
+    </script>
+
+</body>
+</html>

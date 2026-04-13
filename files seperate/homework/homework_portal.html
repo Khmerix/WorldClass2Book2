@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Class 2B - Homework Portal</title>
+    <!-- Authentication Check -->
+    <script>
+        // Check if user is logged in
+        if (!sessionStorage.getItem('teacherLoggedIn')) {
+            window.location.href = '../../login.html';
+        }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #faf8f5;
+            color: #3d3d3d;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background: linear-gradient(135deg, #722f37 0%, #8b3a3a 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(114, 47, 55, 0.3);
+        }
+        .header h1 { font-size: 36px; margin-bottom: 10px; }
+        .header p { font-size: 18px; opacity: 0.9; }
+        .portal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        .unit-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .unit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(114, 47, 55, 0.2);
+        }
+        .unit-header {
+            background: linear-gradient(135deg, #722f37 0%, #5c1a1a 100%);
+            color: white;
+            padding: 20px;
+            position: relative;
+        }
+        .unit-number {
+            font-size: 48px;
+            font-weight: bold;
+            opacity: 0.2;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+        .unit-title { font-size: 20px; font-weight: bold; margin-bottom: 5px; }
+        .unit-theme { font-size: 14px; opacity: 0.9; }
+        .homework-links {
+            padding: 20px;
+        }
+        .homework-type {
+            margin-bottom: 20px;
+        }
+        .homework-type h3 {
+            color: #722f37;
+            font-size: 16px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .link-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+        .link-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .link-html {
+            background: linear-gradient(145deg, #722f37 0%, #8b3a3a 100%);
+            color: white;
+        }
+        .link-html:hover {
+            background: linear-gradient(145deg, #5c1a1a 0%, #722f37 100%);
+            transform: scale(1.02);
+        }
+        .link-google {
+            background: linear-gradient(145deg, #4285f4 0%, #34a853 100%);
+            color: white;
+        }
+        .link-google:hover {
+            background: linear-gradient(145deg, #3367d6 0%, #2e7d32 100%);
+            transform: scale(1.02);
+        }
+        .qr-section {
+            text-align: center;
+            padding: 15px;
+            background: #f9f5f0;
+            border-top: 2px solid #d4af37;
+        }
+        .qr-btn {
+            background: #d4af37;
+            color: #722f37;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .qr-btn:hover {
+            background: #e5c76b;
+            transform: scale(1.05);
+        }
+        .info-section {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .info-section h2 {
+            color: #722f37;
+            font-size: 24px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #d4af37;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .info-card {
+            background: #f9f5f0;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #d4af37;
+        }
+        .info-card h3 {
+            color: #722f37;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        .info-card p {
+            font-size: 14px;
+            color: #666;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 400px;
+            text-align: center;
+        }
+        .modal-content h3 {
+            color: #722f37;
+            margin-bottom: 20px;
+        }
+        .qr-placeholder {
+            width: 200px;
+            height: 200px;
+            background: #f0f0f0;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            border: 2px dashed #722f37;
+        }
+        .close-btn {
+            background: #722f37;
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .share-section {
+            background: linear-gradient(135deg, #fff9e6 0%, #f9f5f0 100%);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        .share-link {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .share-link input {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #d4af37;
+            border-radius: 6px;
+            font-size: 13px;
+        }
+        .copy-btn {
+            background: #d4af37;
+            color: #722f37;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        /* Share buttons for each homework */
+        .share-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed #d4af37;
+        }
+        .share-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s;
+        }
+        .share-copy {
+            background: #f0f0f0;
+            color: #333;
+        }
+        .share-copy:hover {
+            background: #e0e0e0;
+            transform: scale(1.05);
+        }
+        .share-whatsapp {
+            background: #25d366;
+            color: white;
+        }
+        .share-whatsapp:hover {
+            background: #1da851;
+            transform: scale(1.05);
+        }
+        .share-email {
+            background: #ea4335;
+            color: white;
+        }
+        .share-email:hover {
+            background: #d33b28;
+            transform: scale(1.05);
+        }
+        .share-classroom {
+            background: #1a73e8;
+            color: white;
+        }
+        .share-classroom:hover {
+            background: #1557b0;
+            transform: scale(1.05);
+        }
+        .share-all-btn {
+            background: linear-gradient(145deg, #722f37 0%, #5c1a1a 100%);
+            color: #d4af37;
+            width: 100%;
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s;
+        }
+        .share-all-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(114, 47, 55, 0.3);
+        }
+        @media print {
+            .header { background: #722f37 !important; -webkit-print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📝 World Class 2B Homework Portal</h1>
+            <p>Interactive Worksheets for Units 7-12 | Access Anywhere, Anytime</p>
+        </div>
+
+        <div class="info-section">
+            <h2>📖 How to Use This Portal</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>🌐 HTML Worksheets</h3>
+                    <p>Interactive online worksheets students can fill out directly in their browser. Works on any device!</p>
+                </div>
+                <div class="info-card">
+                    <h3>📱 Google Forms</h3>
+                    <p>Auto-graded forms that collect responses in a spreadsheet. Great for quick assessment!</p>
+                </div>
+                <div class="info-card">
+                    <h3>📲 QR Codes</h3>
+                    <p>Students scan with their phones to instantly access homework. Perfect for classroom display!</p>
+                </div>
+                <div class="info-card">
+                    <h3>🔗 Share Links</h3>
+                    <p>Copy and paste links to share via email, messaging apps, or learning management systems.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="portal-grid">
+            <!-- Unit 7 -->
+            <div class="unit-card">
+                <div class="unit-header">
+                    <div class="unit-number">7</div>
+                    <div class="unit-title">Live and Learn</div>
+                    <div class="unit-theme">Learning and Education</div>
+                </div>
+                <div class="homework-links">
+                    <div class="homework-type">
+                        <h3>📚 Vocabulary</h3>
+                        <div class="link-grid">
+                            <a href="unit7_vocab.html" class="link-btn link-html">🌐 Online</a>
+                            <a href="#" class="link-btn link-google" onclick="showGoogleForm('Unit 7 Vocabulary')">📋 Google Form</a>
+                        </div>
+                        <div class="share-buttons">
+                            <button class="share-btn share-copy" onclick="copyHomeworkLink('unit7_vocab.html', 'Unit 7 Vocabulary')">📋 Copy</button>
+                            <button class="share-btn share-classroom" onclick="shareClassroom('unit7_vocab.html', 'Unit 7 Vocabulary')">🏫 Classroom</button>
+                            <button class="share-btn share-whatsapp" onclick="shareWhatsApp('unit7_vocab.html', 'Unit 7 Vocabulary')">💬 WhatsApp</button>
+                            <button class="share-btn share-email" onclick="shareEmail('unit7_vocab.html', 'Unit 7 Vocabulary')">📧 Email</button>
+                        </div>
+                    </div>
+                    <div class="homework-type">
+                        <h3>📝 Grammar</h3>
+                        <div class="link-grid">
+                            <a href="unit7_grammar.html" class="link-btn link-html">🌐 Online</a>
+                            <a href="#" class="link-btn link-google" onclick="showGoogleForm('Unit 7 Grammar')">📋 Google Form</a>
+                        </div>
+                        <div class="share-buttons">
+                            <button class="share-btn share-copy" onclick="copyHomeworkLink('unit7_grammar.html', 'Unit 7 Grammar')">📋 Copy</button>
+                            <button class="share-btn share-classroom" onclick="shareClassroom('unit7_grammar.html', 'Unit 7 Grammar')">🏫 Classroom</button>
+                            <button class="share-btn share-whatsapp" onclick="shareWhatsApp('unit7_grammar.html', 'Unit 7 Grammar')">💬 WhatsApp</button>
+                            <button class="share-btn share-email" onclick="shareEmail('unit7_grammar.html', 'Unit 7 Grammar')">📧 Email</button>
+                        </div>
+                    </div>
+                    <div class="homework-type">
+                        <h3>✍️ Writing</h3>
+                        <div class="link-grid">
+                            <a href="unit7_writing.html" class="link-btn link-html">🌐 Online</a>
+                            <a href="#" class="link-btn link-google" onclick="showGoogleForm('Unit 7 Writing')">📋 Google Form</a>
+                        </div>
+                        <div class="share-buttons">
+                            <button class="share-btn share-copy" onclick="copyHomeworkLink('unit7_writing.html', 'Unit 7 Writing')">📋 Copy</button>
+                            <button class="share-btn share-classroom" onclick="shareClassroom('unit7_writing.html', 'Unit 7 Writing')">🏫 Classroom</button>
+                            <button class="share-btn share-whatsapp" onclick="shareWhatsApp('unit7_writing.html', 'Unit 7 Writing')">💬 WhatsApp</button>
+                            <button class="share-btn share-email" onclick="shareEmail('unit7_writing.html', 'Unit 7 Writing')">📧 Email</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="qr-section">
+                    <button class="qr-btn" onclick="showQR('Unit 7', 'unit7')">📱 Show QR Codes</button>
+                    <button class="share-all-btn" onclick="shareAllUnit(7)">📤 Share All Unit 7 Homework</button>
+                </div>
+            </div>
+
+            <!-- Unit 8 -->
+            <div class="unit-card">
+                <div class="unit-header">
+                    <div class="unit-number">8</div>
+                    <div class="unit-title">The Cult of Celebrity</div>
+                    <div class="unit-theme">Fame and Public Life</div>
+                </div>
+                                <div class="homework-links">
+                    <div class="homework-type">
+                        <h3>📚 Vocabulary</h3>
+                        <div class="link-grid">
+                            <a href="unit8_vocab.html" class="link-btn link-html">🌐 Online</a>
+                            <a href="#" class="link-btn link-google" onclick="showGoogleForm('Unit 8 Vocabulary')">📋 Google Form</a>
+                        </div>
+                        <div class="share-buttons">
+                            <button class="share-btn share-copy" onclick="copyHomeworkLink('unit8_vocab.html', 'Unit 8 Vocabulary')">📋 Copy</button>
+                            <button class="share-btn share-classroom" onclick="shareClassroom('unit8_vocab.html', 'Unit 8 Vocabulary')">🏫 Classroom</button>
+                            <button class="share-btn share-whatsapp" onclick="shareWhatsApp('unit8_vocab.html', 'Unit 8 Vocabulary')">💬 WhatsApp</button>
+                            <button class="share-btn share-email" onclick="shareEmail('unit8_vocab.html', 'Unit 8 Vocabulary')">📧 Email</button>
+                        </div>
+                    </div>
+                    <div class="homework-type">
+                        <h3>📝 Grammar</h3>
+                        <div class="link-grid">
+                            <a href="unit8_grammar.html" class="link-btn link-html">🌐 Online</a>
+                            <a href="#" class="link-btn link-google" onclick="showGoogleForm('Unit 8 Grammar')">📋 Google Form</a>
+                        </div>
+                        <div class="share-buttons">
+                            <button class="share-btn share-copy" onclick="copyHomeworkLink('unit8_grammar.html', 'Unit 8 Grammar')">📋 Copy</button>
+                            <button class="share-btn share-classroom" onclick="shareClassroom('unit8_grammar.html', 'Unit 8 Grammar')">🏫 Classroom</button>
+                            <button class="share-btn share-whatsapp" onclick="shareWhatsApp('unit8_grammar.html', 'Unit 8 Grammar')">💬 WhatsApp</button>
+                            <button class="share-btn share-email" onclick="shareEmail('unit8_grammar.html', 'Unit 8 Grammar')">📧 Email</button>
+                        </div>
+                    </div>
+                    <div class="homework-type">
+                        <h3>✍️ Writing</h3>
+                        <div class="link-grid">
+                            <a href="unit8_writing.html" class="link-btn link-html">🌐 Online</a>
+                            <a href="#" class="link-btn link-google" onclick="showGoogleForm('Unit 8 Writing')">📋 Google Form</a>
+                        </div>
+                        <div class="share-buttons">
+                            <button class="share-btn share-copy" onclick="copyHomeworkLink('unit8_writing.html', 'Unit 8 Writing')">📋 Copy</button>
+                            <button class="share-btn share-classroom" onclick="shareClassroom('unit8_writing.html', 'Unit 8 Writing')">🏫 Classroom</button>
+                            <button class="share-btn share-whatsapp" onclick="shareWhatsApp('unit8_writing.html', 'Unit 8 Writing')">💬 WhatsApp</button>
+                            <button class="share-btn share-email" onclick="shareEmail('unit8_writing.html', 'Unit 8 Writing')">📧 Email</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="qr-section">
+                    <button class="qr-btn" onclick="showQR('Unit 8', 'unit8')">📱 Show QR Codes</button>
+                    <button class="share-all-btn" onclick="shareAllUnit(8)">📤 Share All Unit 8 Homework</button>
+                </div>
+            </div>
+
+            <!-- Unit 9 -->
+            <div class="unit-card">
+                <div class="unit-header">
+                    <div class="unit-number">9</div>
+                    <div class="unit-title">To Your Health!</div>
+                    <div class="unit-theme">Health Habits and Well-being</div>
+                </div>
+                                <div class="homework-links">
+                    <div class="homework-type">
+                        <h3>📚 Vocabulary</h3>
+                        <div class="link-grid">
+                            <a href="unit9_vocab.html" class="link-btn link-html">🌐 Online</a>
+                            <a href="#" class="link-btn link-google" onclick="showGoogleForm('Unit 9 Vocabulary')">📋 Google Form</a>
+                        </div>
+                        <div class="share-buttons">
+                            <button class="share-btn share-copy" onclick="copyHomeworkLink('unit9_vocab.html', 'Unit 9 Vocabulary')">📋 Copy</button>
+                            <button class="share-btn share-classroom" onclick="shareClassroom('unit9_vocab.html', 'Unit 9 Vocabulary')">🏫 Classroom</button>
+                            <button class="share-btn share-whatsapp" onclick="shareWhatsApp('unit9_vocab.html', 'Unit 9 Vocabulary')">💬 WhatsApp</button>
+                            <button class="share-btn share-email" onclick="shareEmail('unit9_vocab.html', 'Unit 9 Vocabulary')">📧 Email</button>
+                        </div>
+                    </div>
+                    <div class="homework-type">
+                        <h3>📝 Grammar</h3>
+                        <div class="link-grid">
+                            <a href="unit9_grammar.html" class="link-btn link-html">🌐 Online</a>
+                            <a href="#" class="link-btn link-google" onclick="showGoogleForm('Unit 9 Grammar')">📋 Google Form</a>
+                        </div>
+                        <div class="share-buttons">
+                            <button class="share-btn share-copy" onclick="copyHomeworkLink('unit9_grammar.html', 'Unit 9 Grammar')">📋 Copy</button>
+                            <button class="share-btn share-classroom" onclick="shareClassroom('unit9_grammar.html', 'Unit 9 Grammar')">🏫 Classroom</button>
+                            <button class="share-btn share-whatsapp" onclick="shareWhatsApp('unit9_grammar.html', 'Unit 9 Grammar')">💬 WhatsApp</button>
+                            <button class="share-btn share-email" onclick="shareEmail('unit9_grammar.html', 'Unit 9 Grammar')">📧 Email</button>
+                        </div>
+                    </div>
+                    <div class="homework-type">
+                        <h3>✍️ Writing</h3>
+                        <div class="link-grid">
+                            <a href="unit9_writing.html" class="link-btn link-html">🌐 Online</a>
+                            <a href="#" class="link-btn link-google" onclick="showGoogleForm('Unit 9 Writing')">📋 Google Form</a>
+                        </div>
+                        <div class="share-buttons">
+                            <button class="share-btn share-copy" onclick="copyHomeworkLink('unit9_writing.html', 'Unit 9 Writing')">📋 Copy</button>
+                            <button class="share-btn share-classroom" onclick="shareClassroom('unit9_writing.html', 'Unit 9 Writing')">🏫 Classroom</button>
+                            <button class="share-btn share-whatsapp" onclick="shareWhatsApp('unit9_writing.html', 'Unit 9 Writing')">💬 WhatsApp</button>
+                            <button class="share-btn share-email" onclick="shareEmail('unit9_writing.html', 'Unit 9 Writing')">📧 Email</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="qr-section">
+                    <button class="qr-btn" onclick="showQR('Unit 9', 'unit9')">📱 Show QR Codes</button>
+                    <button class="share-all-btn" onclick="shareAllUnit(9)">📤 Share All Unit 9 Homework</button>
+                </div>
+            </div>
+
+            <!-- Unit 10 -->
+            <div class="unit-card">
+                <div class="unit-header">
+                    <div class="unit-number">10</div>
+                    <div class="unit-title">Our Most Precious Resource</div>
+                    <div class="unit-theme">Water and Environmental Conservation</div>
+                </div>
+                                <div class="homework-links">
+                    <div class="homework-type">
+                        <h3>📚 Vocabulary</h3>
+                        <div class="link-grid">
+                            <a href="unit10_vocab.html" class="link-btn link-html">🌐 Online</a>
+                            <a href="#" class="link-btn link-google" onclick="showGoogleForm('Unit 10 Vocabulary')">📋 Google Form</a>
+                        </div>
+                        <div class="share-buttons">
+                            <button class="share-btn share-copy" onclick="copyHomeworkLink('unit10_vocab.html', 'Unit 10 Vocabulary')">📋 Copy</button>
+                            <button class="share-btn share-classroom" onclick="shareClassroom('unit10_vocab.html', 'Unit 10 Vocabulary')">🏫 Classroom</button>
+                            <button class="share-btn share-whatsapp" onclick="shareWhatsApp('unit10_vocab.html', 'Unit 10 Vocabulary')">💬 WhatsApp</button>
+                            <button class="share-btn share-email" onclick="shareEmail('unit10_vocab.html', 'Unit 10 Vocabulary')">📧 Email</button>
+                        </div>
+                    </div>
+                    <div class="homework-type">
+                        <h3>📝 Grammar</h3>
+                        <div class="link-grid">
+                            <a href="unit10_grammar.html" class="link-btn link-html">🌐 Online</a>
+                            <a href="#" class="link-btn link-google" onclick="showGoogleForm('Unit 10 Grammar')">📋 Google Form</a>
+                        </div>
+                        <div class="share-buttons">
+                            <button class="share-btn share-copy" onclick="copyHomeworkLink('unit10_grammar.html', 'Unit 10 Grammar')">📋 Copy</button>
+                            <button class="share-btn share-classroom" onclick="shareClassroom('unit10_grammar.html', 'Unit 10 Grammar')">🏫 Classroom</button>
+                            <button class="share-btn share-whatsapp" onclick="shareWhatsApp('unit10_grammar.html', 'Unit 10 Grammar')">💬 WhatsApp</button>
+                            <button class="share-btn share-email" onclick="shareEmail('unit10_grammar.html', 'Unit 10 Grammar')">📧 Email</button>
+                        </div>
+                    </div>
+                    <div class="homework-type">
+                        <h3>✍️ Writing</h3>
+                        <div class="link-grid">
+                            <a href="unit10_writing.html" class="link-btn link-html">🌐 Online</a>
+                            <a href="#" class="link-btn link-google" onclick="showGoogleForm('Unit 10 Writing')">📋 Google Form</a>
+                        </div>
+                        <div class="share-buttons">
+                            <button class="share-btn share-copy" onclick="copyHomeworkLink('unit10_writing.html', 'Unit 10 Writing')">📋 Copy</button>
+                            <button class="share-btn share-classroom" onclick="shareClassroom('unit10_writing.html', 'Unit 10 Writing')">🏫 Classroom</button>
+                            <button class="share-btn share-whatsapp" onclick="shareWhatsApp('unit10_writing.html', 'Unit 10 Writing')">💬 WhatsApp</button>
+                            <button class="share-btn share-email" onclick="shareEmail('unit10_writing.html', 'Unit 10 Writing')">📧 Email</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="qr-section">
+                    <button class="qr-btn" onclick="showQR('Unit 10', 'unit10')">📱 Show QR Codes</button>
+                    <button class="share-all-btn" onclick="shareAllUnit(10)">📤 Share All Unit 10 Homework</button>
+                </div>
+            </div>
+
+            <!-- Unit 11 -->
+            <div class="unit-card">
+                <div class="unit-header">
+                    <div class="unit-number">11</div>
+                    <div class="unit-title">Inspired Minds</div>
+                    <div class="unit-theme">Art, Creativity, and Design</div>
+                </div>
+                                <div class="homework-links">
+                    <div class="homework-type">
+                        <h3>📚 Vocabulary</h3>
+                        <div class="link-grid">
+                            <a href="unit11_vocab.html" class="link-btn link-html">🌐 Online</a>
+                            <a href="#" class="link-btn link-google" onclick="showGoogleForm('Unit 11 Vocabulary')">📋 Google Form</a>
+                        </div>
+                        <div class="share-buttons">
+                            <button class="share-btn share-copy" onclick="copyHomeworkLink('unit11_vocab.html', 'Unit 11 Vocabulary')">📋 Copy</button>
+                            <button class="share-btn share-classroom" onclick="shareClassroom('unit11_vocab.html', 'Unit 11 Vocabulary')">🏫 Classroom</button>
+                            <button class="share-btn share-whatsapp" onclick="shareWhatsApp('unit11_vocab.html', 'Unit 11 Vocabulary')">💬 WhatsApp</button>
+                            <button class="share-btn share-email" onclick="shareEmail('unit11_vocab.html', 'Unit 11 Vocabulary')">📧 Email</button>
+                        </div>
+                    </div>
+                    <div class="homework-type">
+                        <h3>📝 Grammar</h3>
+                        <div class="link-grid">
+                            <a href="unit11_grammar.html" class="link-btn link-html">🌐 Online</a>
+                            <a href="#" class="link-btn link-google" onclick="showGoogleForm('Unit 11 Grammar')">📋 Google Form</a>
+                        </div>
+                        <div class="share-buttons">
+                            <button class="share-btn share-copy" onclick="copyHomeworkLink('unit11_grammar.html', 'Unit 11 Grammar')">📋 Copy</button>
+                            <button class="share-btn share-classroom" onclick="shareClassroom('unit11_grammar.html', 'Unit 11 Grammar')">🏫 Classroom</button>
+                            <button class="share-btn share-whatsapp" onclick="shareWhatsApp('unit11_grammar.html', 'Unit 11 Grammar')">💬 WhatsApp</button>
+                            <button class="share-btn share-email" onclick="shareEmail('unit11_grammar.html', 'Unit 11 Grammar')">📧 Email</button>
+                        </div>
+                    </div>
+                    <div class="homework-type">
+                        <h3>✍️ Writing</h3>
+                        <div class="link-grid">
+                            <a href="unit11_writing.html" class="link-btn link-html">🌐 Online</a>
+                            <a href="#" class="link-btn link-google" onclick="showGoogleForm('Unit 11 Writing')">📋 Google Form</a>
+                        </div>
+                        <div class="share-buttons">
+                            <button class="share-btn share-copy" onclick="copyHomeworkLink('unit11_writing.html', 'Unit 11 Writing')">📋 Copy</button>
+                            <button class="share-btn share-classroom" onclick="shareClassroom('unit11_writing.html', 'Unit 11 Writing')">🏫 Classroom</button>
+                            <button class="share-btn share-whatsapp" onclick="shareWhatsApp('unit11_writing.html', 'Unit 11 Writing')">💬 WhatsApp</button>
+                            <button class="share-btn share-email" onclick="shareEmail('unit11_writing.html', 'Unit 11 Writing')">📧 Email</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="qr-section">
+                    <button class="qr-btn" onclick="showQR('Unit 11', 'unit11')">📱 Show QR Codes</button>
+                    <button class="share-all-btn" onclick="shareAllUnit(11)">📤 Share All Unit 11 Homework</button>
+                </div>
+            </div>
+
+            <!-- Unit 12 -->
+            <div class="unit-card">
+                <div class="unit-header">
+                    <div class="unit-number">12</div>
+                    <div class="unit-title">What's So Funny?</div>
+                    <div class="unit-theme">The Role of Humor in Society</div>
+                </div>
+                                <div class="homework-links">
+                    <div class="homework-type">
+                        <h3>📚 Vocabulary</h3>
+                        <div class="link-grid">
+                            <a href="unit12_vocab.html" class="link-btn link-html">🌐 Online</a>
+                            <a href="#" class="link-btn link-google" onclick="showGoogleForm('Unit 12 Vocabulary')">📋 Google Form</a>
+                        </div>
+                        <div class="share-buttons">
+                            <button class="share-btn share-copy" onclick="copyHomeworkLink('unit12_vocab.html', 'Unit 12 Vocabulary')">📋 Copy</button>
+                            <button class="share-btn share-classroom" onclick="shareClassroom('unit12_vocab.html', 'Unit 12 Vocabulary')">🏫 Classroom</button>
+                            <button class="share-btn share-whatsapp" onclick="shareWhatsApp('unit12_vocab.html', 'Unit 12 Vocabulary')">💬 WhatsApp</button>
+                            <button class="share-btn share-email" onclick="shareEmail('unit12_vocab.html', 'Unit 12 Vocabulary')">📧 Email</button>
+                        </div>
+                    </div>
+                    <div class="homework-type">
+                        <h3>📝 Grammar</h3>
+                        <div class="link-grid">
+                            <a href="unit12_grammar.html" class="link-btn link-html">🌐 Online</a>
+                            <a href="#" class="link-btn link-google" onclick="showGoogleForm('Unit 12 Grammar')">📋 Google Form</a>
+                        </div>
+                        <div class="share-buttons">
+                            <button class="share-btn share-copy" onclick="copyHomeworkLink('unit12_grammar.html', 'Unit 12 Grammar')">📋 Copy</button>
+                            <button class="share-btn share-classroom" onclick="shareClassroom('unit12_grammar.html', 'Unit 12 Grammar')">🏫 Classroom</button>
+                            <button class="share-btn share-whatsapp" onclick="shareWhatsApp('unit12_grammar.html', 'Unit 12 Grammar')">💬 WhatsApp</button>
+                            <button class="share-btn share-email" onclick="shareEmail('unit12_grammar.html', 'Unit 12 Grammar')">📧 Email</button>
+                        </div>
+                    </div>
+                    <div class="homework-type">
+                        <h3>✍️ Writing</h3>
+                        <div class="link-grid">
+                            <a href="unit12_writing.html" class="link-btn link-html">🌐 Online</a>
+                            <a href="#" class="link-btn link-google" onclick="showGoogleForm('Unit 12 Writing')">📋 Google Form</a>
+                        </div>
+                        <div class="share-buttons">
+                            <button class="share-btn share-copy" onclick="copyHomeworkLink('unit12_writing.html', 'Unit 12 Writing')">📋 Copy</button>
+                            <button class="share-btn share-classroom" onclick="shareClassroom('unit12_writing.html', 'Unit 12 Writing')">🏫 Classroom</button>
+                            <button class="share-btn share-whatsapp" onclick="shareWhatsApp('unit12_writing.html', 'Unit 12 Writing')">💬 WhatsApp</button>
+                            <button class="share-btn share-email" onclick="shareEmail('unit12_writing.html', 'Unit 12 Writing')">📧 Email</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="qr-section">
+                    <button class="qr-btn" onclick="showQR('Unit 12', 'unit12')">📱 Show QR Codes</button>
+                    <button class="share-all-btn" onclick="shareAllUnit(12)">📤 Share All Unit 12 Homework</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- QR Code Modal -->
+    <div id="qrModal" class="modal" onclick="closeModal(event)">
+        <div class="modal-content">
+            <h3 id="qrTitle">QR Codes</h3>
+            <div class="qr-placeholder">
+                <span>QR Code Placeholder<br>(Generate at qr-code-generator.com)</span>
+            </div>
+            <p style="margin-bottom: 15px; color: #666; font-size: 14px;">Scan with your phone camera to access homework</p>
+            <div class="share-section">
+                <strong style="color: #722f37;">Share Link:</strong>
+                <div class="share-link">
+                    <input type="text" id="shareUrl" readonly value="">
+                    <button class="copy-btn" onclick="copyLink()">Copy</button>
+                </div>
+            </div>
+            <button class="close-btn" onclick="closeModalDirect()" style="margin-top: 20px;">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // Get the base URL for sharing
+        function getBaseUrl() {
+            let url = window.location.href;
+            // Remove any filename to get the directory
+            return url.substring(0, url.lastIndexOf('/') + 1);
+        }
+        
+        // Copy individual homework link
+        function copyHomeworkLink(filename, title) {
+            const fullUrl = getBaseUrl() + filename;
+            navigator.clipboard.writeText(fullUrl).then(() => {
+                alert('✅ Link copied!\n\n' + title + '\n' + fullUrl);
+            }).catch(() => {
+                // Fallback for older browsers
+                const input = document.createElement('input');
+                input.value = fullUrl;
+                document.body.appendChild(input);
+                input.select();
+                document.execCommand('copy');
+                document.body.removeChild(input);
+                alert('✅ Link copied!\n\n' + title);
+            });
+        }
+        
+        // Share via WhatsApp
+        function shareWhatsApp(filename, title) {
+            const fullUrl = getBaseUrl() + filename;
+            const message = '📝 *World Class 2B Homework*\n\n*' + title + '*\n\nComplete your homework here:\n' + fullUrl + '\n\nGood luck! 📚';
+            const whatsappUrl = 'https://wa.me/?text=' + encodeURIComponent(message);
+            window.open(whatsappUrl, '_blank');
+        }
+        
+        // Share via Email
+        function shareEmail(filename, title) {
+            const fullUrl = getBaseUrl() + filename;
+            const subject = 'Homework: ' + title;
+            const body = 'Dear Student,\n\nPlease complete the following homework:\n\n' + title + '\n\nLink: ' + fullUrl + '\n\nInstructions:\n• Open the link\n• Fill in your answers\n• Click Submit when finished\n\nGood luck!\n';
+            window.location.href = 'mailto:?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+        }
+        
+        // Share to Google Classroom
+        function shareClassroom(filename, title) {
+            const fullUrl = getBaseUrl() + filename;
+            const classroomUrl = 'https://classroom.google.com/share?url=' + encodeURIComponent(fullUrl) + '&title=' + encodeURIComponent('World Class 2B - ' + title);
+            window.open(classroomUrl, '_blank', 'width=600,height=600');
+        }
+        
+        // Share all homework for a unit
+        function shareAllUnit(unitNum) {
+            const baseUrl = getBaseUrl();
+            const vocabUrl = baseUrl + 'unit' + unitNum + '_vocab.html';
+            const grammarUrl = baseUrl + 'unit' + unitNum + '_grammar.html';
+            const writingUrl = baseUrl + 'unit' + unitNum + '_writing.html';
+            
+            const message = '📝 *World Class 2B - Unit ' + unitNum + ' Homework*\n\nComplete all three worksheets:\n\n1️⃣ Vocabulary:\n' + vocabUrl + '\n\n2️⃣ Grammar:\n' + grammarUrl + '\n\n3️⃣ Writing:\n' + writingUrl + '\n\nAll worksheets are interactive and can be filled online. Good luck! 📚';
+            
+            // Copy to clipboard
+            navigator.clipboard.writeText(message).then(() => {
+                alert('✅ All Unit ' + unitNum + ' homework links copied!\n\nYou can now paste and share via:\n• WhatsApp\n• Email\n• Google Classroom\n• Any messaging app');
+            }).catch(() => {
+                // Create a temporary textarea for fallback
+                const textarea = document.createElement('textarea');
+                textarea.value = message;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                alert('✅ All Unit ' + unitNum + ' homework links copied!');
+            });
+        }
+        
+        function showQR(unitName, unitId) {
+            document.getElementById('qrTitle').textContent = unitName + ' - QR Codes';
+            document.getElementById('shareUrl').value = getBaseUrl() + unitId + '_vocab.html';
+            document.getElementById('qrModal').style.display = 'flex';
+        }
+
+        function showGoogleForm(assignment) {
+            alert('To create a Google Form for ' + assignment + ':\n\n1. Go to forms.google.com\n2. Create a new form with the same questions\n3. Get the shareable link\n4. Update this button with that link\n\nTip: Use "Import questions" to quickly copy from the HTML worksheet!');
+        }
+
+        function closeModal(event) {
+            if (event.target === document.getElementById('qrModal')) {
+                document.getElementById('qrModal').style.display = 'none';
+            }
+        }
+
+        function closeModalDirect() {
+            document.getElementById('qrModal').style.display = 'none';
+        }
+
+        function copyLink() {
+            const input = document.getElementById('shareUrl');
+            input.select();
+            document.execCommand('copy');
+            alert('Link copied to clipboard!');
+        }
+    </script>
+</body>
+</html>

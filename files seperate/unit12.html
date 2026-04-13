@@ -1,0 +1,2987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Class Level 2 - Unit 12: What's So Funny?</title>
+    <!-- Authentication Check -->
+    <script>
+        // Check if user is logged in
+        if (!sessionStorage.getItem('teacherLoggedIn')) {
+            window.location.href = '../login.html';
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        /* Unit Selector */
+        .unit-selector {
+            background: #1a252f;
+            padding: 15px 40px;
+            text-align: center;
+            border-bottom: 2px solid #d4af37;
+        }
+
+        .unit-selector h3 {
+            color: white;
+            margin-bottom: 10px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .unit-links {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .unit-btn {
+            background: #34495e;
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .unit-btn:hover {
+            background: #ff5252;
+            transform: translateY(-2px);
+        }
+
+        .unit-btn.active {
+            background: #f44336;
+            border-color: white;
+            pointer-events: none;
+        }
+
+        /* Unit Header - Red Theme for Unit 12 (Comedy/Humor) */
+        .unit-header {
+            background: linear-gradient(135deg, #722f37 0%, #8b3a3a 100%);
+            color: white;
+            padding: 60px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .unit-number {
+            font-size: 120px;
+            font-weight: bold;
+            opacity: 0.3;
+            position: absolute;
+            top: 20px;
+            left: 40px;
+            line-height: 1;
+        }
+
+        .unit-title {
+            font-size: 48px;
+            font-weight: bold;
+            margin-left: 100px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .unit-theme {
+            font-size: 24px;
+            margin-left: 100px;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+
+        /* Navigation */
+        .nav-bar {
+            background: #2c3e50;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #d4af37;
+        }
+
+        /* View Toggle Buttons */
+        .view-toggle {
+            display: flex;
+            gap: 10px;
+        }
+
+        .toggle-btn {
+            background: #34495e;
+            color: white;
+            border: 2px solid transparent;
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .toggle-btn.active {
+            background: #ff5252;
+            border-color: white;
+        }
+
+        .toggle-btn:hover:not(.active) {
+            background: #44596e;
+        }
+        
+        /* Print Button */
+        .print-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            margin-right: 10px;
+        }
+        
+        .print-btn:hover {
+            background: #2980b9;
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        /* Main Content */
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+            scroll-margin-top: 80px;
+        }
+
+        .section-header {
+            background: #34495e;
+            color: white;
+            padding: 20px 30px;
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            border-left: 8px solid #722f37;
+        }
+
+        /* Unit Outcomes Box - Red theme */
+        .outcomes-box {
+            background: linear-gradient(135deg, #722f37 0%, #8b3a3a 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .outcomes-box h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid white;
+            padding-bottom: 10px;
+        }
+
+        .outcomes-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .outcomes-box li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .outcomes-box li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* Vocabulary Grid */
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .vocab-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-left: 4px solid #d4af37;
+            border-radius: 5px;
+        }
+
+        .vocab-word {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .vocab-pronounce {
+            color: #7f8c8d;
+            font-style: italic;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .vocab-def {
+            color: #555;
+            font-size: 15px;
+            margin-bottom: 5px;
+        }
+
+        .vocab-example {
+            color: #f44336;
+            font-size: 13px;
+            font-style: italic;
+            margin-top: 5px;
+        }
+
+        /* Exercise Boxes */
+        .exercise {
+            background: #fff;
+            border: 2px solid #ecf0f1;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .exercise-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .exercise-icon {
+            background: #722f37;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* Yellow Strategy Box - Consistent educational feature */
+        .strategy-box {
+            background: #fff9c4;
+            border: 2px solid #f9a825;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .strategy-box::before {
+            content: "💡 LISTENING STRATEGY";
+            background: #f9a825;
+            color: white;
+            padding: 4px 12px;
+            font-size: 12px;
+            font-weight: bold;
+            position: absolute;
+            top: -12px;
+            left: 20px;
+        }
+
+        .strategy-title {
+            font-weight: bold;
+            color: #e65100;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .strategy-box.grammar::before {
+            content: "📝 GRAMMAR STRATEGY";
+        }
+
+        .strategy-box.reading::before {
+            content: "📖 READING STRATEGY";
+        }
+
+        .strategy-box.writing::before {
+            content: "✍️ WRITING STRATEGY";
+        }
+
+        .strategy-box.speaking::before {
+            content: "🗣️ SPEAKING STRATEGY";
+        }
+
+        /* Audio Player */
+        .audio-player {
+            background: #ffebee;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+            border: 2px solid #f44336;
+        }
+
+        .audio-label {
+            font-weight: bold;
+            color: #b71c1c;
+            margin-bottom: 10px;
+        }
+
+        audio {
+            width: 100%;
+            max-width: 500px;
+            margin: 10px 0;
+        }
+
+        /* Grammar Chart */
+        .grammar-chart {
+            background: #f8f9fa;
+            border: 2px solid #34495e;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .chart-header {
+            background: #34495e;
+            color: white;
+            padding: 15px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .chart-row {
+            display: grid;
+            grid-template-columns: 1fr 2fr 2fr;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .chart-row:last-child {
+            border-bottom: none;
+        }
+
+        .chart-cell {
+            padding: 15px;
+            border-right: 1px solid #ddd;
+        }
+
+        .chart-cell:last-child {
+            border-right: none;
+        }
+
+        .chart-cell.header {
+            background: #ffebee;
+            font-weight: bold;
+            color: #b71c1c;
+        }
+
+        .grammar-type {
+            font-weight: bold;
+            color: #ff5252;
+        }
+
+        /* Reading Passage */
+        .reading-passage {
+            background: #fff;
+            border-left: 5px solid #d4af37;
+            padding: 30px;
+            margin: 20px 0;
+            font-size: 16px;
+            line-height: 1.8;
+            text-align: justify;
+            background-color: #f8f9fa;
+        }
+
+        .passage-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #ffcdd2 0%, #ffcdd2 100%);
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+
+        /* Teacher's Answers */
+        .teacher-answer {
+            display: block;
+            background: #ffebee;
+            border: 2px solid #f44336;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 10px;
+            color: #b71c1c;
+            font-weight: 600;
+        }
+
+        .teacher-answer::before {
+            content: "✓ TEACHER ANSWER: ";
+            font-weight: 800;
+            color: #b71c1c;
+        }
+
+        .teaching-note {
+            display: none;
+            background: #fff3e0;
+            border-left: 4px solid #d4af37;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            color: #e65100;
+        }
+
+        .teaching-note::before {
+            content: "🍎 TEACHING NOTE: ";
+            font-weight: 800;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* Visible states for teacher mode */
+        .teacher-mode .teacher-answer,
+        .teacher-mode .teaching-note {
+            display: block;
+        }
+
+        /* Question containers */
+        .question-item {
+            background: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin-bottom: 15px;
+        }
+
+        .question-text {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+
+        /* Pronunciation Box */
+        .pronunciation-box {
+            background: #f3e5f5;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #d4af37;
+            margin: 20px 0;
+        }
+
+        .pronunciation-box strong {
+            color: #7b1fa2;
+        }
+
+        /* Example Box */
+        .example-box {
+            background: #e8f5e9;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border-left: 3px solid #4caf50;
+        }
+
+        .example-box strong {
+            color: #2e7d32;
+        }
+
+        /* Role Play Boxes */
+        .role-box {
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .role-comedian {
+            background: #fff3e0;
+            border-left: 4px solid #d4af37;
+        }
+
+        .role-critic {
+            background: #ffebee;
+            border-left: 4px solid #d4af37;
+        }
+
+        .role-audience {
+            background: #e3f2fd;
+            border-left: 4px solid #d4af37;
+        }
+
+        /* Self Assessment */
+        .assessment-box {
+            background: #ffebee;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #f44336;
+        }
+
+        /* Check Section */
+        .check-section {
+            background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 40px;
+            border: 2px solid #f44336;
+        }
+
+        .check-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 15px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .check-number {
+            background: #f44336;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        /* Video Box */
+        .video-box {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #2196f3;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        /* Footer Navigation */
+        .unit-nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 30px 40px;
+            background: #ecf0f1;
+            border-top: 3px solid #34495e;
+        }
+
+        .nav-btn {
+            background: #34495e;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: #722f37;
+        }
+
+        /* Print Styles */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+
+            .unit-selector, .nav-bar, .unit-nav {
+                display: none !important;
+            }
+
+            body {
+                background: white;
+            }
+
+            .container {
+                box-shadow: none;
+            }
+
+            .section {
+                page-break-inside: avoid;
+            }
+
+            .teacher-answer, .teaching-note {
+                display: none !important;
+            }
+
+            .teacher-mode .teacher-answer,
+            .teacher-mode .teaching-note {
+                display: block !important;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .vocab-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chart-row {
+                grid-template-columns: 1fr;
+            }
+
+            .unit-title {
+                font-size: 32px;
+                margin-left: 0;
+            }
+
+            .unit-number {
+                font-size: 80px;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .view-toggle {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .content {
+                padding: 20px;
+            }
+        }
+
+        /* View Mode Indicator */
+        .view-indicator { display: none !important;
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            z-index: 1000;
+            display: none;
+        }
+
+        .view-indicator.show {
+            display: block;
+        }
+
+        /* Checkbox styling for exercises */
+        .checkbox-option {
+            display: block;
+            margin: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .checkbox-option input[type="checkbox"] {
+            position: absolute;
+            left: 0;
+            top: 3px;
+        }
+
+        /* Blank fill styling */
+        .blank {
+            border-bottom: 2px solid #d4af37;
+            padding: 0 20px;
+            color: #c62828;
+            font-weight: bold;
+        }
+
+        /* Discussion Box */
+        .discussion-box {
+            background: #ffebee;
+            border-left: 5px solid #d4af37;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid #d4af37;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 15px;
+        }
+
+        /* Table Styles */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+        }
+
+        .data-table th {
+            background: #34495e;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .data-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            border-right: 1px solid #eee;
+        }
+
+        .data-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .data-table tr:hover {
+            background: #ffebee;
+        }
+
+        /* Quote Box */
+        .quote-box {
+            background: #f5f5f5;
+            border-left: 5px solid #d4af37;
+            padding: 20px;
+            margin: 20px 0;
+            font-style: italic;
+            font-size: 18px;
+            color: #555;
+        }
+
+        .quote-author {
+            text-align: right;
+            font-weight: bold;
+            color: #333;
+            margin-top: 10px;
+            font-style: normal;
+        }
+
+        /* Speech Bubble */
+        .speech-bubble {
+            background: #e8f5e9;
+            border-radius: 20px;
+            padding: 15px 20px;
+            margin: 15px 0;
+            position: relative;
+            display: inline-block;
+            font-style: italic;
+            color: #2e7d32;
+        }
+
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 20px;
+            border-width: 10px 10px 0;
+            border-style: solid;
+            border-color: #e8f5e9 transparent;
+            display: block;
+            width: 0;
+        }
+
+        /* Story Outline Box */
+        .story-outline {
+            background: #fff8e1;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            float: right;
+            width: 300px;
+            margin-left: 20px;
+        }
+
+        .story-outline h4 {
+            color: #f57c00;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #d4af37;
+            padding-bottom: 5px;
+        }
+
+        .story-outline-line {
+            border-bottom: 1px solid #ddd;
+            margin: 10px 0;
+            height: 20px;
+        }
+
+        /* Notes Checklist */
+        .notes-checklist {
+            background: #f3e5f5;
+            border-left: 4px solid #d4af37;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .notes-checklist h4 {
+            color: #7b1fa2;
+            margin-bottom: 10px;
+        }
+
+        .notes-checklist ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .notes-checklist li {
+            padding: 5px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .notes-checklist li:before {
+            content: "☐";
+            position: absolute;
+            left: 0;
+            font-size: 16px;
+        }
+
+        /* Ask Answer Box */
+        .ask-answer-box {
+            background: #e0f2f1;
+            border: 2px solid #009688;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .ask-label {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: #009688;
+            color: white;
+            padding: 4px 12px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+
+        /* Sample Essay Box */
+        .sample-essay {
+            background: #fff9c4;
+            border: 2px solid #f9a825;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 20px 0;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .sample-essay-title {
+            font-weight: bold;
+            color: #e65100;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        /* Tip Box */
+        .tip-box {
+            background: #e3f2fd;
+            border-left: 4px solid #d4af37;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 14px;
+        }
+
+        .tip-box strong {
+            color: #1565c0;
+        }
+
+        /* Clearfix */
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+    
+/* Dark Mode */
+body.dark-mode {
+    background: #1a1a1a;
+    color: #e0e0e0;
+}
+
+body.dark-mode .container {
+    background: #2d2d2d;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+body.dark-mode .content {
+    background: #2d2d2d;
+}
+
+body.dark-mode .section-header {
+    background: #3d3d3d;
+    color: #fff;
+}
+
+body.dark-mode .exercise {
+    background: #363636;
+    border-color: #444;
+}
+
+body.dark-mode .question-item {
+    background: #363636;
+    border-color: #444;
+}
+
+body.dark-mode .vocab-item {
+    background: #363636;
+}
+
+body.dark-mode .strategy-box,
+body.dark-mode .warmup-box,
+body.dark-mode .discussion-box,
+body.dark-mode .pronunciation-box,
+body.dark-mode .critical-box,
+body.dark-mode .assessment-box,
+body.dark-mode .homework-box {
+    filter: brightness(0.85);
+}
+
+body.dark-mode .reading-passage {
+    background-color: #363636;
+    color: #e0e0e0;
+}
+
+body.dark-mode .unit-nav {
+    background: #2d2d2d;
+    border-color: #444;
+}
+
+/* Dark Mode Toggle Button */
+.dark-mode-toggle {
+    background: #2c3e50;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+    margin-right: 10px;
+}
+
+.dark-mode-toggle:hover {
+    background: #34495e;
+    transform: scale(1.05);
+}
+
+        /* ===== 3D DYNAMIC BUTTONS ===== */
+        
+        /* Base 3D Button Style */
+        .btn-3d {
+            display: inline-block;
+            padding: 12px 28px;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #fff;
+            background: linear-gradient(145deg, #8b3a3a 0%, #722f37 50%, #5c1a1a 100%);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                0 4px 6px rgba(114, 47, 55, 0.3),
+                0 10px 20px rgba(114, 47, 55, 0.2),
+                inset 0 1px 0 rgba(255,255,255,0.2),
+                inset 0 -2px 0 rgba(0,0,0,0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(0);
+        }
+        
+        .btn-3d::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .btn-3d:hover::before {
+            left: 100%;
+        }
+        
+        .btn-3d:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 
+                0 8px 15px rgba(114, 47, 55, 0.4),
+                0 15px 30px rgba(114, 47, 55, 0.25),
+                inset 0 1px 0 rgba(255,255,255,0.3),
+                inset 0 -2px 0 rgba(0,0,0,0.2);
+            background: linear-gradient(145deg, #722f37 0%, #8b3a3a 50%, #722f37 100%);
+        }
+        
+        .btn-3d:active {
+            transform: translateY(-1px) scale(0.98);
+            box-shadow: 
+                0 2px 4px rgba(114, 47, 55, 0.3),
+                0 5px 10px rgba(114, 47, 55, 0.2),
+                inset 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        /* Gold Accent Button */
+        .btn-gold {
+            background: linear-gradient(145deg, #e5c76b 0%, #d4af37 50%, #b8960c 100%);
+            color: #722f37;
+            box-shadow: 
+                0 4px 6px rgba(212, 175, 55, 0.4),
+                0 10px 20px rgba(212, 175, 55, 0.25),
+                inset 0 1px 0 rgba(255,255,255,0.4),
+                inset 0 -2px 0 rgba(0,0,0,0.1);
+            font-weight: 800;
+        }
+        
+        .btn-gold:hover {
+            background: linear-gradient(145deg, #d4af37 0%, #e5c76b 50%, #d4af37 100%);
+            color: #5c1a1a;
+            box-shadow: 
+                0 8px 15px rgba(212, 175, 55, 0.5),
+                0 15px 30px rgba(212, 175, 55, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.5),
+                inset 0 -2px 0 rgba(0,0,0,0.1);
+        }
+        
+        .btn-gold:active {
+            box-shadow: 
+                0 2px 4px rgba(212, 175, 55, 0.4),
+                0 5px 10px rgba(212, 175, 55, 0.2),
+                inset 0 2px 4px rgba(0,0,0,0.15);
+        }
+        
+        /* Outline 3D Button */
+        .btn-outline {
+            background: transparent;
+            color: #722f37;
+            border: 2px solid #722f37;
+            box-shadow: 
+                0 4px 6px rgba(114, 47, 55, 0.1),
+                0 0 0 4px rgba(114, 47, 55, 0.05);
+        }
+        
+        .btn-outline:hover {
+            background: #722f37;
+            color: #fff;
+            box-shadow: 
+                0 8px 15px rgba(114, 47, 55, 0.3),
+                0 0 0 6px rgba(114, 47, 55, 0.1);
+        }
+        
+        /* Small Button Variant */
+        .btn-sm {
+            padding: 8px 18px;
+            font-size: 12px;
+        }
+        
+        /* Large Button Variant */
+        .btn-lg {
+            padding: 16px 36px;
+            font-size: 16px;
+        }
+        
+        /* Icon Button */
+        .btn-icon {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-icon svg,
+        .btn-icon i,
+        .btn-icon span.icon {
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+        }
+        
+        .btn-icon:hover svg,
+        .btn-icon:hover i,
+        .btn-icon:hover span.icon {
+            transform: translateX(3px);
+        }
+        
+        /* Rounded Square Buttons (for nav) */
+        .btn-square {
+            border-radius: 12px;
+            padding: 10px 20px;
+        }
+        
+        /* Pill Button */
+        .btn-pill {
+            border-radius: 50px;
+        }
+        
+        /* Floating Action Button Style */
+        .btn-float {
+            box-shadow: 
+                0 6px 12px rgba(114, 47, 55, 0.25),
+                0 0 0 1px rgba(114, 47, 55, 0.1),
+                inset 0 1px 0 rgba(255,255,255,0.2);
+        }
+        
+        .btn-float:hover {
+            transform: translateY(-4px);
+            box-shadow: 
+                0 12px 24px rgba(114, 47, 55, 0.35),
+                0 0 0 1px rgba(114, 47, 55, 0.15),
+                inset 0 1px 0 rgba(255,255,255,0.25);
+        }
+        
+        /* Gradient Shine Effect */
+        .btn-shine {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-shine::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to right,
+                transparent 0%,
+                rgba(255,255,255,0.1) 50%,
+                transparent 100%
+            );
+            transform: rotate(30deg) translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+        
+        .btn-shine:hover::after {
+            transform: rotate(30deg) translateX(100%);
+        }
+        
+        /* Ripple Effect on Click */
+        .btn-ripple {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-ripple span.ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.4);
+            transform: scale(0);
+            animation: ripple-animation 0.6s linear;
+            pointer-events: none;
+        }
+        
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+        
+        /* Glow Effect */
+        .btn-glow {
+            animation: glow-pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes glow-pulse {
+            0%, 100% {
+                box-shadow: 
+                    0 4px 6px rgba(114, 47, 55, 0.3),
+                    0 0 20px rgba(212, 175, 55, 0.2);
+            }
+            50% {
+                box-shadow: 
+                    0 4px 6px rgba(114, 47, 55, 0.3),
+                    0 0 30px rgba(212, 175, 55, 0.4);
+            }
+        }
+        
+        /* Button Group */
+        .btn-group {
+            display: inline-flex;
+            gap: 0;
+        }
+        
+        .btn-group .btn-3d {
+            border-radius: 0;
+        }
+        
+        .btn-group .btn-3d:first-child {
+            border-radius: 50px 0 0 50px;
+        }
+        
+        .btn-group .btn-3d:last-child {
+            border-radius: 0 50px 50px 0;
+        }
+        
+        /* Dark Mode Button Styles */
+        body.dark-mode .btn-3d {
+            background: linear-gradient(145deg, #8b3a3a 0%, #5c1a1a 50%, #3d1515 100%);
+            box-shadow: 
+                0 4px 6px rgba(0, 0, 0, 0.4),
+                0 10px 20px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.1),
+                inset 0 -2px 0 rgba(0,0,0,0.3);
+        }
+        
+        body.dark-mode .btn-3d:hover {
+            background: linear-gradient(145deg, #722f37 0%, #8b3a3a 50%, #722f37 100%);
+            box-shadow: 
+                0 8px 15px rgba(0, 0, 0, 0.5),
+                0 15px 30px rgba(0, 0, 0, 0.35),
+                0 0 20px rgba(212, 175, 55, 0.2),
+                inset 0 1px 0 rgba(255,255,255,0.15),
+                inset 0 -2px 0 rgba(0,0,0,0.3);
+        }
+        
+        body.dark-mode .btn-gold {
+            background: linear-gradient(145deg, #e5c76b 0%, #d4af37 50%, #b8960c 100%);
+            color: #3d1515;
+            box-shadow: 
+                0 4px 6px rgba(212, 175, 55, 0.3),
+                0 10px 20px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.3);
+        }
+        
+        body.dark-mode .btn-outline {
+            border-color: #d4af37;
+            color: #d4af37;
+            box-shadow: 
+                0 4px 6px rgba(0, 0, 0, 0.2),
+                0 0 0 4px rgba(212, 175, 55, 0.05);
+        }
+        
+        body.dark-mode .btn-outline:hover {
+            background: #d4af37;
+            color: #3d1515;
+            box-shadow: 
+                0 8px 15px rgba(212, 175, 55, 0.3),
+                0 0 0 6px rgba(212, 175, 55, 0.1);
+        }
+        
+        /* Section Navigation Buttons Enhancement */
+        .nav-bar button {
+            background: linear-gradient(145deg, #faf8f5 0%, #f0ebe3 100%);
+            color: #722f37;
+            border: 2px solid transparent;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 
+                0 2px 4px rgba(114, 47, 55, 0.1),
+                inset 0 1px 0 rgba(255,255,255,0.8);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-bar button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(212, 175, 55, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.4s ease, height 0.4s ease;
+        }
+        
+        .nav-bar button:hover::before {
+            width: 200%;
+            height: 200%;
+        }
+        
+        .nav-bar button:hover {
+            background: linear-gradient(145deg, #722f37 0%, #8b3a3a 100%);
+            color: #fff;
+            border-color: #d4af37;
+            transform: translateY(-2px);
+            box-shadow: 
+                0 6px 12px rgba(114, 47, 55, 0.25),
+                0 0 0 3px rgba(212, 175, 55, 0.2),
+                inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+        
+        .nav-bar button.active {
+            background: linear-gradient(145deg, #722f37 0%, #5c1a1a 100%);
+            color: #d4af37;
+            border-color: #d4af37;
+            box-shadow: 
+                0 4px 8px rgba(114, 47, 55, 0.3),
+                0 0 0 3px rgba(212, 175, 55, 0.3),
+                inset 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        body.dark-mode .nav-bar button {
+            background: linear-gradient(145deg, #3d3d3d 0%, #2d2d2d 100%);
+            color: #e0e0e0;
+            box-shadow: 
+                0 2px 4px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.05);
+        }
+        
+        body.dark-mode .nav-bar button:hover {
+            background: linear-gradient(145deg, #722f37 0%, #5c1a1a 100%);
+            color: #fff;
+            border-color: #d4af37;
+        }
+        
+                /* Homework Menu Styles */
+        .homework-menu a:hover {
+            background: #f9f5f0;
+            padding-left: 25px;
+        }
+        
+        body.dark-mode .homework-menu {
+            background: #2d2d2d !important;
+            border: 1px solid #444;
+        }
+        
+        body.dark-mode .homework-menu a {
+            color: #d4af37 !important;
+            border-bottom-color: #444 !important;
+        }
+        
+        body.dark-mode .homework-menu a:hover {
+            background: #3d3d3d !important;
+        }
+                body.dark-mode .nav-bar button.active {
+            background: linear-gradient(145deg, #5c1a1a 0%, #722f37 100%);
+            color: #d4af37;
+            border-color: #d4af37;
+            box-shadow: 
+                0 4px 8px rgba(0, 0, 0, 0.4),
+                0 0 0 3px rgba(212, 175, 55, 0.2),
+                inset 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        /* Audio/Play Buttons */
+        .audio-btn, .play-btn {
+            background: linear-gradient(145deg, #722f37 0%, #5c1a1a 100%);
+            color: #d4af37;
+            border: 2px solid #d4af37;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 
+                0 4px 8px rgba(114, 47, 55, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+        
+        .audio-btn:hover, .play-btn:hover {
+            transform: scale(1.1) translateY(-2px);
+            box-shadow: 
+                0 8px 16px rgba(114, 47, 55, 0.4),
+                0 0 20px rgba(212, 175, 55, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.2);
+        }
+        
+        .audio-btn:active, .play-btn:active {
+            transform: scale(0.95);
+            box-shadow: 
+                0 2px 4px rgba(114, 47, 55, 0.3),
+                inset 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        body.dark-mode .audio-btn,
+        body.dark-mode .play-btn {
+            background: linear-gradient(145deg, #5c1a1a 0%, #3d1515 100%);
+            box-shadow: 
+                0 4px 8px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255,255,255,0.05);
+        }
+
+        
+        /* Local Video Player Styles */
+        .local-video-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            background: #1a1a1a;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 3px solid #d4af37;
+        }
+        
+        .local-video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .video-fallback {
+            padding: 40px;
+            text-align: center;
+            background: #2d2d2d;
+            color: #d4af37;
+        }
+        
+        .video-fallback-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+        
+        .video-offline-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(145deg, #722f37 0%, #5c1a1a 100%);
+            color: #d4af37;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            z-index: 10;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            pointer-events: none;
+        }
+        
+        .video-info {
+            background: linear-gradient(145deg, #722f37 0%, #5c1a1a 100%);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .video-info-title {
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .video-info-format {
+            background: #d4af37;
+            color: #722f37;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+        
+        /* Dark mode support */
+        body.dark-mode .local-video-container {
+            border-color: #d4af37;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        
+        /* Enhanced Video Player Controls */
+        .local-video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Custom control hints */
+        .video-controls-hint {
+            background: linear-gradient(145deg, #3d3d3d 0%, #2d2d2d 100%);
+            color: #d4af37;
+            padding: 10px 15px;
+            font-size: 12px;
+            text-align: center;
+            border-bottom: 2px solid #d4af37;
+        }
+        
+        .video-controls-hint span {
+            font-weight: 700;
+            margin-right: 8px;
+        }
+        
+        /* Captions/Subtitles styling */
+        .local-video::cue {
+            background: rgba(114, 47, 55, 0.9);
+            color: #d4af37;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        
+        /* Vocabulary Audio Pronunciation */
+        .vocab-item {
+            position: relative;
+        }
+        
+        .vocab-audio-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(145deg, #d4af37 0%, #e5c76b 100%);
+            color: #722f37;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 5;
+        }
+        
+        .vocab-audio-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        
+        .vocab-audio-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .vocab-audio-btn.playing {
+            animation: pulse-audio 1s infinite;
+        }
+        
+        @keyframes pulse-audio {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+            50% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
+        }
+        
+        /* Alternative: Google TTS link */
+        .vocab-tts-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 8px;
+            padding: 5px 10px;
+            background: #f0f0f0;
+            border-radius: 15px;
+            font-size: 12px;
+            color: #722f37;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .vocab-tts-link:hover {
+            background: #d4af37;
+            color: white;
+        }
+        
+        .vocab-pronunciation {
+            font-size: 13px;
+            color: #666;
+            font-style: italic;
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .vocab-pronunciation .ipa {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: #f9f5f0;
+            padding: 2px 8px;
+            border-radius: 4px;
+            border: 1px solid #d4af37;
+        }
+        
+        body.dark-mode .vocab-audio-btn {
+            background: linear-gradient(145deg, #e5c76b 0%, #d4af37 100%);
+            color: #3d1515;
+        }
+        
+        body.dark-mode .vocab-pronunciation {
+            color: #aaa;
+        }
+        
+        body.dark-mode .vocab-pronunciation .ipa {
+            background: #3d3d3d;
+            border-color: #d4af37;
+            color: #d4af37;
+        }
+
+        </style>
+    <base target="_blank">
+</head>
+<body>
+    <div class="container">
+        <!-- Unit Selector -->
+        <!-- Unit Header -->
+        <header class="unit-header">
+            <div class="unit-number">12</div>
+            <h1 class="unit-title">What's So Funny?</h1>
+            <p class="unit-theme">The Role of Humor in Society</p>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav-bar no-print">
+            <div class="nav-links">
+                <a href="#vocabulary">Vocabulary</a>
+                <a href="#grammar">Grammar</a>
+                <a href="#listening">Listening</a>
+                <a href="#reading">Reading</a>
+                <a href="#writing">Writing</a>
+                <a href="#speaking">Speaking</a>
+                <a href="#video">Video</a>
+                <a href="#resources">Resources</a>
+                <a href="book2b_reference.html">Reference</a>
+            </div>
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <div class="homework-dropdown" style="position: relative;">
+                    <button class="btn-3d btn-sm" onclick="toggleHomeworkMenu('hw-menu-12')" style="background: linear-gradient(145deg, #d4af37 0%, #e5c76b 100%); color: #722f37;">📝 Homework ▼</button>
+                    <div id="hw-menu-12" class="homework-menu" style="display: none; position: absolute; top: 100%; right: 0; margin-top: 10px; background: white; border-radius: 8px; box-shadow: 0 8px 20px rgba(0,0,0,0.2); min-width: 150px; z-index: 1000; overflow: hidden;">
+                        <a href="homework/unit12_vocab.html" target="_blank" style="display: block; padding: 12px 20px; color: #722f37; text-decoration: none; font-weight: 600; border-bottom: 1px solid #eee; transition: all 0.3s;">📚 Vocabulary</a>
+                        <a href="homework/unit12_grammar.html" target="_blank" style="display: block; padding: 12px 20px; color: #722f37; text-decoration: none; font-weight: 600; border-bottom: 1px solid #eee; transition: all 0.3s;">📝 Grammar</a>
+                        <a href="homework/unit12_writing.html" target="_blank" style="display: block; padding: 12px 20px; color: #722f37; text-decoration: none; font-weight: 600; transition: all 0.3s;">✍️ Writing</a>
+                    </div>
+                </div>
+                <button class="print-btn" onclick="window.print()" title="Print this unit">🖨️ Print</button>
+            </div>
+        </nav>
+
+        <div class="content">
+            <!-- Unit Outcomes -->
+            <div class="outcomes-box">
+                <h2>Unit Outcomes</h2>
+                <p style="margin-bottom: 15px; font-size: 18px;">By the end of this unit, you will be able to:</p>
+                <ul>
+                    <li>use tag questions to query or confirm information</li>
+                    <li>use intonation in tag questions to express different attitudes</li>
+                    <li>tell a humorous story in English using appropriate pauses and emphasis</li>
+                    <li>identify situations where humor can be useful</li>
+                    <li>practice persuasive writing</li>
+                    <li>explain what makes people laugh and why humor is important</li>
+                </ul>
+            </div>
+
+            <!-- VOCABULARY SECTION -->
+            <section id="vocabulary" class="section">
+                <div class="section-header">Vocabulary: The Comedy of Jerry Seinfeld</div>
+
+                <div class="vocab-grid">
+                    <div class="vocab-item">
+                        <div class="vocab-word">comedian</div>
+                        <div class="vocab-pronounce">/kəˈmiːdiən/</div>
+                        <div class="vocab-def">an entertainer who tells jokes to make people laugh</div>
+                    </div>
+
+                    <div class="vocab-item">
+                        <div class="vocab-word">delivery</div>
+                        <div class="vocab-pronounce">/dɪˈlɪvəri/</div>
+                        <div class="vocab-def">the way a joke or humorous story is told</div>
+                    </div>
+
+                    <div class="vocab-item">
+                        <div class="vocab-word">exaggerate</div>
+                        <div class="vocab-pronounce">/ɪɡˈzædʒəreɪt/</div>
+                        <div class="vocab-def">to indicate that something is bigger, worse, or more important than it really is</div>
+                    </div>
+
+                    <div class="vocab-item">
+                        <div class="vocab-word">expose</div>
+                        <div class="vocab-pronounce">/ɪkˈspəʊz/</div>
+                        <div class="vocab-def">to uncover, reveal</div>
+                    </div>
+
+                    <div class="vocab-item">
+                        <div class="vocab-word">hysterical</div>
+                        <div class="vocab-pronounce">/hɪˈsterɪkl/</div>
+                        <div class="vocab-def">extremely funny</div>
+                    </div>
+
+                    <div class="vocab-item">
+                        <div class="vocab-word">kid</div>
+                        <div class="vocab-pronounce">/kɪd/</div>
+                        <div class="vocab-def">to say something as a joke</div>
+                    </div>
+
+                    <div class="vocab-item">
+                        <div class="vocab-word">off-color</div>
+                        <div class="vocab-pronounce">/ˌɒf ˈkʌlər/</div>
+                        <div class="vocab-def">rude or offensive</div>
+                    </div>
+
+                    <div class="vocab-item">
+                        <div class="vocab-word">offensive</div>
+                        <div class="vocab-pronounce">/əˈfensɪv/</div>
+                        <div class="vocab-def">something that upsets or embarrasses because it is rude or insulting</div>
+                    </div>
+
+                    <div class="vocab-item">
+                        <div class="vocab-word">point out</div>
+                        <div class="vocab-pronounce">/pɔɪnt aʊt/</div>
+                        <div class="vocab-def">to direct attention to something</div>
+                    </div>
+
+                    <div class="vocab-item">
+                        <div class="vocab-word">profanity</div>
+                        <div class="vocab-pronounce">/prəˈfænəti/</div>
+                        <div class="vocab-def">offensive language; swearing</div>
+                    </div>
+
+                    <div class="vocab-item">
+                        <div class="vocab-word">punch line</div>
+                        <div class="vocab-pronounce">/ˈpʌntʃ laɪn/</div>
+                        <div class="vocab-def">the words at the end of a joke that make it funny</div>
+                    </div>
+
+                    <div class="vocab-item">
+                        <div class="vocab-word">shortcut</div>
+                        <div class="vocab-pronounce">/ˈʃɔːtkʌt/</div>
+                        <div class="vocab-def">a way that is more direct or quicker</div>
+                    </div>
+
+                    <div class="vocab-item">
+                        <div class="vocab-word">universal</div>
+                        <div class="vocab-pronounce">/ˌjuːnɪˈvɜːsl/</div>
+                        <div class="vocab-def">related to everyone in a group, society, or the world</div>
+                    </div>
+
+                    <div class="vocab-item">
+                        <div class="vocab-word">witty</div>
+                        <div class="vocab-pronounce">/ˈwɪti/</div>
+                        <div class="vocab-def">amusing in a clever way</div>
+                    </div>
+                </div>
+
+                <!-- Audio Player -->
+                <div class="audio-player no-print">
+                    <div class="audio-label">🎧 Track 21: Unit 12 Vocabulary</div>
+                    <audio controls>
+                        <source src="track21.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+
+                <!-- Vocabulary Exercise A from PDF -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">A</span>
+                        <span>The Comedy of Jerry Seinfeld</span>
+                    </div>
+                    <p>Read this profile of comedian Jerry Seinfeld and choose the correct option for each item.</p>
+
+                    <div class="teaching-note">
+                        Encourage students to use context clues. For example, if Seinfeld is "one of the best," he would be among other "comedians," not "shortcuts."
+                    </div>
+
+                    <div style="margin-top: 20px; line-height: 1.8; background: #f8f9fa; padding: 20px; border-radius: 8px;">
+                        <p>Jerry Seinfeld, a stand-up comedian, is considered one of the best observational (1) <strong>shortcuts / comedians</strong> in America. An observational comedian makes (2) <strong>witty / offensive</strong> comments about what he or she notices in everyday life. This type of humor seeks to (3) <strong>expose / exaggerate</strong> the absurdity that most of us usually don't see until it is pointed out. Observational comedy is more about generating an "Aha!" moment from the audience, rather than telling straight jokes with punch lines.</p>
+                        
+                        <p style="margin-top: 15px;">Seinfeld is well known for his delivery—the way he uses the pitch of his voice to (4) <strong>exaggerate / expose</strong> and emphasize his points with a note of sarcasm. He is also admired by many for his "clean" material. Seinfeld has said of using off-color language: "Profanity is a great shortcut of comedy and the reason I don't use it is that I am concerned about the joke-quality suffering." He believes comedians can be funny without being (5) <strong>hysterical / offensive</strong>.</p>
+                    </div>
+
+                    <div class="teacher-answer">
+                        1. comedians<br>
+                        2. witty<br>
+                        3. expose<br>
+                        4. exaggerate<br>
+                        5. offensive
+                    </div>
+                </div>
+
+                <!-- Vocabulary Exercise B from PDF -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">B</span>
+                        <span>Discussion Questions</span>
+                    </div>
+                    <p>In pairs, answer these questions.</p>
+
+                    <div style="margin-top: 20px;">
+                        <div class="question-item">
+                            <div class="question-text">1. What type of comedy does Seinfeld specialize in?</div>
+                            <div class="teacher-answer">Observational comedy.</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">2. How does Seinfeld use his voice in his delivery?</div>
+                            <div class="teacher-answer">He uses the pitch of his voice to exaggerate and emphasize his points with sarcasm.</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">3. What does Seinfeld think about the role of profanity in comedy? Do you agree?</div>
+                            <div class="teacher-answer">He thinks profanity is a shortcut and that jokes suffer in quality when using off-color language. (Student opinion may vary on agreement.)</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">4. What do you think of Seinfeld's approach to comedy? Can ordinary events be funny?</div>
+                            <div class="teacher-answer">Seinfeld finds humor in everyday observations. Yes, ordinary events can be funny when viewed from an unexpected perspective.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- GRAMMAR SECTION -->
+            <section id="grammar" class="section">
+                <div class="section-header">Grammar: Tag Questions</div>
+                <p style="margin-bottom: 20px; font-size: 18px; color: #666;">Video: Humor and Comedy</p>
+
+                <div class="grammar-chart">
+                    <div class="chart-header">Forming Tag Questions</div>
+                    <div class="chart-row">
+                        <div class="chart-cell header">Statement Type</div>
+                        <div class="chart-cell header">Tag Form</div>
+                        <div class="chart-cell header">Example</div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-cell"><span class="grammar-type">Positive</span></div>
+                        <div class="chart-cell">Negative tag</div>
+                        <div class="chart-cell">You're a comedian, <strong>aren't you?</strong><br>She was funny, <strong>wasn't she?</strong></div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-cell"><span class="grammar-type">Negative</span></div>
+                        <div class="chart-cell">Positive tag</div>
+                        <div class="chart-cell">You don't like that joke, <strong>do you?</strong><br>He hasn't performed here, <strong>has he?</strong></div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-cell"><span class="grammar-type">Modal Verbs</span></div>
+                        <div class="chart-cell">Use same modal</div>
+                        <div class="chart-cell">They can dance, <strong>can't they?</strong><br>He will come, <strong>won't he?</strong></div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-cell"><span class="grammar-type">Let's</span></div>
+                        <div class="chart-cell">shall we</div>
+                        <div class="chart-cell">Let's go to the show, <strong>shall we?</strong></div>
+                    </div>
+                </div>
+
+                <!-- Strategy Box -->
+                <div class="strategy-box grammar">
+                    <div class="strategy-title">Intonation in Tag Questions</div>
+                    <p style="margin-bottom: 10px;"><strong>Falling Intonation (↘):</strong> Use when you are sure of the answer and expect agreement.<br>
+                    <em>Example: That's hilarious, ↘<strong>isn't it?</strong></em> (I'm sure it is funny)</p>
+
+                    <p><strong>Rising Intonation (↗):</strong> Use when you are unsure and want to check information.<br>
+                    <em>Example: You're coming to the show, ↗<strong>aren't you?</strong></em> (I'm not sure - checking)</p>
+                </div>
+
+                <!-- Grammar Exercise A from PDF -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">A</span>
+                        <span>Complete the Conversation</span>
+                    </div>
+                    <p>Complete the conversation with appropriate tag questions.</p>
+
+                    <div class="teaching-note">
+                        Remind students to check the auxiliary verb in the main clause to form the tag.
+                    </div>
+
+                    <div style="margin-top: 20px; line-height: 2; background: #f8f9fa; padding: 20px; border-radius: 8px;">
+                        <p><strong>Liz:</strong> Hey, check out this shirt. It's really cool, (1) <span class="blank">__________</span>?</p>
+                        <p><strong>Jen:</strong> It's OK, I guess. The color reminds me of one Deirdre has. You've seen her wearing it before, (2) <span class="blank">__________</span>?</p>
+                        <p><strong>Liz:</strong> The brown one? Yeah, I have. But Deirdre's shirt looks nothing like this one. Hers has long sleeves, (3) <span class="blank">__________</span>?</p>
+                        <p><strong>Jen:</strong> I'm talking about the color. You wouldn't want to walk around looking like Deirdre, (4) <span class="blank">__________</span>?</p>
+                        <p><strong>Liz:</strong> Actually, I don't really mind. She looked so pretty at the party, (5) <span class="blank">__________</span>?</p>
+                        <p><strong>Jen:</strong> You're right. There's nothing wrong with looking like Deirdre, (6) <span class="blank">__________</span>?</p>
+                    </div>
+
+                    <div class="teacher-answer">
+                        1. isn't it<br>
+                        2. haven't you<br>
+                        3. doesn't it / doesn't she<br>
+                        4. would you<br>
+                        5. didn't she<br>
+                        6. is there
+                    </div>
+                </div>
+
+                <!-- Grammar Exercise B from PDF -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">B</span>
+                        <span>Role-Play</span>
+                    </div>
+                    <p>Role-play the situation from Exercise A with a partner. Add any extra details you think are necessary. Perform your role-play for the class.</p>
+                </div>
+
+                <!-- Grammar Exercise C from PDF -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">C</span>
+                        <span>Question Conversation</span>
+                    </div>
+                    <p>Listen to the model conversation made up entirely of questions. Now have a conversation with your partner made up entirely of questions. You cannot repeat the same question, and you cannot ask one-word questions (such as <em>Why?</em> or <em>What?</em>). How long can you keep your conversation going?</p>
+                </div>
+
+                <!-- Pronunciation Box from PDF -->
+                <div class="pronunciation-box">
+                    <strong>🔊 Pronunciation Note:</strong> Most wh- questions use falling intonation, while yes/no questions use rising intonation. Which kind of intonation do tag questions use? <em>(Answer: It depends - falling for confirmation, rising for checking.)</em>
+                </div>
+            </section>
+
+            <!-- LISTENING SECTION -->
+            <section id="listening" class="section">
+                <div class="section-header">Listening: A Conversation at the Comedy Club</div>
+
+                <div class="strategy-box">
+                    <strong>Listening for the Speaker's Purpose:</strong> When listening to a discussion about entertainment, identify whether the speaker is describing facts (what happened), giving opinions (what they think), or analyzing causes (why something works).
+                </div>
+
+                <!-- Vocabulary Box from PDF -->
+                <div class="example-box" style="margin-bottom: 20px;">
+                    <strong>Key Vocabulary:</strong><br>
+                    <strong>in good/bad taste</strong> – fitting (or not fitting) generally accepted social standards<br>
+                    <strong>stereotype</strong> – to unfairly characterize all members of a certain group (ethnicity, nationality, gender, age, etc.) as being the same
+                </div>
+
+                <!-- Audio Player -->
+                <div class="audio-player no-print">
+                    <div class="audio-label">🎧 Track 22: Conversation at the Comedy Club</div>
+                    <audio controls>
+                        <source src="https://audio.jukehost.co.uk/UMtqCFqn5mAiCupkbaPWzEULQqI9WOOW" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+
+                <div class="teaching-note">
+                    First listening: Ask students to identify who liked the show (Jocelyn) and who didn't (Nick). Second listening: Ask them to note specific reasons for their opinions.
+                </div>
+
+                <!-- Listening Exercise A from PDF -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">A</span>
+                        <span>Pre-Listening Discussion</span>
+                    </div>
+                    <p>Do you laugh easily at jokes or does it take something really funny to make you laugh? What jokes do you find offensive or inappropriate? Why? Discuss with a partner.</p>
+                </div>
+
+                <!-- Listening Exercise B from PDF -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">B</span>
+                        <span>Comprehension Check</span>
+                    </div>
+                    <p>Listen to a conversation between a brother and sister (Nick and Jocelyn) on their walk home from a comedy club. Choose the correct answer.</p>
+
+                    <div style="margin-top: 20px;">
+                        <div class="question-item">
+                            <div class="question-text">1. Which speaker liked the show?</div>
+                            <div style="margin-top: 10px;">
+                                <label class="checkbox-option"><input type="checkbox"> a) Jocelyn</label>
+                                <label class="checkbox-option"><input type="checkbox"> b) Nick</label>
+                                <label class="checkbox-option"><input type="checkbox"> c) both</label>
+                            </div>
+                            <div class="teacher-answer">a) Jocelyn</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">2. What reason does one speaker give for disliking the comedian?</div>
+                            <div style="margin-top: 10px;">
+                                <label class="checkbox-option"><input type="checkbox"> a) poor delivery</label>
+                                <label class="checkbox-option"><input type="checkbox"> b) bad jokes</label>
+                                <label class="checkbox-option"><input type="checkbox"> c) both</label>
+                            </div>
+                            <div class="teacher-answer">c) both</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">3. What would you say to describe a very funny joke?</div>
+                            <div style="margin-top: 10px;">
+                                <label class="checkbox-option"><input type="checkbox"> a) It's not in good taste.</label>
+                                <label class="checkbox-option"><input type="checkbox"> b) It's hilarious.</label>
+                                <label class="checkbox-option"><input type="checkbox"> c) both</label>
+                            </div>
+                            <div class="teacher-answer">b) It's hilarious</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">4. Which parts of the comedian's material does one speaker dislike?</div>
+                            <div style="margin-top: 10px;">
+                                <label class="checkbox-option"><input type="checkbox"> a) profanity and punch lines</label>
+                                <label class="checkbox-option"><input type="checkbox"> b) punch lines and stereotypes</label>
+                                <label class="checkbox-option"><input type="checkbox"> c) profanity and stereotypes</label>
+                            </div>
+                            <div class="teacher-answer">c) profanity and stereotypes</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">5. Why doesn't Nick want to go to a comedy club with Jocelyn again?</div>
+                            <div style="margin-top: 10px;">
+                                <label class="checkbox-option"><input type="checkbox"> a) Comedy clubs are dangerous.</label>
+                                <label class="checkbox-option"><input type="checkbox"> b) He might feel uncomfortable.</label>
+                                <label class="checkbox-option"><input type="checkbox"> c) He has a bad sense of humor.</label>
+                            </div>
+                            <div class="teacher-answer">b) He might feel uncomfortable.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Listening Exercise C from PDF -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">C</span>
+                        <span>Discussion</span>
+                    </div>
+                    <p>Listen again. Then discuss these questions with a partner.</p>
+
+                    <div style="margin-top: 15px;">
+                        <div class="question-item">
+                            <div class="question-text">1. What arguments does Jocelyn make about the comedian's use of profanity? Do you think her views are justified?</div>
+                            <div class="teacher-answer">Jocelyn argues that profanity is just part of comedy and helps create an "edge." Views on justification will vary.</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">2. What upsets Nick about jokes that use stereotypes? Are stereotypes always negative?</div>
+                            <div class="teacher-answer">Nick is upset because stereotypes can be hurtful and unfair. Not all stereotypes are negative, but they can be limiting.</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">3. When Nick says, "Unfortunately we can't all have your amazing sense of humor," he is being sarcastic. What does he really mean?</div>
+                            <div class="teacher-answer">He means the opposite - he thinks Jocelyn's sense of humor isn't that amazing, or he's annoyed by her willingness to accept offensive material.</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">4. Which speaker's opinions do you agree with most? Why?</div>
+                            <div class="teacher-answer">Open-ended; students should justify their choice.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONNECTIONS SECTION (New from PDF Page 137) -->
+            <section id="connections" class="section">
+                <div class="section-header">Connections: TV Show Situations</div>
+
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">A</span>
+                        <span>Funny or Bad Taste?</span>
+                    </div>
+                    <p>You are producing a new TV show. In the show, people are tricked into behaving foolishly in front of a hidden camera. Your writers have suggested the following situations. In pairs, read each situation and decide if the idea is genuinely funny or in bad taste. Mark whether you approve each suggestion and record your reasons for each decision.</p>
+
+                    <div class="teaching-note">
+                        Encourage students to consider cultural sensitivity and safety. Some "pranks" may seem funny but could cause genuine distress.
+                    </div>
+
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 50%;">Situation</th>
+                                <th style="width: 15%;">Decision</th>
+                                <th style="width: 35%;">Reasons</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1. A piece of jewelry is slipped into a celebrity's handbag at an expensive boutique. A guard stops her, searches her bag, and finds the jewelry.</td>
+                                <td style="text-align: center;">☐</td>
+                                <td><em>Example: This practical joke would be hilarious because celebrities are used to special treatment. She'll be very surprised, and her reaction will be funny for the audience.</em></td>
+                            </tr>
+                            <tr>
+                                <td>2. A young woman is pulled over by the police and told that the car she is driving was reported as stolen.</td>
+                                <td style="text-align: center;">☐</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>3. A child is given a new kitten. Later, the kitten is taken away.</td>
+                                <td style="text-align: center;">☐</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>4. A teenage boy is told he has gotten the lowest score possible on the college entrance exam.</td>
+                                <td style="text-align: center;">☐</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>5. The front wheel on a man's bicycle is loosened so it falls off while he is riding.</td>
+                                <td style="text-align: center;">☐</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>6. A woman receives a call informing her that her husband has been in a bad car accident.</td>
+                                <td style="text-align: center;">☐</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>7. A man tries to start his car, but the horn blows and all the lights flash. The car won't start.</td>
+                                <td style="text-align: center;">☐</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>8. A couple is eating in a nice restaurant. The man begins to cough and suddenly seems to stop breathing.</td>
+                                <td style="text-align: center;">☐</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">B</span>
+                        <span>Group Decision</span>
+                    </div>
+                    <p>Form a group with two other students and act as TV producers. Together, discuss each situation in Exercise A and agree on the three best ideas for the TV show. Was it difficult to reach an agreement? Why or why not?</p>
+                </div>
+
+                <div class="speech-bubble" style="margin-top: 20px;">
+                    "It's mean to take the kitten away, isn't it?"
+                </div>
+            </section>
+
+            <!-- SPEAKING SECTION -->
+            <section id="speaking" class="section">
+                <div class="section-header">Speaking: Telling a Funny Story</div>
+
+                <div class="strategy-box speaking">
+                    <div class="strategy-title">Using Pauses and Emphasis</div>
+                    <p style="margin-bottom: 10px;"><strong>Pauses:</strong> Stop briefly before the punchline to build suspense.<br>
+                    <em>Example: "I walked into the room... [pause] ...and saw my cat wearing my glasses."</em></p>
+
+                    <p><strong>Emphasis:</strong> Speak louder or stress certain words to highlight the funny parts.<br>
+                    <em>Example: "It was the BIGGEST sandwich I had EVER seen!"</em></p>
+                </div>
+
+                <div class="clearfix">
+                    <!-- Story Outline Box from PDF -->
+                    <div class="story-outline">
+                        <h4>Story Outline</h4>
+                        <p><strong>Subject:</strong></p>
+                        <div class="story-outline-line"></div>
+                        <p><strong>Introduction:</strong></p>
+                        <div class="story-outline-line"></div>
+                        <p><strong>Climax:</strong></p>
+                        <div class="story-outline-line"></div>
+                        <p><strong>Conclusion:</strong></p>
+                        <div class="story-outline-line"></div>
+                    </div>
+
+                    <div class="exercise" style="overflow: hidden;">
+                        <div class="exercise-title">
+                            <span class="exercise-icon">A</span>
+                            <span>Tell Your Story</span>
+                        </div>
+                        <p>Get into a group of three students and follow these steps:</p>
+                        <ol style="margin-left: 20px; margin-top: 10px; line-height: 1.8;">
+                            <li>Think about something funny that happened to you or someone else. It can be a personal experience or come from another source, such as a movie, book, or the news. What happened exactly? What made it funny? Take some notes. Use the Story Outline to guide you.</li>
+                            <li>Plan your delivery: Think about the tone of your voice, which words you will emphasize, and at which points you will pause in the story.</li>
+                            <li>Take turns telling your story to your group.</li>
+                            <li>When a speaker is done, ask him or her any questions you have. Then think about the questions below and take some notes.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- Notes Checklist from PDF -->
+                <div class="notes-checklist">
+                    <h4>Notes Checklist</h4>
+                    <ul>
+                        <li>Did the speaker use 1) effective pauses and 2) word stress?</li>
+                        <li>What was the punch line? Which words were stressed?</li>
+                        <li>Was the story funny? Why or why not?</li>
+                    </ul>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">B</span>
+                        <span>Group Discussion</span>
+                    </div>
+                    <p>Discuss each story with the group. What made each one funny? Which story was the funniest? Why?</p>
+                </div>
+
+                <div class="speech-bubble" style="margin-top: 20px;">
+                    "One time my dog did the funniest thing..."
+                </div>
+
+                <div class="assessment-box" style="margin-top: 30px;">
+                    <div style="font-weight: bold; color: #b71c1c; margin-bottom: 15px;">✓ Peer Assessment Checklist</div>
+                    <ul style="list-style: none; color: #555; font-size: 14px;">
+                        <li style="margin-bottom: 8px;">☐ Did they use pauses effectively?</li>
+                        <li style="margin-bottom: 8px;">☐ Did they emphasize key words?</li>
+                        <li style="margin-bottom: 8px;">☐ Was the punchline clear and funny?</li>
+                        <li style="margin-bottom: 8px;">☐ Did they use a tag question at the end?</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- VIDEO SECTION -->
+            <section id="video" class="section">
+                <div class="section-header">Video: The Immigrant</div>
+                <p style="margin-bottom: 20px; font-style: italic; color: #666;">Charlie Chaplin's Famous Character</p>
+
+                <!-- Info Box from PDF -->
+                <div class="info-box">
+                    <strong>About Charlie Chaplin:</strong> Born in London in 1889, Charlie Chaplin was one of the first great movie stars. His work in silent films during the 1910s and onward made him a global icon. In the movie <em>The Immigrant</em>, Charlie Chaplin plays the Little Tramp, a poor man who moves to another country in search of a better life. Moviegoers laughed and cheered on the Little Tramp because they identified with his humble, everyman persona and loved to watch him overcome challenges.
+                </div>
+
+                <div class="video-box no-print">
+                    <div class="video-title">🎬 Watch the Video</div>
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: 15px 0;">
+                        <div class="local-video-container">
+            <div class="video-offline-badge">📱 OFFLINE VIDEO</div>
+            <video class="local-video" controls controlsList="nodownload" preload="metadata" poster="">
+                <source src="WCL2-U12.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-controls-hint">
+                <span>🎥 Video Controls:</span> Play ▶️ | Pause ⏸️ | Rewind ⏪ | Forward ⏩ | Captions CC | Fullscreen 🔲
+            </div>
+            <div class="video-info">
+                <span class="video-info-title">Unit 12: Humor & Comedy</span>
+                <span class="video-info-format">HD</span>
+            </div>
+        </div>
+                    </div>
+                </div>
+
+                <!-- Video Exercise A from PDF -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">A</span>
+                        <span>Pre-Watching</span>
+                    </div>
+                    <p>You are going to watch the Little Tramp in the film <em>The Immigrant</em>. What kind of trouble do you think he will get into? What will he do to make you laugh? Discuss with a partner.</p>
+                </div>
+
+                <!-- Video Exercise B from PDF -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">B</span>
+                        <span>Segment 1: True or False</span>
+                    </div>
+                    <p>Watch segment 1 and mark each statement True or False.</p>
+
+                    <div style="margin-top: 15px;">
+                        <div class="question-item">
+                            <div class="question-text">1. The woman and her mother are crying because they are sick.</div>
+                            <div class="teacher-answer">False</div>
+                        </div>
+                        <div class="question-item">
+                            <div class="question-text">2. The Little Tramp can't get the woman's attention.</div>
+                            <div class="teacher-answer">True</div>
+                        </div>
+                        <div class="question-item">
+                            <div class="question-text">3. The Little Tramp takes all of his money back from the woman.</div>
+                            <div class="teacher-answer">False</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Exercise C from PDF -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">C</span>
+                        <span>Segment 2: Multiple Choice</span>
+                    </div>
+                    <p>Watch segment 2 and choose the correct answer to each item.</p>
+
+                    <div style="margin-top: 15px;">
+                        <div class="question-item">
+                            <div class="question-text">1. Why does the captain stop the Little Tramp?</div>
+                            <div style="margin-top: 8px;">
+                                a) He wants to steal his money.<br>
+                                b) He thinks the Little Tramp is a thief.<br>
+                                c) He wants to ask him the time.
+                            </div>
+                            <div class="teacher-answer">b) He thinks the Little Tramp is a thief.</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">2. How does the woman react when she finds the money?</div>
+                            <div style="margin-top: 8px;">
+                                a) with horror<br>
+                                b) with laughter<br>
+                                c) with joy
+                            </div>
+                            <div class="teacher-answer">b) with laughter</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">3. Why does the woman cry at the end?</div>
+                            <div style="margin-top: 8px;">
+                                a) She is thankful.<br>
+                                b) She loses her money again.<br>
+                                c) She dislikes the captain.
+                            </div>
+                            <div class="teacher-answer">b) She loses her money again.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Exercise D from PDF -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">D</span>
+                        <span>Segment 3: Ordering Events</span>
+                    </div>
+                    <p>Watch segment 3 and put these events in order (1-6).</p>
+
+                    <div style="margin-top: 15px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div class="question-item">
+                            <div class="question-text">___ a. The waiter knocks the Little Tramp's hat off.</div>
+                            <div class="teacher-answer">4</div>
+                        </div>
+                        <div class="question-item">
+                            <div class="question-text">___ b. The Little Tramp blows his nose.</div>
+                            <div class="teacher-answer">3</div>
+                        </div>
+                        <div class="question-item">
+                            <div class="question-text">___ c. The Little Tramp burns his mouth on his food.</div>
+                            <div class="teacher-answer">6</div>
+                        </div>
+                        <div class="question-item">
+                            <div class="question-text">___ d. The Little Tramp's neighbor leaves the table.</div>
+                            <div class="teacher-answer">2</div>
+                        </div>
+                        <div class="question-item">
+                            <div class="question-text">___ e. The Little Tramp finds a coin.</div>
+                            <div class="teacher-answer">1</div>
+                        </div>
+                        <div class="question-item">
+                            <div class="question-text">___ f. The Little Tramp orders his food.</div>
+                            <div class="teacher-answer">5</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Exercise E from PDF -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">E</span>
+                        <span>Themes</span>
+                    </div>
+                    <p>Work with a partner and choose two or three themes from the list. Then explain how each issue is treated humorously in the video. Write on a separate piece of paper.</p>
+                    
+                    <div style="margin-top: 15px; background: #f8f9fa; padding: 15px; border-radius: 5px; text-align: center;">
+                        <strong>generosity &nbsp;&nbsp;|&nbsp;&nbsp; manners &nbsp;&nbsp;|&nbsp;&nbsp; social status &nbsp;&nbsp;|&nbsp;&nbsp; immigration &nbsp;&nbsp;|&nbsp;&nbsp; poverty/hunger &nbsp;&nbsp;|&nbsp;&nbsp; war</strong>
+                    </div>
+                </div>
+
+                <!-- Ask Answer Box from PDF -->
+                <div class="ask-answer-box">
+                    <div class="ask-label">Ask / Answer</div>
+                    <p>In difficult moments, some people use humor to lighten the mood. Can you think of someone you know who is able to do this? How do they make you feel?</p>
+                </div>
+            </section>
+
+            <!-- READING SECTION -->
+            <section id="reading" class="section">
+                <div class="section-header">Reading: Comic Relief</div>
+                <p style="margin-bottom: 20px; font-style: italic; color: #666;">The Role of Humor in Society</p>
+
+                <!-- Reading Exercise A from PDF -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">A</span>
+                        <span>Discussion</span>
+                    </div>
+                    
+                    <div class="quote-box">
+                        "You can turn painful situations around through laughter. If you can find humor in anything, even poverty, you can survive it."
+                        <div class="quote-author">— Bill Cosby</div>
+                    </div>
+
+                    <p>Read the quotation above. What does this person mean? Do you agree with him? Discuss with a partner.</p>
+                    
+                    <div class="teacher-answer">
+                        Cosby means that humor helps us cope with difficult situations. By finding something funny even in hardship, we can emotionally survive tough times.
+                    </div>
+                </div>
+
+                <div class="strategy-box reading" style="margin-bottom: 30px;">
+                    <strong>Identifying and Understanding Referents:</strong> Writers use pronouns (he, she, it, they, this, that) to avoid repetition. When you see these words, trace back to find what or who they refer to. This helps you follow the writer's ideas clearly.
+                </div>
+
+                <!-- Full Reading Passage from PDF -->
+                <div class="reading-passage">
+                    <div class="passage-title">Comic Relief: The Role of Humor in Society</div>
+
+                    <p style="margin-bottom: 15px;"><strong>A. Humor is a universal human trait.</strong> Everywhere around the world, people find things to laugh about, and sharing humor is an essential part of being human. Even in the darkest tragic drama, a writer might insert a scene that makes the audience smile or even laugh to break the tension. This is known as "comic relief." In real life, comic relief makes the world an easier and better place to live.</p>
+
+                    <p style="margin-bottom: 15px;"><strong>B. Humor as a Coping Mechanism.</strong> There are taboos about making fun of some topics, such as religion, death, and misfortune. However, humor is a tool people frequently use to lessen pain, sadness, and loss. People tell funny stories about a departed loved one at a funeral to remember the good things about them. They make jokes about being ill or poor to stop worrying. Humor is a way for whole societies, nations, or even the world to deal with a shared loss. Laughter lightens the weight of sadness.</p>
+
+                    <p style="margin-bottom: 15px;"><strong>C. Humor as a Social Lubricant.</strong> Another role of humor is as a tool to ease social awkwardness. People tell a joke to begin a speech. They share funny stories with new acquaintances. Sometimes these stories are slightly embarrassing and they let listeners know that the person has let his or her guard down. Most people enjoy the company of those who make them laugh. Laughter is also contagious. One person's laughter can start a whole crowd laughing along.</p>
+
+                    <p><strong>D. Humor as Good Medicine.</strong> In recent years, scientific studies have begun to prove what many of us already knew—humor is good for you! Studies have shown that humor and laughter are great ways to reduce stress; and reducing stress improves one's health. For example, the results of a recent report showed that finding humor in one's life leads to better mental and physical well-being. This was particularly relevant in the fight against heart disease. For years, medical professionals have used comedy and humor to improve their patients' ability to fight autoimmune disorders and to increase the speed with which they heal from injuries. It's a common saying that "Laughter is the best medicine," and studies are increasingly showing that to be true!</p>
+
+                    <div style="margin-top: 20px; font-size: 14px; color: #666; font-style: italic;">
+                        <strong>Vocabulary Notes:</strong><br>
+                        *<strong>coping mechanism</strong> – an action or effort intended to relieve stress<br>
+                        *<strong>social awkwardness</strong> – feeling of embarrassment or difficulty in situations<br>
+                        *<strong>to let one's guard down</strong> – to relax<br>
+                        *<strong>contagious</strong> – likely to spread quickly in a group of people
+                    </div>
+                </div>
+
+                <div class="teaching-note">
+                    Pre-reading: Ask "Why do you think people laugh?" Post-reading: Discuss times when humor helped students through difficult situations.
+                </div>
+
+                <!-- Reading Exercise B from PDF -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">B</span>
+                        <span>Comprehension Questions</span>
+                    </div>
+                    <p>Read the article. Then answer the questions below with a partner.</p>
+
+                    <div style="margin-top: 20px;">
+                        <div class="question-item">
+                            <div class="question-text">1. How can humor be used to make people feel better after a loss?</div>
+                            <div class="teacher-answer">People tell funny stories about departed loved ones to remember good things. Jokes about illness or poverty help stop worrying. Laughter lightens the weight of sadness.</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">2. How does humor help people feel more comfortable with each other?</div>
+                            <div class="teacher-answer">It eases social awkwardness, helps people let their guard down, and makes people enjoy each other's company. Laughter is contagious and brings people together.</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">3. What is the relationship between humor and stress?</div>
+                            <div class="teacher-answer">Humor and laughter reduce stress, which improves health. It helps fight heart disease, autoimmune disorders, and speeds healing from injuries.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reading Exercise C from PDF -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">C</span>
+                        <span>Matching</span>
+                    </div>
+                    <p>Match each situation with one of the paragraphs (A-D) from the reading based on the topic. Not all paragraphs are used.</p>
+
+                    <div style="margin-top: 20px;">
+                        <div class="question-item">
+                            <div class="question-text">___ 1. You have been studying for an important examination. Passing will help you get your dream job. You haven't slept well in recent weeks and are often irritable. Your friend hasn't seen you in a long time, so he/she stops by your place to cheer you up.</div>
+                            <div class="teacher-answer">C (Social Lubricant - easing social awkwardness, cheering someone up)</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">___ 2. You are on a crowded elevator when it suddenly stops between floors and won't move. Someone calls for help, but in the meantime you are all waiting. The passenger standing next to you makes eye contact briefly. He mentions a movie where the same thing happens.</div>
+                            <div class="teacher-answer">C (Social Lubricant - easing awkwardness in a tense situation)</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">___ 3. You are in the hospital recovering from a serious car accident. You have had several surgeries and will be missing at least one month of work. You are in a lot of pain and are unable to do things without the help of a nurse or your family. A relative comes to visit you and tells you a funny story about the last time she was in the hospital.</div>
+                            <div class="teacher-answer">D (Good Medicine - healing, recovery from illness/injury)</div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">___ 4. Your home and neighborhood have been completely destroyed in a flood. You have lost most of your belongings, but your family is safe. You are temporarily staying in a government shelter. A former neighbor sees you in the shelter and comes over to talk. He jokes that he has been meaning to renovate his house for years and it looks like now he'll have a real reason to.</div>
+                            <div class="teacher-answer">B (Coping Mechanism - dealing with loss and tragedy through humor)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reading Exercise D from PDF -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">D</span>
+                        <span>Role Play</span>
+                    </div>
+                    <p>With a partner, choose one of the situations from Exercise C. Take one of the roles and act out the situation together. Think carefully about how humor could be used in the situation.</p>
+                </div>
+
+                <!-- Ask Answer Box from PDF -->
+                <div class="ask-answer-box">
+                    <div class="ask-label">Ask / Answer</div>
+                    <p>You can use humor to make fun of yourself instead of others. This is called <strong>self-deprecating humor</strong>. How could this type of humor help make someone feel better?</p>
+                    <div class="teacher-answer" style="margin-top: 10px;">
+                        It shows humility, makes the person seem more approachable, puts others at ease, and demonstrates confidence. It can break tension by acknowledging one's own flaws before others can point them out.
+                    </div>
+                </div>
+            </section>
+
+            <!-- WRITING SECTION -->
+            <section id="writing" class="section">
+                <div class="section-header">Writing: A Persuasive Essay</div>
+                <p style="margin-bottom: 20px; font-size: 18px; color: #666;">Supporting a Nominee for the Ridiculam Prize</p>
+
+                <!-- Ridiculam Prize Description from PDF -->
+                <div class="sample-essay">
+                    <div class="sample-essay-title">🏆 The Ridiculam Prize</div>
+                    <p>The Ridiculam Prize is presented each year to a humorist or comedian who has made outstanding contributions to understanding society through humor. Past recipients come from a wide range of backgrounds, including writers, actors, stand-up comedians, and cartoonists. With wit and courage, these people present a unique perspective on the issues of today. Not only do they make us laugh, but they challenge us to think a little deeper about what we are laughing about. Honorees go on a national tour to bring further attention to the issues they deal with in their humor.</p>
+                </div>
+
+                <!-- Writing Exercise A from PDF -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">A</span>
+                        <span>Understanding the Prize</span>
+                    </div>
+                    <p>Read the information about the Ridiculam Prize and explain to a partner what it is.</p>
+                </div>
+
+                <!-- Writing Exercise B from PDF -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">B</span>
+                        <span>Choose a Nominee</span>
+                    </div>
+                    <p>You are on the selection committee for the Ridiculam Prize. Who would you nominate? Think about the funny people you know personally or have seen on television. Why do they make you laugh? What social issues do they comment on? Make three selections and then discuss with a partner to narrow your choice to one final selection. (You and your partner do not have to choose the same person.)</p>
+                </div>
+
+                <!-- Sample Essay from PDF -->
+                <div class="sample-essay">
+                    <div class="sample-essay-title">Sample Essay</div>
+                    <p style="margin-bottom: 15px;">If anyone deserves to win the Ridiculam Prize, it is humorist Stephanie Gavin. She is a successful writer and one of the funniest people I know. She is my nominee for this prize.</p>
+                    
+                    <p style="margin-bottom: 15px;">For ten years, Gavin has written a humor column that appears in several national newspapers. She writes mainly about the funny little differences between men and women in society today. Her sarcasm allows readers to see these differences in a way they probably didn't before, and the fact that the people she jokes about still like her humor only proves how funny she is. For example, her article "Mr. Man" was just as popular among men as it was among women. She has written over fifteen books of humor and essays, of which six have become bestsellers. She has won numerous writing awards, and her material has been made into a popular TV show, <em>The Uptowners</em>. I have many of her books and reread them often. She never fails to make me laugh.</p>
+                    
+                    <p>I cannot think of another living humorist who has made so many people laugh. She is such a funny person and is extremely deserving of the Ridiculam Prize.</p>
+                </div>
+
+                <div class="tip-box">
+                    <strong>TIP:</strong> Use specific facts, such as numbers or statistics or real examples, to make your argument stronger.
+                </div>
+
+                <!-- Writing Exercise C from PDF -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">C</span>
+                        <span>Writing Task</span>
+                    </div>
+                    <p>Read the sample essay above. Then write your own persuasive essay of at least three paragraphs explaining why your nominee should win the Ridiculam Prize. Use a separate piece of paper.</p>
+                    
+                    <div style="margin-top: 15px; background: #f8f9fa; padding: 15px; border-radius: 5px;">
+                        <strong>Your essay should include:</strong>
+                        <ul style="margin-left: 20px; margin-top: 8px;">
+                            <li>A clear thesis statement (who you nominate and why)</li>
+                            <li>Specific facts about their achievements</li>
+                            <li>Your opinions about their importance</li>
+                            <li>At least one tag question to engage the reader</li>
+                        </ul>
+                    </div>
+
+                    <div class="teacher-answer" style="margin-top: 20px;">
+                        <strong>Teacher Grading Rubric:</strong><br>
+                        • Clear thesis statement (2 points)<br>
+                        • Specific facts included (2 points)<br>
+                        • Clear opinions with support (2 points)<br>
+                        • Correct use of tag question (2 points)<br>
+                        • Organization and grammar (2 points)
+                    </div>
+                </div>
+
+                <!-- Writing Exercise D from PDF -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">D</span>
+                        <span>Peer Review</span>
+                    </div>
+                    <p>Exchange your essay with another student. Was your partner's argument convincing? What can they do to improve it?</p>
+                </div>
+            </section>
+
+            <!-- EXPANDING FLUENCY -->
+            <section id="fluency" class="section">
+                <div class="section-header">Expanding Your Fluency</div>
+
+                <!-- Fluency Exercise A from PDF -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">A</span>
+                        <span>Types of Humor</span>
+                    </div>
+                    <p>Read about different types of humor. Then, in pairs, try to come up with other examples of these types of humor that you have seen.</p>
+
+                    <div style="margin-top: 15px; line-height: 1.8;">
+                        <div class="example-box">
+                            <strong>Parody:</strong> A parody is a piece of work that makes fun of an original work (painting, book, movie, song, etc.).
+                        </div>
+                        <div class="example-box">
+                            <strong>Practical Joke / Prank:</strong> A practical joke, also called a prank, is a trick played on someone, often with the goal of slightly embarrassing them.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fluency Exercise B from PDF -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">B</span>
+                        <span>Personal Response</span>
+                    </div>
+                    <p>Answer these questions. Then share your answers with a partner and explain your reasons.</p>
+
+                    <div style="margin-top: 20px;">
+                        <div class="question-item">
+                            <div class="question-text">1. Have you ever played a practical joke on someone?</div>
+                            <div style="margin-top: 8px;">
+                                a) Yes, and it was hysterical.<br>
+                                b) Yes, and I regretted it.<br>
+                                c) No, I would never do that.
+                            </div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">2. If someone played a prank on you, what would you do?</div>
+                            <div style="margin-top: 8px;">
+                                a) I would laugh!<br>
+                                b) I would be irritated.<br>
+                                c) I would be furious.
+                            </div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">3. Have you ever created or participated in a parody?</div>
+                            <div style="margin-top: 8px;">
+                                a) Yes, and it was fun.<br>
+                                b) Yes, and I regretted it.<br>
+                                c) No, and I never would.
+                            </div>
+                        </div>
+
+                        <div class="question-item">
+                            <div class="question-text">4. What do you think of parodies?</div>
+                            <div style="margin-top: 8px;">
+                                a) They are really funny, and they can be good for the original work by keeping it relevant and popular.<br>
+                                b) Sometimes they are funny, but sometimes they are disrespectful.<br>
+                                c) They are disrespectful to artists and their works.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fluency Exercise C from PDF -->
+                <div class="exercise">
+                    <div class="exercise-title">
+                        <span class="exercise-icon">C</span>
+                        <span>Discussion</span>
+                    </div>
+                    <p>Share your answers with another pair and then discuss. Why do you think so many forms of humor involve laughing at other people and their work? Do you think it's important to be able to laugh at yourself? Why or why not?</p>
+                </div>
+
+                <!-- Check What You Know from PDF -->
+                <div class="check-section">
+                    <h3 style="text-align: center; margin-bottom: 20px; color: #b71c1c;">✓ Check What You Know</h3>
+                    <p style="text-align: center; margin-bottom: 20px; color: #555;">Rank how well you can perform these outcomes on a scale of 1-5 (5 being the best).</p>
+
+                    <div class="check-item">
+                        <div class="check-number">1</div>
+                        <div>
+                            <strong>Use tag questions to query or confirm information</strong>
+                            <div style="margin-top: 5px; color: #666;">Rating: _____ / 5</div>
+                        </div>
+                    </div>
+
+                    <div class="check-item">
+                        <div class="check-number">2</div>
+                        <div>
+                            <strong>Tell a humorous story in English</strong>
+                            <div style="margin-top: 5px; color: #666;">Rating: _____ / 5</div>
+                        </div>
+                    </div>
+
+                    <div class="check-item">
+                        <div class="check-number">3</div>
+                        <div>
+                            <strong>Identify situations where humor can be useful</strong>
+                            <div style="margin-top: 5px; color: #666;">Rating: _____ / 5</div>
+                        </div>
+                    </div>
+
+                    <div class="check-item">
+                        <div class="check-number">4</div>
+                        <div>
+                            <strong>Practice persuasive writing</strong>
+                            <div style="margin-top: 5px; color: #666;">Rating: _____ / 5</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer Navigation -->
+        <div class="unit-nav no-print">
+            <a href="unit11.html" class="nav-btn">← Unit 11</a>
+            <span style="align-self: center; font-weight: bold; color: #7f8c8d;">Book 2B - Unit 12 of 12</span>
+            <a href="book2b_reference.html" class="nav-btn" style="background: #673ab7;">Reference →</a>
+        </div>
+    </div>
+
+    <!-- View Mode Indicator -->
+    <div id="viewIndicator" class="view-indicator">
+        Teacher View Active
+    </div>
+
+    <script>
+        // View switching functionality
+        function switchView(mode) {
+            const body = document.body;
+            const studentBtn = document.getElementById('studentBtn');
+            const teacherBtn = document.getElementById('teacherBtn');
+            const indicator = document.getElementById('viewIndicator');
+
+            if (mode === 'student') {
+                body.classList.remove('teacher-mode');
+                studentBtn.classList.add('active');
+                teacherBtn.classList.remove('active');
+                indicator.innerHTML = '<i class="fas fa-user-graduate"></i> Student View Active';
+                indicator.style.display = 'block';
+                localStorage.setItem('unit12_viewMode', 'student');
+            } else {
+                body.classList.add('teacher-mode');
+                teacherBtn.classList.add('active');
+                studentBtn.classList.remove('active');
+                indicator.innerHTML = '<i class="fas fa-chalkboard-teacher"></i> Teacher View Active';
+                indicator.style.display = 'block';
+                localStorage.setItem('unit12_viewMode', 'teacher');
+            }
+
+            setTimeout(() => {
+                indicator.style.display = 'none';
+            }, 2000);
+        }
+
+        // Load saved preference
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedMode = localStorage.getItem('unit12_viewMode');
+            if (savedMode === 'student') {
+                switchView('student');
+            } else {
+                document.body.classList.add('teacher-mode');
+            }
+
+            // Audio player enhancement
+            document.querySelectorAll('audio').forEach(player => {
+                player.addEventListener('play', function() {
+                    document.querySelectorAll('audio').forEach(other => {
+                        if (other !== player) other.pause();
+                    });
+                });
+            });
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Keyboard shortcut for view toggle (T for teacher, S for student)
+        document.addEventListener('keydown', function(e) {
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+            if (e.key === 't' || e.key === 'T') {
+                switchView('teacher');
+            } else if (e.key === 's' || e.key === 'S') {
+                switchView('student');
+            }
+        });
+    
+
+// Dark Mode Toggle
+function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+    const isDark = document.body.classList.contains('dark-mode');
+    localStorage.setItem('darkMode', isDark);
+    updateDarkModeButton();
+}
+
+function updateDarkModeButton() {
+    const btn = document.querySelector('.dark-mode-toggle');
+    if (document.body.classList.contains('dark-mode')) {
+        btn.innerHTML = '☀️ Light';
+    } else {
+        btn.innerHTML = '🌙 Dark';
+    }
+}
+
+// Load dark mode preference on page load
+document.addEventListener('DOMContentLoaded', function() {
+    if (localStorage.getItem('darkMode') === 'true') {
+        document.body.classList.add('dark-mode');
+    }
+    updateDarkModeButton();
+});
+</script>
+    
+    <!-- Credit -->
+    <div style="text-align: center; color: #7f8c8d; font-size: 13px; padding: 15px; font-style: italic;">
+        Re-Created by ESL Teacher Ry
+    </div>
+
+    <!-- 3D Button Interactions -->
+    <script>
+        // Ripple effect for buttons
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('.btn-ripple, .btn-3d, .nav-bar button');
+            if (!btn) return;
+            
+            const ripple = document.createElement('span');
+            ripple.className = 'ripple';
+            
+            const rect = btn.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            
+            btn.appendChild(ripple);
+            
+            setTimeout(() => ripple.remove(), 600);
+        });
+        
+                // Homework menu toggle
+        function toggleHomeworkMenu(menuId) {
+            const menu = document.getElementById(menuId);
+            if (menu.style.display === 'none') {
+                menu.style.display = 'block';
+            } else {
+                menu.style.display = 'none';
+            }
+        }
+        
+        // Close homework menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.homework-dropdown')) {
+                document.querySelectorAll('.homework-menu').forEach(menu => {
+                    menu.style.display = 'none';
+                });
+            }
+        });
+        // Magnetic button effect
+        document.querySelectorAll('.btn-3d, .audio-btn, .play-btn').forEach(btn => {
+            btn.addEventListener('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                this.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
+            });
+            
+            btn.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+            });
+        });
+    </script>
+
+
+    <!-- Vocabulary Audio Pronunciation -->
+    <script>
+        // Text-to-Speech for vocabulary pronunciation
+        function speakWord(word) {
+            if ('speechSynthesis' in window) {
+                // Cancel any ongoing speech
+                window.speechSynthesis.cancel();
+                
+                const utterance = new SpeechSynthesisUtterance(word);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.8;
+                utterance.pitch = 1;
+                
+                // Find the button and add playing animation
+                const buttons = document.querySelectorAll('.vocab-audio-btn');
+                buttons.forEach(btn => {
+                    if (btn.getAttribute('data-word') === word) {
+                        btn.classList.add('playing');
+                        btn.innerHTML = '🔊';
+                    }
+                });
+                
+                utterance.onend = function() {
+                    buttons.forEach(btn => {
+                        if (btn.getAttribute('data-word') === word) {
+                            btn.classList.remove('playing');
+                            btn.innerHTML = '🔈';
+                        }
+                    });
+                };
+                
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert('Text-to-speech is not supported in your browser.');
+            }
+        }
+        
+        // Add audio buttons to vocabulary items
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.vocab-item').forEach(item => {
+                const wordEl = item.querySelector('.vocab-word');
+                if (wordEl) {
+                    const word = wordEl.textContent.trim();
+                    const audioBtn = document.createElement('button');
+                    audioBtn.className = 'vocab-audio-btn';
+                    audioBtn.setAttribute('data-word', word);
+                    audioBtn.innerHTML = '🔈';
+                    audioBtn.title = 'Click to hear pronunciation';
+                    audioBtn.onclick = function(e) {
+                        e.stopPropagation();
+                        speakWord(word);
+                    };
+                    item.appendChild(audioBtn);
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
