@@ -7,7 +7,7 @@
     <!-- Authentication Check -->
     <script>
         // Check if user is logged in
-        if (!sessionStorage.getItem('teacherLoggedIn')) {
+        if (!localStorage.getItem('teacherLoggedIn')) {
             window.location.href = 'login.html';
         }
     </script>
@@ -1299,9 +1299,9 @@
         // Logout function
         function logout() {
             if (confirm('Are you sure you want to logout?')) {
-                sessionStorage.removeItem('teacherLoggedIn');
-                sessionStorage.removeItem('teacherUsername');
-                sessionStorage.removeItem('loginTime');
+                localStorage.removeItem('teacherLoggedIn');
+                localStorage.removeItem('teacherUsername');
+                localStorage.removeItem('loginTime');
                 window.location.href = 'login.html';
             }
         }
