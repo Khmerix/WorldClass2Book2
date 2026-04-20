@@ -15,7 +15,57 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #1a252f 0%, #2c3e50 100%);
             min-block-size: 100vh;
-            padding: 20px;
+            padding: 140px 20px 20px;
+        }
+
+        .book-nav {
+            position: fixed;
+            inset-block-start: 56px;
+            inset-inline-start: 0;
+            inset-inline-end: 0;
+            z-index: 1000;
+            background: rgba(27, 37, 47, 0.96);
+            backdrop-filter: blur(10px);
+            padding: 12px 16px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.28);
+            border-block-end: 1px solid rgba(212, 175, 55, 0.25);
+        }
+
+        .book-nav-title {
+            color: white;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .book-nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .nav-link {
+            display: inline-block;
+            text-decoration: none;
+            background: linear-gradient(145deg, #722f37 0%, #8b3a3a 100%);
+            color: white;
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 700;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.22);
+        }
+
+        .nav-link:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            background: linear-gradient(145deg, #d4af37 0%, #e5c76b 100%);
+            color: #722f37;
         }
         
         .header {
@@ -213,6 +263,20 @@
     </style>
 </head>
 <body>
+    <nav class="book-nav">
+        <div class="book-nav-title">📚 World Class 2B</div>
+        <div class="book-nav-links">
+            <a href="files seperate/unit7.html" class="nav-link">7</a>
+            <a href="files seperate/unit8.html" class="nav-link">8</a>
+            <a href="files seperate/unit9.html" class="nav-link">9</a>
+            <a href="files seperate/unit10.html" class="nav-link">10</a>
+            <a href="files seperate/unit11.html" class="nav-link">11</a>
+            <a href="files seperate/unit12.html" class="nav-link">12</a>
+            <a href="files seperate/book2b_reference.html" class="nav-link">Ref</a>
+            <a href="files seperate/homework/homework_portal.html" class="nav-link">HW</a>
+        </div>
+    </nav>
+
     <div class="header">
         <h1>World Class 2B</h1>
         <p>Units 7-12: Direct Access Version</p>
@@ -220,7 +284,7 @@
     
     <div class="note">
         <strong>📹 Videos should work properly in this version.</strong><br>
-        Click on any unit card below to open it directly.
+        Use the restored top navigation buttons or click any unit card below to open it directly.
     </div>
     
     <div class="units-grid">
@@ -243,9 +307,9 @@
                 <div class="homework-section">
                     <h4>📝 Homework</h4>
                     <div class="homework-links">
-                        <a href="homework/unit7_vocab.html" class="hw-link" onclick="event.stopPropagation();">Vocabulary</a>
-                        <a href="homework/unit7_grammar.html" class="hw-link" onclick="event.stopPropagation();">Grammar</a>
-                        <a href="homework/unit7_writing.html" class="hw-link" onclick="event.stopPropagation();">Writing</a>
+                        <a href="files seperate/homework/unit7_vocab.html" class="hw-link" onclick="event.stopPropagation();">Vocabulary</a>
+                        <a href="files seperate/homework/unit7_grammar.html" class="hw-link" onclick="event.stopPropagation();">Grammar</a>
+                        <a href="files seperate/homework/unit7_writing.html" class="hw-link" onclick="event.stopPropagation();">Writing</a>
                     </div>
                 </div>
             </div>
@@ -270,9 +334,9 @@
                 <div class="homework-section">
                     <h4>📝 Homework</h4>
                     <div class="homework-links">
-                        <a href="homework/unit8_vocab.html" class="hw-link" onclick="event.stopPropagation();">Vocabulary</a>
-                        <a href="homework/unit8_grammar.html" class="hw-link" onclick="event.stopPropagation();">Grammar</a>
-                        <a href="homework/unit8_writing.html" class="hw-link" onclick="event.stopPropagation();">Writing</a>
+                        <a href="files seperate/homework/unit8_vocab.html" class="hw-link" onclick="event.stopPropagation();">Vocabulary</a>
+                        <a href="files seperate/homework/unit8_grammar.html" class="hw-link" onclick="event.stopPropagation();">Grammar</a>
+                        <a href="files seperate/homework/unit8_writing.html" class="hw-link" onclick="event.stopPropagation();">Writing</a>
                     </div>
                 </div>
             </div>
@@ -297,9 +361,9 @@
                 <div class="homework-section">
                     <h4>📝 Homework</h4>
                     <div class="homework-links">
-                        <a href="homework/unit9_vocab.html" class="hw-link" onclick="event.stopPropagation();">Vocabulary</a>
-                        <a href="homework/unit9_grammar.html" class="hw-link" onclick="event.stopPropagation();">Grammar</a>
-                        <a href="homework/unit9_writing.html" class="hw-link" onclick="event.stopPropagation();">Writing</a>
+                        <a href="files seperate/homework/unit9_vocab.html" class="hw-link" onclick="event.stopPropagation();">Vocabulary</a>
+                        <a href="files seperate/homework/unit9_grammar.html" class="hw-link" onclick="event.stopPropagation();">Grammar</a>
+                        <a href="files seperate/homework/unit9_writing.html" class="hw-link" onclick="event.stopPropagation();">Writing</a>
                     </div>
                 </div>
             </div>
@@ -324,9 +388,9 @@
                 <div class="homework-section">
                     <h4>📝 Homework</h4>
                     <div class="homework-links">
-                        <a href="homework/unit10_vocab.html" class="hw-link" onclick="event.stopPropagation();">Vocabulary</a>
-                        <a href="homework/unit10_grammar.html" class="hw-link" onclick="event.stopPropagation();">Grammar</a>
-                        <a href="homework/unit10_writing.html" class="hw-link" onclick="event.stopPropagation();">Writing</a>
+                        <a href="files seperate/homework/unit10_vocab.html" class="hw-link" onclick="event.stopPropagation();">Vocabulary</a>
+                        <a href="files seperate/homework/unit10_grammar.html" class="hw-link" onclick="event.stopPropagation();">Grammar</a>
+                        <a href="files seperate/homework/unit10_writing.html" class="hw-link" onclick="event.stopPropagation();">Writing</a>
                     </div>
                 </div>
             </div>
@@ -351,9 +415,9 @@
                 <div class="homework-section">
                     <h4>📝 Homework</h4>
                     <div class="homework-links">
-                        <a href="homework/unit11_vocab.html" class="hw-link" onclick="event.stopPropagation();">Vocabulary</a>
-                        <a href="homework/unit11_grammar.html" class="hw-link" onclick="event.stopPropagation();">Grammar</a>
-                        <a href="homework/unit11_writing.html" class="hw-link" onclick="event.stopPropagation();">Writing</a>
+                        <a href="files seperate/homework/unit11_vocab.html" class="hw-link" onclick="event.stopPropagation();">Vocabulary</a>
+                        <a href="files seperate/homework/unit11_grammar.html" class="hw-link" onclick="event.stopPropagation();">Grammar</a>
+                        <a href="files seperate/homework/unit11_writing.html" class="hw-link" onclick="event.stopPropagation();">Writing</a>
                     </div>
                 </div>
             </div>
@@ -378,9 +442,9 @@
                 <div class="homework-section">
                     <h4>📝 Homework</h4>
                     <div class="homework-links">
-                        <a href="homework/unit12_vocab.html" class="hw-link" onclick="event.stopPropagation();">Vocabulary</a>
-                        <a href="homework/unit12_grammar.html" class="hw-link" onclick="event.stopPropagation();">Grammar</a>
-                        <a href="homework/unit12_writing.html" class="hw-link" onclick="event.stopPropagation();">Writing</a>
+                        <a href="files seperate/homework/unit12_vocab.html" class="hw-link" onclick="event.stopPropagation();">Vocabulary</a>
+                        <a href="files seperate/homework/unit12_grammar.html" class="hw-link" onclick="event.stopPropagation();">Grammar</a>
+                        <a href="files seperate/homework/unit12_writing.html" class="hw-link" onclick="event.stopPropagation();">Writing</a>
                     </div>
                 </div>
             </div>

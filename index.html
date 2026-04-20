@@ -6,9 +6,11 @@
     <title>World Class Level 2 - Book 2B Complete (Units 7-12) - Teacher's Edition</title>
     <!-- Authentication Check -->
     <script>
-        // Check if user is logged in
-        if (!localStorage.getItem('teacherLoggedIn')) {
+        // Use the direct-access portal because it handles the local video files more reliably
+        if (!localStorage.getItem('teacherLoggedIn') && !localStorage.getItem('ryshub_master_access') && !localStorage.getItem('ryshub_loggedIn')) {
             window.location.href = 'login.html';
+        } else {
+            window.location.replace('index_direct.html');
         }
     </script>
     <style>

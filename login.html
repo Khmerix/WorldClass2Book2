@@ -158,8 +158,8 @@
         <p class="subtitle">Teacher's Edition - Units 7-12</p>
         
         <div class="info-box">
-            <strong>🔒 Protected Content</strong><br>
-            This resource contains teacher materials including answer keys, teaching notes, and assessment guides. Please login to continue.
+            <strong>🔒 Team Master Access</strong><br>
+            Use the shared team username and password to open the full teacher resource portal during testing.
         </div>
         
         <form id="loginForm">
@@ -192,41 +192,26 @@
     </div>
     
     <script>
-        // Teacher credentials (hashed for basic security)
-        // Default: username: teacher / password: WorldClass2024!
-        const TEACHERS = {
-            'teacher': 'a3d1b5e8c7f9e2d4b6a8c0e1f3d5b7a9', // MD5 hash of WorldClass2024!
-            'admin': 'b4c8d2e1f5a9c3e7b1d6f0a4e8c2b5d7'   // MD5 hash of Admin2024!
+        const MASTER_CREDENTIALS = {
+            username: 'team',
+            password: 'RysHub2026!'
         };
-        
-        // Simple MD5 hash function
-        function md5(string) {
-            // This is a simplified version - in production use a proper crypto library
-            // For now, we'll use a simple string comparison for ease of use
-            return btoa(string).split('').reverse().join('');
-        }
-        
+
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
+
             const username = document.getElementById('username').value.trim();
             const password = document.getElementById('password').value;
             const errorDiv = document.getElementById('errorMessage');
-            
-            // Check credentials (plain text comparison for simplicity)
-            const validUsers = {
-                'teacher': 'WorldClass2024!',
-                'admin': 'Admin2024!'
-            };
-            
-            if (validUsers[username] && validUsers[username] === password) {
-                // Store login session
+
+            if (username === MASTER_CREDENTIALS.username && password === MASTER_CREDENTIALS.password) {
                 localStorage.setItem('teacherLoggedIn', 'true');
                 localStorage.setItem('teacherUsername', username);
                 localStorage.setItem('loginTime', new Date().toISOString());
-                
-                // Redirect to main content
-                window.location.href = 'index.html';
+                localStorage.setItem('ryshub_loggedIn', 'true');
+                localStorage.setItem('ryshub_master_access', 'true');
+
+                window.location.href = 'index_direct.html';
             } else {
                 errorDiv.classList.add('show');
                 document.getElementById('password').value = '';

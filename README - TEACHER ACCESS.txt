@@ -8,15 +8,13 @@ Units 7-12 - Secure Access System
 
 1. START HERE: Open "login.html" first
 
-2. LOGIN CREDENTIALS:
-   Username: teacher
-   Password: WorldClass2024!
+2. MASTER TEAM LOGIN:
+   Username: team
+   Password: RysHub2026!
    
-   (Alternative admin account)
-   Username: admin  
-   Password: Admin2024!
+   Use this same shared login during the testing phase for the protected teacher resources.
 
-3. After login, you'll be redirected to book2b_complete.html
+3. After login, you'll be redirected to index_direct.html for the most reliable video playback
 
 4. Use the navigation buttons to access all units
 
@@ -28,8 +26,8 @@ Units 7-12 - Secure Access System
 
 Book2Complete/
 ├── login.html              ← START HERE (Login page)
-├── book2b_complete.html    ← Main portal (auto-redirects if not logged in)
-├── index_direct.html       ← Direct access version (no iframe)
+├── index.html              ← Redirect helper for older links
+├── index_direct.html       ← Main portal with reliable video playback (recommended)
 ├── test_video.html         ← Test video playback
 ├── README - TEACHER ACCESS.txt  ← This file
 │
@@ -81,14 +79,14 @@ Book2Complete/
    is closed.
 
 5. CHANGING PASSWORDS: To change passwords, edit login.html
-   and look for the validUsers object in the JavaScript.
+   and update the MASTER_CREDENTIALS object in the JavaScript.
 
 =====================================================
 🎥 VIDEO TROUBLESHOOTING
 =====================================================
 
 If videos don't play:
-1. Make sure you're using book2b_complete.html after login
+1. Make sure you're using index_direct.html after login
 2. Check that MP4 files are in BOTH locations:
    - Book2Complete/ folder
    - Book2Complete/files seperate/ folder
@@ -114,8 +112,8 @@ please contact your system administrator.
 
 Default Login:
   URL:      login.html
-  Username: teacher
-  Password: WorldClass2024!
+  Username: team
+  Password: RysHub2026!
 
 =====================================================
 © 2024 World Class 2B - Teacher Resources
