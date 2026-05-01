@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>World Class Level 2 - Book 2B Complete (Units 7-12) - Teacher's Edition</title>
+    <script src="../assets/ryshub-theme-sync.js"></script>
     <!-- Authentication Check -->
     <script>
         // Use the direct-access portal because it handles the local video files more reliably
@@ -1272,16 +1273,15 @@
         }
         
         function toggleDarkMode() {
-            currentDarkMode = !currentDarkMode;
-            document.body.classList.toggle('dark-mode');
+            RysHubTheme.toggle();
+            currentDarkMode = RysHubTheme.get() === 'dark';
+            document.body.classList.toggle('dark-mode', currentDarkMode);
             
             const btn = document.querySelector('.dark-mode-toggle');
             if (currentDarkMode) {
                 btn.innerHTML = '☀️ Light';
-                localStorage.setItem('darkMode', 'true');
             } else {
                 btn.innerHTML = '🌙 Dark';
-                localStorage.setItem('darkMode', 'false');
             }
             
             // Apply to current iframe
@@ -1289,8 +1289,9 @@
         }
         
         // Load dark mode preference
-        if (localStorage.getItem('darkMode') === 'true') {
-            currentDarkMode = true;
+        RysHubTheme.apply(RysHubTheme.get());
+        currentDarkMode = RysHubTheme.get() === 'dark';
+        if (currentDarkMode) {
             document.body.classList.add('dark-mode');
             document.querySelector('.dark-mode-toggle').innerHTML = '☀️ Light';
         }
